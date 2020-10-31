@@ -10,24 +10,24 @@ public class TimeMain {
 
         System.out.println("Kérem adja meg az első időpontot!");
         System.out.println("Óra?");
-        int hour1 = scanner.nextInt();
+        int hour = scanner.nextInt();
         System.out.println("Perc?");
-        int minute1 = scanner.nextInt();
+        int minute = scanner.nextInt();
         System.out.println("Másodperc?");
-        int second1 = scanner.nextInt();
+        int second = scanner.nextInt();
 
-        Time time1 = new Time(hour1, minute1, second1);
+        Time time1 = new Time(hour, minute, second);
         System.out.println();
 
         System.out.println("Kérem adja meg a második időpontot!");
         System.out.println("Óra?");
-        int hour2 = scanner.nextInt();
+        hour = scanner.nextInt();
         System.out.println("Perc?");
-        int minute2 = scanner.nextInt();
+        minute = scanner.nextInt();
         System.out.println("Másodperc?");
-        int second2 = scanner.nextInt();
+        second = scanner.nextInt();
 
-        Time time2 = new Time(hour2, minute2, second2);
+        Time time2 = new Time(hour, minute, second);
         System.out.println();
 
         System.out.println("Az első időpont " + time1.toString() + " = " + time1.getInMinutes() + " perc");
