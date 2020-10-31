@@ -18,6 +18,5 @@ public class ClientMain {
 
         System.out.println(client.getAddress());
 
-
     }
 }
