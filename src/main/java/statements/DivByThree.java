@@ -11,7 +11,6 @@ public class DivByThree {
         System.out.println("Kérek egy egész számot.");
         int szam = scanner.nextInt();
 
-
         System.out.print("A " + szam + " hárommal ");
         System.out.println((szam % 3 == 0) ? "osztható." : "nem osztható.");
     }
