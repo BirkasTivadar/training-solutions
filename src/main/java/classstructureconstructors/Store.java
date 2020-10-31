@@ -1,12 +1,12 @@
 package classstructureconstructors;
 
 public class Store {
-    String product;
-    int stock;
+    private String product;
+    private int stock;
 
     public Store(String product) {
         this.product = product;
-        this.stock = 0;
+        stock = 0;
     }
 
     public void store(int addNumber) {
