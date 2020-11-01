@@ -1,7 +1,5 @@
 package stringtype;
 
-import javax.management.remote.JMXServerErrorException;
-
 public class StringTypeMain {
 
     public static void main(String[] args) {
