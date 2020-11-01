@@ -9,14 +9,13 @@ public class Sum {
         int sum = 0;
 
         for (int i = 1; i <= 5; i++) {
-        System.out.println("Kérem az " + i +". számot");
-        int num = scanner.nextInt();
-        sum += num;
+            System.out.println("Kérem az " + i + ". számot");
+            int num = scanner.nextInt();
+            sum += num;
         }
 
         System.out.println("Az öt szám összege: " + sum);
 
     }
-
 
 }
