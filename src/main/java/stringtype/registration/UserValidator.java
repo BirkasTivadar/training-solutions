@@ -13,17 +13,17 @@ public class UserValidator {
         this.email = email;
     }
 
-    public boolean isValidUsername(String username) {
+    public boolean isValidUsername() {
         return (username != "" || username != null);
     }
 
-    public boolean isValidPassword(String password1, String password2) {
+    public boolean isValidPassword() {
         boolean password1True = password1.length() > 7;
         boolean password2True = password2.length() > 7;
         return (password1True && password2True && password1.equals(password2));
     }
 
-    public boolean isValidEmail(String email) {
+    public boolean isValidEmail() {
         int kukacIndex = email.indexOf("@");
         int pontIndex = email.indexOf(".");
         boolean kukacTrue = (kukacIndex > 0);
