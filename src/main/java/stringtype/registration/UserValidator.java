@@ -14,7 +14,7 @@ public class UserValidator {
     }
 
     public boolean isValidUsername() {
-        return (username != "" || username != null);
+        return (username != "" && username != null);
     }
 
     public boolean isValidPassword() {
