@@ -19,7 +19,6 @@ public class BoatRental {
 
         int letszam = scanner.nextInt();
 
-
         if(letszam >= 5) {
             elvittCsonak += csonak5;
             csonakSzam++;
