@@ -13,7 +13,7 @@ public class ArrayMain {
         int[] kettoHatvanyai = new int[5];
 
         for (int i = 0; i < kettoHatvanyai.length; i++) {
-            kettoHatvanyai[i] = (int)Math.pow(2.0,(double) i);
+            kettoHatvanyai[i] = (int)Math.pow(2.0, (double)i);
             System.out.println(kettoHatvanyai[i]);
         }
 
