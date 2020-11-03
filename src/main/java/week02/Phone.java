@@ -39,7 +39,10 @@ public class Phone {
 
         Phone phone = new Phone(phoneType, phoneMem);
 
+        System.out.print("A telefon típusa: ");
         System.out.println(phone.getType());
+
+        System.out.print("A telefon memóriájának mérete: ");
         System.out.println(phone.getMem());
 
 
