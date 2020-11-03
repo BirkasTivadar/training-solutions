@@ -69,9 +69,7 @@ public class Books {
 
         numbers.removeAll(deleteNumbers);
 
-        for(int number : numbers){
-            System.out.println(number);
-        }
+        System.out.println(numbers);
 
 
 
