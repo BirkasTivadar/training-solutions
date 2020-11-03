@@ -4,8 +4,8 @@ package week02;
 import java.util.Scanner;
 
 public class Phone {
-    String type;
-    int mem;
+    private String type;
+    private int mem;
 
     public Phone(String type, int mem) {
         this.type = type;
@@ -31,19 +31,34 @@ public class Phone {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("A telefon típusa?");
+        System.out.println("Az első telefon típusa?");
         String phoneType = scanner.nextLine();
 
-        System.out.println("A telefon memóriájának nagysága?");
+        System.out.println("Az első telefon memóriájának nagysága?");
         int phoneMem = scanner.nextInt();
 
-        Phone phone = new Phone(phoneType, phoneMem);
+        Phone phone1 = new Phone(phoneType, phoneMem);
 
-        System.out.print("A telefon típusa: ");
-        System.out.println(phone.getType());
+        System.out.print("Az első telefon típusa: ");
+        System.out.println(phone1.getType());
 
-        System.out.print("A telefon memóriájának mérete: ");
-        System.out.println(phone.getMem());
+        System.out.print("Az első telefon memóriájának mérete: ");
+        System.out.println(phone1.getMem());
+
+
+        System.out.println("A második telefon típusa?");
+        phoneType = scanner.nextLine();
+
+        System.out.println("A második telefon memóriájának nagysága?");
+        phoneMem = scanner.nextInt();
+
+        Phone phone2 = new Phone(phoneType, phoneMem);
+
+        System.out.print("A második telefon típusa: ");
+        System.out.println(phone2.getType());
+
+        System.out.print("A második telefon memóriájának mérete: ");
+        System.out.println(phone2.getMem());
 
 
     }
