@@ -36,6 +36,7 @@ public class Phone {
 
         System.out.println("Az első telefon memóriájának nagysága?");
         int phoneMem = scanner.nextInt();
+        scanner.nextLine();
 
         Phone phone1 = new Phone(phoneType, phoneMem);
 
