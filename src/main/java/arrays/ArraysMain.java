@@ -5,11 +5,12 @@ import java.util.List;
 
 public class ArraysMain {
 
-    public String numberOfDaysAsString(){
+    public String numberOfDaysAsString() {
         int[] numberOfDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         return Arrays.toString(numberOfDays);
     }
-    public List<String> daysOfWeek(){
+
+    public List<String> daysOfWeek() {
         String[] hetNapjai = {"hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat", "vasárnap"};
         return Arrays.asList(hetNapjai);
     }
@@ -24,16 +25,31 @@ public class ArraysMain {
         return Arrays.deepToString(szorzoTabla);
     }
 
-    public boolean sameTempValues(double[] day, double[] anotherDay){
+    public boolean sameTempValues(double[] day, double[] anotherDay) {
         return Arrays.equals(day, anotherDay);
     }
 
-    public boolean wonLottery(int[] megtettSzamok, int[] kihuzottSzamok){
-        int [] megtett = Arrays.copyOf(megtettSzamok, megtettSzamok.length);
-        int [] kihuzott = Arrays.copyOf(kihuzottSzamok, kihuzottSzamok.length);
+    public boolean wonLottery(int[] megtettSzamok, int[] kihuzottSzamok) {
+        int[] megtett = Arrays.copyOf(megtettSzamok, megtettSzamok.length);
+        int[] kihuzott = Arrays.copyOf(kihuzottSzamok, kihuzottSzamok.length);
         Arrays.sort(megtett);
         Arrays.sort(kihuzott);
         return Arrays.equals(megtett, kihuzott);
+    }
+
+    public static int Min(int a, int b) {
+        if (a < b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
+    public boolean sameTempValuesDaylight(double[] day, double[] anotherDay) {
+        int dayNumber = Min(day.length, anotherDay.length);
+        double[] dayMin = Arrays.copyOfRange(day, 0, dayNumber);
+        double[] anotherdayMin = Arrays.copyOfRange(anotherDay, 0, dayNumber);
+        return Arrays.equals(dayMin, anotherdayMin);
     }
 
 
@@ -48,12 +64,11 @@ public class ArraysMain {
         System.out.println(Arrays.toString(megtett));
         System.out.println(Arrays.toString(kihuzott));
 
+        double[] day = {34, 56, 78, 54, 23};
+        double[] anotherDay = {54, 23, 34, 78, 56};
+
+        System.out.println(arraysMain.sameTempValuesDaylight(day, anotherDay));
+
     }
-
-
-
-
-
-
 
 }
