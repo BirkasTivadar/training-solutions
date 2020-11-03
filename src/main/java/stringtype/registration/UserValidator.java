@@ -26,10 +26,7 @@ public class UserValidator {
     public boolean isValidEmail() {
         int kukacIndex = email.indexOf("@");
         int pontIndex = email.indexOf(".");
-        boolean kukacTrue = (kukacIndex > 0);
-        boolean pontTrue = (pontIndex < email.length()-1);
-        boolean kukacEsPontTrue = (pontIndex - kukacIndex) > 1;
-        return kukacTrue && pontTrue && kukacEsPontTrue;
+        return (kukacIndex > 0) && (pontIndex < email.length()-1) && ((pontIndex - kukacIndex) > 1);
     }
 
 }
