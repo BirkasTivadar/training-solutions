@@ -47,15 +47,14 @@ public class Capsules {
         System.out.println(capsules.getColors());
         System.out.println();
 
-        List<String> colors = new ArrayList<>();
+        List<String> colors = capsules.getColors();
 
-        colors = capsules.getColors();
         System.out.println(colors);
         colors.clear();
 
         colors = capsules.getColors();
         System.out.println(colors);
-        System.out.println(capsules.getColors());
+
 
     }
 }
