@@ -6,6 +6,8 @@ public class PiMain {
 
     public static void main(String[] args) {
 
+        System.out.println(CircleCalculator.calculatePerimeter(10));
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Mennyi legyen a kör sugara?");
         double r = scanner.nextDouble();
