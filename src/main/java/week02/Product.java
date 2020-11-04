@@ -27,13 +27,15 @@ public class Product {
 
 
     public boolean TheyEqual(Product p){
-        return this.name.equals(p.name);
+        return this.name.equals(p.name) && (this.code.length() == p.code.length());
     }
 
     public static void main(String[] args) {
         Product vaj = new Product("vaj", "12345");
         Product mantequilla = new Product("vaj", "45678");
         Product cukor = new Product("cukor", "45678");
+
+
 
         System.out.println(vaj.TheyEqual(mantequilla));
         System.out.println(vaj.TheyEqual(cukor));
