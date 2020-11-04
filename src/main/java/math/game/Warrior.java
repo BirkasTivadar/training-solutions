@@ -19,9 +19,9 @@ public class Warrior {
         return position;
     }
 
-    public void Move(Warrior otherWarrior){
-        int nextX = 0;
-        int nextY = 0;
+    public void move(Warrior otherWarrior){
+        int nextX = this.getPosition().getX();
+        int nextY = this.getPosition().getY();
         if(this.getPosition().getX() < otherWarrior.getPosition().getX()) {
             nextX = this.getPosition().getX() + 1;
         } else if (this.getPosition().getX() > otherWarrior.getPosition().getX()) {
@@ -30,9 +30,13 @@ public class Warrior {
         if (this.getPosition().getY() < otherWarrior.getPosition().getY()) {
             nextY = this.getPosition().getY() + 1;
         } else if (this.getPosition().getY() > otherWarrior.getPosition().getY()) {
-            nextX = this.getPosition().getY() - 1;
+            nextY = this.getPosition().getY() - 1;
         }
         this.position = new Point(nextX, nextY);
+    }
+
+    public double distance(Warrior otherWarrior){
+        return this.getPosition().distance(otherWarrior.getPosition());
     }
 
     public void attack(Warrior otherWarrior){
@@ -46,7 +50,7 @@ public class Warrior {
     }
 
     public String toString(){
-        return "Name: " + this.name + " Position: (" + this.getPosition() + ") Stamina: " + this.stamina;
+        return this.name + ": (" + this.getPosition().getX() + "," + this.getPosition().getY() + ") " + this.stamina;
     }
 
 
