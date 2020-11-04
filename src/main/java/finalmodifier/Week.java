@@ -14,7 +14,7 @@ public class Week {
 
         List<String> dias = Arrays.asList("Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo");
 
-        DAYS_OF_THE_WEEK = dias;
-        System.out.println(DAYS_OF_THE_WEEK);
+        /*DAYS_OF_THE_WEEK = dias;
+        System.out.println(DAYS_OF_THE_WEEK);*/
     }
 }
