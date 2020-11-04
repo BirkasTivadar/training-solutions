@@ -33,11 +33,13 @@ public class Product {
     public static void main(String[] args) {
         Product vaj = new Product("vaj", "12345");
         Product mantequilla = new Product("vaj", "45678");
+        Product cheese = new Product("vaj", "12345678");
         Product cukor = new Product("cukor", "45678");
 
 
 
         System.out.println(vaj.TheyEqual(mantequilla));
         System.out.println(vaj.TheyEqual(cukor));
+        System.out.println(vaj.TheyEqual(cheese));
     }
 }
