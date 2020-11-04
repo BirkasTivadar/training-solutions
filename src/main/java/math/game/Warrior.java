@@ -52,6 +52,4 @@ public class Warrior {
     public String toString(){
         return this.name + ": (" + this.getPosition().getX() + "," + this.getPosition().getY() + ") " + this.stamina;
     }
-
-
 }
