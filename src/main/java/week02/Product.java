@@ -36,8 +36,6 @@ public class Product {
         Product cheese = new Product("vaj", "12345678");
         Product cukor = new Product("cukor", "45678");
 
-
-
         System.out.println(vaj.TheyEqual(mantequilla));
         System.out.println(vaj.TheyEqual(cukor));
         System.out.println(vaj.TheyEqual(cheese));
