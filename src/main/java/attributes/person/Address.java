@@ -29,11 +29,11 @@ public class Address {
         return zipCode;
     }
 
-    public String addressToString(){
-        return "Cím: " +country + " " + zipCode + " " + city + ", " + streetAndNumber;
+    public String addressToString() {
+        return "Cím: " + country + " " + zipCode + " " + city + ", " + streetAndNumber;
     }
 
-    public void correctData(String country, String city, String streetAndNumber, String zipCode){
+    public void correctData(String country, String city, String streetAndNumber, String zipCode) {
         this.country = country;
         this.city = city;
         this.streetAndNumber = streetAndNumber;

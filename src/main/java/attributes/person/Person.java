@@ -22,16 +22,16 @@ public class Person {
         return identificationCard;
     }
 
-    public String personToString(){
+    public String personToString() {
         return "Neve: " + name + ", személyi igazolványa: " + identificationCard;
     }
 
-    public void correctData(String name, String identificationCard){
+    public void correctData(String name, String identificationCard) {
         this.name = name;
         this.identificationCard = identificationCard;
     }
 
-    public void moveTo(Address address){
+    public void moveTo(Address address) {
         this.address = address;
     }
 }
