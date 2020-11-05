@@ -13,7 +13,7 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public String getCountry() {
+    public String getCountry(){
         return country;
     }
 
