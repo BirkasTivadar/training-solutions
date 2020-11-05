@@ -25,7 +25,7 @@ public class ObjectsMain {
 
         book = null;
         System.out.println(book);
-        System.out.println(book == emptyBook);
+        //System.out.println(book == emptyBook);
 
         book = new Book();
         System.out.println(book);
