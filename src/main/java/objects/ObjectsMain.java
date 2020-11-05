@@ -34,7 +34,7 @@ public class ObjectsMain {
         System.out.println(book == anotherBook);
         System.out.println(anotherBook instanceof Book);
 
-        //Objektumok száma: 5 objektumot hoz létre. Hathoz lehet hozzáférni
+        //Objektumok száma: 5 objektumot hoz létre. Hathoz lehet hozzáférni.
 
         Book[] bookArray = {emptyBook, book, anotherBook};
 
