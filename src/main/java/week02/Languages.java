@@ -11,9 +11,10 @@ public class Languages {
         languages.add("Python");
         languages.add("Javascript");
 
-        for(String language : languages){
-            if(language.length()>5)
+        for (String language : languages) {
+            if (language.length() > 5) {
                 System.out.println(language);
+            }
         }
     }
 }
