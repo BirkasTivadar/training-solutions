@@ -18,10 +18,36 @@ public class Office {
         }
     }
 
-    public void printNamesReverse(){
-        for(int i = meetingRooms.size() - 1; i > -1; i--){
+    public void printNamesReverse() {
+        for (int i = meetingRooms.size() - 1; i > -1; i--) {
             System.out.println(meetingRooms.get(i).getName());
         }
     }
+
+    public void printEventNames() {
+        for (int i = 0; i < meetingRooms.size(); i++) {
+            if (i % 2 != 0) {
+                System.out.println(meetingRooms.get(i).getName());
+            }
+        }
+    }
+
+    public void printAreas() {
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            System.out.println(meetingRoom.getArea());
+        }
+    }
+
+    public void printMeetingRoomsWithName(String name) {
+        String lowerName = name.toLowerCase();
+
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            String lowerRoom = meetingRoom.getName().toLowerCase();
+            if (lowerName.equals(lowerRoom)) {
+                System.out.println(meetingRoom.getName());
+            }
+        }
+    }
+
 
 }
