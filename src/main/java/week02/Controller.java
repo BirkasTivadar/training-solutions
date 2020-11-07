@@ -2,8 +2,10 @@ package week02;
 
 public class Controller {
 
+
+
     public static void main(String[] args) {
-        MeetingRoom targyalo = new MeetingRoom("Tárgyaló", 10, 7);
+        /*MeetingRoom targyalo = new MeetingRoom("Tárgyaló", 10, 7);
         MeetingRoom kistargyalo = new MeetingRoom("KisTárgyaló", 4, 5);
         MeetingRoom fonokitargyalo = new MeetingRoom("Főnöki tárgyaló", 2, 8);
         MeetingRoom muszakiIroda = new MeetingRoom("Műszaki iroda", 12, 8);
@@ -36,7 +38,7 @@ public class Controller {
         System.out.println();
         meetingRooms.printMeetingRoomsContains("Iroda");
         System.out.println();
-        meetingRooms.printAreasLargerThan(20);
+        meetingRooms.printAreasLargerThan(20);*/
 
     }
 }
