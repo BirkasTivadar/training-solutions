@@ -35,6 +35,8 @@ public class Controller {
         meetingRooms.printMeetingRoomsWithName("MŰSZAKI IRODA");
         System.out.println();
         meetingRooms.printMeetingRoomsContains("Iroda");
+        System.out.println();
+        meetingRooms.printAreasLargerThan(20);
 
     }
 }
