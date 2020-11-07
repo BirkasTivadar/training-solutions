@@ -33,7 +33,8 @@ public class Controller {
         meetingRooms.printMeetingRoomsWithName("tárgyaló");
         meetingRooms.printMeetingRoomsWithName("tárgyalo");
         meetingRooms.printMeetingRoomsWithName("MŰSZAKI IRODA");
-
+        System.out.println();
+        meetingRooms.printMeetingRoomsContains("Iroda");
 
     }
 }
