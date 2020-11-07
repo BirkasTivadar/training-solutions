@@ -9,6 +9,7 @@ public class Controller {
 
         System.out.println(targyalo.getArea());
         System.out.println(kistargyalo.getArea());
+        System.out.println(fonokitargyalo.getArea());
         System.out.println();
 
         Office meetingRooms = new Office();
