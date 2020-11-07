@@ -34,7 +34,7 @@ public class Office {
 
     public void printAreas() {
         for (MeetingRoom meetingRoom : meetingRooms) {
-            System.out.println(meetingRoom.getName() + " " + meetingRoom.getLength() + " " + meetingRoom.getWidth() + " " + meetingRoom.getArea());
+            System.out.println(meetingRoom.getName() + ": " + meetingRoom.getLength() + "m " + meetingRoom.getWidth() + "m " + meetingRoom.getArea() + "m2");
         }
     }
 
@@ -43,7 +43,7 @@ public class Office {
         for (MeetingRoom meetingRoom : meetingRooms) {
             String lowerRoom = meetingRoom.getName().toLowerCase();
             if (lowerName.equals(lowerRoom)) {
-                System.out.println(meetingRoom.getName() + " " + meetingRoom.getLength() + " " + meetingRoom.getWidth() + " " + meetingRoom.getArea());
+                System.out.println(meetingRoom.getName() + ": " + meetingRoom.getLength() + "m " + meetingRoom.getWidth() + "m " + meetingRoom.getArea() + "m2");
             }
         }
     }
@@ -53,7 +53,7 @@ public class Office {
         for (MeetingRoom meetingRoom : meetingRooms) {
             String lowerRoom = meetingRoom.getName().toLowerCase();
             if (lowerRoom.indexOf(lowerPart) > -1) {
-                System.out.println(meetingRoom.getName() + " " + meetingRoom.getLength() + " " + meetingRoom.getWidth() + " " + meetingRoom.getArea());
+                System.out.println(meetingRoom.getName() + ": " + meetingRoom.getLength() + "m " + meetingRoom.getWidth() + "m " + meetingRoom.getArea() + "m2");
             }
         }
     }
@@ -61,7 +61,7 @@ public class Office {
     public void printAreasLargerThan(int area) {
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getArea() > area) {
-                System.out.println(meetingRoom.getName() + " " + meetingRoom.getLength() + " " + meetingRoom.getWidth() + " " + meetingRoom.getArea());
+                System.out.println(meetingRoom.getName() + ": " + meetingRoom.getLength() + "m " + meetingRoom.getWidth() + "m " + meetingRoom.getArea() + "m2");
             }
         }
     }
