@@ -48,6 +48,16 @@ public class Office {
         }
     }
 
+    public void printMeetingRoomsContains(String part) {
+        String lowerPart = part.toLowerCase();
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            String lowerRoom = meetingRoom.getName().toLowerCase();
+            if (lowerRoom.indexOf(lowerPart) > -1) {
+                System.out.println(meetingRoom.getName());
+            }
+        }
+    }
+
 
 
 
