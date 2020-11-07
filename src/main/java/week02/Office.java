@@ -40,7 +40,6 @@ public class Office {
 
     public void printMeetingRoomsWithName(String name) {
         String lowerName = name.toLowerCase();
-
         for (MeetingRoom meetingRoom : meetingRooms) {
             String lowerRoom = meetingRoom.getName().toLowerCase();
             if (lowerName.equals(lowerRoom)) {
@@ -48,6 +47,8 @@ public class Office {
             }
         }
     }
+
+
 
 
 }
