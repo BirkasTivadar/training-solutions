@@ -31,7 +31,7 @@ public class Controller {
 
     }
 
-    public void printMenu(){
+    public void printMenu() {
         System.out.println();
         System.out.println("Választható menüpontok:");
         System.out.println();
@@ -44,31 +44,35 @@ public class Controller {
         System.out.println("7. Keresés terület alapján");
     }
 
-    public void runMenu(){
+    public void runMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem válaszon menüpontot");
         int menuNumber = scanner.nextInt();
         scanner.nextLine();
 
-        switch(menuNumber){
-            case 1: this.office.printNames();
-            break;
-            case 2: this.office.printNamesReverse();
-            break;
-            case 3: this.office.printEventNames();
-            break;
-            case 4: this.office.printAreas();
-            break;
+        switch (menuNumber) {
+            case 1:
+                this.office.printNames();
+                break;
+            case 2:
+                this.office.printNamesReverse();
+                break;
+            case 3:
+                this.office.printEventNames();
+                break;
+            case 4:
+                this.office.printAreas();
+                break;
             case 5:
                 System.out.println("Milyen névre keressek?");
                 String name = scanner.nextLine();
                 this.office.printMeetingRoomsWithName(name);
-            break;
+                break;
             case 6:
                 System.out.println("Milyen névtöredékre keressek?");
                 String part = scanner.nextLine();
                 this.office.printMeetingRoomsContains(part);
-            break;
+                break;
             case 7:
                 System.out.println("Hány m2-nél nagyobb tárgyalókra kíváncsi?");
                 int roomArea = scanner.nextInt();
@@ -84,6 +88,28 @@ public class Controller {
         controller.printMenu();
         controller.runMenu();
 
+        /*
+        controller.printMenu();
+        controller.runMenu();
+
+        controller.printMenu();
+        controller.runMenu();
+
+        controller.printMenu();
+        controller.runMenu();
+
+        controller.printMenu();
+        controller.runMenu();
+
+        controller.printMenu();
+        controller.runMenu();
+
+        controller.printMenu();
+        controller.runMenu();
+
+        controller.printMenu();
+        controller.runMenu();
+        */
 
         /*MeetingRoom targyalo = new MeetingRoom("Tárgyaló", 10, 7);
         MeetingRoom kistargyalo = new MeetingRoom("KisTárgyaló", 4, 5);
