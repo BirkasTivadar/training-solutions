@@ -51,4 +51,9 @@ public class TodoList {
         }
         return numberOfFinishedTodos;
     }
+
+    @Override
+    public String toString() {
+        return todoList.toString();
+    }
 }
