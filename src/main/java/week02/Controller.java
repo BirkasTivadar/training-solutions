@@ -7,10 +7,11 @@ import java.util.concurrent.Callable;
 public class Controller {
 
     private Office office;
+    Scanner scanner = new Scanner(System.in);
 
     public void readOffice() {
         office = new Office();
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
 
         System.out.println("Hány tárgyalót szeretne rögzíteni?");
         int meetingRoomsNumber = scanner.nextInt();
@@ -45,7 +46,7 @@ public class Controller {
     }
 
     public void runMenu() {
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem válaszon menüpontot");
         int menuNumber = scanner.nextInt();
         scanner.nextLine();
@@ -80,7 +81,6 @@ public class Controller {
 
         }
     }
-
 
     public static void main(String[] args) {
         Controller controller = new Controller();
