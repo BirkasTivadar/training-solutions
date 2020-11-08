@@ -55,16 +55,25 @@ public class Controller {
             break;
             case 2: this.office.printNamesReverse();
             break;
-            case 3: this.office.printEventNames()
+            case 3: this.office.printEventNames();
             break;
             case 4: this.office.printAreas();
             break;
-            case 5: this.office.printMeetingRoomsWithName();
+            case 5:
+                System.out.println("Milyen névre keressek?");
+                String name = scanner.nextLine();
+                this.office.printMeetingRoomsWithName(name);
             break;
-            case 6: this.office.printMeetingRoomsContains();
+            case 6:
+                System.out.println("Milyen névtöredékre keressek?");
+                String part = scanner.nextLine();
+                this.office.printMeetingRoomsContains(part);
             break;
-            case 7: this.office.printAreasLargerThan();
-            break;
+            case 7:
+                System.out.println("Hány m2-nél nagyobb tárgyalókra kíváncsi?");
+                int roomArea = scanner.nextInt();
+                this.office.printAreasLargerThan(roomArea);
+
         }
     }
 
@@ -74,12 +83,6 @@ public class Controller {
         controller.readOffice();
         controller.printMenu();
         controller.runMenu();
-
-
-
-
-
-
 
 
         /*MeetingRoom targyalo = new MeetingRoom("Tárgyaló", 10, 7);
