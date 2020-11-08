@@ -1,8 +1,6 @@
 package week02;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
-import java.util.concurrent.Callable;
 
 public class Controller {
 
@@ -25,11 +23,11 @@ public class Controller {
             System.out.println("Kérem a szélességét.");
             int width = scanner.nextInt();
             scanner.nextLine();
+            System.out.println();
 
             MeetingRoom meetingRoom = new MeetingRoom(name, length, width);
             office.addMeetingRoom(meetingRoom);
         }
-
     }
 
     public void printMenu() {
@@ -78,7 +76,6 @@ public class Controller {
                 System.out.println("Hány m2-nél nagyobb tárgyalókra kíváncsi?");
                 int roomArea = scanner.nextInt();
                 this.office.printAreasLargerThan(roomArea);
-
         }
     }
 
@@ -145,6 +142,5 @@ public class Controller {
         meetingRooms.printMeetingRoomsContains("Iroda");
         System.out.println();
         meetingRooms.printAreasLargerThan(20);*/
-
     }
 }
