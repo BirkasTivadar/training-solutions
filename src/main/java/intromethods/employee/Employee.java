@@ -28,7 +28,8 @@ public class Employee {
     }
 
     public void raiseSalary(int plus){
-        this.salary += plus;
+        salary += plus;
+        //this.salary += plus;
     }
 
     @Override
