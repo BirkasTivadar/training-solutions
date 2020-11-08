@@ -8,7 +8,8 @@ import java.util.List;
 public class Office {
     private List<MeetingRoom> meetingRooms = new ArrayList<>();
 
-    public void addMeetingRoom(MeetingRoom meetingRoom) {
+    public void addMeetingRoom(String name, int length, int width) {
+        MeetingRoom meetingRoom = new MeetingRoom(name, length, width);
         meetingRooms.add(meetingRoom);
     }
 

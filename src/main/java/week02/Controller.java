@@ -26,7 +26,7 @@ public class Controller {
             System.out.println();
 
             MeetingRoom meetingRoom = new MeetingRoom(name, length, width);
-            office.addMeetingRoom(meetingRoom);
+            office.addMeetingRoom(name, length, width);
         }
     }
 
