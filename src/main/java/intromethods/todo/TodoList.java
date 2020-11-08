@@ -44,8 +44,8 @@ public class TodoList {
 
     public int numberOfFinishedTodos() {
         int numberOfFinishedTodos = 0;
-        for(Todo todo : todoList){
-            if(todo.isFinished()){
+        for (Todo todo : todoList) {
+            if (todo.isFinished()) {
                 numberOfFinishedTodos += 1;
             }
         }
