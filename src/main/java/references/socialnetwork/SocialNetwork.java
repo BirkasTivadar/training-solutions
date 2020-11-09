@@ -31,4 +31,21 @@ public class SocialNetwork {
         }
         return null;
     }
+
+    public List<String> bidirectionalConnections() {
+        List<String> connections = new ArrayList<>();
+        for(Member member : members) {
+            for(Member connectedMember : member.getConnections()){
+                if(connectedMember.getConnections().contains(member)) {
+                    connections.add(member.getName() + " - " + connectedMember.getName());
+                }
+            }
+        }
+        return connections;
+    }
+
+    @Override
+    public String toString() {
+        return members.toString();
+    }
 }

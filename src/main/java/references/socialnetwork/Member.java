@@ -23,4 +23,17 @@ public class Member {
     public void connectMember(Member member) {
         connections.add(member);
     }
+
+    private List<String> connectedNames(){
+        List<String> connectedNames = new ArrayList<>();
+        for(Member member : connections){
+            connectedNames.add(member.getName());
+        }
+        return connectedNames;
+    }
+
+    @Override
+    public String toString() {
+        return  name + " " + connectedNames();
+    }
 }
