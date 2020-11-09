@@ -21,8 +21,10 @@ public class LiteralsMain {
         String word = "title".toUpperCase();
         System.out.println(word);
 
-        System.out.println(Integer.toBinaryString(-3));
+        System.out.println(Integer.toBinaryString(1));
         System.out.println(Integer.toBinaryString(-2));
+
+
 
     }
 
