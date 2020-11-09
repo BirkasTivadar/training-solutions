@@ -7,7 +7,7 @@ public class PrimitiveTypes {
         String stringBinary = "";
         for(int number = n; number > 0;) {
             int digit = number % 2;
-            stringBinary += digit;
+            stringBinary = digit + "" + stringBinary;
             number /= 2;
         }
         return stringBinary;
