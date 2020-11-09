@@ -5,11 +5,10 @@ import java.util.Scanner;
 public class Controller {
 
     private Office office;
-    Scanner scanner = new Scanner(System.in);
 
     public void readOffice() {
         office = new Office();
-        //Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Hány tárgyalót szeretne rögzíteni?");
         int meetingRoomsNumber = scanner.nextInt();
@@ -26,7 +25,7 @@ public class Controller {
             System.out.println();
 
             MeetingRoom meetingRoom = new MeetingRoom(name, length, width);
-            office.addMeetingRoom(name, length, width);
+            office.addMeetingRoom(meetingRoom);
         }
     }
 
@@ -44,38 +43,38 @@ public class Controller {
     }
 
     public void runMenu() {
-        //Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem válaszon menüpontot");
         int menuNumber = scanner.nextInt();
         scanner.nextLine();
 
         switch (menuNumber) {
             case 1:
-                this.office.printNames();
+                office.printNames();
                 break;
             case 2:
-                this.office.printNamesReverse();
+                office.printNamesReverse();
                 break;
             case 3:
-                this.office.printEventNames();
+                office.printEventNames();
                 break;
             case 4:
-                this.office.printAreas();
+                office.printAreas();
                 break;
             case 5:
                 System.out.println("Milyen névre keressek?");
                 String name = scanner.nextLine();
-                this.office.printMeetingRoomsWithName(name);
+                office.printMeetingRoomsWithName(name);
                 break;
             case 6:
                 System.out.println("Milyen névtöredékre keressek?");
                 String part = scanner.nextLine();
-                this.office.printMeetingRoomsContains(part);
+                office.printMeetingRoomsContains(part);
                 break;
             case 7:
                 System.out.println("Hány m2-nél nagyobb tárgyalókra kíváncsi?");
                 int roomArea = scanner.nextInt();
-                this.office.printAreasLargerThan(roomArea);
+                office.printAreasLargerThan(roomArea);
         }
     }
 

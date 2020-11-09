@@ -36,6 +36,6 @@ public class MeetingRoom {
     }
 
     public int getArea() {
-        return this.length * this.width;
+        return length * width;
     }
 }
