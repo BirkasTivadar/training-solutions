@@ -52,7 +52,7 @@ public class Position {
 
         for(Position position : positions){
             if(position.getBonus() > 150_000){
-                position.toString();
+                System.out.println(position.toString());
             }
         }
     }
