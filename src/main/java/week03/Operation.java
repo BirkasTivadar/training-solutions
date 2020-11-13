@@ -6,8 +6,8 @@ public class Operation {
 
     public Operation(String numberPlusNumber){
         int indexPlus = numberPlusNumber.indexOf("+");
-        this.left = (int) numberPlusNumber.substring(0, indexPlus);
-        this.right = (int) numberPlusNumber.substring(indexPlus +1);
+        this.left = Integer.parseInt(numberPlusNumber.substring(0, indexPlus));
+        this.right = Integer.parseInt(numberPlusNumber.substring(indexPlus +1));
     }
 
     public int getResult(){

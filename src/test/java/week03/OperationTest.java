@@ -12,6 +12,6 @@ class OperationTest {
 
         int result = operation.getResult();
 
-        assertEquals(679, result);
+        assertEquals(579, result);
     }
 }
