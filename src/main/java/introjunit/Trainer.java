@@ -14,4 +14,9 @@ public class Trainer {
     public String getNameUppercase() {
         return name.toUpperCase();
     }
+
+    public static void main(String[] args) {
+        String s = "apple pear plum".replace(" p", " g");
+        System.out.println(s);
+    }
 }
