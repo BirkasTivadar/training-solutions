@@ -2,9 +2,9 @@ package controlselection.week;
 
 public class DayOfWeeks {
 
-    public String weekMessage(String day){
+    public String weekMessage(String day) {
         String nap = day.toLowerCase();
-        switch(nap){
+        switch (nap) {
             case "hétfő":
                 return "hét eleje";
             case "kedd":

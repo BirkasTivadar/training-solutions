@@ -7,7 +7,7 @@ public class ToConsonant {
 
     public char convertToConsonant(char c) {
         if (VOWELS.indexOf(c) >= 0) {
-           return ALPHABET.charAt(ALPHABET.indexOf(c)+1);
+            return ALPHABET.charAt(ALPHABET.indexOf(c) + 1);
         } else {
             return c;
         }
