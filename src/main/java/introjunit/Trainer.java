@@ -6,9 +6,9 @@ public class Trainer {
     public static void main(String[] args) {
 
 
-        System.out.println(Byte.MAX_VALUE);
+        System.out.println(5/6.0);
 
-       byte n = 127;
+
 
     }
 }
