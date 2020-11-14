@@ -2,10 +2,14 @@ package introjunit;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TrainerTest {
+class TrainerTest {
 
+    @Test
+    void getName() {
+        Trainer trainer = new Trainer("Bibi");
 
-
+        assertEquals("Bibi", trainer.getName());
+    }
 }

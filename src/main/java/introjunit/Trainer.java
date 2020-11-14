@@ -2,13 +2,17 @@ package introjunit;
 
 public class Trainer {
 
+    String name;
 
-    public static void main(String[] args) {
+    public Trainer(String name) {
+        this.name = name;
+    }
 
+    public String getName() {
+        return name;
+    }
 
-        System.out.println(5/6.0);
-
-
-
+    public void setName(String name) {
+        this.name = name;
     }
 }
