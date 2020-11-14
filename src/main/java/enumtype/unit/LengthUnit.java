@@ -4,9 +4,9 @@ public enum LengthUnit {
     METER(1000, true),
     CENTIMETER(10, true),
     MILLIMETER(1, true),
-    YARD(9144,false),
-    FOOT(3048, false),
-    INCH(254, false);
+    YARD(914,false),
+    FOOT(305, false),
+    INCH(25, false);
 
     private final int millimeter;
 
