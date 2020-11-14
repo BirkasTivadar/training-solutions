@@ -11,5 +11,6 @@ public class GentlemanTest {
         Gentleman gentleman = new Gentleman();
 
         assertEquals("Hello Bibi", gentleman.sayHello("Bibi"));
+        assertEquals("Hello Anonymus", gentleman.sayHello(null));
     }
 }
