@@ -15,6 +15,9 @@ public class MathOperations {
         double answerResult = scanner.nextDouble();
 
         if(Math.abs(result - answerResult) < 0.0001) {
+            System.out.println(("A megoldás jó."));
+        } else {
+            System.out.println("A megoldás nem jó.");
         }
 
 
