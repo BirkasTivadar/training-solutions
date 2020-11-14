@@ -24,7 +24,7 @@ public class DayInMonth {
                     return 28;
                 }
             default:
-                throw new IllegalArgumentException("Rossz hónapnév: " + month);
+                throw new IllegalArgumentException("Invalid month: " + month);
 
         }
     }
