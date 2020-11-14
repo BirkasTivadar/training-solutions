@@ -7,5 +7,8 @@ public class Trainer {
 
 
         System.out.println(Byte.MAX_VALUE);
+
+       byte n = 127;
+
     }
 }
