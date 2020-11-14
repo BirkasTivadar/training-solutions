@@ -5,6 +5,6 @@ public class Trainer {
 
     public static void main(String[] args) {
 
-        System.out.println(new Integer(1) + new Integer(2));
+        System.out.println(Integer.toBinaryString(9 << 1));
     }
 }
