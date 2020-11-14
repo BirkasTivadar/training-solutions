@@ -11,7 +11,7 @@ class DayOfWeeksTest {
         DayOfWeeks dayOfWeeks = new DayOfWeeks();
 
         assertEquals("hét eleje", dayOfWeeks.weekMessage("hétfő"));
-        assertEquals("hét közepe", dayOfWeeks.weekMessage("szerda"));
-        assertEquals("hét vége", dayOfWeeks.weekMessage("szombat"));
+        assertEquals("hét közepe", dayOfWeeks.weekMessage("SZERDA"));
+        assertEquals("hét vége", dayOfWeeks.weekMessage("Szombat"));
     }
 }
