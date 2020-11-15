@@ -29,14 +29,5 @@ public class DayInMonth {
         }
     }
 
-    public static void main(String[] args) {
-        DayInMonth dayInMonth = new DayInMonth();
-        System.out.println(dayInMonth.dayNumber(1600, "február"));
-        System.out.println(dayInMonth.dayNumber(1800, "február"));
-        System.out.println(dayInMonth.dayNumber(1804, "február"));
-        System.out.println(dayInMonth.dayNumber(1600, "márciu"));
-
-    }
-
 
 }
