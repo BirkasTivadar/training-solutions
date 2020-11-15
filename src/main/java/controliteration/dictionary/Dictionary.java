@@ -1,6 +1,7 @@
 package controliteration.dictionary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Dictionary {
@@ -28,5 +29,6 @@ public class Dictionary {
         }
         return new ArrayList<>();
     }
+
 
 }
