@@ -15,7 +15,7 @@ public class UsedCars {
             if (!parts[0].contains("-") || parts[0].length() != 7) {
                 continue;
             }
-            if (Integer.parseInt(parts[1]) > 2019 || Integer.parseInt(parts[1]) < 2007){
+            if (Integer.parseInt(parts[1]) > 2019 || Integer.parseInt(parts[1]) < 1970){
                 continue;
             }
             validLines.add(line);
