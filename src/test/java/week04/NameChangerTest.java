@@ -19,4 +19,11 @@ class NameChangerTest {
         assertEquals("Doe Jack", nameChanger.changeFirstName("Jack"));
 
     }
+    @Test
+    void isTheSameTest(){
+        NameChanger nameChanger = new NameChanger("Doe John");
+
+        assertEquals(true, nameChanger.isTheSame("Doe John"));
+        assertTrue(nameChanger.isTheSame("Doe John"));
+    }
 }

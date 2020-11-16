@@ -1,5 +1,7 @@
 package week04;
 
+import java.util.Scanner;
+
 public class NameChanger {
 
     private String fullName;
@@ -19,5 +21,16 @@ public class NameChanger {
         int index = fullName.indexOf(" ");
         String name = fullName.substring(0, index);
         return name + " " + otherFirstName;
+    }
+
+    public boolean isTheSame(String otherFullname){
+        return fullName.equals(otherFullname);
+    }
+
+    public void calculateWithDelimiter(String numbers, String delimiter){
+        int sum = 0;
+        try{
+            Scanner scanner = new Scanner(numbers).useDelimiter(delimiter);
+        }
     }
 }
