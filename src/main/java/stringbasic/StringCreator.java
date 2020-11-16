@@ -2,10 +2,11 @@ package stringbasic;
 
 public class StringCreator {
 
-    public String createStringForHeap(){
+    public String createStringForHeap() {
         return new String("Bibi");
     }
-    public String createStringForLoop(){
+
+    public String createStringForLoop() {
         return "Bibi";
     }
 
