@@ -27,10 +27,4 @@ public class NameChanger {
         return fullName.equals(otherFullname);
     }
 
-    public void calculateWithDelimiter(String numbers, String delimiter){
-        int sum = 0;
-        try{
-            Scanner scanner = new Scanner(numbers).useDelimiter(delimiter);
-        }
-    }
 }
