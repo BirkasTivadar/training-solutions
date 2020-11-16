@@ -1,6 +1,7 @@
-package stringbasic;
+package stringbasic.stringbasic;
 
 import org.junit.jupiter.api.Test;
+import stringbasic.stringbasic.StringCreator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
