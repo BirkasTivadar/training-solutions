@@ -16,7 +16,7 @@ class EmployeeTest {
 
     @Test
     void getDatas() {
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new Employee("john", "doctor", 123456));
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()-> new Employee("john", "doctor", 123456));
         assertEquals("Invalid salary: 123456", iae.getMessage());
     }
 }
