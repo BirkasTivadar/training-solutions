@@ -9,6 +9,8 @@ class NameChangerTest {
     @Test
     void getFullName() {
 
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new NameChanger(("")));
+        assertEquals("Invalid Name: ", iae.getMessage());
     }
 
     @Test
