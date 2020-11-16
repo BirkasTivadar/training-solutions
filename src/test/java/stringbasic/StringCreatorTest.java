@@ -11,6 +11,10 @@ class StringCreatorTest {
         StringCreator stringCreator = new StringCreator();
         assertEquals(true, stringCreator.createStringForHeap().equals(stringCreator.createStringForLoop()));
         assertEquals(false, stringCreator.createStringForHeap() == stringCreator.createStringForLoop());
+        assertEquals(true, stringCreator.createStringForLoop().equals(stringCreator.createStringForLoop()));
+        assertEquals(true, stringCreator.createStringForLoop() == stringCreator.createStringForLoop());
+        assertEquals(true, stringCreator.createStringForHeap().equals(stringCreator.createStringForHeap()));
+        assertEquals(false, stringCreator.createStringForHeap() == stringCreator.createStringForHeap());
 
     }
 
