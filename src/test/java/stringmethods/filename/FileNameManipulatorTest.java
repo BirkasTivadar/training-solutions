@@ -7,6 +7,30 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileNameManipulatorTest {
 
     @Test
+    void invalidParametersShouldThrowExceptionIfEmptyString() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findLastCharachter(""));
+        assertEquals("Empty string!", iae.getMessage());
+
+    }
+
+    @Test
+    void invalidParametersShouldThrowExceptionIfWhiteSpaceOnly() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.changeExtensionToLowerCase("\t\n\r "));
+        assertEquals("Empty string!", iae.getMessage());
+
+    }
+
+    @Test
+    void invalidParametersShouldThrowExceptionJustPoint() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.changeExtensionToLowerCase("."));
+        assertEquals("Invalid argument!", iae.getMessage());
+
+    }
+
+    @Test
     void findLastCharachter() {
         FileNameManipulator fileNameManipulator = new FileNameManipulator();
         assertEquals('f', fileNameManipulator.findLastCharachter("abcdef"));
