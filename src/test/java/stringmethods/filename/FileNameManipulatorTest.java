@@ -56,6 +56,104 @@ class FileNameManipulatorTest {
     }
 
     @Test
+    void invalidFileNameEmptyString() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findFileExtension("\t\n\r"));
+        assertEquals("Invalid file name!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileNameNull() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findFileExtension(null));
+        assertEquals("Invalid file name!", iae.getMessage());
+    }
+
+    @Test
+    void invalidParametersShouldThrowException() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", ".d"));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileNameShouldThrowException() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", "."));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileNameEmptyStringGoodExtension() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", "\t\n\r"));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileNameNullGoodExtension() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", null));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidExtensionEmptyStringGoodFileName() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("\t\n\r", "record.dat"));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidExtensionNullGoodFileTwoName() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension(null, "record.dat"));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileOneNullGoodFileTwoName() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName(null, "record.dat"));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileTwoNullGoodFileOneName() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName("record.dat", null));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileTwoEmptyStringGoodFileOneName() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName("record.dat", "\n\t\r"));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileOneEmptyStringGoodFileName() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName("\n\t\r", "record.dat"));
+        assertEquals("Invalid argument!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileNameToReplaceEmptyString() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.replaceExtension("\n\t\r", "jpeg", "jpg"));
+        assertEquals("Empty string!", iae.getMessage());
+    }
+
+    @Test
+    void invalidFileNameToReplaceNull() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.replaceExtension(null, "jpeg", "jpg"));
+        assertEquals("Empty string!", iae.getMessage());
+    }
+
+    @Test
     void findLastCharachter() {
         FileNameManipulator fileNameManipulator = new FileNameManipulator();
         assertEquals('f', fileNameManipulator.findLastCharachter("abcdef"));
