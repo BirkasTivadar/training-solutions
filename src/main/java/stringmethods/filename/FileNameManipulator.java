@@ -11,7 +11,23 @@ public class FileNameManipulator {
     }
 
     public Boolean identifyFilesByExtension(String ext, String fileName) {
-        return ext.equals(fileName.substring(fileName.indexOf('.')+1, fileName.length()));
+        return ext.trim().equals(fileName.trim().substring(fileName.indexOf('.') + 1, fileName.length()));
+    }
+
+    public Boolean compareFilesByName(String searchedFileName, String actualFileName) {
+        return searchedFileName.trim().equalsIgnoreCase(actualFileName.trim());
+    }
+
+    public String changeExtensionToLowerCase(String fileName) {
+        return fileName.trim().replace(this.findFileExtension(fileName.trim()), this.findFileExtension(fileName.trim()).toLowerCase());
+    }
+
+    public String replaceExtension(String fileName, String present, String target) {
+        if (fileName.contains(present)) {
+            return fileName.trim().replace(present, target);
+        } else {
+            return fileName.trim();
+        }
     }
 
 

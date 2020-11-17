@@ -25,4 +25,26 @@ class FileNameManipulatorTest {
         assertEquals(true, fileNameManipulator.identifyFilesByExtension("mm", "tematika.mm"));
         assertEquals(false, fileNameManipulator.identifyFilesByExtension("md", "tematika.mm"));
     }
+
+    @Test
+    void compareFilesByName() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        assertEquals(true, fileNameManipulator.compareFilesByName("String.JAVA", "String.java"));
+        assertEquals(false, fileNameManipulator.compareFilesByName("String.java", "Sting.java"));
+    }
+
+    @Test
+    void changeExtensionToLowerCase() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        assertEquals("String.java", fileNameManipulator.changeExtensionToLowerCase("String.JAVA"));
+    }
+
+    @Test
+    void replaceExtension() {
+        FileNameManipulator fileNameManipulator = new FileNameManipulator();
+        assertEquals("picture.png", fileNameManipulator.replaceExtension("picture.png", "jpeg", "jpg"));
+        assertEquals("picture.jpg", fileNameManipulator.replaceExtension("picture.jpeg", "jpeg", "jpg"));
+        assertEquals("long_descriptive_name.txt", fileNameManipulator.replaceExtension("long descriptive name.txt", " ", "_"));
+    }
+
 }
