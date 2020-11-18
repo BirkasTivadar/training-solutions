@@ -45,12 +45,17 @@ public class NameBuilder {
 
         return name.toString();
     }
-/*
-    public String insertTitle(String name, Title title, String where){
+
+    public String insertTitle(String name, Title title, String where) {
+        StringBuilder newName = new StringBuilder();
+        newName.append(name).insert(name.indexOf(where), " " + title.getTitle());
+        return newName.toString();
 
     }
 
-    public String deleteNamePart(String name, String delete){
-
-    }*/
+    public String deleteNamePart(String name, String delete) {
+        StringBuilder newName = new StringBuilder();
+        newName.append(name).delete(name.indexOf(delete), name.indexOf(delete) + delete.length());
+        return newName.toString();
+    }
 }

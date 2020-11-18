@@ -50,4 +50,16 @@ class NameBuilderTest {
         assertEquals("Mr. Smith John", nameBuilder.concatNameHungarianStyle("Smith", "", "John", Title.MR));
         assertEquals("Mr. Smith John", nameBuilder.concatNameHungarianStyle("Smith", null, "John", Title.MR));
     }
+
+    @Test
+    void insertTitle() {
+        NameBuilder nameBuilder = new NameBuilder();
+        assertEquals("Dr. Prof. John G Smith", nameBuilder.insertTitle("Dr. John G Smith",Title.PROF, " "));
+    }
+
+    @Test
+    void deleteNamePart() {
+        NameBuilder nameBuilder = new NameBuilder();
+        assertEquals("Dr. John G Smith", nameBuilder.deleteNamePart("Dr. Prof. John G Smith", "Prof. "));
+    }
 }
