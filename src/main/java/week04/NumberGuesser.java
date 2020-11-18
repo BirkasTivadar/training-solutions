@@ -25,8 +25,9 @@ public class NumberGuesser {
             }
             round++;
         }
-        System.out.println("Sajnálom, Ön vesztett.");
-
+        if (tip != number) {
+            System.out.println("Sajnálom, Ön vesztett.");
+        }
 
     }
 }
