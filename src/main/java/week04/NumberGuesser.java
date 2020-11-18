@@ -7,7 +7,7 @@ public class NumberGuesser {
 
     public static void main(String[] args) {
         Random random = new Random();
-        int number = random.nextInt(99) + 1;
+        int number = random.nextInt(100) + 1;
 
         Scanner scanner = new Scanner(System.in);
         int tip = 0;
