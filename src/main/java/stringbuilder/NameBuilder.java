@@ -50,7 +50,6 @@ public class NameBuilder {
         StringBuilder newName = new StringBuilder();
         newName.append(name).insert(name.indexOf(where), " " + title.getTitle());
         return newName.toString();
-
     }
 
     public String deleteNamePart(String name, String delete) {
