@@ -14,6 +14,7 @@ public class NumberGuesser {
         int round = 1;
 
         while (round <= 6) {
+            System.out.println(round + "-dik kör.");
             System.out.println("Kérem tippeljen egy számot");
             tip = scanner.nextInt();
             if (tip < number) {
