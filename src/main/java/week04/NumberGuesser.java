@@ -22,6 +22,7 @@ public class NumberGuesser {
                 System.out.println("Nem jó, a szám nagyobb ,mint amit a gép gondolt");
             } else {
                 System.out.println("Gratulálok, eltalálta a számot.");
+                break;
             }
             round++;
         }
