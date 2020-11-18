@@ -26,7 +26,8 @@ class NameBuilderTest {
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> nameBuilder.concatNameHungarianStyle("", "G", "John", Title.MR));
         assertEquals("Family name and given name must not be empty!", iae.getMessage());
     }
- @Test
+
+    @Test
     void invalidParametersShouldThrowExceptionEmptyGivenName() {
         NameBuilder nameBuilder = new NameBuilder();
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> nameBuilder.concatNameHungarianStyle("Smith", "G", "", Title.MR));
@@ -54,7 +55,7 @@ class NameBuilderTest {
     @Test
     void insertTitle() {
         NameBuilder nameBuilder = new NameBuilder();
-        assertEquals("Dr. Prof. John G Smith", nameBuilder.insertTitle("Dr. John G Smith",Title.PROF, " "));
+        assertEquals("Dr. Prof. John G Smith", nameBuilder.insertTitle("Dr. John G Smith", Title.PROF, " "));
     }
 
     @Test
