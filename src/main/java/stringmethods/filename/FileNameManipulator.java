@@ -16,7 +16,7 @@ public class FileNameManipulator {
         if (fileName.indexOf('.') < 1 || fileName.indexOf('.') == fileName.length() - 1) {
             throw new IllegalArgumentException("Invalid file name!");
         }
-        return fileName.substring(fileName.indexOf('.'), fileName.length());
+        return fileName.substring(fileName.indexOf('.'));
     }
 
     public boolean identifyFilesByExtension(String ext, String fileName) {
@@ -26,7 +26,7 @@ public class FileNameManipulator {
         if (fileName.indexOf('.') < 1 || fileName.indexOf('.') == fileName.length() - 1) {
             throw new IllegalArgumentException("Invalid argument!");
         }
-        return ext.trim().equals(fileName.trim().substring(fileName.indexOf('.') + 1, fileName.length()));
+        return ext.trim().equals(fileName.trim().substring(fileName.indexOf('.') + 1));
     }
 
     public boolean compareFilesByName(String searchedFileName, String actualFileName) {
@@ -60,6 +60,5 @@ public class FileNameManipulator {
     private boolean isBlank(String string) {
         return string == null || string.isBlank();
     }
-
 
 }
