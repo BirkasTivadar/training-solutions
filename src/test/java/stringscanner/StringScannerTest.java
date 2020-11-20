@@ -1,5 +1,6 @@
 package stringscanner;
 
+import com.sun.jdi.connect.IllegalConnectorArgumentsException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
