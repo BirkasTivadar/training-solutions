@@ -1,4 +1,4 @@
-package filascanner.bucketlist;
+package filescanner.bucketlist;
 
 import java.io.IOException;
 import java.nio.file.Path;
