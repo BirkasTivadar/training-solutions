@@ -72,14 +72,12 @@ class ClassRecordsTest {
         assertEquals("No student in the class, average calculation aborted!", ex.getMessage());
 
     }
-/*
+
     @Test
     public void noMarksShouldThrowException() throws ArithmeticException {
 
-
         ClassRecords classRecords = new ClassRecords("First Grade", new Random());
         classRecords.addStudent(new Student("Nagy Béla"));
-
 
         Exception ex = assertThrows(ArithmeticException.class, () -> classRecords.calculateClassAverage());
         assertEquals("No marks present, average calculation aborted!", ex.getMessage());
@@ -97,7 +95,7 @@ class ClassRecordsTest {
         //Then
         assertEquals(2.75, classRecords.calculateClassAverageBySubject(geography));
     }
-
+/*
     @Test
     public void emptyStudentNameShouldThrowException() throws IllegalArgumentException {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> classRecords.findStudentByName(""));

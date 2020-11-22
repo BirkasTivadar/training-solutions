@@ -52,9 +52,27 @@ public class ClassRecords {
         }
         double sum = 0.0;
         for (Student student : students) {
+            if(student.calculateAverage() == 0){
+                throw new ArithmeticException("No marks present, average calculation aborted!");
+            }
             sum += student.calculateAverage();
         }
         return Math.round(sum / students.size() * 100) / 100.0;
+    }
+
+    public double calculateClassAverageBySubject(Subject subject){
+        if(students.size() == 0){
+            throw new ArithmeticException("No student in the class, average calculation aborted!");
+        }
+        double sum = 0.0;
+        int counter = 0;
+        for (Student student : students) {
+            if (student.calculateSubjectAverage(subject) > 0) {
+                sum += student.calculateSubjectAverage(subject);
+                counter++;
+            }
+        }
+        return Math.round(sum / counter * 100) / 100.0;
     }
 
 
@@ -100,6 +118,7 @@ public class ClassRecords {
         classRecords.removeStudent(new Student("Kovács Béla"));
         System.out.println(classRecords.students.toString());
         System.out.println(classRecords.calculateClassAverage());
+        System.out.println(classRecords.calculateClassAverageBySubject(new Subject("földrajz")));
 
     }
 }
