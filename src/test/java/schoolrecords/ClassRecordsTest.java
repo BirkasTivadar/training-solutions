@@ -64,7 +64,7 @@ class ClassRecordsTest {
     public void testRemoveStudentDoesNotExists() {
         assertFalse(classRecords.removeStudent(new Student("Nagy Klára")));
     }
-/*
+
     @Test
     public void emptyStudentListShouldThrowException() throws ArithmeticException {
 
@@ -72,7 +72,7 @@ class ClassRecordsTest {
         assertEquals("No student in the class, average calculation aborted!", ex.getMessage());
 
     }
-
+/*
     @Test
     public void noMarksShouldThrowException() throws ArithmeticException {
 

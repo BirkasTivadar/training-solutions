@@ -36,7 +36,6 @@ public class Student {
             stringBuilder.append(marks.get(i).getSubject().getSubjectName());
             stringBuilder.append(": ");
             stringBuilder.append(marks.get(i).toString());
-
         }
         return stringBuilder.toString();
     }

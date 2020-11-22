@@ -46,9 +46,23 @@ public class ClassRecords {
         return false;
     }
 
+    public double calculateClassAverage() {
+        if(students.size() == 0){
+            throw new ArithmeticException("No student in the class, average calculation aborted!");
+        }
+        double sum = 0.0;
+        for (Student student : students) {
+            sum += student.calculateAverage();
+        }
+        return Math.round(sum / students.size() * 100) / 100.0;
+    }
 
 
-/*
+
+
+
+
+
     public static void main(String[] args) {
         ClassRecords classRecords;
         Tutor tutor = new Tutor("Nagy Csilla",
@@ -85,6 +99,7 @@ public class ClassRecords {
         System.out.println(classRecords.students.toString());
         classRecords.removeStudent(new Student("Kovács Béla"));
         System.out.println(classRecords.students.toString());
+        System.out.println(classRecords.calculateClassAverage());
 
-    }*/
+    }
 }
