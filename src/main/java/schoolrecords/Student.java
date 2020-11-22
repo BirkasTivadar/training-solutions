@@ -22,11 +22,30 @@ public class Student {
         return string == null || string.isBlank();
     }
 
-    public void grading(Mark mark){
+    public void grading(Mark mark) {
         if (mark == null) {
             throw new NullPointerException("Mark must not be null!");
         }
         marks.add(mark);
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name + " marks: ");
+        for (int i = 0; i < marks.size(); i++) {
+            stringBuilder.append(marks.get(i).getSubject().getSubjectName());
+            stringBuilder.append(": ");
+            stringBuilder.append(marks.get(i).toString());
+        }
+        return stringBuilder.toString();
+    }
+
+    public double calculateAverage() {
+        double sum = 0.0;
+        for (Mark mark : marks) {
+            sum += mark.getMarkType().getValue();
+        }
+        return sum / marks.size();
     }
 
 }

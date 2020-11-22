@@ -24,7 +24,7 @@ class StudentTest {
         Exception ex = assertThrows(NullPointerException.class, () -> new Student("Kovács").grading(null));
         assertEquals("Mark must not be null!", ex.getMessage());
     }
-/*
+
     @Test
     public void testGrading() {
         //Given
@@ -34,7 +34,7 @@ class StudentTest {
         //Then
         assertEquals("Kovács marks: matematika: excellent(5)", student.toString());
     }
-
+/*
     @Test
     public void testCalculateAverage() {
         //Given
