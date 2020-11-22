@@ -95,7 +95,7 @@ class ClassRecordsTest {
         //Then
         assertEquals(2.75, classRecords.calculateClassAverageBySubject(geography));
     }
-/*
+
     @Test
     public void emptyStudentNameShouldThrowException() throws IllegalArgumentException {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> classRecords.findStudentByName(""));
@@ -113,7 +113,7 @@ class ClassRecordsTest {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> classRecords.findStudentByName("Kiss Rita"));
         assertEquals("Student by this name cannot be found! Kiss Rita", ex.getMessage());
     }
-
+/*
     @Test
     public void testFindStudentByName() {
         assertEquals("Kovács Rita", classRecords.findStudentByName("Kovács Rita").getName());

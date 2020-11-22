@@ -47,12 +47,12 @@ public class ClassRecords {
     }
 
     public double calculateClassAverage() {
-        if(students.size() == 0){
+        if (students.size() == 0) {
             throw new ArithmeticException("No student in the class, average calculation aborted!");
         }
         double sum = 0.0;
         for (Student student : students) {
-            if(student.calculateAverage() == 0){
+            if (student.calculateAverage() == 0) {
                 throw new ArithmeticException("No marks present, average calculation aborted!");
             }
             sum += student.calculateAverage();
@@ -60,8 +60,8 @@ public class ClassRecords {
         return Math.round(sum / students.size() * 100) / 100.0;
     }
 
-    public double calculateClassAverageBySubject(Subject subject){
-        if(students.size() == 0){
+    public double calculateClassAverageBySubject(Subject subject) {
+        if (students.size() == 0) {
             throw new ArithmeticException("No student in the class, average calculation aborted!");
         }
         double sum = 0.0;
@@ -75,11 +75,25 @@ public class ClassRecords {
         return Math.round(sum / counter * 100) / 100.0;
     }
 
+    public Student findStudentByName(String name){
+        if(isBlank(name)){
+            throw new IllegalArgumentException("Student name must not be empty!");
+        }
+        if(students.size() == 0){
+            throw new IllegalStateException("No students to search!");
+        }
+        for(Student student : students){
+            if(student.getName().equals(name)){
+                return student;
+            }
+        }
+        throw new IllegalArgumentException("Student by this name cannot be found! " + name);
+    }
 
 
 
 
-
+/*
 
     public static void main(String[] args) {
         ClassRecords classRecords;
@@ -120,5 +134,5 @@ public class ClassRecords {
         System.out.println(classRecords.calculateClassAverage());
         System.out.println(classRecords.calculateClassAverageBySubject(new Subject("földrajz")));
 
-    }
+    }*/
 }
