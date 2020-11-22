@@ -90,11 +90,18 @@ public class ClassRecords {
         throw new IllegalArgumentException("Student by this name cannot be found! " + name);
     }
 
+    public Student repetition() {
+        if (students.size() == 0) {
+            throw new IllegalStateException("No students to select for repetition!");
+        }
+        int studentNumber = rnd.nextInt(students.size());
+        return students.get(studentNumber);
+    }
+
 
 
 
 /*
-
     public static void main(String[] args) {
         ClassRecords classRecords;
         Tutor tutor = new Tutor("Nagy Csilla",
@@ -133,6 +140,8 @@ public class ClassRecords {
         System.out.println(classRecords.students.toString());
         System.out.println(classRecords.calculateClassAverage());
         System.out.println(classRecords.calculateClassAverageBySubject(new Subject("földrajz")));
+        System.out.println(classRecords.repetition().getName());
 
-    }*/
+    }
+*/
 }

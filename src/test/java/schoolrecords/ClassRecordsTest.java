@@ -113,7 +113,7 @@ class ClassRecordsTest {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> classRecords.findStudentByName("Kiss Rita"));
         assertEquals("Student by this name cannot be found! Kiss Rita", ex.getMessage());
     }
-/*
+
     @Test
     public void testFindStudentByName() {
         assertEquals("Kovács Rita", classRecords.findStudentByName("Kovács Rita").getName());
@@ -129,7 +129,7 @@ class ClassRecordsTest {
     public void testRepetition() {
         assertEquals("Varga Márton", classRecords.repetition().getName());
     }
-
+/*
     @Test
     public void testListStudyResults() {
         //Given
