@@ -45,7 +45,7 @@ public class Student {
         for (Mark mark : marks) {
             sum += mark.getMarkType().getValue();
         }
-        return sum / marks.size();
+        return Math.round(sum / marks.size() * 100) / 100.0;
     }
 
 }

@@ -34,7 +34,7 @@ class StudentTest {
         //Then
         assertEquals("Kovács marks: matematika: excellent(5)", student.toString());
     }
-/*
+
     @Test
     public void testCalculateAverage() {
         //Given
@@ -54,7 +54,7 @@ class StudentTest {
         //Then
         assertEquals(0.0, student.calculateAverage());
     }
-
+/*
     @Test
     public void testCalculateSubjectAverage() {
         //Given
