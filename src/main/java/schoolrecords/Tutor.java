@@ -8,6 +8,9 @@ public class Tutor {
     private List<Subject> taughtSubjects = new ArrayList<>();
 
     public Tutor(String name, List<Subject> taughtSubjects) {
+        if (isBlank(name)) {
+            throw new IllegalArgumentException("Family name and given name must not be empty!");
+        }
         this.name = name;
         this.taughtSubjects = taughtSubjects;
     }
@@ -23,5 +26,9 @@ public class Tutor {
             }
         }
         return false;
+    }
+
+    private boolean isBlank(String string) {
+        return string == null || string.isBlank();
     }
 }
