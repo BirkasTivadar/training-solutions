@@ -7,9 +7,9 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
+
     public static final Subject MATH = new Subject("matematika");
     public static final Tutor TUTOR = new Tutor("Nagy Lilla", Arrays.asList(MATH, new Subject("történelem")));
-
 
     @Test
     public void emptyNameShouldThrowException() throws IllegalArgumentException {
@@ -54,7 +54,7 @@ class StudentTest {
         //Then
         assertEquals(0.0, student.calculateAverage());
     }
-/*
+
     @Test
     public void testCalculateSubjectAverage() {
         //Given
@@ -86,6 +86,4 @@ class StudentTest {
         //Then
         assertEquals(0.0, student.calculateSubjectAverage(new Subject("földrajz")));
     }
-}*/
-
 }

@@ -48,4 +48,16 @@ public class Student {
         return Math.round(sum / marks.size() * 100) / 100.0;
     }
 
+    public double calculateSubjectAverage(Subject subject) {
+        double sum = 0.0;
+        int counter = 0;
+        for (Mark mark : marks) {
+            if (subject.getSubjectName().equals(mark.getSubject().getSubjectName())) {
+                sum += mark.getMarkType().getValue();
+                counter++;
+            }
+        }
+        return Math.round(sum / counter * 100) / 100.0;
+    }
+
 }
