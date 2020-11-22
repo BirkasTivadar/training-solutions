@@ -75,15 +75,15 @@ public class ClassRecords {
         return Math.round(sum / counter * 100) / 100.0;
     }
 
-    public Student findStudentByName(String name){
-        if(isBlank(name)){
+    public Student findStudentByName(String name) {
+        if (isBlank(name)) {
             throw new IllegalArgumentException("Student name must not be empty!");
         }
-        if(students.size() == 0){
+        if (students.size() == 0) {
             throw new IllegalStateException("No students to search!");
         }
-        for(Student student : students){
-            if(student.getName().equals(name)){
+        for (Student student : students) {
+            if (student.getName().equals(name)) {
                 return student;
             }
         }
