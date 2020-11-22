@@ -98,7 +98,13 @@ public class ClassRecords {
         return students.get(studentNumber);
     }
 
-
+    public List<StudyResultByName> listStudyResults(){
+        List<StudyResultByName> studyResultByNameList = new ArrayList<>();
+        for(Student student : students){
+            studyResultByNameList.add(new StudyResultByName(student.getName(), student.calculateAverage()));
+        }
+        return studyResultByNameList;
+    }
 
 
 /*
