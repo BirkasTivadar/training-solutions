@@ -5,7 +5,7 @@ public class Subject {
 
     public Subject(String subjectName) {
         if (isBlank(subjectName)) {
-            throw new IllegalArgumentException("Family name and given name must not be empty!");
+            throw new IllegalArgumentException("Subjectname must not be empty");
         }
         this.subjectName = subjectName;
     }

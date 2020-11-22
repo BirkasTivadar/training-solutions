@@ -9,7 +9,7 @@ public class Tutor {
 
     public Tutor(String name, List<Subject> taughtSubjects) {
         if (isBlank(name)) {
-            throw new IllegalArgumentException("Family name and given name must not be empty!");
+            throw new IllegalArgumentException("Name must not be empty!");
         }
         this.name = name;
         this.taughtSubjects = taughtSubjects;
