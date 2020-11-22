@@ -17,14 +17,14 @@ class StudentTest {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> new Student(""));
         assertEquals("Student name must not be empty!", ex.getMessage());
     }
-/*
+
     @Test
     public void nullMarkInGradingShouldThrowException() throws NullPointerException {
 
         Exception ex = assertThrows(NullPointerException.class, () -> new Student("Kovács").grading(null));
         assertEquals("Mark must not be null!", ex.getMessage());
     }
-
+/*
     @Test
     public void testGrading() {
         //Given

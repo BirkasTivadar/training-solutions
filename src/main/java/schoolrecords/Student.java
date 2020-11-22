@@ -21,4 +21,12 @@ public class Student {
     private boolean isBlank(String string) {
         return string == null || string.isBlank();
     }
+
+    public void grading(Mark mark){
+        if (mark == null) {
+            throw new NullPointerException("Mark must not be null!");
+        }
+        marks.add(mark);
+    }
+
 }
