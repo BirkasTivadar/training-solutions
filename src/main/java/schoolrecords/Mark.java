@@ -11,6 +11,11 @@ public class Mark {
         this.subject = subject;
         this.tutor = tutor;
     }
+public Mark(String markType, Subject subject, Tutor tutor) {
+        this.markType = MarkType.valueOf(markType);
+        this.subject = subject;
+        this.tutor = tutor;
+    }
 
     public MarkType getMarkType() {
         return markType;
