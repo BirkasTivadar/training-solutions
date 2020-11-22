@@ -35,4 +35,8 @@ public class Mark {
     public Tutor getTutor() {
         return tutor;
     }
+
+    public String toString() {
+        return markType.getDescription() + "(" + markType.getValue() + ")";
+    }
 }

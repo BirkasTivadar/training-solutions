@@ -23,7 +23,7 @@ class MarkTest {
         assertEquals(MarkType.A, mark.getMarkType());
         assertEquals(SUBJECT, mark.getSubject());
         assertEquals(TUTOR, mark.getTutor());
-        //assertEquals("excellent(5)", mark.toString());
+        assertEquals("excellent(5)", mark.toString());
     }
 
 }
