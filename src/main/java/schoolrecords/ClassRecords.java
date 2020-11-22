@@ -106,6 +106,15 @@ public class ClassRecords {
         return studyResultByNameList;
     }
 
+    public String listStudentNames(){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Student student : students){
+            stringBuilder.append(student.getName());
+            stringBuilder.append(", ");
+        }
+        return stringBuilder.toString();
+    }
+
 
 /*
     public static void main(String[] args) {
