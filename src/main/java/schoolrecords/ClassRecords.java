@@ -37,9 +37,9 @@ public class ClassRecords {
     }
 
     public boolean removeStudent(Student student) {
-        for (int i = 0; i < students.size(); i++) {
-            if (student.getName().equals(students.get(i).getName())) {
-                students.remove(i);
+        for (Student studentInClass : students) {
+            if (student.getName().equals(studentInClass.getName())) {
+                students.remove(studentInClass);
                 return true;
             }
         }
@@ -98,65 +98,23 @@ public class ClassRecords {
         return students.get(studentNumber);
     }
 
-    public List<StudyResultByName> listStudyResults(){
+    public List<StudyResultByName> listStudyResults() {
         List<StudyResultByName> studyResultByNameList = new ArrayList<>();
-        for(Student student : students){
+        for (Student student : students) {
             studyResultByNameList.add(new StudyResultByName(student.getName(), student.calculateAverage()));
         }
         return studyResultByNameList;
     }
 
-    public String listStudentNames(){
+    public String listStudentNames() {
         StringBuilder stringBuilder = new StringBuilder();
-        for(Student student : students){
+        for (Student student : students) {
             stringBuilder.append(student.getName());
             stringBuilder.append(", ");
         }
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         return stringBuilder.toString();
     }
 
 
-/*
-    public static void main(String[] args) {
-        ClassRecords classRecords;
-        Tutor tutor = new Tutor("Nagy Csilla",
-                Arrays.asList(new Subject("földrajz"),
-                        new Subject("matematika"),
-                        new Subject("biológia"),
-                        new Subject("zene"),
-                        new Subject("fizika"),
-                        new Subject("kémia")));
-        classRecords = new ClassRecords("Fourth Grade A", new Random(5));
-        Student firstStudent = new Student("Kovács Rita");
-        Student secondStudent = new Student("Nagy Béla");
-        Student thirdStudent = new Student("Varga Márton");
-        firstStudent.grading(new Mark(MarkType.A, new Subject("földrajz"), tutor));
-        firstStudent.grading(new Mark(MarkType.C, new Subject("matematika"), tutor));
-        firstStudent.grading(new Mark(MarkType.D, new Subject("földrajz"), tutor));
-        secondStudent.grading(new Mark(MarkType.A, new Subject("biológia"), tutor));
-        secondStudent.grading(new Mark(MarkType.C, new Subject("matematika"), tutor));
-        secondStudent.grading(new Mark(MarkType.D, new Subject("zene"), tutor));
-        thirdStudent.grading(new Mark(MarkType.A, new Subject("fizika"), tutor));
-        thirdStudent.grading(new Mark(MarkType.C, new Subject("kémia"), tutor));
-        thirdStudent.grading(new Mark(MarkType.D, new Subject("földrajz"), tutor));
-        classRecords.addStudent(firstStudent);
-        classRecords.addStudent(secondStudent);
-        classRecords.addStudent(thirdStudent);
-
-        System.out.println(firstStudent.toString());
-        System.out.println(classRecords.students.toString());
-        classRecords.addStudent(new Student("Kovács Rita"));
-        System.out.println(classRecords.students.toString());
-        classRecords.addStudent(new Student("Kovács Béla"));
-        System.out.println(classRecords.students.toString());
-        classRecords.removeStudent(new Student("Nagy Béla"));
-        System.out.println(classRecords.students.toString());
-        classRecords.removeStudent(new Student("Kovács Béla"));
-        System.out.println(classRecords.students.toString());
-        System.out.println(classRecords.calculateClassAverage());
-        System.out.println(classRecords.calculateClassAverageBySubject(new Subject("földrajz")));
-        System.out.println(classRecords.repetition().getName());
-
-    }
-*/
 }
