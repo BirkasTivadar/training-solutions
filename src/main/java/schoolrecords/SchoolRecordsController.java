@@ -49,7 +49,7 @@ public class SchoolRecordsController {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem a diák nevét.");
         String name = scanner.nextLine();
-        return this.classRecords.findStudentByName(name);
+        return classRecords.findStudentByName(name);
     }
 
     public void newStudent(){
@@ -57,20 +57,35 @@ public class SchoolRecordsController {
         System.out.println("Kérem a diák nevét.");
         String name = scanner.nextLine();
         Student student = new Student(name);
-        this.classRecords.addStudent(student);
+        classRecords.addStudent(student);
     }
+
+    public void remove(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Kérem a diák nevét.");
+        String name = scanner.nextLine();
+        Student student = new Student(name);
+        classRecords.removeStudent(student);
+    }
+
+
 
     public void runMenu(int menuNumber) {
         switch (menuNumber) {
             case 1:
-                System.out.println(this.classRecords.listStudentNames());
+                System.out.println(classRecords.listStudentNames());
                 break;
             case 2:
-                System.out.println(this.findStudent());
+                System.out.println(findStudent());
                 break;
             case 3:
-                this.newStudent();
+                newStudent();
                 break;
+            case 4:
+                remove();
+                break;
+
+
         }
     }
 
