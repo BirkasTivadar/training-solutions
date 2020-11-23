@@ -45,14 +45,14 @@ public class SchoolRecordsController {
         System.out.println("11. Kilépés\n");
     }
 
-    public Student findStudent(){
+    public Student findStudent() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem a diák nevét.");
         String name = scanner.nextLine();
         return classRecords.findStudentByName(name);
     }
 
-    public void newStudent(){
+    public void newStudent() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem a diák nevét.");
         String name = scanner.nextLine();
@@ -60,14 +60,13 @@ public class SchoolRecordsController {
         classRecords.addStudent(student);
     }
 
-    public void remove(){
+    public void remove() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem a diák nevét.");
         String name = scanner.nextLine();
         Student student = new Student(name);
         classRecords.removeStudent(student);
     }
-
 
 
     public void runMenu(int menuNumber) {
