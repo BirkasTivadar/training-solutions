@@ -1,16 +1,13 @@
 package schoolrecords;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class SchoolRecordsController {
     private ClassRecords classRecords = new ClassRecords("4B", new Random());
     private List<Subject> subjects = new ArrayList<>();
     private List<Tutor> tutors = new ArrayList<>();
 
-    Subject foldrajz = new Subject("földrajz") ;
+    Subject foldrajz = new Subject("földrajz");
     Subject zene = new Subject("zene");
     Subject fizika = new Subject("fizika");
     Subject kemia = new Subject("kémia");
@@ -33,7 +30,7 @@ public class SchoolRecordsController {
         subjects.add(biologia);
     }
 
-    public void printMenu(){
+    public void printMenu() {
         System.out.println("Választható menüpontok: \n");
         System.out.println("1. Diákok nevének listázása");
         System.out.println("2. Diák név alapján keresése");
@@ -45,18 +42,55 @@ public class SchoolRecordsController {
         System.out.println("8. Diákok átlagának megjelenítése");
         System.out.println("9. Diák átlagának kiírása");
         System.out.println("10. Diák tantárgyhoz tartozó átlagának kiírása");
-        System.out.println("11. Kilépés");
+        System.out.println("11. Kilépés\n");
+    }
+
+    public Student findStudent(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Kérem a diák nevét.");
+        String name = scanner.nextLine();
+        return this.classRecords.findStudentByName(name);
+    }
+
+    public void newStudent(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Kérem a diák nevét.");
+        String name = scanner.nextLine();
+        Student student = new Student(name);
+        this.classRecords.addStudent(student);
+    }
+
+    public void runMenu(int menuNumber) {
+        switch (menuNumber) {
+            case 1:
+                System.out.println(this.classRecords.listStudentNames());
+                break;
+            case 2:
+                System.out.println(this.findStudent());
+                break;
+            case 3:
+                this.newStudent();
+                break;
+        }
     }
 
     public static void main(String[] args) {
         SchoolRecordsController schoolRecordsController = new SchoolRecordsController();
         schoolRecordsController.initScool();
 
-
         schoolRecordsController.classRecords.addStudent(new Student("Lali"));
-        System.out.println(schoolRecordsController.classRecords.listStudentNames());
-        schoolRecordsController.printMenu();
 
+        System.out.println(schoolRecordsController.classRecords.listStudentNames());
+
+        int menuPont = 0;
+        Scanner scanner = new Scanner(System.in);
+        while (menuPont != 11) {
+            schoolRecordsController.printMenu();
+            System.out.println("Melyik pontot választja?");
+            menuPont = scanner.nextInt();
+            scanner.nextLine();
+            schoolRecordsController.runMenu(menuPont);
+        }
 
 
     }
