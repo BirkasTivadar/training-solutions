@@ -81,7 +81,7 @@ public class SchoolRecordsController {
         return null;
     }
 
-    public Tutor repTutor(){
+    public Tutor repTutor() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem a tanár nevét.");
         String tutorName = scanner.nextLine();
@@ -93,7 +93,7 @@ public class SchoolRecordsController {
         return null;
     }
 
-    public Subject repSubject(){
+    public Subject repSubject() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Kérem a tantárgy nevét.");
         String subjectName = scanner.nextLine();
