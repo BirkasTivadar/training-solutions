@@ -6,8 +6,9 @@ public class ChangeLetter {
     public String chargeVowels(String text) {
 
         for (char vowel : vowelsArray) {
-            if (text.contains(String.valueOf(vowel))) {
-                text = text.replace(String.valueOf(vowel), "*");
+            String strVowel = String.valueOf(vowel);
+            if (text.contains(strVowel)) {
+                text = text.replace(strVowel, "*");
             }
         }
         return text;
