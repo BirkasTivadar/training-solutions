@@ -107,10 +107,8 @@ public class SchoolRecordsController {
 
     public void repetitionForGrade() {
         Student repStudent = classRecords.repetition();
-        MarkType markType = repMarkType();
-        Tutor tutor = repTutor();
-        Subject subject = repSubject();
-        Mark mark = new Mark(markType, subject, tutor);
+        System.out.println("Felel: "+ repStudent.getName());
+        Mark mark = new Mark(repMarkType(), repSubject(), repTutor());
         repStudent.grading(mark);
     }
 
