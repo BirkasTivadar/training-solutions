@@ -1,20 +1,18 @@
 package week05d02;
 
 public class ChangeLetter {
+    final char[] vowelsArray = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 
-    public String chargeVowels(String text){
-        String newString = "";
-        String vowels = "aeiou";
-        String textLower = text.toLowerCase();
-        for(int i=0; i < vowels.length(); i++){
-            if(vowels.indexOf(textLower.charAt(i)) > -1){
-                newString += "*";
-            }
-            else {
-                newString += textLower.charAt(i);
+    public String chargeVowels(String text) {
+
+        for (char vowel : vowelsArray) {
+            if (text.contains(String.valueOf(vowel))) {
+                text = text.replace(String.valueOf(vowel), "*");
             }
         }
-        return newString;
+        return text;
+
 
     }
+
 }
