@@ -11,8 +11,6 @@ public class ChangeLetter {
             }
         }
         return text;
-
-
     }
 
 }
