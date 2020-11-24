@@ -112,7 +112,6 @@ public class SchoolRecordsController {
         repStudent.grading(mark);
     }
 
-
     public void runMenu(int menuNumber) {
         switch (menuNumber) {
             case 1:
