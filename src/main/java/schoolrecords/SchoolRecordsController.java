@@ -69,6 +69,52 @@ public class SchoolRecordsController {
     }
 
 
+    public MarkType repMarkType() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Kérem az érdemjegyet.");
+        int repMark = scanner.nextInt();
+        for (MarkType markType : MarkType.values()) {
+            if (repMark == markType.getValue()) {
+                return markType;
+            }
+        }
+        return null;
+    }
+
+    public Tutor repTutor(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Kérem a tanár nevét.");
+        String tutorName = scanner.nextLine();
+        for (Tutor tutor : tutors) {
+            if (tutor.getName().equals(tutorName)) {
+                return tutor;
+            }
+        }
+        return null;
+    }
+
+    public Subject repSubject(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Kérem a tantárgy nevét.");
+        String subjectName = scanner.nextLine();
+        for (Subject subject : subjects) {
+            if (subject.getSubjectName().equals(subjectName)) {
+                return subject;
+            }
+        }
+        return null;
+    }
+
+    public void repetitionForGrade() {
+        Student repStudent = classRecords.repetition();
+        MarkType markType = repMarkType();
+        Tutor tutor = repTutor();
+        Subject subject = repSubject();
+        Mark mark = new Mark(markType, subject, tutor);
+        repStudent.grading(mark);
+    }
+
+
     public void runMenu(int menuNumber) {
         switch (menuNumber) {
             case 1:
@@ -83,6 +129,8 @@ public class SchoolRecordsController {
             case 4:
                 remove();
                 break;
+            case 5:
+                repetitionForGrade();
 
 
         }
