@@ -128,6 +128,7 @@ public class SchoolRecordsController {
                 break;
             case 5:
                 repetitionForGrade();
+                break;
 
 
         }
