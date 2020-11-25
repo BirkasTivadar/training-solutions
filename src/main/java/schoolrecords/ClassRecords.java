@@ -37,13 +37,18 @@ public class ClassRecords {
     }
 
     public boolean removeStudent(Student student) {
+        boolean isStudent = false;
+        Student removeStudent = null;
         for (Student studentInClass : students) {
             if (student.getName().equals(studentInClass.getName())) {
-                students.remove(studentInClass);
-                return true;
+                removeStudent = studentInClass;
+                isStudent = true;
             }
         }
-        return false;
+        if (isStudent) {
+            students.remove(removeStudent);
+        }
+        return isStudent;
     }
 
     public double calculateClassAverage() {
