@@ -3,6 +3,7 @@ package week05d03;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,6 +47,12 @@ class UserValidatorTest {
         );
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> userValidator.validate(users));
         assertEquals("Age must be between 0 and 120.", iae.getMessage());
+    }
+
+    @Test
+    void validateTestUserIsNull() throws NullPointerException {
+        Exception ex = assertThrows(NullPointerException.class, () -> new UserValidator().validate(null));
+        assertEquals("Users must be not null", ex.getMessage());
     }
 
 
