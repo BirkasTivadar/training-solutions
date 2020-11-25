@@ -31,11 +31,11 @@ class UserValidatorTest {
                 new User("", 0),
                 new User("Mukaki", 120)
         );
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()-> userValidator.validate(users));
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> userValidator.validate(users));
         assertEquals("Name must not be empty.", iae.getMessage());
     }
 
-   @Test
+    @Test
     void validateTestInvalidAge() {
         UserValidator userValidator = new UserValidator();
         List<User> users = Arrays.asList(
@@ -44,7 +44,7 @@ class UserValidatorTest {
                 new User("Bill", 0),
                 new User("Mukaki", 120)
         );
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()-> userValidator.validate(users));
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> userValidator.validate(users));
         assertEquals("Age must be between 0 and 120.", iae.getMessage());
     }
 
