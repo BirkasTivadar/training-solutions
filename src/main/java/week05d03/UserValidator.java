@@ -8,7 +8,7 @@ public class UserValidator {
         return str == null || str.isBlank();
     }
 
-    public boolean vallidate(List<User> users) {
+    public boolean validate(List<User> users) {
         for (User user : users) {
             if (isEmpty(user.getName())) {
                 throw new IllegalArgumentException("Name must not be empty.");
