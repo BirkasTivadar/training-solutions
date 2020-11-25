@@ -50,9 +50,16 @@ class UserValidatorTest {
     }
 
     @Test
-    void validateTestUserIsNull() throws NullPointerException {
+    void validateTestUsersIsNull() throws NullPointerException {
         Exception ex = assertThrows(NullPointerException.class, () -> new UserValidator().validate(null));
         assertEquals("Users must be not null", ex.getMessage());
+    }
+
+    @Test
+    void validateTestUserIsNull() throws NullPointerException {
+
+        Exception ex = assertThrows(NullPointerException.class, () -> new UserValidator().validate(Arrays.asList(new User("joe", 23), null)));
+        assertEquals("User must be not null", ex.getMessage());
     }
 
 

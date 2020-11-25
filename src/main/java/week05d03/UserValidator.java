@@ -13,6 +13,9 @@ public class UserValidator {
             throw new NullPointerException("Users must be not null");
         }
         for (User user : users) {
+            if(user == null){
+                throw new NullPointerException("User must be not null");
+            }
             if (isEmpty(user.getName())) {
                 throw new IllegalArgumentException("Name must not be empty.");
             }
