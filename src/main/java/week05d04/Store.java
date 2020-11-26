@@ -14,9 +14,9 @@ public class Store {
             if (plusProduct.getExpired().isBefore(LocalDate.now()) || product.getNameProduct().equals(plusProduct.getNameProduct())) {
                 add = false;
             }
-            if (add) {
-                products.add(plusProduct);
-            }
+        }
+        if (add) {
+            products.add(plusProduct);
         }
     }
 
