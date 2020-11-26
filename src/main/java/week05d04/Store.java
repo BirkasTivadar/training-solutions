@@ -1,7 +1,6 @@
 package week05d04;
 
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,21 +8,26 @@ import java.util.List;
 public class Store {
     List<Product> products = new ArrayList<>();
 
-    public void addProduct(Product plusProduct){
-       for(Product product : products){
-           if(plusProduct.getExpired().isBefore(LocalDate.now()) || )
-
+    public void addProduct(Product plusProduct) {
+        boolean add = true;
+        for (Product product : products) {
+            if (plusProduct.getExpired().isBefore(LocalDate.now()) || product.getNameProduct().equals(plusProduct.getNameProduct())) {
+                add = false;
+            }
+            if (add) {
+                products.add(plusProduct);
+            }
         }
-        products.add(plusProduct);
     }
 
-    public int getNumberOfExpired(){
+    public int getNumberOfExpired() {
         int counter = 0;
-        for(Product product : products){
-            if(product.getExpired().isBefore(LocalDate.now())){
+        for (Product product : products) {
+            if (product.getExpired().isBefore(LocalDate.now())) {
                 counter++;
             }
         }
         return counter;
     }
+
 }
