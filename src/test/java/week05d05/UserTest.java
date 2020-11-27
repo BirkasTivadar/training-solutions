@@ -8,5 +8,12 @@ class UserTest {
 
     @Test
     void getFullNameTest() {
+        User user = new User("Kiss", "Tamás", "kt@gmail.com");
+        assertEquals("Kiss Tamás", user.getFullName());
+    }
+
+    void isEmailTest() {
+        User user = new User("Kiss", "Tamás", "kt@gmail.com");
+        assertEquals();
     }
 }
