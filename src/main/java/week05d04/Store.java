@@ -8,6 +8,10 @@ import java.util.List;
 public class Store {
     private List<Product> products = new ArrayList<>();
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
     public Store(List<Product> products) {
         this.products = products;
     }

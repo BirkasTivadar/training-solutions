@@ -17,7 +17,7 @@ class StoreTest {
         store.addProduct(new Product("vine", 2022, 10, 1));
         store.addProduct(new Product("cheese", 2020, 11, 23));
         store.addProduct(new Product("vine", 2021, 1, 15));
-        assertEquals(2, store.products.size());
+        assertEquals(2, store.getProducts().size());
 
     }
 
