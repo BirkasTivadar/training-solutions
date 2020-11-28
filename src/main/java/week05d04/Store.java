@@ -8,6 +8,14 @@ import java.util.List;
 public class Store {
     List<Product> products = new ArrayList<>();
 
+    public Store(List<Product> products) {
+        this.products = products;
+    }
+
+    public Store() {
+        this.products = products;
+    }
+
     public void addProduct(Product plusProduct) {
         boolean add = true;
         for (Product product : products) {
