@@ -18,7 +18,7 @@ public class Song {
         this.artist = artist;
     }
 
-    public boolean isEmpty(String str) {
+    private boolean isEmpty(String str) {
         return str == null || str.isBlank();
     }
 

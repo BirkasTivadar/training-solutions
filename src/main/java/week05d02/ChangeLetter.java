@@ -1,7 +1,7 @@
 package week05d02;
 
 public class ChangeLetter {
-    final char[] vowelsArray = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+    private final char[] vowelsArray = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 
     public String chargeVowels(String text) {
 
