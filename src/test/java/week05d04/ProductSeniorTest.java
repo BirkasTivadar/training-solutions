@@ -25,6 +25,4 @@ class ProductSeniorTest {
         assertEquals(22, productSenior.convertPrice("USD"));
         assertEquals(6600, productSenior.convertPrice("HUF"));
     }
-
-
 }
