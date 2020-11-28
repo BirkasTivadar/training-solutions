@@ -1,9 +1,9 @@
 package week05d05;
 
 public class Song {
-    String name;
-    long lengthInSeconds;
-    String artist;
+    private String name;
+    private long lengthInSeconds;
+    private String artist;
 
     public Song(String name, long lengthInSeconds, String artist) {
         if (isEmpty(name) || isEmpty(artist)) {

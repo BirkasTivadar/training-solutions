@@ -1,8 +1,8 @@
 package week05d04;
 
 public class ProductSenior {
-    long price;
-    String currency;
+    private long price;
+    private String currency;
 
     public ProductSenior(long price, String currency) {
         if (!currency.equals("HUF") && !currency.equals("USD")) {
