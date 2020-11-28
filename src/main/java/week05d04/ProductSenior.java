@@ -5,10 +5,21 @@ public class ProductSenior {
     String currency;
 
     public ProductSenior(long price, String currency) {
-        if(currency != "HUF" || currency != "USD"){
-            throw new IllegalArgumentException("Currency must be HUf or USD");
+        if (currency != "HUF" || currency != "USD") {
+            throw new IllegalArgumentException("Currency must be HUF or USD");
         }
         this.price = price;
         this.currency = currency;
+    }
+
+    public double convertPrice(String currency) {
+        if (this.currency.equals(currency)) {
+            return price;
+        }
+        if (currency.equals("HUF")) {
+            return price * 300.0;
+        }
+        return price / 300.0;
+
     }
 }

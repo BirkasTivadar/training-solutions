@@ -1,16 +1,16 @@
 package week05d04;
 
 public enum CurrencyType {
-    HUF(1),
-    USD(300);
+    HUF(1.0),
+    USD(300.0);
 
-    private final int value;
+    private final double value;
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
-    CurrencyType(int value) {
+    CurrencyType(double value) {
         this.value = value;
     }
 }
