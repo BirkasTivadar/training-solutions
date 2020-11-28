@@ -10,7 +10,6 @@ class ProductSeniorTest {
     void createProductSenior() {
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new ProductSenior(1500, "EUR"));
         assertEquals("Currency must be HUF or USD", iae.getMessage());
-
     }
 
     @Test
