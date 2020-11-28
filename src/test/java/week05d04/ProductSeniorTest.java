@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductSeniorTest {
 
     @Test
-    void createProductSenior(){
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()-> new ProductSenior(1500, "EUR"));
+    void createProductSenior() {
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new ProductSenior(1500, "EUR"));
         assertEquals("Currency must be HUF or USD", iae.getMessage());
 
     }
