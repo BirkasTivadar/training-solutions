@@ -20,6 +20,13 @@ public class ProductSenior {
             return price * 300.0;
         }
         return price / 300.0;
+    }
 
+    public long getPrice() {
+        return price;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 }

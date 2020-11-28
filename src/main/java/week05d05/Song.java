@@ -21,4 +21,16 @@ public class Song {
     public boolean isEmpty(String str) {
         return str == null || str.isBlank();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getLengthInSeconds() {
+        return lengthInSeconds;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
 }
