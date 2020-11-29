@@ -34,8 +34,8 @@ class DictionaryTest {
     public void shouldAppendOnlyOnce() {
         Dictionary dictionary = new Dictionary();
         dictionary.addItem("kutya", Arrays.asList("pooch", "dog"));
-        //dictionary.addItem("kutya", Collections.singletonList("dawg"));
-        //dictionary.addItem("kutya", Collections.singletonList("dawg"));
+        dictionary.addItem("kutya", Collections.singletonList("dawg"));
+        dictionary.addItem("kutya", Collections.singletonList("dawg"));
 
         List<String> translations = dictionary.findTranslations("kutya");
         assertEquals(Arrays.asList("pooch", "dog"), translations);

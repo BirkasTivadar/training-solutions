@@ -37,10 +37,32 @@ public class UrlManager {
         }
     }
 
+    public String getProcotolFromUrl(String url){
+        int end = url.indexOf(":");
+        if(end < 0 || url.substring(0,end).isBlank()) {
+            throw new IllegalArgumentException(("Invalid url"));
+        }
+        return url.substring(0,end).toLowerCase();
+    }
+/*
+    private String getHostFromUrl(String url){
+        String host = "";
+        int start = url.indexOf("://")+3;
+        int end = url.indexOf(":", start);{
+
+        }
+    }*/
+
     public boolean hasProperty(String key){
         validateString(key);
         return query.startsWith(key + "=") || query.contains("&"+ key + "=");
     }
+/*
+    public String getProperty(String key){
+        validateString(key);
+        for(String str : properties)
+
+    }*/
 
 // https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02
 }
