@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,30 +13,32 @@ class DictionaryTest {
 
 
     @Test
-    void findTranslations() {
+    public void shouldFind() {
         Dictionary dictionary = new Dictionary();
-        dictionary.addItem("boy", Arrays.asList("nino", "chico"));
-        List<String> translations = dictionary.findTranslations("boy");
-        assertEquals(translations, dictionary.findTranslations("boy"));
+        dictionary.addItem("kutya", Arrays.asList("pooch", "dog"));
+
+        List<String> translations = dictionary.findTranslations("kutya");
+        assertEquals(Arrays.asList("pooch", "dog"), translations);
     }
 
     @Test
-    void addItem() {
+    public void shouldAppend() {
         Dictionary dictionary = new Dictionary();
-        List<String> translations1 = new ArrayList<>();
-        translations1.add("nino");
-        translations1.add("chico");
-        dictionary.addItem("boy", translations1);
+        dictionary.addItem("kutya", Arrays.asList("pooch", "dog"));
+        //dictionary.addItem("kutya", Collections.singletonList("dawg"));
 
-        List<String> translations2 = new ArrayList<>();
-        translations2.add("chaval");
-        translations2.add("chico");
-        dictionary.addItem("boy", translations2);
+        List<String> translations = dictionary.findTranslations("kutya");
+        assertEquals(Arrays.asList("pooch", "dog"), translations);
+    }
 
-        List<String> translations = dictionary.findTranslations("boy");
-        assertEquals(translations, dictionary.findTranslations("boy"));
+    @Test
+    public void shouldAppendOnlyOnce() {
+        Dictionary dictionary = new Dictionary();
+        dictionary.addItem("kutya", Arrays.asList("pooch", "dog"));
+        //dictionary.addItem("kutya", Collections.singletonList("dawg"));
+        //dictionary.addItem("kutya", Collections.singletonList("dawg"));
 
-        List<String> emptyList = new ArrayList<>();
-        assertEquals(emptyList, dictionary.findTranslations("fiú"));
+        List<String> translations = dictionary.findTranslations("kutya");
+        assertEquals(Arrays.asList("pooch", "dog"), translations);
     }
 }
