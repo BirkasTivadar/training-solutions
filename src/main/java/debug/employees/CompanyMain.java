@@ -17,6 +17,6 @@ public class CompanyMain {
         company.addEmployee(director);
 
         System.out.println(company.listEmployedNames());
-
+        System.out.println(company.findEmployeeByName("Gizike").getYearOfBirth());
     }
 }
