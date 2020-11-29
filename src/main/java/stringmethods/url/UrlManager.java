@@ -31,31 +31,54 @@ public class UrlManager {
         return path;
     }
 
-    public void validateString(String str){
-        if(str == null || str.isBlank()){
+    public void validateString(String str) {
+        if (str == null || str.isBlank()) {
             throw new IllegalArgumentException("Parameter must be not empty.");
         }
     }
 
-    public String getProcotolFromUrl(String url){
+    public String getProcotolFromUrl(String url) {
         int end = url.indexOf(":");
-        if(end < 0 || url.substring(0,end).isBlank()) {
-            throw new IllegalArgumentException(("Invalid url"));
+        if (end < 0 || url.substring(0, end).isBlank()) {
+            throw new IllegalArgumentException("Invalid url");
         }
-        return url.substring(0,end).toLowerCase();
+        return url.substring(0, end).toLowerCase();
     }
-/*
-    private String getHostFromUrl(String url){
+
+    private String getHostFromUrl(String url) {
         String host = "";
-        int start = url.indexOf("://")+3;
-        int end = url.indexOf(":", start);{
-
+        int start = url.indexOf("://") + 3;
+        int end = url.indexOf(":", start);
+        if (end == -1) {
+            end = url.indexOf("/", start);
         }
-    }*/
+        if (end == -1) {
+            host = url.substring(start).toLowerCase();
+        }
+        if (host.isBlank()) {
+            throw new IllegalArgumentException("invalid url");
+        }
+        return host;
+    }
 
-    public boolean hasProperty(String key){
+    private Integer getPortFromUrl(String url) {
+        int start = url.indexOf("://") + 3;
+        start = url.indexOf(":", start);
+        if (start == -1) {
+            return null;
+        }
+        int end = url.indexOf("/", start);
+        if (end == -1) {
+            return Integer.valueOf(url.substring(start + 1));
+        }
+        return Integer.valueOf(url.substring(start+1, end));
+    }
+
+
+
+    public boolean hasProperty(String key) {
         validateString(key);
-        return query.startsWith(key + "=") || query.contains("&"+ key + "=");
+        return query.startsWith(key + "=") || query.contains("&" + key + "=");
     }
 /*
     public String getProperty(String key){

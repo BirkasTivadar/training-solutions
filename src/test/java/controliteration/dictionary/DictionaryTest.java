@@ -27,7 +27,7 @@ class DictionaryTest {
         dictionary.addItem("kutya", Collections.singletonList("dawg"));
 
         List<String> translations = dictionary.findTranslations("kutya");
-        assertEquals(Arrays.asList("pooch", "dog"), translations);
+        assertEquals(Arrays.asList("pooch", "dog", "dawg"), translations);
     }
 
     @Test
@@ -38,6 +38,6 @@ class DictionaryTest {
         dictionary.addItem("kutya", Collections.singletonList("dawg"));
 
         List<String> translations = dictionary.findTranslations("kutya");
-        assertEquals(Arrays.asList("pooch", "dog"), translations);
+        assertEquals(Arrays.asList("pooch", "dog", "dawg"), translations);
     }
 }

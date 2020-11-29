@@ -10,7 +10,7 @@ public class DictionaryItem {
 
     public DictionaryItem(String word, List<String> translations) {
         this.word = word;
-        this.translations = translations;
+        addTranslations(translations);
     }
 
     public String getWord() {
