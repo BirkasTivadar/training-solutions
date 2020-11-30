@@ -8,7 +8,7 @@ public class ListSelector {
 
     public String concatEvenIndexElements(List<String> lista){
         if(lista==null){
-            throw new IllegalArgumentException("List must be not null.");
+            throw new NullPointerException("List must be not null.");
         }
         if(lista.size() == 0){
             return "";
