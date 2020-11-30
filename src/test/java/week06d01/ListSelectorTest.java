@@ -12,6 +12,6 @@ class ListSelectorTest {
     void concatEvenIndexElementsTest() {
         ListSelector listSelector = new ListSelector();
 
-        assertEquals("[almakörte]", listSelector.concatEvenIndexElements(Arrays.asList("alma","b")));
+        assertEquals("[alma,körte]", listSelector.concatEvenIndexElements(Arrays.asList("alma","barack","körte")));
     }
 }

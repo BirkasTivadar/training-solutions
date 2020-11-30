@@ -17,7 +17,7 @@ public class ListSelector {
         for(int i = 0; i< lista.size(); i +=2){
             result += lista.get(i)+ ",";
         }
-        result = result.substring(0, result.length()-2);
+        result = result.substring(0, result.length()-1);
         result += "]";
         return result;
     }
