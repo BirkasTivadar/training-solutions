@@ -15,9 +15,16 @@ class ListSelectorTest {
     }
 
     @Test
+    void concatEvenEmptyListTest() {
+        ListSelector listSelector = new ListSelector();
+        assertEquals("", listSelector.concatEvenIndexElements(Arrays.asList()));
+    }
+
+    @Test
     void concatNullListTest() {
         ListSelector listSelector = new ListSelector();
-        assertEquals("[alma,körte]", listSelector.concatEvenIndexElements(Arrays.asList("alma", "barack", "körte")));
+        NullPointerException npe = assertThrows(NullPointerException.class, () -> listSelector.concatEvenIndexElements(null));
+        assertEquals("List must be not null.", npe.getMessage());
     }
 
 }
