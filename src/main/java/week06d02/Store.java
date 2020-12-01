@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Store {
-    List<Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
+
+    public List<Product> getProducts() {
+        return new ArrayList<>(products);
+    }
 
     public Store(List<Product> products) {
         this.products = products;
@@ -12,8 +16,8 @@ public class Store {
 
     public int getProductByCategory(Category category) {
         int db = 0;
-        for (Product product : products){
-            if(product.getCategory() == category){
+        for (Product product : products) {
+            if (product.getCategory() == category) {
                 db++;
             }
         }
