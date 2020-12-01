@@ -1,25 +1,25 @@
 package immutable.satellite;
 
 public class CelestialCoordinates {
-    private final int x;
-    private final int y;
-    private final int z;
+    private final long x;
+    private final long y;
+    private final long z;
 
-    public CelestialCoordinates(int x, int y, int z) {
+    public CelestialCoordinates(long x, long y, long z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public int getX() {
+    public long getX() {
         return x;
     }
 
-    public int getY() {
+    public long getY() {
         return y;
     }
 
-    public int getZ() {
+    public long getZ() {
         return z;
     }
 
