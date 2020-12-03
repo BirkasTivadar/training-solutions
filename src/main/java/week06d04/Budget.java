@@ -1,6 +1,7 @@
 package week06d04;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Budget {
@@ -10,10 +11,14 @@ public class Budget {
         this.items = new ArrayList<>(items);
     }
 
-    public List<Item> getItemsByMonth(int month){
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public List<Item> getItemsByMonth(int month) {
         List<Item> itemsByMonth = new ArrayList<>();
-        for(Item item : items) {
-            if(item.isMonth(month)){
+        for (Item item : items) {
+            if (item.isMonth(month)) {
                 itemsByMonth.add(item);
             }
         }

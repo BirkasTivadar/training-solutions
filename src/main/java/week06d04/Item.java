@@ -3,6 +3,19 @@ package week06d04;
 public class Item {
     private int price;
     private int month;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     private String name;
 
     public Item(int price, int month, String name) {
@@ -27,4 +40,5 @@ public class Item {
     public boolean isMonth(int month) {
         return this.month == month;
     }
+
 }
