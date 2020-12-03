@@ -48,9 +48,7 @@ public class StringScanner {
             return newText.toString().trim();
         }
     }
-
     public boolean isBlank(String string) {
         return string == null || string.isBlank();
     }
-
 }
