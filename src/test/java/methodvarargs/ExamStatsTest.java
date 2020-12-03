@@ -19,6 +19,11 @@ class ExamStatsTest {
         assertEquals("Number of results must not be empty!", iae.getMessage());
     }
 
+    @Test
+    public void zeroResultsShouldThrowExceptionWithFails() {
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> examStats.hasAnyFailed(50));
+        assertEquals("Number of results must not be empty!", iae.getMessage());
+    }
 
     @Test
     public void testGetNumberOfTopGrades() {
