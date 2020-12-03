@@ -1,7 +1,7 @@
 package week06d04;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Budget {
@@ -15,10 +15,10 @@ public class Budget {
         return items;
     }
 
-    public List<Item> getItemsByMonth(int month) {
+    public List<Item> getItemsByMonth(LocalDate date) {
         List<Item> itemsByMonth = new ArrayList<>();
         for (Item item : items) {
-            if (item.isMonth(month)) {
+            if (item.isMonth(date)) {
                 itemsByMonth.add(item);
             }
         }

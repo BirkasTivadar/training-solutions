@@ -1,16 +1,19 @@
 package week06d04;
 
+import java.time.LocalDate;
+
 public class Item {
     private int price;
-    private int month;
+    private LocalDate buyDate;
 
     public int getPrice() {
         return price;
     }
 
-    public int getMonth() {
-        return month;
+    public LocalDate getBuyDate() {
+        return buyDate;
     }
+
 
     public String getName() {
         return name;
@@ -18,18 +21,15 @@ public class Item {
 
     private String name;
 
-    public Item(int price, int month, String name) {
+    public Item(int price, LocalDate buyDate, String name) {
         if (price < 1) {
             throw new IllegalArgumentException("Price must be greater than 0.");
-        }
-        if (month < 1 || month > 12) {
-            throw new IllegalArgumentException("Month must be between 1 and 12.");
         }
         if (isEmpty(name)) {
             throw new IllegalArgumentException("Name must be not empty.");
         }
         this.price = price;
-        this.month = month;
+        this.buyDate = buyDate;
         this.name = name;
     }
 
@@ -37,8 +37,8 @@ public class Item {
         return str == null || str.isBlank();
     }
 
-    public boolean isMonth(int month) {
-        return this.month == month;
+    public boolean isMonth(LocalDate date) {
+        return this.buyDate.getMonth() == date.getMonth();
     }
 
 }
