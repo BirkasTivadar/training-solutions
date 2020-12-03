@@ -24,7 +24,7 @@ public class Pendrive {
     }
 
     public String toString() {
-        return name + ", capacity: " + capacity + " GB, ára:" + price + " ,-Ft";
+        return name + ", capacity: " + capacity + " GB, ára: " + price + ",-Ft";
     }
 
     public void risePrice(int percent) {
@@ -47,5 +47,10 @@ public class Pendrive {
 
     public boolean cheaperThen(Pendrive pendrive) {
         return price < pendrive.getPrice();
+    }
+
+    public static void main(String[] args) {
+        Pendrive pendrive = new Pendrive("Datatraveller", 32, 5000);
+        System.out.println(pendrive.toString());
     }
 }
