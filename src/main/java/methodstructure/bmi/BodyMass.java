@@ -13,15 +13,28 @@ public class BodyMass {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public double bodyMassindex(){
+        return weight / (height*height);
     }
+
+    public BmiCategory body(){
+        if(bodyMassindex() <18.5){
+            return BmiCategory.UNDERWEIGHT;
+        } else if( bodyMassindex() <=25){
+            return BmiCategory.NORMAL;
+        } else {
+            return BmiCategory.OVERWEIGHT;
+        }
+    }
+
+    boolean isThinnerThan(BodyMass bodyMass){
+        return this.bodyMassindex() < bodyMass.bodyMassindex();
+    }
+
 }
+
+
