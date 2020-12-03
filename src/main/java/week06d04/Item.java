@@ -38,7 +38,7 @@ public class Item {
     }
 
     public boolean isMonth(LocalDate date) {
-        return this.buyDate.getMonth() == date.getMonth();
+        return this.buyDate.getMonth() == date.getMonth() && this.buyDate.getYear() == date.getYear();
     }
 
 }
