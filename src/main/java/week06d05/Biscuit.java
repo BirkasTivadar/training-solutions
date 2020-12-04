@@ -5,11 +5,17 @@ public class Biscuit {
     private int gramAmount;
 
     public Biscuit(BiscuitType type, int gramAmount) {
+        if(gramAmount<1){
+            throw new IllegalArgumentException();
+        }
         this.type = type;
         this.gramAmount = gramAmount;
     }
 
     public Biscuit(BiscuitType type) {
+        if(type == null){
+            throw new IllegalArgumentException();
+        }
         this.type = type;
     }
 
