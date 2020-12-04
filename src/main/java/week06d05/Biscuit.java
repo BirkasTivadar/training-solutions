@@ -5,21 +5,21 @@ public class Biscuit {
     private int gramAmount;
 
     public Biscuit(BiscuitType type, int gramAmount) {
-        if(gramAmount<1){
-            throw new IllegalArgumentException();
+        this(type);
+        if (gramAmount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than zero.");
         }
-        this.type = type;
         this.gramAmount = gramAmount;
     }
 
     public Biscuit(BiscuitType type) {
-        if(type == null){
-            throw new IllegalArgumentException();
+        if (type == null) {
+            throw new IllegalArgumentException("Invalid data.");
         }
         this.type = type;
     }
 
-    public BiscuitType getType() {
+    public BiscuitType getTpye() {
         return type;
     }
 
@@ -34,5 +34,6 @@ public class Biscuit {
     public String toString() {
         return "Type: " + type + ", amount: " + gramAmount + " gr";
     }
+
 
 }

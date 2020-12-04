@@ -20,13 +20,12 @@ public class Time {
     }
 
     public Time(int hours, int minutes, int seconds) {
-        this.hours = hours;
-        this.minutes = minutes;
+        this(hours, minutes);
         this.seconds = seconds;
     }
 
     public Time(int hours, int minutes) {
-        this.hours = hours;
+        this(hours);
         this.minutes = minutes;
     }
 
@@ -35,9 +34,7 @@ public class Time {
     }
 
     public Time(Time time) {
-        this.hours = time.hours;
-        this.minutes = time.minutes;
-        this.seconds = time.seconds;
+        this(time.hours, time.minutes, time.seconds);
     }
 
     public boolean isEqual(Time time) {
