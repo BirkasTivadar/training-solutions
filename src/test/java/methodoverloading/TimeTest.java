@@ -9,7 +9,6 @@ class TimeTest {
     @Test
     public void testCreateTimeWith3Parameters() {
         Time time = new Time(13, 14, 15);
-
         assertEquals(13, time.getHours());
         assertEquals(14, time.getMinutes());
         assertEquals(15, time.getSeconds());
@@ -18,7 +17,6 @@ class TimeTest {
     @Test
     public void testCreateTimeWith2Parameters() {
         Time time = new Time(13, 14);
-
         assertEquals(13, time.getHours());
         assertEquals(14, time.getMinutes());
         assertEquals(0, time.getSeconds());
@@ -27,7 +25,6 @@ class TimeTest {
     @Test
     public void testCreateTimeWith1Parameter() {
         Time time = new Time(13);
-
         assertEquals(13, time.getHours());
         assertEquals(0, time.getMinutes());
         assertEquals(0, time.getSeconds());
@@ -38,7 +35,6 @@ class TimeTest {
     public void testCreateTimeWithTimeParameter() {
         Time anotherTime = new Time(13, 14, 15);
         Time time = new Time(anotherTime);
-
         assertEquals(13, time.getHours());
         assertEquals(14, time.getMinutes());
         assertEquals(15, time.getSeconds());
