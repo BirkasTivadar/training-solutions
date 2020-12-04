@@ -41,7 +41,7 @@ public class Measurement {
     }
 
     public ExtremValues minmax(){
-        return new ExtremValues(this.minimum(), this.maximum());
+        return new ExtremValues(minimum(), maximum());
     }
 
 }
