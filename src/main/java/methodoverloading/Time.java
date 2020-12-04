@@ -1,5 +1,7 @@
 package methodoverloading;
 
+import java.time.LocalTime;
+
 public class Time {
     private int hours;
     private int minutes;
@@ -46,5 +48,18 @@ public class Time {
     public boolean isEqual(int hours, int minutes, int seconds) {
         return this.hours == hours && this.minutes == minutes && this.seconds == seconds;
     }
+
+    public boolean isEarlier(Time time) {
+        LocalTime timeThis = LocalTime.of(this.hours, this.minutes, this.seconds);
+        LocalTime timeParam = LocalTime.of(time.getHours(), time.getMinutes(), time.getSeconds());
+        return timeThis.isBefore(timeParam);
+    }
+
+    public boolean isEarlier(int hours, int minutes, int seconds) {
+        LocalTime timeThis = LocalTime.of(this.hours, this.minutes, this.seconds);
+        LocalTime timeParam = LocalTime.of(hours, minutes, seconds);
+        return timeThis.isBefore(timeParam);
+    }
+
 
 }
