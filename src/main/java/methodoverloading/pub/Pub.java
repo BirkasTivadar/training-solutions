@@ -4,32 +4,22 @@ import methodoverloading.Time;
 
 public class Pub {
     private String name;
-    private int hours;
-    private int minutes;
+    private Time openFrom;
 
     public String getName() {
         return name;
     }
 
-    public int getHours() {
-        return hours;
-    }
-
-    public int getMinutes() {
-        return minutes;
+    public Time getOpenFrom() {
+        return openFrom;
     }
 
     public Pub(String name, int hours, int minutes) {
         this.name = name;
-        this.hours = hours;
-        this.minutes = minutes;
-    }
-
-    public Time getOpenFrom(){
-        return new Time(hours, minutes);
+        this.openFrom = new Time(hours, minutes);
     }
 
     public String toString() {
-        return name + ";" + hours + ":" + minutes;
+        return name + ";" + openFrom.getHours() + ":" + openFrom.getMinutes();
     }
 }
