@@ -29,8 +29,4 @@ public class Biscuit {
         return "Type: " + type + ", amount: " + gramAmount + " gr";
     }
 
-    public static void main(String[] args) {
-        Biscuit pilota = Biscuit.of(BiscuitType.PILOTA, 500);
-        System.out.println(pilota.toString());
-    }
 }

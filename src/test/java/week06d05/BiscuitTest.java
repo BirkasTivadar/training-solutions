@@ -14,5 +14,7 @@ class BiscuitTest {
 
     @Test
     void testToString() {
+        Biscuit pilota = Biscuit.of(BiscuitType.PILOTA, 500);
+        assertEquals("Type: PILOTA, amount: 500 gr", pilota.toString());
     }
 }
