@@ -12,7 +12,6 @@ class RobotTest {
         robot.go(5).go(10).rotate(30);
         assertEquals(15, robot.getDistance());
         assertEquals(30, robot.getAzimut());
-
     }
 
     @Test
