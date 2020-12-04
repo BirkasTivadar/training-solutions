@@ -32,7 +32,6 @@ public class Time {
 
     public Time(int hours) {
         this.hours = hours;
-
     }
 
     public Time(Time time) {
