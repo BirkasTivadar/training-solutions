@@ -1,17 +1,21 @@
 package staticattrmeth.bank;
 
 public class BankTransaction {
+    private static final long MIN_TRX_VALUE = 1;
+    private static final long MAX_TRX_VALUE = 10_000_000;
     private long trxValue;
-    private static long sumOfTrxs;
-    private static long currentMinValue;
-    private static long currentMaxValue;
+    private static long sumOfTrxs = 0;
+    private static long currentMinValue = MAX_TRX_VALUE;
+    private static long currentMaxValue = MIN_TRX_VALUE;
+    private static int countTrx = 0;
+
 
     public static long getCurrentMinValue() {
-        return currentMinValue;
+        return countTrx == 0 ? 0 : currentMinValue;
     }
 
     public static long getCurrentMaxValue() {
-        return currentMaxValue;
+        return countTrx == 0 ? 0 : currentMaxValue;
     }
 
     public long getTrxValue() {
@@ -23,16 +27,17 @@ public class BankTransaction {
     }
 
     public static void initTheDay() {
+        countTrx = 0;
         sumOfTrxs = 0;
-        currentMaxValue = 0;
-        currentMinValue = 0;
-
+        currentMinValue = MAX_TRX_VALUE;
+        currentMaxValue = MIN_TRX_VALUE;
     }
 
-    public BankTransaction(int trxValue) {
+    public BankTransaction(long trxValue) {
         if (trxValue < 1 || trxValue > 10_000_000) {
             throw new IllegalArgumentException("Value of transaction must be betweeen 1 and 10.000.000");
         }
+        countTrx++;
         sumOfTrxs += trxValue;
         Min(trxValue);
         Max(trxValue);
@@ -49,6 +54,10 @@ public class BankTransaction {
         if (value > currentMaxValue) {
             currentMaxValue = value;
         }
+    }
+
+    public static long averageOfTransaction() {
+        return countTrx == 0 ? 0 : sumOfTrxs / countTrx;
     }
 
 
