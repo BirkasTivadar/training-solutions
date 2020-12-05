@@ -31,7 +31,7 @@ public class BankTransaction {
 
     public BankTransaction(int trxValue) {
         if (trxValue < 1 || trxValue > 10_000_000) {
-            throw new IllegalArgumentException("Value of transaction must be betweeen 1 and 10.000.000")
+            throw new IllegalArgumentException("Value of transaction must be betweeen 1 and 10.000.000");
         }
         sumOfTrxs += trxValue;
         Min(trxValue);
