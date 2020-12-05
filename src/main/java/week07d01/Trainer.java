@@ -1,23 +1,27 @@
 package week07d01;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trainer {
 
-    private static int numberOfTrainer;
-
-    public static int getNumberOfTrainer() {
-        return numberOfTrainer;
+    public static void tryChangeValues(int yearOfBirth, String name, List<String> courses) {
+        yearOfBirth = 1970;
+        name = "John";
+        courses.add("Java");
     }
 
-    private String name;
+    public static void main(String[] args) {
 
-    public Trainer(String name) {
-        this.name = name;
-        numberOfTrainer++;
+
+        List<String> courses = new ArrayList<>();
+        int originalYearOfBirth = 1980;
+        String originalName = "Jack";
+
+        tryChangeValues(originalYearOfBirth, originalName, courses);
+        System.out.println(originalYearOfBirth);
+        System.out.println(originalName);
+        System.out.println(courses.toString());
     }
-
-    public String getName() {
-        return name;
-    }
-
 
 }
