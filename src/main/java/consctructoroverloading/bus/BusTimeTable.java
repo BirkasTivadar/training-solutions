@@ -30,4 +30,14 @@ public class BusTimeTable {
         }
         throw new IllegalArgumentException("No more buses today!");
     }
+
+    public SimpleTime firstBus(){
+        SimpleTime firstTime = timeTable.get(0);
+        for(SimpleTime simpleTime : timeTable){
+            if(simpleTime.difference(firstTime)<0){
+                firstTime = simpleTime;
+            }
+        }
+        return firstTime;
+    }
 }
