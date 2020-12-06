@@ -45,4 +45,10 @@ class BusTimeTableTest {
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> timetable.nextBus(new SimpleTime(18, 16)));
         assertEquals("No more buses today!", iae.getMessage());
     }
+
+    @Test
+    public void testFisttBus() {
+        BusTimeTable timetable = new BusTimeTable(TIME_TABLE);
+        assertEquals("9:15", timetable.firstBus().toString());
+    }
 }
