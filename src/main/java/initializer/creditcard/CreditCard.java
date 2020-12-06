@@ -21,14 +21,9 @@ public class CreditCard {
         }
     }
 
-    public static List<Rate> getActualRates() {
-        return ACTUAL_RATES;
-    }
-
     public long getBalance() {
         return balance;
     }
-
 
     public CreditCard(long balance, Currency currency, List<Rate> rates) {
         ACTUAL_RATES.addAll(rates);
