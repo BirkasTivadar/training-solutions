@@ -4,6 +4,14 @@ public class SimpleTime {
     private int hours;
     private int minutes;
 
+    public int getHours() {
+        return hours;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
     public SimpleTime(int hours) {
         this.hours = hours;
     }
