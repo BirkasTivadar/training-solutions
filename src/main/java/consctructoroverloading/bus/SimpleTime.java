@@ -1,6 +1,10 @@
 package consctructoroverloading.bus;
 
 public class SimpleTime {
+    public static final int MINUTES_IN_HOURS = 60;
+    public static final String SEPARATOR = ":";
+
+
     private int hours;
     private int minutes;
 
@@ -22,15 +26,15 @@ public class SimpleTime {
     }
 
     public SimpleTime(SimpleTime time) {
-        this.hours = time.hours;
-        this.minutes = time.minutes;
+        hours = time.hours;
+        minutes = time.minutes;
     }
 
     public int difference(SimpleTime time) {
-        return (this.hours * 60 + this.minutes) - (time.hours * 60 + time.minutes);
+        return (hours * MINUTES_IN_HOURS + minutes) - (time.hours * MINUTES_IN_HOURS + time.minutes);
     }
 
     public String toString() {
-        return this.hours + ":" + this.minutes;
+        return hours + SEPARATOR + minutes;
     }
 }
