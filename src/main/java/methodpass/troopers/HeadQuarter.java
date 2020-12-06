@@ -1,5 +1,7 @@
 package methodpass.troopers;
 
+import controlselection.consonant.ToConsonant;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +12,58 @@ public class HeadQuarter {
         return troopers;
     }
 
-    public void addTrooper(Trooper trooper){
-        if(trooper == null){
-            throw new IllegalArgumentException();
+    private boolean isEmpty(String str) {
+        return str == null || str.isBlank();
+    }
+
+    public void addTrooper(Trooper trooper) {
+        if (trooper == null) {
+            throw new IllegalArgumentException("Trooper must not be null.");
         }
         troopers.add(trooper);
     }
 
-    public findTrooperByName
+    private Trooper findTrooperByName(String name) {
+        if (isEmpty(name)) {
+            throw new IllegalArgumentException();
+        }
+        for (Trooper trooper : troopers) {
+            if (trooper.getName().equals(name)) {
+                return trooper;
+            }
+        }
+        return null;
+    }
+
+    public void moveTrooperByName(String name, Position target) {
+        Trooper trooper = findTrooperByName(name);
+        if(trooper != null){
+            moveTrooper(trooper, target);
+        }
+    }
+
+    private Trooper findClosestTrooper(Position position) {
+        if(troopers.size() == 0){
+            return null;
+        }
+        Trooper trooperClosest = troopers.get(0);
+        for (Trooper trooper : troopers) {
+            if (trooper.getPosition().distanceFrom(position) < trooperClosest.getPosition().distanceFrom(position)) {
+                trooperClosest = trooper;
+            }
+        }
+        return trooperClosest;
+    }
+
+    public void moveClosestTrooper(Position target) {
+        if(target == null){
+            throw new IllegalArgumentException("Target must not be null.");
+        }
+        moveTrooper(findClosestTrooper(target), target);
+    }
+
+    private void moveTrooper(Trooper trooper, Position target) {
+        trooper.changePosition(target);
+    }
+
 }

@@ -13,7 +13,7 @@ public class Trooper {
         return position;
     }
 
-    public boolean isEmpty(String str){
+    private boolean isEmpty(String str){
         return str == null || str.isBlank();
     }
 
