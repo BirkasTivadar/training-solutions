@@ -37,13 +37,13 @@ public class HeadQuarter {
 
     public void moveTrooperByName(String name, Position target) {
         Trooper trooper = findTrooperByName(name);
-        if(trooper != null){
+        if (trooper != null) {
             moveTrooper(trooper, target);
         }
     }
 
     private Trooper findClosestTrooper(Position position) {
-        if(troopers.size() == 0){
+        if (troopers.size() == 0) {
             return null;
         }
         Trooper trooperClosest = troopers.get(0);
@@ -56,7 +56,7 @@ public class HeadQuarter {
     }
 
     public void moveClosestTrooper(Position target) {
-        if(target == null){
+        if (target == null) {
             throw new IllegalArgumentException("Target must not be null.");
         }
         moveTrooper(findClosestTrooper(target), target);
