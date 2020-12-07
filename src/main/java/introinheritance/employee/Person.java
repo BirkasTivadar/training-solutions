@@ -17,7 +17,7 @@ public class Person {
         this.address = address;
     }
 
-    public void migrate(String newAddress){
+    public void migrate(String newAddress) {
         address = newAddress;
     }
 }
