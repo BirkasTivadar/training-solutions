@@ -10,7 +10,7 @@ class JeepTest {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> new Jeep(10.0, 60.0, 50.0, 40.0, 20.0));
         assertEquals("Tank capacity is less than fuel!", ex.getMessage());
     }
-/*
+
     @Test
     public void testCalculateRefillAmount() {
         //Given
@@ -18,7 +18,7 @@ class JeepTest {
         //Then
         assertEquals(40.0, jeep.calculateRefillAmount());
     }
-
+/*
     @Test
     public void testDrive() {
         //Given

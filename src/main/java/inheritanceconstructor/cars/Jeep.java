@@ -13,5 +13,12 @@ public class Jeep extends Car {
         this.extraFuel = extraFuel;
     }
 
+    public double calculateRefillAmount() {
+        return (super.getTankCapacity() + extraCapacity) - (super.getFuel() + extraFuel);
+    }
+
+    public void modifyFuelAmount(double fuel){
+
+    }
 
 }
