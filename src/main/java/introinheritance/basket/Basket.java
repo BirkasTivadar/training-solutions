@@ -10,21 +10,21 @@ public class Basket {
         return items;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         items.add(item);
     }
 
-    public void removeItem(String barcode){
+    public void removeItem(String barcode) {
         Item findItem = null;
-        for(Item item : items){
-            if(item.getBarcode().equals(barcode)){
+        for (Item item : items) {
+            if (item.getBarcode().equals(barcode)) {
                 findItem = item;
             }
         }
         items.remove(findItem);
     }
 
-    public void clearBasket(){
+    public void clearBasket() {
         items.removeAll(items);
     }
 }
