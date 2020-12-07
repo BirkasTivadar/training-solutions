@@ -1,4 +1,4 @@
-package methodchain;
+package methodchain.robot;
 
 public class NavigationPoint {
     private int robotDistance;

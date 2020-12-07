@@ -17,8 +17,21 @@ public class Jeep extends Car {
         return (super.getTankCapacity() + extraCapacity) - (super.getFuel() + extraFuel);
     }
 
-    public void modifyFuelAmount(double fuel){
-
+    public void drive(int km) {
+        double usedFuel = super.getFuelRate() * km / 100;
+        if (usedFuel > super.getFuel()) {
+            throw new RuntimeException("Not enough fuel available!");
+        }
+        if (usedFuel <= extraFuel) {
+            extraFuel -= usedFuel;
+        } else {
+            usedFuel -= extraFuel;
+            extraFuel = 0.0;
+            modifyFuelAmount(-usedFuel);
+        }
     }
 
+    public double getExtraFuel() {
+        return extraFuel;
+    }
 }

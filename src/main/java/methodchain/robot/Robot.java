@@ -1,4 +1,4 @@
-package methodchain;
+package methodchain.robot;
 
 import java.util.ArrayList;
 import java.util.List;

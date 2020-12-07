@@ -31,7 +31,7 @@ public class Car {
     }
 
     public void drive(int km) {
-        double remainingFuel = fuel -= fuelRate * km / 100;
+        double remainingFuel = fuel - fuelRate * km / 100;
         if (remainingFuel < 0) {
             throw new RuntimeException("Not enough fuel available!");
         }

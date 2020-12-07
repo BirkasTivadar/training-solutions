@@ -18,7 +18,7 @@ class JeepTest {
         //Then
         assertEquals(40.0, jeep.calculateRefillAmount());
     }
-/*
+
     @Test
     public void testDrive() {
         //Given
@@ -35,5 +35,5 @@ class JeepTest {
         Jeep jeep = new Jeep(10.0, 30.0, 50.0, 40.0, 20.0);
         Exception ex = assertThrows(RuntimeException.class, () -> jeep.drive(600));
         assertEquals("Not enough fuel available!", ex.getMessage());
-    }*/
+    }
 }

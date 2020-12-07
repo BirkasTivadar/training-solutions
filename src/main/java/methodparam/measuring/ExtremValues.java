@@ -1,4 +1,4 @@
-package methodparam;
+package methodparam.measuring;
 
 public class ExtremValues {
     private double min;
