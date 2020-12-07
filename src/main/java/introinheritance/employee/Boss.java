@@ -1,6 +1,6 @@
 package introinheritance.employee;
 
-public class Boss extends Employee{
+public class Boss extends Employee {
     private static final double LEADERSHIP_FACTOR = 0.1;
     int numberOfEmployees;
 
@@ -9,8 +9,8 @@ public class Boss extends Employee{
         this.numberOfEmployees = numberOfEmployees;
     }
 
-    public double getSalary(){
-        return this.getSalary()*LEADERSHIP_FACTOR*numberOfEmployees;
+    public double getSalary() {
+        return super.getSalary() + super.getSalary() * LEADERSHIP_FACTOR * numberOfEmployees;
     }
 
     public int getNumberOfEmployees() {
