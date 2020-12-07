@@ -8,6 +8,9 @@ public class Person {
         return name;
     }
 
+    public Person() {
+    }
+
     public String getAddress() {
         return address;
     }
