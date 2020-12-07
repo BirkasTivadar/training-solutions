@@ -9,6 +9,18 @@ public class CreditCard {
 
     private long balance;
 
+    static final Rate[] rates = {new Rate(Currency.HUF, 1.0),
+            new Rate(Currency.EUR, 308.23),
+            new Rate(Currency.SFR, 289.24),
+            new Rate(Currency.GBP, 362.23),
+            new Rate(Currency.USD, 289.77)};
+
+    static {
+        for (Rate rate : rates) {
+            ACTUAL_RATES.add(rate);
+        }
+    }
+
     public CreditCard(long balance, Currency currency, List<Rate> upload) {
         ACTUAL_RATES.addAll(upload);
         this.balance = Math.round(balance * getConversionRate(currency));
