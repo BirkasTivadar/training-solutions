@@ -28,7 +28,7 @@ class SimpleBagTest {
         assertEquals(3, bag.size());
 
     }
-
+/*
     @Test
     public void testIteration() {
         //Given
@@ -43,7 +43,7 @@ class SimpleBagTest {
         }
         assertEquals(2, bag.getCursor());
     }
-/*
+*/
     @Test
     public void testContains() {
         //Given
@@ -56,5 +56,5 @@ class SimpleBagTest {
         assertTrue(bag.contains(new Book("Rejtő Jenő", "Az ellopott cirkáló")));
         assertFalse(bag.contains(new Book("Rejtő Jenő", "A megkerült cirkáló")));
     }
-*/
+
 }
