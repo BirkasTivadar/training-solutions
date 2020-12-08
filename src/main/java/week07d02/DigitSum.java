@@ -7,7 +7,7 @@ public class DigitSum {
            int solution = sumOfDigits(x/=10);
            return solution += x%10;
        } else {
-           return x;
+           return 0;
        }
         /*int sum = 0;
         while(x != 0){
