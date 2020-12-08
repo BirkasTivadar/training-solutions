@@ -48,7 +48,7 @@ public class SimpleBag {
 
     public static void main(String[] args) {
         SimpleBag bag = new SimpleBag();
-        //When
+
         bag.putItem(new Beer("Heineken", 250));
         bag.putItem(new Book("Rejtő Jenő", "Az ellopott cirkáló"));
         bag.putItem(new Book("Rejtő Jenő", "Az elveszett cirkáló"));
@@ -63,7 +63,7 @@ public class SimpleBag {
             System.out.println(bag.next().getClass().toString());
         }
         System.out.println();
-       bag.beforeFirst();
+        bag.beforeFirst();
         while (bag.hasNext()) {
             System.out.println(bag.next().toString());
             bag.cursor--;

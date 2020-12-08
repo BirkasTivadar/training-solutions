@@ -36,7 +36,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return author +": " +title;
+        return author + ": " + title;
     }
 
 

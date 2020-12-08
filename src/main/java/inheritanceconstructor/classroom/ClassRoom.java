@@ -1,6 +1,6 @@
 package inheritanceconstructor.classroom;
 
-public class ClassRoom extends Room{
+public class ClassRoom extends Room {
     private Facility facility;
 
     public Facility getFacility() {
@@ -12,7 +12,7 @@ public class ClassRoom extends Room{
         this.facility = facility;
     }
 
-    public boolean isSuitable(Course course){
+    public boolean isSuitable(Course course) {
         return super.getCapacity() >= course.getParticipants() && facility == course.getFacilityNeeded();
     }
 }

@@ -26,7 +26,6 @@ class SimpleBagTest {
         //Then
         assertFalse(bag.isEmpty());
         assertEquals(3, bag.size());
-
     }
 
     @Test
