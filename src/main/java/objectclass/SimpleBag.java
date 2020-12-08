@@ -42,8 +42,8 @@ public class SimpleBag {
         return items.get(++cursor);
     }
 
-    public boolean hasNext(){
-        return !isEmpty() && cursor < items.size()-1 ;
+    public boolean hasNext() {
+        return !isEmpty() && cursor < items.size() - 1;
     }
 
     public static void main(String[] args) {
@@ -54,5 +54,23 @@ public class SimpleBag {
         bag.putItem(new Book("Rejtő Jenő", "Az elveszett cirkáló"));
         bag.putItem(new Beer("Borsodi", 239));
         bag.putItem(new Beer("Krusovice", 239));
+
+        System.out.println(bag.next().toString());
+        System.out.println(bag.getCursor());
+        System.out.println(bag.next().toString());
+        System.out.println(bag.getCursor());
+        while (bag.hasNext()) {
+            System.out.println(bag.next().getClass().toString());
+        }
+        System.out.println();
+       bag.beforeFirst();
+        while (bag.hasNext()) {
+            System.out.println(bag.next().toString());
+            bag.cursor--;
+            System.out.println(bag.next().getClass().toString());
+            System.out.println(bag.getCursor());
+            System.out.println();
+        }
+
     }
 }

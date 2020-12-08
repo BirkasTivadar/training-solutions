@@ -32,4 +32,12 @@ public class Book {
     public int hashCode() {
         return Objects.hash(author, title);
     }
+
+
+    @Override
+    public String toString() {
+        return author +": " +title;
+    }
+
+
 }
