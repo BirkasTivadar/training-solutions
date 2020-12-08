@@ -2,11 +2,22 @@ package week07d02;
 
 public class DigitSum {
 
-    public int sumOfDigits(int x){
-        int sum = 0;
-        String stringX = String.valueOf(x);
-        for(int i = 0; i < stringX.length(); i++){
-            sum += Character.getNumericValue(stringX.charAt(i));
+    public static int sumOfDigits(int x) {
+       if (x > 9){
+           int solution = sumOfDigits(x/=10);
+           return solution += x%10;
+       } else {
+           return x;
+       }
+        /*int sum = 0;
+        while(x != 0){
+            sum += x%10;
+            x /= 10;
         }
-        return sum;
+        return sum;*/
+    }
+
+    public static void main(String[] args) {
+        System.out.println(DigitSum.sumOfDigits(456));
+    }
 }
