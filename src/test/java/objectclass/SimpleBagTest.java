@@ -28,7 +28,7 @@ class SimpleBagTest {
         assertEquals(3, bag.size());
 
     }
-/*
+
     @Test
     public void testIteration() {
         //Given
@@ -43,7 +43,7 @@ class SimpleBagTest {
         }
         assertEquals(2, bag.getCursor());
     }
-*/
+
     @Test
     public void testContains() {
         //Given
