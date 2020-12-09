@@ -5,7 +5,24 @@ import java.util.Random;
 public abstract class Character {
     private Point position;
     private int hitPoint = 100;
-    private Random rnd = new Random();
+    private Random rnd;
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public int getHitPoint() {
+        return hitPoint;
+    }
+
+    public Random getRnd() {
+        return rnd;
+    }
+
+    public Character(Point position, Random rnd) {
+        this.position = position;
+        this.rnd = rnd;
+    }
 
     public boolean isAlive() {
         return hitPoint > 0;
@@ -20,8 +37,8 @@ public abstract class Character {
     }
 
     protected void hit(Character enemy, int damage) {
-        if (getActualDefence() < damage) {
-            decreaseHitPoint(damage);
+        if (enemy.getActualDefence() < damage) {
+            enemy.decreaseHitPoint(damage);
         }
     }
 
