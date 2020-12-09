@@ -26,7 +26,7 @@ class CreditAccountTest {
     }
 
     @Test
-    public void transactionSuccessWithOverdraf() {
+    public void transactionSuccessWithOverdraft() {
         //Given
         CreditAccount creditAccount = new CreditAccount("11111111-22222222", 100000, 50000);
         //Then
