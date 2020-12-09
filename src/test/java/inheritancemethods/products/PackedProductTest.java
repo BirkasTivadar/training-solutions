@@ -20,7 +20,7 @@ class PackedProductTest {
         assertEquals(12, product.getPackingUnit());
         assertEquals(box, product.getWeightOfBox());
     }
-/*
+
     @Test
     public void totalWeight() {
         //Given
@@ -30,6 +30,6 @@ class PackedProductTest {
         BigDecimal total = new BigDecimal("6.025");
         //Then
         assertEquals(total, product.totalWeight(15));
-    }*/
+    }
 
 }
