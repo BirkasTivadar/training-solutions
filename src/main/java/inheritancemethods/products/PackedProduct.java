@@ -24,9 +24,10 @@ public class PackedProduct extends Product {
     @Override
     public BigDecimal totalWeight(int pieces) {
         int numberOfBoxes = 1;
-        while(pieces > packingUnit){
+        int restPieces = pieces;
+        while(restPieces > packingUnit){
             numberOfBoxes++;
-            pieces -= packingUnit;
+            restPieces -= packingUnit;
         }
         System.out.println(numberOfBoxes);
         return super.totalWeight(pieces).add(weightOfBox.multiply(new BigDecimal(String.valueOf(numberOfBoxes))));
