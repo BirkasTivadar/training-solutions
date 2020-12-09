@@ -28,7 +28,7 @@ public abstract class Character {
         return hitPoint > 0;
     }
 
-    protected int getActualPrimariDamage() {
+    protected int getActualPrimaryDamage() {
         return rnd.nextInt(9) + 1;
     }
 
@@ -43,7 +43,7 @@ public abstract class Character {
     }
 
     public void primaryAttack(Character enemy) {
-        hit(enemy, getActualPrimariDamage());
+        hit(enemy, getActualPrimaryDamage());
     }
 
     private void decreaseHitPoint(int diff) {
