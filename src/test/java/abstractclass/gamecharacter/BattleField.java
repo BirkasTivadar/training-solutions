@@ -1,11 +1,7 @@
 package abstractclass.gamecharacter;
 
 public class BattleField {
-    private int round;
-
-    public BattleField(int round) {
-        this.round = round;
-    }
+    private int round = 0;
 
     public int getRound() {
         return round;
