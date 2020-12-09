@@ -19,9 +19,11 @@ public class CreditAccount extends DebitAccount {
         }
         if (sumAmount < getBalance()) {
             super.transaction(amount);
+        } else {
+            sumAmount -= getBalance();
+            balanceToZero();
+            overdraftLimit -= sumAmount;
         }
-
-
         return true;
     }
 }
