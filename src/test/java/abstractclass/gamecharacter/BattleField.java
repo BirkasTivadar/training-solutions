@@ -17,10 +17,10 @@ public class BattleField {
     }
 
     public Character fight(Character one, Character other) {
-        while(one.isAlive() && other.isAlive()){
+        while (one.isAlive() && other.isAlive()) {
             round++;
-            oneHit(one,other);
-            oneHit(other,one);
+            oneHit(one, other);
+            oneHit(other, one);
         }
         return one.isAlive() ? one : other;
     }

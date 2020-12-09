@@ -18,6 +18,6 @@ public class Point {
     }
 
     public long distance(Point otherPoint) {
-        return(long)Math.sqrt(Math.pow((double)getX() - otherPoint.getX(), 2.0) + (Math.pow((double)getY() - otherPoint.getY(), 2.0)));
+        return (long) Math.sqrt(Math.pow((double) getX() - otherPoint.getX(), 2.0) + (Math.pow((double) getY() - otherPoint.getY(), 2.0)));
     }
 }

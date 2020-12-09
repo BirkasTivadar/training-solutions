@@ -13,8 +13,8 @@ public class AxeWarrior extends Character {
 
     @Override
     public void secondaryAttack(Character enemy) {
-        if (getPosition().distance(enemy.getPosition()) < 2){
-            hit(enemy,getActualSecondaryDamage());
+        if (getPosition().distance(enemy.getPosition()) < 2) {
+            hit(enemy, getActualSecondaryDamage());
         }
     }
 }
