@@ -45,7 +45,6 @@ class CreditAccountTest {
         assertEquals(50000L, creditAccount.getOverdraftLimit());
     }
 
-
     @Test
     public void transactionFail() {
         //Given
