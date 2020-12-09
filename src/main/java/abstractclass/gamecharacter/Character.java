@@ -1,4 +1,7 @@
 package abstractclass.gamecharacter;
 
-public class Character {
+public abstract class Character {
+    private Point position;
+    private int hitPoint = 100;
+
 }
