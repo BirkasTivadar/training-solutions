@@ -32,4 +32,11 @@ public class PackedProduct extends Product {
         System.out.println(numberOfBoxes);
         return super.totalWeight(pieces).add(weightOfBox.multiply(new BigDecimal(String.valueOf(numberOfBoxes))));
     }
+
+    public static void main(String[] args) {
+        BigDecimal unit = new BigDecimal("0.5");
+        BigDecimal box = new BigDecimal("1.5");
+        PackedProduct product = new PackedProduct("Ipad", unit, 3, 12, box);
+        System.out.println(product.totalWeight(24));
+    }
 }
