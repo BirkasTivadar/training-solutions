@@ -1,7 +1,5 @@
 package inheritancemethods.bankaccount;
 
-import stringtype.StringTypeMain;
-
 public class DebitAccount {
     private final double COST = 3.0;
     private final double MIN_COST = 200;
