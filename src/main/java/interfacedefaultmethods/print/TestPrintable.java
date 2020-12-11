@@ -10,7 +10,7 @@ public class TestPrintable implements Printable {
 
     @Override
     public String getPage(int pageNumber) {
-        return "" + pageNumber;
+        return "Page" + pageNumber;
     }
 
     public static void main(String[] args) {
