@@ -4,7 +4,7 @@ import week06d02.Category;
 
 public class Truck extends Car {
 
-    public Truck(){
+    public Truck() {
         super();
     }
 
