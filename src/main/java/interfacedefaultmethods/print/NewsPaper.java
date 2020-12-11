@@ -7,6 +7,10 @@ public class NewsPaper implements Printable{
 
     private List<String> pages = new ArrayList<>();
 
+    public void addPage(String page){
+        pages.add(page);
+    }
+
     @Override
     public int getLength() {
         return pages.size();
@@ -14,6 +18,6 @@ public class NewsPaper implements Printable{
 
     @Override
     public String getPage(int pageNumber) {
-        return null;
+        return pages.get(pageNumber);
     }
 }
