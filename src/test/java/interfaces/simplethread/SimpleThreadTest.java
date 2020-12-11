@@ -9,6 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleThreadTest {
     @Test
+    void runWithNullTasks() {
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new SimpleThread(null));
+        assertEquals("Tasks must not be null.", iae.getMessage());
+    }
+
+    @Test
     public void runWithEmptyTasks() {
         List<String> tasks = new ArrayList<>();
         SimpleThread simpleThread = new SimpleThread(tasks);
