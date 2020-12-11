@@ -20,7 +20,7 @@ public class Employee {
         PercentBonusCalculator percentBonusCalculator = new PercentBonusCalculator();
 
         Employee employee = new Employee(100_000, fixBonusCalculator);
-        Employee boss = new Employee(600_000, percentBonusCalculator);
+        Employee boss = new Employee(100_000, percentBonusCalculator);
 
         System.out.println(employee.getBonus());
         System.out.println(boss.getBonus());
