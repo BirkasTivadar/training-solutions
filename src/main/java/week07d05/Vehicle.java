@@ -4,11 +4,10 @@ public class Vehicle {
 
     private int numberOfGears;
 
-    private TransmissionType transmissionType = TransmissionType.MANUAL;
+    private TransmissionType transmissionType;
 
     public Vehicle() {
-        this.numberOfGears = 5;
-        this.transmissionType = TransmissionType.MANUAL;
+        this(5,TransmissionType.MANUAL);
     }
 
     public Vehicle(int numberOfGears, TransmissionType transmissionType) {
