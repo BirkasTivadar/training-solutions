@@ -4,6 +4,10 @@ import week06d02.Category;
 
 public class Truck extends Car {
 
+    public Truck(){
+        super();
+    }
+
     public Truck(int numberOfGears, TransmissionType transmissionType) {
         super(numberOfGears, transmissionType);
     }
