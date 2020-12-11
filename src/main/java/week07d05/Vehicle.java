@@ -23,12 +23,4 @@ public class Vehicle {
     public TransmissionType getTransmissionType() {
         return transmissionType;
     }
-
-    public void setNumberOfGears(int numberOfGears) {
-        this.numberOfGears = numberOfGears;
-    }
-
-    public void setTransmissionType(TransmissionType transmissionType) {
-        this.transmissionType = transmissionType;
-    }
 }
