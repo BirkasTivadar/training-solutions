@@ -4,20 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleThread implements Runnable{
-    private List<String> task = new ArrayList<>();
+    private List<String> tasks = new ArrayList<>();
 
     public SimpleThread(List<String> task) {
-        this.task = task;
+        this.tasks = task;
     }
 
-    public List<String> getTask() {
-        return task;
+    public List<String> getTasks() {
+        return tasks;
     }
 
     private boolean nextStep(){
-        task.remove(task.size()-1);
-        return task.isEmpty() ? false : true;
-
+        if(!tasks.isEmpty()){
+            tasks.remove(tasks.size()-1);
+        }
+        return tasks.isEmpty() ? false : true;
     }
 
     @Override
