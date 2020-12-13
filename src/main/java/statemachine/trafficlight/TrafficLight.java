@@ -1,25 +1,25 @@
-package x;
+package statemachine.trafficlight;
 
 public enum TrafficLight {
-    RED{
+    RED {
         @Override
         TrafficLight next() {
             return RED_YELLOW;
         }
     },
-    RED_YELLOW{
+    RED_YELLOW {
         @Override
         TrafficLight next() {
             return GREEN;
         }
     },
-    GREEN{
+    GREEN {
         @Override
         TrafficLight next() {
             return YELLOW;
         }
     },
-    YELLOW{
+    YELLOW {
         @Override
         TrafficLight next() {
             return RED;
