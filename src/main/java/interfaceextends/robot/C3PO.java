@@ -12,7 +12,7 @@ public class C3PO implements MoveableRobot {
         this.position = position;
     }
 
-    private void walkTo(Point position){
+    private void walkTo(Point position) {
         this.position = position;
         path.add(position);
     }
@@ -20,19 +20,16 @@ public class C3PO implements MoveableRobot {
     @Override
     public void moveTo(Point position) {
         walkTo(position);
-
     }
 
     @Override
     public void fastMoveTo(Point position) {
         walkTo(position);
-
     }
 
     @Override
     public void rotate(int angle) {
         this.angle = angle;
-
     }
 
     public Point getPosition() {
