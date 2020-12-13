@@ -29,5 +29,15 @@ public class Lab {
         completedAt = LocalDateTime.now();
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public LocalDateTime getCompletedAt() {
+        return completedAt;
+    }
 }
