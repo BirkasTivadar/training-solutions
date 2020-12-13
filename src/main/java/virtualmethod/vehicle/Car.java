@@ -20,6 +20,6 @@ public class Car extends Vehicle {
 
     @Override
     public String toString() {
-        return "Car{numberOfPassenger=" + numberPassenger + ", vehicleWeight=" + getGrossLoad();
+        return "Car{numberOfPassenger=" + numberPassenger + ", vehicleWeight=" + getVehicleWeight() + '}';
     }
 }
