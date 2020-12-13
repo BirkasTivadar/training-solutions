@@ -8,55 +8,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TrainerTest {
     @Test
-    public void testCreate() {
+    public void testFreeTimeByHuman() {
+        Human human = new Human("John Doe");
+        assertEquals(4, human.getFreeTime());
+    }
+
+    @Test
+    public void testFreeTimeByTrainer() {
         Trainer trainer = new Trainer("John Doe", Arrays.asList(new Course("Course1")));
-
-        assertTrue(trainer instanceof Trainer);
-        assertTrue(trainer instanceof Human);
-        assertTrue(trainer instanceof Object);
-        assertTrue(trainer instanceof HasName);
-
-        Object object = new Trainer("John Doe", Arrays.asList(new Course("Course1")));
-        assertTrue(object instanceof Trainer);
-        assertTrue(object instanceof Human);
-        assertTrue(object instanceof Object);
-        assertTrue(object instanceof HasName);
+        assertEquals(3, trainer.getFreeTime());
 
         Human human = new Trainer("John Doe", Arrays.asList(new Course("Course1")));
-        assertTrue(human instanceof Trainer);
-        assertTrue(human instanceof Human);
-        assertTrue(human instanceof Object);
-        assertTrue(human instanceof HasName);
-
-        HasName hasName = new Trainer("John Doe", Arrays.asList(new Course("Course1")));
-        assertTrue(hasName instanceof Trainer);
-        assertTrue(hasName instanceof Human);
-        assertTrue(hasName instanceof Object);
-        assertTrue(hasName instanceof HasName);
+        assertEquals(3, human.getFreeTime());
     }
 
     @Test
-    public void testConvert() {
-        Trainer trainer = new Trainer("John Doe", Arrays.asList(new Course("Course1")));
-        Human human = trainer;
-        Object object = trainer;
-        HasName hasName = trainer;
-    }
-
-    @Test
-    public void testExplicitConvert() {
-        Object object = new Trainer("John Doe", Arrays.asList(new Course("Course1")));
-        Trainer trainer = (Trainer) object;
-        Human human = (Trainer) object;
-    }
-
-    @Test
-    public void testExplicitConvertCannotWork() {
-        Human human = new Human("John Doe");
-        assertThrows(ClassCastException.class, () -> {
-            Trainer trainer = (Trainer) human;
-        });
-
+    public void testFreeTimeLimit() {
+        Trainer trainer = new Trainer("John Doe",
+                Arrays.asList(new Course("Course1"), new Course("Course2"),
+                        new Course("Course3"), new Course("Course4"),
+                        new Course("Course5")));
+        assertEquals(0, trainer.getFreeTime());
     }
 
 }
