@@ -4,12 +4,12 @@ import java.util.List;
 
 public interface Valued {
 
-    double getValue();
+    double getValued();
 
-    static double sumValues(List<Valued> valueds){
+    static double totalValue(List<Valued> valueds){
        double sum = 0;
        for(Valued valued : valueds){
-           sum += valued.getValue();
+           sum += valued.getValued();
        }
        return sum;
     }
