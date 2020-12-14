@@ -13,6 +13,12 @@ class RobotTest {
         assertEquals(0, robot.getCoordinate().getY());
     }
 
-    void moveRobotTest
+    void moveRobotTest(){
+        Robot robot = new Robot();
+        String order = "FFLLLLLBBBBJJJJJJJ";
+        robot.move(order);
+        assertEquals(3, robot.getCoordinate().getX());
+        assertEquals(-3, robot.getCoordinate().getY());
+    }
 
 }
