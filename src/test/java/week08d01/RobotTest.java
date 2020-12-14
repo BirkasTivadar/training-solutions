@@ -22,5 +22,11 @@ class RobotTest {
         assertEquals(-3, robot.getCoordinate().getY());
     }
 
-
+    @Test
+    void robotInvalidOrder(){
+        Robot robot = new Robot();
+        String order = "LLLFFGJJJBBB";
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()-> robot.move(order));
+        assertEquals("Invalid order.", iae.getMessage());
+    }
 }
