@@ -8,7 +8,7 @@ public class Client {
         this.channel = channel;
     }
 
-    public void writeToChannel(TextSource textSource){
-       channel.writeByte(textSource.getPlainText().getBytes());
+    public int writeToChannel(TextSource textSource) {
+        return channel.writeByte(textSource.getPlainText().getBytes());
     }
 }
