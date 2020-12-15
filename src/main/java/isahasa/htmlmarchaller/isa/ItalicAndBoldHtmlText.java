@@ -1,6 +1,6 @@
 package isahasa.htmlmarchaller.isa;
 
-public class ItalicAndBoldHtmlText extends ItalicHtmlText{
+public class ItalicAndBoldHtmlText extends ItalicHtmlText {
     public ItalicAndBoldHtmlText(String plainText) {
         super(plainText);
     }
