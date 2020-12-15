@@ -9,6 +9,6 @@ public class Italic extends TextDecorator {
 
     @Override
     public String getPlainText() {
-        return "<i>" + textSource.getPlainText() + "/i";
+        return "<i>" + textSource.getPlainText() + "</i>";
     }
 }

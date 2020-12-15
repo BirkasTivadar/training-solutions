@@ -9,6 +9,6 @@ public class Underlined extends TextDecorator {
 
     @Override
     public String getPlainText() {
-        return "<u>" + textSource.getPlainText() + "/u";
+        return "<u>" + textSource.getPlainText() + "</u>";
     }
 }
