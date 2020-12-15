@@ -11,7 +11,7 @@ public class Lottery {
         Random rnd = new Random();
         while (draws.size() < numbers) {
             Integer nextNumber = rnd.nextInt(interval) + 1;
-            if (draws.contains(nextNumber)) {
+            if (!draws.contains(nextNumber)) {
                 draws.add(nextNumber);
             }
         }
