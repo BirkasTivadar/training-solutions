@@ -1,6 +1,6 @@
 package isahasa.fleet;
 
-public class CanCarryGoodsBehaviour implements CanCarryGoods{
+public class CanCarryGoodsBehaviour implements CanCarryGoods {
 
     private int cargoWeight;
 
@@ -13,7 +13,7 @@ public class CanCarryGoodsBehaviour implements CanCarryGoods{
     @Override
     public int loadCargo(int cargoWeight) {
         int remainder = 0;
-        if(cargoWeight < maxCargoWeight){
+        if (cargoWeight < maxCargoWeight) {
             this.cargoWeight = cargoWeight;
         } else {
             this.cargoWeight = maxCargoWeight;

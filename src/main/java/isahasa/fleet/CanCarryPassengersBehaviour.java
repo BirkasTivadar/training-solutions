@@ -1,13 +1,17 @@
 package isahasa.fleet;
 
-public class CanCarryPassengersBehaviour implements CanCarryPassengers{
+public class CanCarryPassengersBehaviour implements CanCarryPassengers {
     int passengers;
     int maxPassengers;
 
+    public CanCarryPassengersBehaviour(int maxPassengers) {
+        this.maxPassengers = maxPassengers;
+    }
+
     @Override
     public int loadPassenger(int passengers) {
-        int remainPassengers =0;
-        if(passengers < maxPassengers){
+        int remainPassengers = 0;
+        if (passengers < maxPassengers) {
             this.passengers = passengers;
         } else {
             this.passengers = maxPassengers;
