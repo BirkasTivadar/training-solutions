@@ -20,7 +20,6 @@ public class CanCarryGoodsBehaviour implements CanCarryGoods {
             remainder = cargoWeight - this.cargoWeight;
         }
         return remainder;
-
     }
 
     @Override
