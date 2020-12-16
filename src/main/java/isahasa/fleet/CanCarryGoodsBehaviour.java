@@ -23,7 +23,7 @@ public class CanCarryGoodsBehaviour implements CanCarryGoods {
     }
 
     @Override
-    public int getCargoWieght() {
+    public int getCargoWeight() {
         return cargoWeight;
     }
 }

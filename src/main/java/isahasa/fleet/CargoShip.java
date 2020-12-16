@@ -13,7 +13,7 @@ public class CargoShip implements Ship, CanCarryGoods {
     }
 
     @Override
-    public int getCargoWieght() {
-        return canCarryGoods.getCargoWieght();
+    public int getCargoWeight() {
+        return canCarryGoods.getCargoWeight();
     }
 }

@@ -15,8 +15,8 @@ public class FerryBoat implements Ship, CanCarryGoods, CanCarryPassengers {
     }
 
     @Override
-    public int getCargoWieght() {
-        return cancarryGoods.getCargoWieght();
+    public int getCargoWeight() {
+        return cancarryGoods.getCargoWeight();
     }
 
     @Override
