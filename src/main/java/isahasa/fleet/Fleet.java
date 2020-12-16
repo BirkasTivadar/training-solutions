@@ -8,23 +8,26 @@ public class Fleet {
     private int waitingPersons;
     private int waitingCargo;
 
-    public Fleet(List<Ship> ships, int waitingPersons, int waitingCargo) {
-        this.ships = ships;
-        this.waitingPersons = waitingPersons;
-        this.waitingCargo = waitingCargo;
+    public Fleet() {
     }
 
-    public void loadShip(){
-        for(Ship ship: ships){
-            if(ship instanceof Liner){
-                ((Liner)ship).loadPassenger(waitingPersons);
+    public void addShip(Ship ship) {
+        ships.add(ship);
+    }
+
+    public void loadShip(int passengers, int cargo) {
+        waitingPersons = passengers;
+        waitingCargo = cargo;
+        for (Ship ship : ships) {
+            if (ship instanceof Liner) {
+                waitingPersons = ((Liner) ship).loadPassenger(waitingPersons);
             }
-            if(ship instanceof CargoShip){
-                ((CargoShip)ship).loadCargo(waitingCargo);
+            if (ship instanceof CargoShip) {
+                waitingCargo = ((CargoShip) ship).loadCargo(waitingCargo);
             }
-            if(ship instanceof FerryBoat){
-                ((FerryBoat)ship).loadPassenger(waitingPersons);
-                ((FerryBoat)ship).loadCargo(waitingCargo);
+            if (ship instanceof FerryBoat) {
+                waitingPersons = ((FerryBoat) ship).loadPassenger(waitingPersons);
+                waitingCargo = ((FerryBoat) ship).loadCargo(waitingCargo);
             }
         }
     }
