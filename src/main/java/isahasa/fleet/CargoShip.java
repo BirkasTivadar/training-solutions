@@ -6,4 +6,14 @@ public class CargoShip implements Ship, CanCarryGoods {
     public CargoShip(int maxCarrygoods) {
         this.canCarryGoods = new CanCarryGoodsBehaviour(maxCarrygoods);
     }
+
+    @Override
+    public int loadCargo(int cargoWeight) {
+        return canCarryGoods.loadCargo(cargoWeight);
+    }
+
+    @Override
+    public int getCargoWieght() {
+        return canCarryGoods.getCargoWieght();
+    }
 }
