@@ -10,5 +10,8 @@ public class TrainerMain {
 
         System.out.println(trainerGood.giveMark());
         System.out.println(trainerBad.giveMark());
+
+        trainerGood = new Trainer(new BadMood());
+        System.out.println(trainerGood.giveMark());
     }
 }

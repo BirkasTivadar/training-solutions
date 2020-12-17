@@ -11,4 +11,8 @@ public class Trainer {
     public int giveMark(){
         return canMark.giveMark();
     }
+
+    public void setCanMark(CanMark canMark) {
+        this.canMark = canMark;
+    }
 }
