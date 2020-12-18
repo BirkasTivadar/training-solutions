@@ -14,9 +14,8 @@ public class MathAlgorithms {
             max = number;
         }
         for (int i = min; i >= 1; i--) {
-            if (number % i == 0 && other%i == 0) {
+            if (number % i == 0 && other % i == 0) {
                 return i;
-
             }
         }
         return greatest;
