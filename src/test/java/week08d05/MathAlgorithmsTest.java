@@ -8,11 +8,10 @@ class MathAlgorithmsTest {
     @Test
     void greatestCommonDivisorTest() {
         MathAlgorithms mathAlgorithms = new MathAlgorithms();
-        assertEquals(12, mathAlgorithms.greatestCommonDivisor(24,60));
-        assertEquals(2, mathAlgorithms.greatestCommonDivisor(8,6));
-        assertEquals(9, mathAlgorithms.greatestCommonDivisor(27,36));
+        assertEquals(12, mathAlgorithms.greatestCommonDivisor(24, 60));
+        assertEquals(2, mathAlgorithms.greatestCommonDivisor(8, 6));
+        assertEquals(9, mathAlgorithms.greatestCommonDivisor(27, 36));
     }
-
 
 
 }
