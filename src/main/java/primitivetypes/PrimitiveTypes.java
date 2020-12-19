@@ -2,9 +2,6 @@ package primitivetypes;
 
 public class PrimitiveTypes {
 
-    private final int NUMBER_OF_DIGITS = 32;
-
-
     public String toBinaryString(int n) {
         int remainDigits = 32;
         String result = "";
