@@ -1,26 +1,13 @@
 package enumtype.unit;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
-
 public class UnitConverter {
+    public static final double DEFAULT_MULT = 10_000;
 
-    public static final int DEFAULT_SCALE = 4;
-
-    public BigDecimal convert(java.math.BigDecimal length, LengthUnit source, LengthUnit target) {
-        BigDecimal lengthMillimeter = length.multiply(new BigDecimal(source.getMillimeter()));
-        return lengthMillimeter.divide(new BigDecimal(target.getMillimeter()), DEFAULT_SCALE, RoundingMode.HALF_UP);
+    public double convert(double length, LengthUnit source, LengthUnit target) {
+        double lengthInMilli = length * source.getMilli();
+        double lengthInTarget = lengthInMilli / target.getMilli();
+        return (Math.round(lengthInTarget * DEFAULT_MULT)) / DEFAULT_MULT;
     }
 
-    public List<LengthUnit> siUnits() {
-        List<LengthUnit> siUnits = new ArrayList<>();
-        for (LengthUnit unit : LengthUnit.values()) {
-            if (unit.isSi() == true) {
-                siUnits.add(unit);
-            }
-        }
-        return siUnits;
-    }
+
 }

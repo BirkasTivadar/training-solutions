@@ -1,27 +1,40 @@
 package enumtype.unit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum LengthUnit {
-    METER(1000, true),
-    CENTIMETER(10, true),
-    MILLIMETER(1, true),
-    YARD(914, false),
-    FOOT(305, false),
-    INCH(25, false);
+    MILLIMETER(true, 1),
+    CENTIMETER(true, 10),
+    METER(true, 100),
+    YARD(false, 914),
+    FOOT(false, 305),
+    INCH(false, 25);
 
-    private final int millimeter;
+    private boolean isSI;
+    private int milli;
 
-    private final boolean si;
-
-    LengthUnit(int millimeter, boolean si) {
-        this.millimeter = millimeter;
-        this.si = si;
+    LengthUnit(boolean isSI, int milli) {
+        this.isSI = isSI;
+        this.milli = milli;
     }
 
-    public int getMillimeter() {
-        return millimeter;
+    public boolean isSI() {
+        return isSI;
     }
 
-    public boolean isSi() {
-        return si;
+    public int getMilli() {
+        return milli;
     }
+
+    public static List<LengthUnit> siUnits() {
+        List<LengthUnit> units = new ArrayList<>();
+        for (LengthUnit unit: LengthUnit.values()){
+            if(unit.isSI()){
+                units.add(unit);
+            }
+        }
+        return units;
+    }
+
 }
