@@ -5,20 +5,22 @@ public class PrimitiveTypes {
     private final int NUMBER_OF_DIGITS = 32;
 
 
-    public String toBinaryString(int n){
-        String stringBinary = "";
-        for(int number = n; number > 0;) {
-            int digit = number % 2;
-            stringBinary = digit + "" + stringBinary;
-            number /= 2;
+    public String toBinaryString(int n) {
+        int remainDigits = 32;
+        String result = "";
+        while (n > 0) {
+            remainDigits--;
+            String remain = "" + n % 2;
+            n = n / 2;
+            result = remain + result;
         }
-        int missingDigits = NUMBER_OF_DIGITS - stringBinary.length();
-        for(int i = 0; i < missingDigits; i++){
-            stringBinary = 0 + stringBinary;
+        if (remainDigits > 0) {
+            for (int i = 0; i < remainDigits; i++) {
+                result = "0" + result;
+            }
         }
-        return stringBinary;
+        return result;
     }
-
 
 
 }
