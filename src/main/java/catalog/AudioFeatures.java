@@ -10,8 +10,8 @@ public class AudioFeatures implements Feature {
     private String title;
 
     public AudioFeatures(String title, int length, List<String> performers) {
-        if(isBlank(title)|| length < 1 || performers.size() < 1){
-            throw new IllegalArgumentException("Invalid data");
+        if (isBlank(title) || performers == null || length < 1 || performers.size() < 1) {
+            throw new IllegalArgumentException();
         }
         this.title = title;
         this.length = length;
@@ -26,7 +26,7 @@ public class AudioFeatures implements Feature {
     @Override
     public List<String> getContributors() {
         List<String> contributors = new ArrayList<>();
-        if(composer != null){
+        if (composer != null) {
             contributors.addAll(List.copyOf(composer));
         }
         contributors.addAll(List.copyOf(performers));
@@ -42,7 +42,7 @@ public class AudioFeatures implements Feature {
         return length;
     }
 
-    private boolean isBlank(String str){
+    private boolean isBlank(String str) {
         return str == null || str.isBlank();
     }
 }
