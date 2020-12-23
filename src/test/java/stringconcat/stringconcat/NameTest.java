@@ -7,49 +7,43 @@ import static org.junit.jupiter.api.Assertions.*;
 class NameTest {
 
     @Test
-    void invalidFamilyNameTest(){
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()->new Name("   ", "Doe", "John"));
-assertEquals("Family name and given name must not be blank.", iae.getMessage());
-    }
-void invalidGivenNameTest(){
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()->new Name("Doe", "John", null, Title.MRS));
-assertEquals("Family name and given name must not be blank.", iae.getMessage());
+    public void invalidParametersShouldThrowExceptionNullFamilyName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new Name(null, "G", "John", Title.MR));
+        assertEquals("Family name and given name must not be empty!", ex.getMessage());
     }
 
     @Test
-    void concatNameWesternStyleWithoutTitleTest() {
-        Name romanNavarro = new Name("Navarro", "Maria", "Roman");
-        assertEquals("Roman Maria Navarro", romanNavarro.concatNameWesternStyle());
+    public void invalidParametersShouldThrowExceptionNullGivenName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new Name("Smith", "G", null, Title.MR));
+        assertEquals("Family name and given name must not be empty!", ex.getMessage());
     }
 
     @Test
-    void concatNameWesternStyleWithTitleTest() {
-        Name romanNavarro = new Name("Navarro", "Maria", "Roman", Title.MR);
-        assertEquals("Mr. Roman Maria Navarro", romanNavarro.concatNameWesternStyle());
+    public void invalidParametersShouldThrowExceptionEmptyFamilyName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new Name("", "G", "John", Title.MR));
+        assertEquals("Family name and given name must not be empty!", ex.getMessage());
     }
 
     @Test
-    void concatNameWesternStyleWithoutMiddleNameTest() {
-        Name romanNavarro = new Name("Navarro", "", "Roman", Title.MR);
-        assertEquals("Mr. Roman Navarro", romanNavarro.concatNameWesternStyle());
+    public void invalidParametersShouldThrowExceptionEmptyGivenName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new Name("Smith", "G", "", Title.MR));
+        assertEquals("Family name and given name must not be empty!", ex.getMessage());
     }
 
     @Test
-    void concatNameHungarianStyleWithoutTitleTest() {
-        Name dezsiCsabaAndras = new Name("Dézsi", "Csaba", "András");
-        assertEquals("Dézsi Csaba András", dezsiCsabaAndras.concatNameHungarianStyle());
+    public void westernStyleNameConcatenation() {
+
+        assertEquals("Mr. John G Smith", new Name("Smith", "G", "John", Title.MR).concatNameWesternStyle());
+        assertEquals("John G Smith", new Name("Smith", "G", "John").concatNameWesternStyle());
+        assertEquals("Mr. John Smith", new Name("Smith", "", "John", Title.MR).concatNameWesternStyle());
+        assertEquals("Mr. John Smith", new Name("Smith", null, "John", Title.MR).concatNameWesternStyle());
     }
 
     @Test
-    void concatNameHungarianStyleWithTitleTest() {
-        Name dezsiCsabaAndras = new Name("Dézsi", "Csaba", "András", Title.DR);
-        assertEquals("Dr. Dézsi Csaba András", dezsiCsabaAndras.concatNameHungarianStyle());
-    }
+    public void hungarianStyleNameConcatenation() {
 
-    @Test
-    void concatNameHungarianStyleWithoutMiddleNameTest() {
-        Name dezsiCsabaAndras = new Name("Dézsi", "    ", "András", Title.DR);
-        assertEquals("Dr. Dézsi András", dezsiCsabaAndras.concatNameHungarianStyle());
+        assertEquals("Mr. Smith G John", new Name("Smith", "G", "John", Title.MR).concatNameHungarianStyle());
+        assertEquals("Smith G John", new Name("Smith", "G", "John").concatNameHungarianStyle());
+        assertEquals("Mr. Smith John", new Name("Smith", "", "John", Title.MR).concatNameHungarianStyle());
     }
-
 }

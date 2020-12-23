@@ -1,71 +1,55 @@
 package stringconcat.stringconcat;
 
+
 public class Name {
     private String familyName;
-    private String middleName;
+    private String middleName = "";
     private String givenName;
     private Title title;
 
-    public Name(String familyName, String middleName, String givenName, Title title) {
-        if (this.isEmpty(familyName) || this.isEmpty(givenName)) {
-            throw new IllegalArgumentException("Family name and given name must not be blank.");
+    public Name(String familyName, String middleName, String givenName) {
+        if (isEmpty(familyName) || isEmpty(givenName)) {
+            throw new IllegalArgumentException("Family name and given name must not be empty!");
         }
         this.familyName = familyName;
         this.middleName = middleName;
         this.givenName = givenName;
+    }
+
+    public Name(String familyName, String middleName, String givenName, Title title) {
+        this(familyName, middleName, givenName);
         this.title = title;
     }
 
-    public Name(String familyName, String middleName, String givenName) {
-        if (this.isEmpty(familyName) || this.isEmpty(givenName)) {
-            throw new IllegalArgumentException("Family name and given name must not be blank.");
-        }
-        this.familyName = familyName;
-        this.middleName = middleName;
-        this.givenName = givenName;
+    private boolean isEmpty(String str) {
+        return str == null || str.isBlank();
     }
 
     public String concatNameWesternStyle() {
-        String name = "";
-        if (title == null) {
-            name = givenName;
-        } else {
-            name = title.getTitle() + " " + givenName;
+        String result = "";
+        if (title != null) {
+            result += title.getTitle() + " ";
         }
-        name += " ";
-        if (middleName == null || isEmpty(middleName)) {
-            name += "";
-        } else {
-            name += middleName;
-            name += " ";
+        result += givenName + " ";
+        if (!isEmpty(middleName)) {
+            result += middleName + " ";
         }
-        name += familyName;
-        return name;
-
+        result += familyName;
+        return result;
     }
 
     public String concatNameHungarianStyle() {
-        String name;
-        if (title == null) {
-            name = familyName;
-        } else {
-            name = title.getTitle();
-            name = name.concat(" ");
-            name = name.concat(familyName);
+        String result = "";
+        if (title != null) {
+            result = result.concat(title.getTitle()).concat(" ");
         }
-        name = name.concat(" ");
-        if (middleName == null || isEmpty(middleName)) {
-            name = name.concat("");
-        } else {
-            name = name.concat(middleName);
-            name = name.concat(" ");
+        result = result.concat(familyName).concat(" ");
+        if (!isEmpty(middleName)) {
+            result = result.concat(middleName).concat(" ");
         }
-        name = name.concat(givenName);
-        return name;
-
+        result = result.concat(givenName);
+        return result;
     }
 
-    private boolean isEmpty(String string) {
-        return string == null || string.isBlank();
-    }
+
 }
