@@ -7,19 +7,26 @@ public class Person {
     private int age;
     private Present present;
 
-    public Person(String name,int age) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
-    public void setPresent(){
-        if(age >0 && age <= 14){
-            Random rnd = new Random();
-            int i = rnd.nextInt(4);
-            present = Present.values()[i];
-         }
+    public String getName() {
+        return name;
+    }
 
-        present = null;
+    public int getAge() {
+        return age;
+    }
 
+    public Present getPresent() {
+        return present;
+    }
+
+    public void setPresent() {
+        Random rnd = new Random();
+        int i = rnd.nextInt(4);
+        present = Present.values()[i];
     }
 }
