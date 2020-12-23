@@ -21,7 +21,6 @@ public class FileNameManipulator {
                     return fileName.substring(i);
                 }
             }
-
         }
         throw new IllegalArgumentException("Invalid file name!");
     }
