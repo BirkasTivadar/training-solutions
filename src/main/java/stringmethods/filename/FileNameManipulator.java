@@ -2,63 +2,67 @@ package stringmethods.filename;
 
 public class FileNameManipulator {
 
-    public char findLastCharachter(String str) {
-        if (isBlank(str)) {
+    private boolean isEmpty(String str) {
+        return str == null || str.isBlank();
+    }
+
+    public Character findLastCharachter(String str) {
+        if (isEmpty(str)) {
             throw new IllegalArgumentException("Empty string!");
         }
-        return str.trim().charAt(str.trim().length() - 1);
+        String strClean = str.trim();
+        return strClean.charAt(strClean.length() - 1);
     }
 
     public String findFileExtension(String fileName) {
-        if (isBlank(fileName)) {
-            throw new IllegalArgumentException("Invalid file name!");
+        if (!isEmpty(fileName)) {
+            for (int i = 1; i < fileName.length() - 1; i++) {
+                if (fileName.charAt(i) == '.') {
+                    return fileName.substring(i);
+                }
+            }
         }
-        if (fileName.indexOf('.') < 1 || fileName.indexOf('.') == fileName.length() - 1) {
-            throw new IllegalArgumentException("Invalid file name!");
-        }
-        return fileName.substring(fileName.indexOf('.'));
+        throw new IllegalArgumentException("Invalid file name!");
     }
 
-    public boolean identifyFilesByExtension(String ext, String fileName) {
-        if (isBlank(fileName) || isBlank(ext)) {
+    public boolean identifyFilesByExtension(String ext, String filename) {
+        if (isEmpty(filename) || isEmpty(ext) || filename.charAt(0) == '.') {
             throw new IllegalArgumentException("Invalid argument!");
         }
-        if (fileName.indexOf('.') < 1 || fileName.indexOf('.') == fileName.length() - 1) {
-            throw new IllegalArgumentException("Invalid argument!");
-        }
-        return ext.trim().equals(fileName.trim().substring(fileName.indexOf('.') + 1));
+        return findFileExtension(filename).substring(1).equals(ext);
     }
 
     public boolean compareFilesByName(String searchedFileName, String actualFileName) {
-        if (isBlank(searchedFileName) || isBlank(actualFileName)) {
+        if (isEmpty(searchedFileName) || isEmpty(actualFileName)) {
             throw new IllegalArgumentException("Invalid argument!");
         }
-        return searchedFileName.trim().equalsIgnoreCase(actualFileName.trim());
+        String searchedName = searchedFileName.substring(0, searchedFileName.indexOf(findFileExtension(searchedFileName)));
+        String actualName = actualFileName.substring(0, actualFileName.indexOf(findFileExtension(actualFileName)));
+        return searchedName.equals(actualName);
     }
 
-    public String changeExtensionToLowerCase(String fileName) {
-        if (isBlank(fileName)) {
+    public String changeExtensionToLowerCase(String filename){
+        if(isEmpty(filename)){
             throw new IllegalArgumentException("Empty string!");
         }
-        if (fileName.indexOf('.') < 1 || fileName.indexOf('.') == fileName.length() - 1) {
+        if(filename.charAt(0) == '.'){
             throw new IllegalArgumentException("Invalid argument!");
         }
-        return fileName.trim().replace(this.findFileExtension(fileName.trim()), this.findFileExtension(fileName.trim()).toLowerCase());
+        String ext = findFileExtension(filename).toLowerCase();
+        return filename.substring(0, filename.indexOf(findFileExtension(filename))).concat(ext);
     }
 
-    public String replaceExtension(String fileName, String present, String target) {
-        if (isBlank(fileName)) {
+    public String replaceExtension(String fileName, String present, String target){
+        if(isEmpty(fileName)){
             throw new IllegalArgumentException("Empty string!");
         }
-        if (fileName.contains(present)) {
-            return fileName.trim().replace(present, target);
-        } else {
-            return fileName.trim();
+        String result = fileName;
+        if(findFileExtension(fileName).substring(1).equals(present)){
+            result = fileName.replace(present, target);
+        } else if (fileName.contains(present)){
+            String[] file = fileName.split(present);
+            result = String.join(target, file);
         }
+        return result;
     }
-
-    private boolean isBlank(String string) {
-        return string == null || string.isBlank();
-    }
-
 }
