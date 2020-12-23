@@ -12,8 +12,9 @@ public class SantaClaus {
 
     public void getThroughChimneys() {
         for (Person person : persons) {
-            if (person.getAge() <= 14) {
-                while (person.getPresent() != Present.TOY) {
+            person.setPresent();
+            if (person.getAge() >= 14) {
+                while (person.getPresent() == Present.TOY) {
                     person.setPresent();
                 }
             }
