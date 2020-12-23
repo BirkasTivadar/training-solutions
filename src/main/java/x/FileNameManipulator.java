@@ -24,7 +24,13 @@ public class FileNameManipulator {
 
         }
         throw new IllegalArgumentException("Invalid file name!");
+    }
 
+    public boolean identifyFilesByExtension(String ext, String filename) {
+        if (isEmpty(filename) || isEmpty(ext) || filename.charAt(0) == '.'){
+            throw new IllegalArgumentException("Invalid argument!");
+        }
+        return findFileExtension(filename).substring(1).equals(ext);
     }
 
     public static void main(String[] args) {

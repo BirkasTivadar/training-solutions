@@ -67,7 +67,7 @@ class FileNameManipulatorTest {
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findFileExtension(null));
         assertEquals("Invalid file name!", iae.getMessage());
     }
-/*
+
     @Test
     void invalidParametersShouldThrowException() {
         FileNameManipulator fileNameManipulator = new FileNameManipulator();
@@ -109,7 +109,7 @@ class FileNameManipulatorTest {
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension(null, "record.dat"));
         assertEquals("Invalid argument!", iae.getMessage());
     }
-
+/*
     @Test
     void invalidFileOneNullGoodFileTwoName() {
         FileNameManipulator fileNameManipulator = new FileNameManipulator();
@@ -164,14 +164,14 @@ class FileNameManipulatorTest {
         FileNameManipulator fileNameManipulator = new FileNameManipulator();
         assertEquals(".dat", fileNameManipulator.findFileExtension("record.dat"));
     }
-/*
+
     @Test
     void identifyFilesByExtension() {
         FileNameManipulator fileNameManipulator = new FileNameManipulator();
         assertEquals(true, fileNameManipulator.identifyFilesByExtension("mm", "tematika.mm"));
         assertEquals(false, fileNameManipulator.identifyFilesByExtension("md", "tematika.mm"));
     }
-
+/*
     @Test
     void compareFilesByName() {
         FileNameManipulator fileNameManipulator = new FileNameManipulator();

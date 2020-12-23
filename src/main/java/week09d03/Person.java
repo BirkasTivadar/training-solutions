@@ -27,6 +27,12 @@ public class Person {
     public void setPresent() {
         Random rnd = new Random();
         int i = rnd.nextInt(4);
+        System.out.println(i);
         present = Present.values()[i];
     }
+
+    public static void main(String[] args) {
+    }
+
+
 }
