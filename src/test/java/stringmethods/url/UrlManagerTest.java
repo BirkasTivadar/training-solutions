@@ -13,9 +13,9 @@ class UrlManagerTest {
         UrlManager urlManager = new UrlManager(url);
 
         assertEquals("https", urlManager.getProtocol());
-     //   assertEquals("earthquake.usgs.gov", urlManager.getHost());
-    //    assertEquals("/fdsnws/event/1/query", urlManager.getPath());
-     //   assertNull(urlManager.getPort());
+      assertEquals("earthquake.usgs.gov", urlManager.getHost());
+      assertEquals("/fdsnws/event/1/query", urlManager.getPath());
+       assertNull(urlManager.getPort());
     }
 
     @Test
@@ -26,9 +26,9 @@ class UrlManagerTest {
         UrlManager urlManager = new UrlManager(url);
 
         assertEquals("https", urlManager.getProtocol());
-      //  assertEquals("earthquake.usgs.gov", urlManager.getHost());
-      //  assertEquals("", urlManager.getPath());
-      //  assertEquals(Integer.valueOf(80), urlManager.getPort());
+        assertEquals("earthquake.usgs.gov", urlManager.getHost());
+        assertEquals("", urlManager.getPath());
+        assertEquals(Integer.valueOf(80), urlManager.getPort());
     }
 
     @Test
@@ -39,9 +39,9 @@ class UrlManagerTest {
         UrlManager urlManager = new UrlManager(url);
 
         assertEquals("https", urlManager.getProtocol());
-    //    assertEquals("earthquake.usgs.gov", urlManager.getHost());
-    //    assertEquals("/query", urlManager.getPath());
-    //    assertEquals(Integer.valueOf(80), urlManager.getPort());
+        assertEquals("earthquake.usgs.gov", urlManager.getHost());
+        assertEquals("/query", urlManager.getPath());
+        assertEquals(Integer.valueOf(80), urlManager.getPort());
     }
 
     @Test
