@@ -1,60 +1,55 @@
-package stringbuilder;
+package x;
 
 public class NameBuilder {
 
-    private boolean isBlank(String string) {
-        return string == null || string.isBlank();
-    }
-
     public String concatNameWesternStyle(String familyName, String middleName, String givenName, Title title) {
-        if (isBlank(familyName) || isBlank(givenName)) {
+        if (isEmpty(familyName) || isEmpty(givenName)) {
             throw new IllegalArgumentException("Family name and given name must not be empty!");
         }
-
         StringBuilder name = new StringBuilder();
-
         if (title != null) {
-            name.append(title.getTitle()).append(" ").append(givenName);
-        } else {
-            name.append(givenName);
+            name.append(title.getTitle()).append(" ");
         }
-        if (!isBlank(middleName)) {
-            name.append(" ").append(middleName);
+        name.append(givenName).append(" ");
+        if (!isEmpty(middleName)) {
+            name.append(middleName).append(" ");
         }
-        name.append(" ").append(familyName);
-
+        name.append(familyName);
         return name.toString();
     }
 
     public String concatNameHungarianStyle(String familyName, String middleName, String givenName, Title title) {
-        if (isBlank(familyName) || isBlank(givenName)) {
+        if (isEmpty(familyName) || isEmpty(givenName)) {
             throw new IllegalArgumentException("Family name and given name must not be empty!");
         }
-
         StringBuilder name = new StringBuilder();
-
         if (title != null) {
-            name.append(title.getTitle()).append(" ").append(familyName);
-        } else {
-            name.append(familyName);
+            name.append(title.getTitle()).append(" ");
         }
-        if (!isBlank(middleName)) {
-            name.append(" ").append(middleName);
+        name.append(familyName).append(" ");
+        if (!isEmpty(middleName)) {
+            name.append(middleName).append(" ");
         }
-        name.append(" ").append(givenName);
-
+        name.append(givenName);
         return name.toString();
+
     }
 
     public String insertTitle(String name, Title title, String where) {
         StringBuilder newName = new StringBuilder(name);
-        newName.insert(name.indexOf(where), " " + title.getTitle());
+        newName.insert(newName.indexOf(where), " " + title.getTitle());
         return newName.toString();
+
     }
 
     public String deleteNamePart(String name, String delete) {
         StringBuilder newName = new StringBuilder(name);
-        newName.delete(name.indexOf(delete), name.indexOf(delete) + delete.length());
+        newName.delete(newName.indexOf(delete), newName.indexOf(delete) + delete.length());
         return newName.toString();
     }
+
+    private boolean isEmpty(String str) {
+        return str == null || str.isBlank();
+    }
+
 }
