@@ -18,7 +18,7 @@ public class Library {
                 String author = scanner.next();
                 String title = scanner.next();
                 int year = scanner.nextInt();
-                Book book = new Book(regNum,author,title,year);
+                Book book = new Book(regNum, author, title, year);
                 books.add(book);
             }
         }
