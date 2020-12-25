@@ -13,7 +13,7 @@ public class Library {
 
     public void loadFromFile() {
         try (Scanner scanner = new Scanner(Library.class.getResourceAsStream("/books.csv")).useDelimiter(";|(\r\n)")) {
-            while (scanner.hasNextLine()) {
+            while (scanner.hasNext()) {
                 String regNum = scanner.next();
                 String author = scanner.next();
                 String title = scanner.next();
