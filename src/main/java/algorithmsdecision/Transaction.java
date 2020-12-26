@@ -16,6 +16,7 @@ public class Transaction {
         this.transactionOperation = transactionOperation;
         this.amount = amount;
         this.dateOfTransaction = dateOfTransaction;
+        this.status = TransactionStatus.CREATED;
     }
 
     public String getAccountNumber() {
@@ -44,6 +45,14 @@ public class Transaction {
 
     public boolean isDebit() {
         return transactionOperation == TransactionOperation.DEBIT;
+    }
+
+    public void statusChangeSucceded() {
+        status = TransactionStatus.SUCCEEDED;
+    }
+
+    public void statusChangePending() {
+        status = TransactionStatus.PENDING;
     }
 
 }
