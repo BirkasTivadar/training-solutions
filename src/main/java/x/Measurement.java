@@ -1,14 +1,11 @@
-package methodparam.measuring;
+package x;
 
 public class Measurement {
-    double[] values;
+
+    private double[] values;
 
     public Measurement(double[] values) {
         this.values = values;
-    }
-
-    public double[] getValues() {
-        return values;
     }
 
     public int findFirstIndexInLimit(int lower, int upper) {
@@ -20,28 +17,29 @@ public class Measurement {
         return -1;
     }
 
-    public double minimum() {
+    public double minimum(){
         double min = values[0];
-        for (double value : values) {
-            if (value < min) {
+        for(double value : values){
+            if(value < min){
                 min = value;
             }
         }
         return min;
     }
 
-    public double maximum() {
+    public double maximum(){
         double max = values[0];
-        for (double value : values) {
-            if (value > max) {
+        for(double value : values){
+            if(value > max){
                 max = value;
             }
         }
         return max;
     }
 
-    public ExtremValues minmax() {
-        return new ExtremValues(minimum(), maximum());
+    public ExtremValues minmax(){
+        return new ExtremValues(this.minimum(), this.maximum());
     }
 
 }
+
