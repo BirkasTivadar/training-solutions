@@ -1,4 +1,4 @@
-package algorithmscount;
+package x;
 
 import java.util.List;
 
