@@ -7,31 +7,29 @@ public class PrintFormat {
 
     public String checkException(String formatString, Integer i, Integer j) {
         try {
-            return String.format(new Locale("hu", "HU"), formatString, i, j);
-        } catch (MissingFormatArgumentException ex) {
-            throw new IllegalArgumentException("Less objects then expected in format String!", ex);
+            return String.format(formatString, i, j);
+        } catch (IllegalArgumentException iae) {
+            throw new IllegalArgumentException("Less objects then expected in format String!", iae);
         }
     }
 
     public String printFormattedText(Double number) {
-        String formatString = "Total is: %,.2f Ft";
-        return String.format(new Locale("hu", "HU"), formatString, number);
+        String result = String.format(new Locale("hu", "HU"), "Total is: %,.2f Ft", number);
+        String resultWithoutNBSP = result.replace("\u00a0", " ");
+        return resultWithoutNBSP;
+
     }
 
-
     public String printFormattedText(int count, String fruit) {
-        String formatString = "We counted %d %s in the basket";
-        return String.format(new Locale("hu", "HU"), formatString, count, fruit);
+        return String.format(new Locale("hu", "HU"), "We counted %d %s in the basket", count, fruit);
     }
 
     public String printFormattedText(int number) {
-        String formatString = "Right edge of numbers set at 4 spaces from text:%4d";
-        return String.format(new Locale("hu", "HU"), formatString, number);
+        return String.format(new Locale("hu", "HU"), "Right edge of numbers set at 4 spaces from text:%4d", number);
     }
 
     public String printFormattedText(Integer i, Integer j, Integer k) {
-        String formatString = "Multiple objects containing text:%d\t%d\t%d";
-        return String.format(new Locale("hu", "HU"), formatString, i, j, k);
+        return String.format(new Locale("hu", "HU"), "Multiple objects containing text:%d\t%d\t%d", i, j, k);
     }
 
 }

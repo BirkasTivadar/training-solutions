@@ -1,5 +1,6 @@
-package algorithmssum;
+package algorithmssum.sales;
 
+import algorithmssum.sales.Salesperson;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -19,7 +19,7 @@ class PrintFormatTest {
     void printFormattedTextWDouble() {
         PrintFormat printFormat = new PrintFormat();
         Double d = 561123.201;
-        assertEquals("Total is: 561 123,20 Ft", printFormat.printFormattedText(d));
+        assertEquals("Total is: 561 123,20 Ft", printFormat.printFormattedText(d));
     }
 
     @Test
