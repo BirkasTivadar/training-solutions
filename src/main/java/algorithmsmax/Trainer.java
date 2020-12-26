@@ -8,6 +8,7 @@ public class Trainer {
         this.name = name;
         this.age = age;
     }
+
     public String getName() {
         return name;
     }
