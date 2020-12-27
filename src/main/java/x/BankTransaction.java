@@ -1,4 +1,4 @@
-package staticattrmeth.bank;
+package x;
 
 public class BankTransaction {
     public static final int MIN = 1;
@@ -53,5 +53,4 @@ public class BankTransaction {
     public static long averageOfTransaction() {
         return transactionCounter == 0 ? 0 : sumOfTrxs / transactionCounter;
     }
-
 }
