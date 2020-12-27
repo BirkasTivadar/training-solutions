@@ -1,6 +1,7 @@
-package methodpass.troopers;
+package x;
 
 public class Position {
+
     private double posX;
     private double posY;
 

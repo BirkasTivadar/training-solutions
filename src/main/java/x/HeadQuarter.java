@@ -1,12 +1,10 @@
-package methodpass.troopers;
-
+package x;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HeadQuarter {
     private List<Trooper> troopers = new ArrayList<>();
-
 
     public List<Trooper> getTroopers() {
         return troopers;
@@ -52,4 +50,5 @@ public class HeadQuarter {
     public void moveClosestTrooper(Position target) {
         moveTrooper(findClosestTrooper(target), target);
     }
+
 }
