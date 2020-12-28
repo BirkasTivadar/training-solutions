@@ -1,5 +1,6 @@
 package inheritanceconstructor.cars;
 
+import inheritanceconstructor.cars.Car;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

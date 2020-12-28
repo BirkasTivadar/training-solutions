@@ -6,32 +6,47 @@ public class Jeep extends Car {
 
     public Jeep(double fuelRate, double fuel, double tankCapacity, double extraCapacity, double extraFuel) {
         super(fuelRate, fuel, tankCapacity);
-        if (extraFuel > extraCapacity) {
-            throw new IllegalArgumentException("Extra capacity is less than extra fuel!");
-        }
         this.extraCapacity = extraCapacity;
         this.extraFuel = extraFuel;
     }
 
-    public double calculateRefillAmount() {
-        return (super.getTankCapacity() + extraCapacity) - (super.getFuel() + extraFuel);
-    }
-
-    public void drive(int km) {
-        double usedFuel = super.getFuelRate() * km / 100;
-        if (usedFuel > super.getFuel()) {
-            throw new RuntimeException("Not enough fuel available!");
-        }
-        if (usedFuel <= extraFuel) {
-            extraFuel -= usedFuel;
-        } else {
-            usedFuel -= extraFuel;
-            extraFuel = 0.0;
-            modifyFuelAmount(-usedFuel);
-        }
+    public double getExtraCapacity() {
+        return extraCapacity;
     }
 
     public double getExtraFuel() {
         return extraFuel;
     }
+
+    @Override
+    public double calculateRefillAmount() {
+        return super.calculateRefillAmount() + extraCapacity - extraFuel;
+    }
+
+    @Override
+    public void modifyFuelAmount(double fuel) {
+        if (extraFuel > 0) {
+            if ((extraFuel + fuel) > 0) {
+                extraFuel += fuel;
+            } else {
+                fuel += extraFuel;
+                extraFuel = 0;
+                super.modifyFuelAmount(fuel);
+            }
+        } else {
+            super.modifyFuelAmount(fuel);
+        }
+    }
+
+    @Override
+    public void drive(int km) {
+        if (km * super.getFuelRate() / 100 < super.getFuel() + extraFuel) {
+            modifyFuelAmount(-((km * super.getFuelRate() / 100)));
+            return;
+        }
+        throw new RuntimeException("Not enough fuel available!");
+    }
 }
+
+
+

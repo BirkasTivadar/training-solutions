@@ -1,5 +1,6 @@
 package inheritanceconstructor.cars;
 
+import inheritanceconstructor.cars.Jeep;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,4 +37,5 @@ class JeepTest {
         Exception ex = assertThrows(RuntimeException.class, () -> jeep.drive(600));
         assertEquals("Not enough fuel available!", ex.getMessage());
     }
+
 }

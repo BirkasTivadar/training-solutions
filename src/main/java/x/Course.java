@@ -1,4 +1,4 @@
-package inheritanceconstructor.classroom;
+package x;
 
 public class Course {
     private int participants;
@@ -16,5 +16,4 @@ public class Course {
     public Facility getFacilityNeeded() {
         return facilityNeeded;
     }
-
 }

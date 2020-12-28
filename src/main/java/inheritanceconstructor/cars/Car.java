@@ -30,15 +30,15 @@ public class Car {
         this.fuel += fuel;
     }
 
-    public void drive(int km) {
-        double remainingFuel = fuel - fuelRate * km / 100;
-        if (remainingFuel < 0) {
-            throw new RuntimeException("Not enough fuel available!");
-        }
-        fuel = remainingFuel;
-    }
-
     public double calculateRefillAmount() {
         return tankCapacity - fuel;
+    }
+
+    public void drive(int km) {
+        if (km * fuelRate / 100 < fuel) {
+            fuel -= km * fuelRate / 100;
+            return;
+        }
+        throw new RuntimeException("Not enough fuel available!");
     }
 }
