@@ -1,5 +1,7 @@
 package introinheritance.basket;
 
+import introinheritance.basket.Basket;
+import introinheritance.basket.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,6 +42,6 @@ class BasketTest {
         basket.clearBasket();
         //Then
         assertEquals(0, basket.getItems().size());
-
     }
+
 }

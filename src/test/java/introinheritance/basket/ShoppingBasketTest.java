@@ -1,5 +1,7 @@
 package introinheritance.basket;
 
+import introinheritance.basket.Item;
+import introinheritance.basket.ShoppingBasket;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,7 +46,7 @@ class ShoppingBasketTest {
     @Test
     public void testSumTaxValue() {
 
-        assertEquals(1755.0, shoppingBasket.sumTaxvalue());
+        assertEquals(1755.0, shoppingBasket.sumTaxValue());
     }
 
     @Test
@@ -68,4 +70,5 @@ class ShoppingBasketTest {
         //Then
         assertEquals(4000.0, shoppingBasket.sumNettoPrice());
     }
+
 }

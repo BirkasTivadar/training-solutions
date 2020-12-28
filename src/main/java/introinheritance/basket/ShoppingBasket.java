@@ -3,10 +3,6 @@ package introinheritance.basket;
 public class ShoppingBasket {
     private Basket basket = new Basket();
 
-    public Basket getBasket() {
-        return basket;
-    }
-
     public void addItem(Item item) {
         basket.addItem(item);
     }
@@ -16,15 +12,15 @@ public class ShoppingBasket {
     }
 
     public double sumNettoPrice() {
-        double sum = 0;
+        int sum = 0;
         for (Item item : basket.getItems()) {
             sum += item.getNettoPrice();
         }
         return sum;
     }
 
-    public double sumTaxvalue() {
-        double sum = 0;
+    public double sumTaxValue() {
+        int sum = 0;
         for (Item item : basket.getItems()) {
             sum += item.getTaxAmount();
         }
@@ -32,22 +28,21 @@ public class ShoppingBasket {
     }
 
     public double sumBruttoPrice() {
-        return sumNettoPrice() + sumTaxvalue();
+        return sumNettoPrice() + sumTaxValue();
     }
 
-    public void checkout() {
+    public void checkout(){
         basket.clearBasket();
     }
 
-    public void removeMostExpensiveItem() {
+    public void removeMostExpensiveItem(){
         Item mostExpensive = basket.getItems().get(0);
-        for (Item item : basket.getItems()) {
-            if (item.getNettoPrice() > mostExpensive.getNettoPrice()) {
+        for(Item item : basket.getItems()) {
+            if(item.getNettoPrice() > mostExpensive.getNettoPrice()){
                 mostExpensive = item;
             }
         }
         basket.removeItem(mostExpensive.getBarcode());
     }
-
 
 }

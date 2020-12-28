@@ -1,5 +1,6 @@
 package introinheritance.basket;
 
+import introinheritance.basket.Item;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,4 +21,5 @@ class ItemTest {
         //Then
         assertEquals("Item{barcode='123456', nettoPrice=1000.0, vatPercent=27}", item.toString());
     }
+
 }

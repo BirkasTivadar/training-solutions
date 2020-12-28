@@ -1,11 +1,15 @@
 package introinheritance.basket;
 
 public class Item {
+
     private String barcode;
     private double nettoPrice;
     private int vatPercent;
 
     public Item(String barcode, double nettoPrice, int vatPercent) {
+        if(barcode == null || barcode.isBlank() || nettoPrice <1 || vatPercent < 0){
+            throw new IllegalArgumentException("Invalid data");
+        }
         this.barcode = barcode;
         this.nettoPrice = nettoPrice;
         this.vatPercent = vatPercent;
@@ -20,9 +24,10 @@ public class Item {
     }
 
     public double getTaxAmount() {
-        return nettoPrice * vatPercent / 100.0;
+        return nettoPrice * vatPercent / 100;
     }
 
+    @Override
     public String toString() {
         return "Item{barcode='" + barcode + "', nettoPrice=" + nettoPrice + ", vatPercent=" + vatPercent + "}";
     }
