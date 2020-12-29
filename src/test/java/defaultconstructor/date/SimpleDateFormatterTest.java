@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleDateFormatterTest {
-
     private SimpleDate simpleDate;
 
     @BeforeEach
@@ -44,5 +43,4 @@ class SimpleDateFormatterTest {
 
         assertEquals("2016-2-29", new SimpleDateFormatter().formatDateString(simpleDate));
     }
-
 }

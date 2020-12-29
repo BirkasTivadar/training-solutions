@@ -5,36 +5,46 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleDateTest {
-
     @Test
     public void incorrectParameterShouldThrowExceptionNotALeapYear() throws IllegalArgumentException {
         SimpleDate sd = new SimpleDate();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> sd.setDate(1914, 2, 29));
-        assertEquals("One or more given parameter cannot be applied!", iae.getMessage());
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            sd.setDate(1914, 2, 29);
+        });
+
+        assertEquals("One or more given parameter cannot be applied! 1914, 2, 29", ex.getMessage());
     }
 
     @Test
     public void incorrectParameterShouldThrowExceptionDayIncorrect() throws IllegalArgumentException {
-        // Given
         SimpleDate sd = new SimpleDate();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> sd.setDate(2000, 4, 31));
-        assertEquals("One or more given parameter cannot be applied!", iae.getMessage());
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            sd.setDate(2000, 4, 31);
+        });
+
+        assertEquals("One or more given parameter cannot be applied! 2000, 4, 31", ex.getMessage());
     }
 
     @Test
     public void incorrectParameterShouldThrowExceptionYearIncorrect() throws IllegalArgumentException {
-        // Given
         SimpleDate sd = new SimpleDate();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> sd.setDate(1848, 3, 15));
-        assertEquals("One or more given parameter cannot be applied!", iae.getMessage());
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            sd.setDate(1848, 3, 15);
+        });
+
+        assertEquals("One or more given parameter cannot be applied! 1848, 3, 15", ex.getMessage());
     }
 
     @Test
     public void incorrectParameterShouldThrowExceptionMonthIncorrect() throws IllegalArgumentException {
-        // Given
         SimpleDate sd = new SimpleDate();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> sd.setDate(2014, 13, 15));
-        assertEquals("One or more given parameter cannot be applied!", iae.getMessage());
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            sd.setDate(2014, 13, 15);
+        });
+
+        assertEquals("One or more given parameter cannot be applied! 2014, 13, 15", ex.getMessage());
     }
 
     @Test

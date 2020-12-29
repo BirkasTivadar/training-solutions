@@ -17,20 +17,11 @@ public class SimpleDate {
         return day;
     }
 
-    public void setDate(int year, int month, int day) {
-        if (!isCorrect(year, month, day)) {
-            throw new IllegalArgumentException("One or more given parameter cannot be applied!");
-        }
-        this.year = year;
-        this.month = month;
-        this.day = day;
-    }
-
     private boolean isLeapYear(int year) {
         return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 
-    private int calculateMonthLength(int year, int month) {
+    private int daysOfMonth(int year, int month) {
         switch (month) {
             case 1:
             case 3:
@@ -51,10 +42,19 @@ public class SimpleDate {
     }
 
     private boolean isCorrect(int year, int month, int day) {
-        if (year < 1900 || month < 1 || month > 12 || day < 1 || day > calculateMonthLength(year, month)) {
-            return false;
+        return year >= 1900 &&
+                month > 0 && month < 13 &&
+                day > 0 && day <= daysOfMonth(year, month);
+    }
+
+    public void setDate(int year, int month, int day) {
+        if (isCorrect(year, month, day)) {
+            this.year = year;
+            this.month = month;
+            this.day = day;
+        } else {
+            throw new IllegalArgumentException("One or more given parameter cannot be applied! " + year + ", " + month + ", " + day);
         }
-        return true;
     }
 
 }
