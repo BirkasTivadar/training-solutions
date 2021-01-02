@@ -1,7 +1,6 @@
-package x;
+package consctructoroverloading.bus;
 
-import consctructoroverloading.bus.BusTimeTable;
-import consctructoroverloading.bus.SimpleTime;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

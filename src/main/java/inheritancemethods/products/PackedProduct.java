@@ -23,20 +23,14 @@ public class PackedProduct extends Product {
 
     @Override
     public BigDecimal totalWeight(int pieces) {
-        int numberOfBoxes = 1;
-        int restPieces = pieces;
-        while(restPieces > packingUnit){
-            numberOfBoxes++;
-            restPieces -= packingUnit;
+        int box = 0;
+        int remainPieces = pieces;
+        while (remainPieces > 0){
+            box++;
+            remainPieces -= packingUnit;
         }
-        System.out.println(numberOfBoxes);
-        return super.totalWeight(pieces).add(weightOfBox.multiply(new BigDecimal(String.valueOf(numberOfBoxes))));
+        return super.totalWeight(pieces).add(weightOfBox.multiply(new BigDecimal(String.valueOf(box))));
     }
 
-    public static void main(String[] args) {
-        BigDecimal unit = new BigDecimal("0.5");
-        BigDecimal box = new BigDecimal("1.5");
-        PackedProduct product = new PackedProduct("Ipad", unit, 3, 12, box);
-        System.out.println(product.totalWeight(24));
-    }
+
 }
