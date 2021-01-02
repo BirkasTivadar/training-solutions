@@ -1,15 +1,12 @@
-package interfaces.simplethread;
+package x;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleThread implements Runnable {
+
     private List<String> tasks;
 
     public SimpleThread(List<String> tasks) {
-        if(tasks == null){
-            throw new IllegalArgumentException("Tasks must not be null.");
-        }
         this.tasks = tasks;
     }
 
@@ -18,10 +15,11 @@ public class SimpleThread implements Runnable {
     }
 
     private boolean nextStep() {
-        if (!tasks.isEmpty()){
+        if (tasks != null && !tasks.isEmpty()) {
             tasks.remove(tasks.size() - 1);
+            return tasks.size() > 0 ? true : false;
         }
-        return tasks.isEmpty() ? false : true;
+        return false;
     }
 
     @Override
