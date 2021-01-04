@@ -1,15 +1,15 @@
-package interfacestaticmethods;
+package x;
 
 import java.util.List;
 
 public interface Valued {
 
-    double getValued();
+    double getValue();
 
-    private static double sum(List<Valued> values) {
+    private static double sum(List<Valued> values){
         double sum = 0;
-        for (Valued valued : values) {
-            sum += valued.getValued();
+        for(Valued valued : values){
+            sum += valued.getValue();
         }
         return sum;
     }
@@ -18,3 +18,4 @@ public interface Valued {
         return sum(values);
     }
 }
+
