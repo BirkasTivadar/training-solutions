@@ -16,7 +16,7 @@ class HikingTest {
         new Gps(2313.321, 123.3123, 15),
         new Gps(2313.321, 123.3123, 18)));
 
-        assertEquals(13, );
+        assertEquals(13, hiking.getPlusElevation());
 
     }
 }
