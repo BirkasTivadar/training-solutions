@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hiking {
-    private List<Gps> gpslist = new ArrayList<>();
+    private List<Gps> gpslist;
 
     public Hiking(List<Gps> gpslist) {
         this.gpslist = gpslist;
