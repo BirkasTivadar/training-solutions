@@ -28,7 +28,5 @@ public class SeparatedSum {
         String s = "3.4;-5;6.2;4.3;-2.1";
         SeparatedSum separatedSum = new SeparatedSum();
         System.out.println(separatedSum.sum(s).toString());
-
-
     }
 }
