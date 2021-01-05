@@ -1,19 +1,25 @@
 package virtualmethod.vehicle;
 
 public class FerryBoat extends Vehicle {
-    private Car car;
     public static final int MAX_CARRY_WEIGHT = 2000;
+
+    private Car car = null;
 
     public FerryBoat(int vehicleWeight) {
         super(vehicleWeight);
     }
 
-    public boolean canCarry(Car car) {
+    @Override
+    public int getGrossLoad(){
+        return super.getGrossLoad()+car.getGrossLoad();
+    }
+
+    public boolean canCarry(Car car){
         return car != null && car.getGrossLoad() < MAX_CARRY_WEIGHT;
     }
 
-    public boolean load(Car car) {
-        if (this.canCarry(car)) {
+    public boolean load(Car car){
+        if(canCarry(car)){
             this.car = car;
             return true;
         }
@@ -21,19 +27,9 @@ public class FerryBoat extends Vehicle {
     }
 
     @Override
-    public int getGrossLoad() {
-        return super.getGrossLoad() + car.getGrossLoad();
-    }
-
-    public int getMAX_CARRY_WEIGHT() {
-        return MAX_CARRY_WEIGHT;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public String toString() {
-        return "FerryBoat{car=" + car.toString() + '}';
+    public String toString(){
+        return car instanceof Van ?
+                "FerryBoat{car="+car.toString()+"}" :
+                "FerryBoat{car="+car.toString()+"}";
     }
 }
