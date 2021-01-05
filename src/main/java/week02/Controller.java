@@ -17,10 +17,10 @@ public class Controller {
         for (int i = 1; i <= meetingRoomsNumber; i++) {
             System.out.println("Kérem a(z) " + i + ". tárgyaló nevét.");
             String name = scanner.nextLine();
-            System.out.println("Kérem a hosszát.");
-            int length = scanner.nextInt();
             System.out.println("Kérem a szélességét.");
             int width = scanner.nextInt();
+            System.out.println("Kérem a hosszát.");
+            int length = scanner.nextInt();
             scanner.nextLine();
             System.out.println();
 
