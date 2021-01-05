@@ -19,8 +19,8 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public String toString(){
-        return "Car{numberOfPassenger=" + numberPassenger+ ", " + super.toString().substring(8);
-                //"vehicleWeight=" + 1700 + '}';
+    public String toString() {
+        return "Car{numberOfPassenger=" + numberPassenger + ", " + super.toString().substring(8);
+        //"vehicleWeight=" + 1700 + '}';
     }
 }

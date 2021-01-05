@@ -1,4 +1,4 @@
-package virtualmethod.vehicle;
+package x;
 
 public class Van extends Car {
     private int cargoWeight;
