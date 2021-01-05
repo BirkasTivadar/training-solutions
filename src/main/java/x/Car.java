@@ -1,6 +1,7 @@
-package virtualmethod.vehicle;
+package x;
 
 public class Car extends Vehicle {
+
     private int numberPassenger;
 
     public Car(int vehicleWeight, int numberPassenger) {
@@ -12,15 +13,14 @@ public class Car extends Vehicle {
         return numberPassenger;
     }
 
-
     @Override
     public int getGrossLoad() {
-        return super.getGrossLoad() + (numberPassenger * PERSON_AVERAGE_WEIGHT);
+        return super.getGrossLoad() + numberPassenger * PERSON_AVERAGE_WEIGHT;
     }
 
     @Override
     public String toString(){
         return "Car{numberOfPassenger=" + numberPassenger+ ", " + super.toString().substring(8);
-        //"vehicleWeight=" + 1700 + '}';
+                //"vehicleWeight=" + 1700 + '}';
     }
 }
