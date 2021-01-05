@@ -1,0 +1,15 @@
+package x;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ItalicHtmlTextTest {
+    @Test
+    public void getBytes() throws Exception {
+        ItalicHtmlText italicHtmlText = new ItalicHtmlText("asd");
+
+        assertEquals("<i>asd</i>", italicHtmlText.getPlainText());
+    }
+
+}
