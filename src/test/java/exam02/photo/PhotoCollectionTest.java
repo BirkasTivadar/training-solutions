@@ -35,7 +35,7 @@ class PhotoCollectionTest {
         photo.setQuality(Quality.ONE_STAR);
         assertEquals(Quality.ONE_STAR, photo.getQuality());
     }
-/*
+
     @Test
     public void testCreatePhotoCollection() {
         PhotoCollection photoCollection = new PhotoCollection();
@@ -48,7 +48,7 @@ class PhotoCollectionTest {
         photoCollection.addPhoto("a.jpg", "b.jpg", "c.jpg");
         assertEquals(0, photoCollection.numberOfStars());
     }
-
+/*
     @Test
     public void testNotFound() {
         PhotoCollection photoCollection = new PhotoCollection();
