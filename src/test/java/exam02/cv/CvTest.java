@@ -20,7 +20,7 @@ class CvTest {
         assertEquals("programming", cv1.getSkills().get(0).getName());
         assertEquals(5, cv1.getSkills().get(0).getLevel());
     }
-/*
+
     @Test
     public void testFindSkill() {
         Cv cv = new Cv("John Doe");
@@ -28,7 +28,7 @@ class CvTest {
         assertEquals(2, cv.findSkillLevelByName("oo design"));
     }
 
-
+/*
     @Test
     public void testNotFoundSkill() {
         Cv cv1 = new Cv("John Doe");

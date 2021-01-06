@@ -20,13 +20,22 @@ public class Cv {
         return name;
     }
 
-    public void addSkills(String... skillStrings){
-        for(String skillString : skillStrings){
+    public void addSkills(String... skillStrings) {
+        for (String skillString : skillStrings) {
             int length = skillString.length();
-            String skillName = skillString.substring(0,length-4);
-            Integer skillLevel = Integer.parseInt(skillString.substring(length-2,length-1));
+            String skillName = skillString.substring(0, length - 4);
+            Integer skillLevel = Integer.parseInt(skillString.substring(length - 2, length - 1));
             this.skills.add(new Skill(skillName, skillLevel));
         }
+    }
+
+    public int findSkillLevelByName(String skillName){
+        for(Skill skill : skills){
+            if(skillName.equals(skill.getName())){
+                return skill.getLevel();
+            }
+        }
+        throw new IllegalArgumentException("Invalid skill name.");
     }
 
 }
