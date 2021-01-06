@@ -24,4 +24,12 @@ public class PhotoCollection {
         return sum;
     }
 
+    public void starPhoto(String name, Quality quality){
+        for(Photo photo : photos){
+            if(photo.getName().equals(name)){
+                photo.setQuality(quality);
+            }
+        }
+    }
+
 }

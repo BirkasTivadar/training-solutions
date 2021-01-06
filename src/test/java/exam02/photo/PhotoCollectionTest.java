@@ -55,7 +55,7 @@ class PhotoCollectionTest {
         photoCollection.addPhoto("a.jpg", "b.jpg", "c.jpg");
         assertThrows(PhotoNotFoundException.class,
                 () -> photoCollection.starPhoto("d.jpg", Quality.ONE_STAR));
-    }
+    }*/
 
     @Test
     public void testStars() {
@@ -73,6 +73,6 @@ class PhotoCollectionTest {
         photoCollection.starPhoto("a.jpg", Quality.ONE_STAR);
         photoCollection.starPhoto("b.jpg", Quality.TWO_STAR);
         assertEquals(3, photoCollection.numberOfStars());
-    }*/
+    }
 
 }
