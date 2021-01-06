@@ -1,6 +1,6 @@
 package exam02.photo;
 
-public class Photo implements Qualified{
+public class Photo implements Qualified {
     private String name;
     private Quality quality;
 
@@ -10,7 +10,7 @@ public class Photo implements Qualified{
     }
 
     public Photo(String name) {
-       this(name, Quality.NO_STAR);
+        this(name, Quality.NO_STAR);
     }
 
     public String getName() {
@@ -23,7 +23,7 @@ public class Photo implements Qualified{
     }
 
     @Override
-    public void setQuality(Quality quality){
+    public void setQuality(Quality quality) {
         this.quality = quality;
 
     }
