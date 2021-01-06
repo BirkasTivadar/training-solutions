@@ -29,9 +29,9 @@ public class Cv {
         }
     }
 
-    public int findSkillLevelByName(String skillName){
-        for(Skill skill : skills){
-            if(skillName.equals(skill.getName())){
+    public int findSkillLevelByName(String skillName) {
+        for (Skill skill : skills) {
+            if (skillName.equals(skill.getName())) {
                 return skill.getLevel();
             }
         }
