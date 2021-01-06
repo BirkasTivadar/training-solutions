@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CvTest {
-    @Test
+ /*   @Test
     public void testCreateWithName() {
         Cv cv1 = new Cv("John Doe");
         assertEquals("John Doe", cv1.getName());
@@ -35,7 +35,7 @@ class CvTest {
         assertThrows(SkillNotFoundException.class,
                 () -> cv1.findSkillLevelByName("programming"));
 
-    }
+    }*/
 
 
 
