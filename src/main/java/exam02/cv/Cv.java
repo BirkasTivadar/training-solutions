@@ -8,6 +8,10 @@ public class Cv {
 
     private List<Skill> skills = new ArrayList<>();
 
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
     public Cv(String name) {
         this.name = name;
     }
@@ -15,4 +19,14 @@ public class Cv {
     public String getName() {
         return name;
     }
+
+    public void addSkills(String... skillStrings){
+        for(String skillString : skillStrings){
+            int length = skillString.length();
+            String skillName = skillString.substring(0,length-4);
+            Integer skillLevel = Integer.parseInt(skillString.substring(length-2,length-1));
+            this.skills.add(new Skill(skillName, skillLevel));
+        }
+    }
+
 }
