@@ -10,23 +10,23 @@ public class PhotoCollection {
         return photos;
     }
 
-    public void addPhoto(String... photoNames){
-        for(String photoName : photoNames){
+    public void addPhoto(String... photoNames) {
+        for (String photoName : photoNames) {
             photos.add(new Photo(photoName));
         }
     }
 
-    public int numberOfStars(){
+    public int numberOfStars() {
         int sum = 0;
-        for(Photo photo : photos){
+        for (Photo photo : photos) {
             sum += photo.getQuality().getValue();
         }
         return sum;
     }
 
-    public void starPhoto(String name, Quality quality){
-        for(Photo photo : photos){
-            if(photo.getName().equals(name)){
+    public void starPhoto(String name, Quality quality) {
+        for (Photo photo : photos) {
+            if (photo.getName().equals(name)) {
                 photo.setQuality(quality);
             }
         }
