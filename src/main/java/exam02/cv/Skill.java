@@ -1,4 +1,4 @@
-package exam02;
+package exam02.cv;
 
 public class Skill {
     private String name;
