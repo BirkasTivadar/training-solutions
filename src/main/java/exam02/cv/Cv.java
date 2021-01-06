@@ -35,7 +35,7 @@ public class Cv {
                 return skill.getLevel();
             }
         }
-        throw new IllegalArgumentException("Invalid skill name.");
+        throw new IllegalArgumentException("Wrong skill name.");
     }
 
 }

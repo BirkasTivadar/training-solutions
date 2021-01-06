@@ -28,16 +28,15 @@ class CvTest {
         assertEquals(2, cv.findSkillLevelByName("oo design"));
     }
 
-/*
+
     @Test
     public void testNotFoundSkill() {
         Cv cv1 = new Cv("John Doe");
-        assertThrows(SkillNotFoundException.class,
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class,
                 () -> cv1.findSkillLevelByName("programming"));
+        assertEquals("Wrong skill name.", iae.getMessage());
 
-    }*/
-
-
+    }
 
 
 }
