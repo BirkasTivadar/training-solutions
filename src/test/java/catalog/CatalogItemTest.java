@@ -44,7 +44,7 @@ class CatalogItemTest {
         assertEquals("R-1", catalogItem.getRegistrationNumber());
 
     }
-/*
+
     @Test
     public void testNumberOfPagesAtOneItem() {
         assertEquals(600, catalogItem.numberOfPagesAtOneItem());
@@ -53,14 +53,14 @@ class CatalogItemTest {
     @Test
     public void testFullLengthAtOneItem() {
         assertEquals(385, catalogItem.fullLengthAtOneItem());
-    }*/
+    }
 
     @Test
     public void testGetAllContributorsFromOneItem() {
         List<String> result = Arrays.asList("Imagine Dragons", "Dan Raynolds", "J.K. Rowling", "Iron Maiden", "Steve Harris");
         assertEquals(result, catalogItem.getContributors());
     }
-/*
+
     @Test
     public void testGetTitlesFromAllFeature() {
         List<String> result = Arrays.asList("Night Visions", "Harry Potter", "Piece of Mind");
@@ -77,7 +77,7 @@ class CatalogItemTest {
     public void testHasPrintedFeature() {
         assertTrue(catalogItem.hasAudioFeature());
         assertTrue(catalogItem2.hasPrintedFeature());
-    }*/
+    }
 
 
 }
