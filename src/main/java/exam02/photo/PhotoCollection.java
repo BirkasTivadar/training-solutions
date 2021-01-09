@@ -28,6 +28,7 @@ public class PhotoCollection {
         for (Photo photo : photos) {
             if (photo.getName().equals(name)) {
                 photo.setQuality(quality);
+                return;
             }
         }
         throw new IllegalArgumentException();
