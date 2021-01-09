@@ -48,14 +48,14 @@ class PhotoCollectionTest {
         photoCollection.addPhoto("a.jpg", "b.jpg", "c.jpg");
         assertEquals(0, photoCollection.numberOfStars());
     }
-/*
+
     @Test
     public void testNotFound() {
         PhotoCollection photoCollection = new PhotoCollection();
         photoCollection.addPhoto("a.jpg", "b.jpg", "c.jpg");
-        assertThrows(PhotoNotFoundException.class,
+        assertThrows(IllegalArgumentException.class,
                 () -> photoCollection.starPhoto("d.jpg", Quality.ONE_STAR));
-    }*/
+    }
 
     @Test
     public void testStars() {

@@ -30,6 +30,7 @@ public class PhotoCollection {
                 photo.setQuality(quality);
             }
         }
+        throw new IllegalArgumentException();
     }
 
 }
