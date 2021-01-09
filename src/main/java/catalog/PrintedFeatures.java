@@ -9,10 +9,10 @@ public class PrintedFeatures implements Feature {
     private String title;
 
     public PrintedFeatures(String title, int numberOfPages, List<String> authors) {
-        if (isBlank(title)){
+        if (Validators.isBlank(title)){
             throw new IllegalArgumentException("Empty title");
         }
-        if (authors == null || authors.size() < 1 || numberOfPages < 1) {
+        if (Validators.isEmpty(authors) || numberOfPages < 1) {
             throw new IllegalArgumentException();
         }
         this.title = title;
@@ -33,9 +33,4 @@ public class PrintedFeatures implements Feature {
     public int getNumberOfPages() {
         return numberOfPages;
     }
-
-    private boolean isBlank(String str) {
-        return str == null || str.isBlank();
-    }
-
 }
