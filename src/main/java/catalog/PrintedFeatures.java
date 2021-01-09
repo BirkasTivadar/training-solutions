@@ -9,7 +9,7 @@ public class PrintedFeatures implements Feature {
     private String title;
 
     public PrintedFeatures(String title, int numberOfPages, List<String> authors) {
-        if (Validators.isBlank(title)){
+        if (Validators.isBlank(title)) {
             throw new IllegalArgumentException("Empty title");
         }
         if (Validators.isEmpty(authors) || numberOfPages < 1) {

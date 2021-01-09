@@ -10,7 +10,7 @@ public class AudioFeatures implements Feature {
     private String title;
 
     public AudioFeatures(String title, int length, List<String> performers) {
-        if (Validators.isBlank(title)  || length < 1 || Validators.isEmpty(performers)) {
+        if (Validators.isBlank(title) || length < 1 || Validators.isEmpty(performers)) {
             throw new IllegalArgumentException();
         }
         this.title = title;
