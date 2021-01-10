@@ -43,5 +43,4 @@ public class Calculator {
         }
         return findMinMaxSumMoreFour(arr);
     }
-
 }

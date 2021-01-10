@@ -29,6 +29,4 @@ class CalculatorTest {
         assertEquals(14, calculator.findMinMaxSum(arr).getMin());
         assertEquals(26, calculator.findMinMaxSum(arr).getMax());
     }
-
-
 }
