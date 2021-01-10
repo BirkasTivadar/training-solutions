@@ -31,7 +31,7 @@ public class PhotoCollection {
                 return;
             }
         }
-        throw new IllegalArgumentException();
+        throw new PhotoNotFoundException("Cannot find photo");
     }
 
 }
