@@ -25,9 +25,9 @@ class CalculatorTest {
     @Test
     void findMinMaxSum() {
         Calculator calculator = new Calculator();
-        int[] arr = new int[]{1, 3, 5, 7, 9};
-        assertEquals(16, calculator.findMinMaxSum(arr).getMin());
-        assertEquals(24, calculator.findMinMaxSum(arr).getMax());
+        int[] arr = new int[]{1, 3, 5, 7, 9, 5};
+        assertEquals(14, calculator.findMinMaxSum(arr).getMin());
+        assertEquals(26, calculator.findMinMaxSum(arr).getMax());
     }
 
 
