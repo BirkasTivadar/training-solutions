@@ -7,25 +7,25 @@ public class Calculator {
 
     private MinMax findMinMaxSumMoreFour(int[] arr) {
         Integer[] four = {arr[0], arr[1], arr[2], arr[3]};
-        int sumMax = arr[0] + arr[1] + arr[2] + arr[3];
-        int sumMin = sumMax;
+        int sumMin = arr[0] + arr[1] + arr[2] + arr[3];
+        int sumMax = sumMin;
         int max = Math.max(Math.max(four[0], four[1]), Math.max(four[2], four[3]));
         int min = Math.min(Math.min(four[0], four[1]), Math.min(four[2], four[3]));
-        int sumMinusMax = sumMax - max;
-        int sumMinusMin = sumMin - min;
+        int sumMinusMax = sumMin - max;
+        int sumMinusMin = sumMax - min;
         for (int i = 4; i < arr.length; i++) {
-            if (sumMinusMax + arr[i] < sumMax) {
-                sumMax = sumMinusMax + arr[i];
+            if (sumMinusMax + arr[i] < sumMin) {
+                sumMin = sumMinusMax + arr[i];
                 Array.set(four, Arrays.asList(four).indexOf(max), arr[i]);
                 max = Math.max(Math.max(four[0], four[1]), Math.max(four[2], four[3]));
             }
-            if (sumMinusMin + arr[i] > sumMin) {
-                sumMin = sumMinusMin + arr[i];
+            if (sumMinusMin + arr[i] > sumMax) {
+                sumMax = sumMinusMin + arr[i];
                 Array.set(four, Arrays.asList(four).indexOf(min), arr[i]);
                 min = Math.min(Math.min(four[0], four[1]), Math.min(four[2], four[3]));
             }
         }
-        return new MinMax(sumMax, sumMin);
+        return new MinMax(sumMin, sumMax);
     }
 
     public MinMax findMinMaxSum(int[] arr) {
