@@ -6,6 +6,13 @@ import java.util.Arrays;
 public class Calculator {
 
     public int findMinMaxSum(int[] arr) {
+        if(arr.length < 4){
+            int sum = 0;
+            for(int number : arr){
+                sum += number;
+            }
+            return sum;
+        }
         int[] four = new int[]{arr[0], arr[1], arr[2], arr[3]};
         int sum = arr[0] + arr[1] + arr[2] + arr[3];
         int max = Math.max(Math.max(arr[0], arr[1]), Math.max(arr[2], arr[3]));
