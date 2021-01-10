@@ -8,7 +8,7 @@ public class Calculator {
     private MinMax findMinMaxSumMoreFour(int[] arr) {
         Integer[] four = {arr[0], arr[1], arr[2], arr[3]};
         int sumMax = arr[0] + arr[1] + arr[2] + arr[3];
-        int sumMin = arr[0] + arr[1] + arr[2] + arr[3];
+        int sumMin = sumMax;
         int max = Math.max(Math.max(four[0], four[1]), Math.max(four[2], four[3]));
         int min = Math.min(Math.min(four[0], four[1]), Math.min(four[2], four[3]));
         int sumMinusMax = sumMax - max;
