@@ -14,13 +14,13 @@ public class Calculator {
         int sumMinusMax = sumMin - max;
         int sumMinusMin = sumMax - min;
         for (int i = 4; i < arr.length; i++) {
-            if (sumMinusMax + arr[i] < sumMin) {
+            if (arr[i] < max) {
                 sumMin = sumMinusMax + arr[i];
                 Array.set(four, Arrays.asList(four).indexOf(max), arr[i]);
                 max = Math.max(Math.max(four[0], four[1]), Math.max(four[2], four[3]));
                 sumMinusMax = sumMin - max;
             }
-            if (sumMinusMin + arr[i] > sumMax) {
+            if (arr[i] > min) {
                 sumMax = sumMinusMin + arr[i];
                 Array.set(four, Arrays.asList(four).indexOf(min), arr[i]);
                 min = Math.min(Math.min(four[0], four[1]), Math.min(four[2], four[3]));
