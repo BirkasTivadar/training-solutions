@@ -8,7 +8,8 @@ public class DivisionFinder {
         for (int i = 0; i < number.length(); i++) {
             int digit = Character.getNumericValue(number.charAt(i));
             if (digit == 0) continue;
-            if (n % digit == 0) {
+            if(digit == 1) result++;
+            else if (n % digit == 0) {
                 result++;
             }
         }
