@@ -53,7 +53,7 @@ class PhotoCollectionTest {
     public void testNotFound() {
         PhotoCollection photoCollection = new PhotoCollection();
         photoCollection.addPhoto("a.jpg", "b.jpg", "c.jpg");
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(PhotoNotFoundException.class,
                 () -> photoCollection.starPhoto("d.jpg", Quality.ONE_STAR));
     }
 
