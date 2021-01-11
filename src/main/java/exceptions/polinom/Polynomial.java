@@ -30,4 +30,12 @@ public class Polynomial {
     public double[] getCoefficients() {
         return coefficients;
     }
+
+    public double evaluate(double x) {
+        double result = 0;
+        for (int i = 0; i < coefficients.length; i++) {
+            result += coefficients[coefficients.length - (i + 1)] * Math.pow(x, i);
+        }
+        return result;
+    }
 }

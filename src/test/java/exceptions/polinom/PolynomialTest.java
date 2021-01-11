@@ -41,7 +41,7 @@ class PolynomialTest {
         double[] expected = new double[]{1, 2, 2};
         assertArrayEquals(expected, polynomial.getCoefficients());
     }
-/*
+
     @Test
     public void evaluate() throws Exception {
         Polynomial p = new Polynomial(new double[]{1, 2, 3});
@@ -57,7 +57,7 @@ class PolynomialTest {
         Polynomial p2 = new Polynomial(new double[]{1, 1, 0, 1});
         x = 3;
         assertEquals(x * x * x + x * x + 1, p2.evaluate(x));
-    }*/
+    }
 
 
 }
