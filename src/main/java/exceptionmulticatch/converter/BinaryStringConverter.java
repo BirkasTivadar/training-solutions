@@ -1,6 +1,5 @@
 package exceptionmulticatch.converter;
 
-import java.nio.channels.ScatteringByteChannel;
 
 public class BinaryStringConverter {
 
