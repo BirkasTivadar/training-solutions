@@ -4,6 +4,9 @@ package exceptionmulticatch.converter;
 public class BinaryStringConverter {
 
     public boolean[] binaryStringToBooleanArray(String str) {
+        if(str == null){
+            throw new IllegalArgumentException();
+        }
         boolean[] result = new boolean[str.length()];
         for (int i = 0; i < str.length(); i++) {
             if (Character.getNumericValue(str.charAt(i)) != 0 && Character.getNumericValue(str.charAt(i)) != 1) {
