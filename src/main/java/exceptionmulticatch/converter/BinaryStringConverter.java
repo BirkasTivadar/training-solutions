@@ -4,13 +4,13 @@ package exceptionmulticatch.converter;
 public class BinaryStringConverter {
 
     public boolean[] binaryStringToBooleanArray(String str) {
-        if(str == null){
-            throw new IllegalArgumentException();
+        if (str == null) {
+            throw new NullPointerException("binaryString null");
         }
         boolean[] result = new boolean[str.length()];
         for (int i = 0; i < str.length(); i++) {
             if (Character.getNumericValue(str.charAt(i)) != 0 && Character.getNumericValue(str.charAt(i)) != 1) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("binaryString not valid");
             }
             result[i] = Character.getNumericValue(str.charAt(i)) == 0 ? false : true;
         }

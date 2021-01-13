@@ -9,14 +9,14 @@ class AnswerStatTest {
     public void convertNullShouldThrowException() {
         AnswerStat answerStat = new AnswerStat(new BinaryStringConverter());
         Exception ex = assertThrows(InvalidBinaryStringException.class, () -> answerStat.convert(null));
-        assertEquals(null, ex.getCause().getMessage());
+        assertEquals("binaryString null", ex.getCause().getMessage());
     }
 
     @Test
     public void convertInvalidStringShouldThowException() {
         AnswerStat answerStat = new AnswerStat(new BinaryStringConverter());
         Exception ex = assertThrows(InvalidBinaryStringException.class, () -> answerStat.convert("1133"));
-        assertEquals(null, ex.getCause().getMessage());
+        assertEquals("binaryString not valid", ex.getCause().getMessage());
     }
 
     @Test

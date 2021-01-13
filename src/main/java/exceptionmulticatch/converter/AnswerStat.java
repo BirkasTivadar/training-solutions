@@ -25,6 +25,6 @@ public class AnswerStat {
                 numberOfTrue++;
             }
         }
-        return numberOfTrue * 100/ arr.length;
+        return numberOfTrue * 100 / arr.length;
     }
 }
