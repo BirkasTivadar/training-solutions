@@ -44,7 +44,7 @@ class TrackTest {
 
         assertTrue(track.getDistance() > 13611579.56 && track.getDistance() < 13611579.66);
     }
-/*
+
     @Test
     public void testFindMinimumCoordinate() {
         track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 123));
@@ -66,7 +66,7 @@ class TrackTest {
         assertEquals(13.7, track.findMaximumCoordinate().getLatitude());
         assertEquals(45.7, track.findMaximumCoordinate().getLongitude());
     }
-
+/*
     @Test
     public void testGetRectangleArea() {
         track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 123));

@@ -63,5 +63,33 @@ public class Track {
         System.out.println(track.getDistance());
     }
 
+    public Coordinate findMinimumCoordinate() {
+        double minLatitude = trackPoints.get(0).getCoordinate().getLatitude();
+        double minLongitude = trackPoints.get(0).getCoordinate().getLongitude();
+        for (TrackPoint point : trackPoints) {
+            if (point.getCoordinate().getLatitude() < minLatitude) {
+                minLatitude = point.getCoordinate().getLatitude();
+            }
+            if (point.getCoordinate().getLongitude() < minLongitude) {
+                minLongitude = point.getCoordinate().getLongitude();
+            }
+        }
+        return new Coordinate(minLatitude, minLongitude);
+    }
+
+    public Coordinate findMaximumCoordinate() {
+        double maxLatitude = trackPoints.get(0).getCoordinate().getLatitude();
+        double maxLongitude = trackPoints.get(0).getCoordinate().getLongitude();
+        for (TrackPoint point : trackPoints) {
+            if (point.getCoordinate().getLatitude() > maxLatitude) {
+                maxLatitude = point.getCoordinate().getLatitude();
+            }
+            if (point.getCoordinate().getLongitude() > maxLongitude) {
+                maxLongitude = point.getCoordinate().getLongitude();
+            }
+        }
+        return new Coordinate(maxLatitude, maxLongitude);
+    }
+
 }
 
