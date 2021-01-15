@@ -1,4 +1,4 @@
-package ioreadwritebytes;
+package ioreadwritebytes.temperatures;
 
 public class Temperatures {
 

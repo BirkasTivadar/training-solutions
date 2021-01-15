@@ -1,4 +1,4 @@
-package ioreadwritebytes;
+package ioreadwritebytes.temperatures;
 
 import java.io.IOException;
 import java.nio.file.Files;
