@@ -14,7 +14,7 @@ class TrackTest {
         assertEquals(1, track.getTrackPoints().size());
         assertEquals(34.89, track.getTrackPoints().get(0).getCoordinate().getLongitude());
     }
-/*
+
     @Test
     public void testFullElevation() {
         track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 123));
@@ -26,7 +26,7 @@ class TrackTest {
     }
 
     @Test
-    public void testFullDecrese() {
+    public void testFullDecrease() {
         track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 123));
         track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 124));
         track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 0));
@@ -44,7 +44,7 @@ class TrackTest {
 
         assertTrue(track.getDistance() > 13611579.56 && track.getDistance() < 13611579.66);
     }
-
+/*
     @Test
     public void testFindMinimumCoordinate() {
         track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 123));
