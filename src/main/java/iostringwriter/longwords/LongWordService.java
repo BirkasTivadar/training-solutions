@@ -16,7 +16,7 @@ public class LongWordService {
                 writer.write("\n");
             }
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not close this writer.");
+            throw new IllegalStateException("Can not close this writer.", ioe);
         }
         return writer.toString();
     }

@@ -33,7 +33,7 @@ public class SalaryWriter {
                 writer.println(salary(name));
             }
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not write this file: " + path);
+            throw new IllegalStateException("Can not write this file: " + path, ioe);
         }
     }
 }

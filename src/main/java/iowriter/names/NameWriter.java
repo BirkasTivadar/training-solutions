@@ -19,7 +19,7 @@ public class NameWriter {
             writer.write(str);
             writer.newLine();
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not write this file: " + path);
+            throw new IllegalStateException("Can not write this file: " + path, ioe);
         }
     }
 }

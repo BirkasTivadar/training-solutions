@@ -19,7 +19,7 @@ public class Diary {
                 Files.writeString(file, mark + "\n");
             }
         } catch (IOException e) {
-            throw new IllegalStateException("Can not write this file" + fileName);
+            throw new IllegalStateException("Can not write this file" + fileName, e);
 
         }
     }
@@ -35,7 +35,7 @@ public class Diary {
             }
             Files.writeString(file, "average: " + sum / marks.size(), StandardOpenOption.APPEND);
         } catch (IOException e) {
-            throw new IllegalStateException("Can not read this file" + fileName);
+            throw new IllegalStateException("Can not read this file" + fileName, e);
         }
     }
 

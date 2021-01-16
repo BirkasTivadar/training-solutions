@@ -23,7 +23,7 @@ public class IdManager {
                 ids.add(line);
             }
         } catch (IOException e) {
-            throw new IllegalStateException("Can not read this file." + fileName);
+            throw new IllegalStateException("Can not read this file." + fileName, e);
         }
     }
 }
