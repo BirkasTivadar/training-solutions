@@ -18,49 +18,33 @@ public class Track {
         if (trackPoints == null || trackPoints.size() < 2) {
             return 0;
         }
-        double sum = 0;
+        double sumElevation = 0;
         for (int i = 1; i < trackPoints.size(); i++) {
-            double difference = trackPoints.get(i).getElevation() - trackPoints.get(i - 1).getElevation();
-            if (difference > 0) {
-                sum += difference;
-            }
+            sumElevation += trackPoints.get(i).higherWith(trackPoints.get(i - 1));
         }
-        return sum;
+        return sumElevation;
     }
 
     public double getFullDecrease() {
         if (trackPoints == null || trackPoints.size() < 2) {
             return 0;
         }
-        double sum = 0;
+        double sumDecrease = 0;
         for (int i = 1; i < trackPoints.size(); i++) {
-            double difference = trackPoints.get(i).getElevation() - trackPoints.get(i - 1).getElevation();
-            if (difference < 0) {
-                sum += -difference;
-            }
+            sumDecrease += trackPoints.get(i).lowerWith(trackPoints.get(i - 1));
         }
-        return sum;
+        return sumDecrease;
     }
 
     public double getDistance() {
         if (trackPoints == null || trackPoints.size() < 2) {
             return 0;
         }
-        double sum = 0;
+        double sumDistance = 0;
         for (int i = 1; i < trackPoints.size(); i++) {
-            double difference = trackPoints.get(i).getDistanceFrom(trackPoints.get(i - 1));
-            sum += difference;
+            sumDistance += trackPoints.get(i).getDistanceFrom(trackPoints.get(i - 1));
         }
-        return sum;
-    }
-
-    public static void main(String[] args) {
-        Track track = new Track();
-        track.addTrackPoint(new TrackPoint(new Coordinate(12.5, 34.89), 123));
-        track.addTrackPoint(new TrackPoint(new Coordinate(-12.5, 45.7), 124));
-        track.addTrackPoint(new TrackPoint(new Coordinate(13.7, -6.0), 0));
-        track.addTrackPoint(new TrackPoint(new Coordinate(3.67, -42.789), 200));
-        System.out.println(track.getDistance());
+        return sumDistance;
     }
 
     public Coordinate findMinimumCoordinate() {
@@ -91,5 +75,11 @@ public class Track {
         return new Coordinate(maxLatitude, maxLongitude);
     }
 
+    public double getRectangleArea() {
+        double x = findMaximumCoordinate().getLatitude() - findMinimumCoordinate().getLatitude();
+        double y = findMaximumCoordinate().getLongitude() - findMinimumCoordinate().getLongitude();
+
+        return x * y;
+    }
 }
 

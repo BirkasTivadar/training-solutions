@@ -5,6 +5,9 @@ public class ActivityWithTrack implements Activity {
     private Track track;
 
     public ActivityWithTrack(Track track, ActivityType activityType) {
+        if ((activityType.isHasTrack() == false)){
+            throw new IllegalArgumentException("This activity: "+ activityType + " has not track.");
+        }
         this.track = track;
         this.activityType = activityType;
     }

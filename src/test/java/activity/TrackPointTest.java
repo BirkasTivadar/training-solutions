@@ -14,7 +14,6 @@ class TrackPointTest {
         assertEquals(34.89, trackPoint.getCoordinate().getLongitude());
         assertEquals(12.5, trackPoint.getCoordinate().getLatitude());
         assertEquals(123.0, trackPoint.getElevation());
-
     }
 
     @Test

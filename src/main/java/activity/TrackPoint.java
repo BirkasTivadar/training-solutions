@@ -37,4 +37,15 @@ public class TrackPoint {
     private double rad2deg(double rad) {
         return (rad * 180.0 / Math.PI);
     }
+
+    public double higherWith(TrackPoint point) {
+        double difference = this.getElevation() - point.getElevation();
+        return difference > 0 ? difference : 0;
+    }
+
+    public double lowerWith(TrackPoint point) {
+        double difference = this.getElevation() - point.getElevation();
+        return difference < 0 ? -difference : 0;
+    }
+
 }

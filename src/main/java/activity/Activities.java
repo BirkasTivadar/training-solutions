@@ -1,5 +1,8 @@
 package activity;
 
+import introconstructors.Restaurant;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Activities {
@@ -10,6 +13,10 @@ public class Activities {
         this.activities = activities;
     }
 
+    public List<Activity> getActivities() {
+        return new ArrayList<>(activities);
+    }
+
     public void addActivity(Activity activity) {
         activities.add(activity);
     }
@@ -17,7 +24,7 @@ public class Activities {
     public int numberOfTrackActivities() {
         int sum = 0;
         for (Activity activity : activities) {
-            if (activity instanceof ActivityWithTrack) {
+            if (activity.getType().isHasTrack()) {
                 sum++;
             }
         }
@@ -27,11 +34,26 @@ public class Activities {
     public int numberOfWithoutTrackActivities() {
         int sum = 0;
         for (Activity activity : activities) {
-            if (activity instanceof ActivityWithoutTrack) {
+            if (!activity.getType().isHasTrack()) {
                 sum++;
             }
         }
         return sum;
     }
 
+    public List<Report> distancesByTypes() {
+        List<Report> result = new ArrayList<>();
+        double[] distances = new double[ActivityType.values().length];
+        for (Activity activity : activities) {
+            if (!activity.getType().isHasTrack()) {
+                continue;
+            }
+            distances[activity.getType().ordinal()] += activity.getDistance();
+        }
+        for (ActivityType activityType : ActivityType.values()) {
+            Report report = new Report(activityType, distances[activityType.ordinal()]);
+            result.add(report);
+        }
+        return result;
+    }
 }
