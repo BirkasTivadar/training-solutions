@@ -25,6 +25,4 @@ public class ByteChecker {
         }
         return result;
     }
-
-
 }
