@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InstallerTest {
     @TempDir
-    public File folder;
+    public File  folder;
 
 
     @Test
