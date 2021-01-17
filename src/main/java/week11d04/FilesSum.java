@@ -10,9 +10,26 @@ import java.util.List;
 public class FilesSum {
 
     private int sumNumbers() {
+        int sum = 0;
+        String fileName;
+        for (int i = 0; i < 100; i++) {
+            fileName = this.createFilename(i);
+            if (Files.isRegularFile(Path.of(fileName))) {
+                sum += read(fileName);
+            }
+        }
+        return sum;
+    }
 
-        int number = 0;
-return 0;
+    private int read(String fileName) {
+        Path path = Path.of(fileName);
+        int result = 0;
+        try {
+            result = Integer.parseInt(Files.readString(path));
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("Can not read.", ioe);
+        }
+        return result;
     }
 
 
