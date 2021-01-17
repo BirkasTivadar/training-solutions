@@ -12,6 +12,10 @@ public class Library {
 
     private List<Book> books = new ArrayList<>();
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
     public void add(Book... books) {
         for (Book book : books) {
             this.books.add(book);
