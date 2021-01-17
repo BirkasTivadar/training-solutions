@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +31,7 @@ class LibraryTest {
     }
 
     @Test
-    void testSaveAndLoadBooks() {
+    void testSaveAndLoadBooks() throws IOException {
         Book book1 = new Book("Solohov", "Csendes Don");
         Book book2 = new Book("Jack London", "A vadon szava");
         Book book3 = new Book("Cervantes", "Don Quijote");
@@ -38,6 +41,10 @@ class LibraryTest {
         library.add(book3);
         Path file = new File(folder, "books.txt").toPath();
         library.saveBooks(file);
+
+        List<String> content = Files.readAllLines(file);
+        assertEquals(3, content.size());
+        assertEquals("Solohov: Csendes Don", content.get(0));
     }
 
 }
