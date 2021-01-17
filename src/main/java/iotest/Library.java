@@ -1,5 +1,6 @@
 package iotest;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,13 +18,28 @@ public class Library {
         }
     }
 
-    public void saveBooks(Path file) {
-        try (BufferedWriter writer = Files.newBufferedWriter(file)) {
+    public void saveBooks(Path path) {
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (Book book : books) {
                 writer.write(book.getAuthor() + ": " + book.getTitle() + "\n");
             }
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not write", ioe);
+            throw new IllegalStateException("Can not write this file", ioe);
+        }
+    }
+
+    public void loadBooks(Path path) {
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] bookString = line.split(": ");
+                Book book = new Book(bookString[0],bookString[1]);
+                if(!books.contains(book)){
+                    books.add(book);
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Can not read this file.", e);
         }
     }
 }
