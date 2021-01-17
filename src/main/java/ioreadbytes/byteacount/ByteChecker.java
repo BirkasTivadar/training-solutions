@@ -11,8 +11,8 @@ public class ByteChecker {
     public int readBytesAndFindAs(String fileName) {
         Path path = Path.of(fileName);
         int result = 0;
-        try (InputStream inputStream = new BufferedInputStream(Files.newInputStream(path))) {
-            byte[] bytes = new byte[1000];
+        try (InputStream inputStream = Files.newInputStream(path)) {
+            byte[] bytes = new byte[800];
             while ((inputStream.read(bytes)) > 0) {
                 for (byte a : bytes) {
                     if (a == 97) {
