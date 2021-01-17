@@ -5,7 +5,10 @@ public class Book {
     private String title;
 
     public Book(String author, String title) {
-        this.author = author;
+        if (author == null || author.isBlank() || title == null || title.isBlank()){
+            throw new IllegalArgumentException("Author or title is empty!");
+        }
+            this.author = author;
         this.title = title;
     }
 
