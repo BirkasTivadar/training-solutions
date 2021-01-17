@@ -17,6 +17,7 @@ public class Installer {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/install/install.txt")))) {
                     String line;
                     while ((line = reader.readLine()) != null) {
+                        System.out.println(line);
                         if (line.endsWith("/")) {
                             Files.createDirectories(path.resolve(line));
                         }

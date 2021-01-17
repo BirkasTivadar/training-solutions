@@ -1,23 +1,21 @@
 package x;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 public class EmployeeService {
 
-    public static void main(String[] args) {
-        Path file = Path.of("employees.txt");
-
-        try (BufferedReader reader = Files.newBufferedReader(file)) {
-            String line;
-            while((line = reader.readLine()) != null){
-                System.out.println(line);
+    public void writeEmployeesToFile(List<String> employees, Path file) {
+        try (BufferedWriter writer = Files.newBufferedWriter(file)) {
+            for (String employee : employees) {
+                writer.write(employee + "\n");
             }
-
-        } catch (IOException e) {
-            throw new IllegalStateException("Can not read this file:" + file.toString());
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not write", ioe);
         }
     }
 }
