@@ -13,7 +13,7 @@ public class GradeRounder {
                 if(remain < 3){
                     result[i] = (grades[i]/5)*5;
                 } else {
-                    result[i] = (grades[i]/5)*6;
+                    result[i] = ((grades[i]/5)+1)*5;
                 }
             }
         }
