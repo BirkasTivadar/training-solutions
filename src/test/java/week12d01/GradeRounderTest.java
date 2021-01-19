@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GradeRounderTest {
 
-
     @Test
     void roundGrades() {
         GradeRounder gradeRounder = new GradeRounder();

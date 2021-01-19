@@ -10,10 +10,10 @@ public class GradeRounder {
                 result[i] = grades[i];
             } else {
                 int remain = grades[i] % 5;
-                if(remain < 3){
-                    result[i] = (grades[i]/5)*5;
+                if (remain < 3) {
+                    result[i] = (grades[i] / 5) * 5;
                 } else {
-                    result[i] = ((grades[i]/5)+1)*5;
+                    result[i] = ((grades[i] / 5) + 1) * 5;
                 }
             }
         }
