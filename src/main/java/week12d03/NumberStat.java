@@ -1,5 +1,6 @@
 package week12d03;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,7 +12,11 @@ public class NumberStat {
 
     private List<Integer> numbers = new ArrayList<>();
 
-    public int minimumOnceNumber() {
+    public NumberStat(List<Integer> numbers) { // Teszthez
+        this.numbers = new ArrayList<>(numbers);
+    }
+
+    public int smallestUnique() {
         if (numbers == null || numbers.size() < 1) {
             throw new IllegalArgumentException("List is empty.");
         }
@@ -20,14 +25,45 @@ public class NumberStat {
         }
         List<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
-        for (int i = 1; i < sortedNumbers.size(); i++) {
-            if (sortedNumbers.get(i) != sortedNumbers.get(i - 1)) {
-                return sortedNumbers.get(i - 1);
+        if (numbers.size() == 2 && numbers.get(0) != numbers.get(1)) {
+            return numbers.get(0);
+        }
+        for (int i = 1; i < sortedNumbers.size() - 1; i++) {
+            if (sortedNumbers.get(i) != sortedNumbers.get(i - 1) && sortedNumbers.get(i) != sortedNumbers.get(i + 1)) {
+                return sortedNumbers.get(i);
             }
         }
-        throw new IllegalStateException("Is not this number.");
+        if (sortedNumbers.get(sortedNumbers.size() - 1) != sortedNumbers.get(sortedNumbers.size() - 2)) {
+            return sortedNumbers.get(sortedNumbers.size() - 1);
+        }
+        throw new IllegalStateException("Wrong list.");
     }
 
+    public void readFromFile(String directoryOrFile, String... directoriesAndFile) {
+        Path path = Path.of(directoryOrFile);
+        if (directoriesAndFile.length > 0) {
+            for (String dir : directoriesAndFile) {
+                path = path.resolve(dir);
+            }
+        }
+        try (BufferedReader br = Files.newBufferedReader(path)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] numbersString = line.split(",");
+                loadList(numbersString);
+            }
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read this file", ioe);
+        }
+    }
+
+    private void loadList(String[] numbersString) {
+        for (String number : numbersString) {
+            numbers.add(Integer.parseInt(number));
+        }
+    }
+
+    /*
     public String readFromFile(Path file) {
         StringBuilder str = new StringBuilder();
         List<String> numbersLists = new ArrayList<>();
@@ -49,5 +85,5 @@ public class NumberStat {
         for (String number : numbersArray) {
             numbers.add(Integer.parseInt(number));
         }
-    }
+    }*/
 }
