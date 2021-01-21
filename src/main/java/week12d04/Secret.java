@@ -7,7 +7,6 @@ import java.nio.file.Path;
 
 public class Secret {
 
-
     public void printSecret() {
         Path file = Path.of("secret.dat");
         try (InputStream is = Files.newInputStream(file)) {
@@ -19,5 +18,10 @@ public class Secret {
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read.", ioe);
         }
+    }
+
+    public static void main(String[] args) {
+        Secret secret = new Secret();
+        secret.printSecret();
     }
 }
