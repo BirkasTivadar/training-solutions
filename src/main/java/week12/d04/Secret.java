@@ -13,11 +13,11 @@ public class Secret {
 
         try (InputStream is = Files.newInputStream(file)) {
             byte[] bytes = is.readAllBytes();
-            for(int i=0; i< bytes.length ; i++){
+            for (int i = 0; i < bytes.length; i++) {
                 bytes[i] += 10;
             }
-            for(int i=0; i< bytes.length ; i++){
-                System.out.print((char)bytes[i]);
+            for (int i = 0; i < bytes.length; i++) {
+                System.out.print((char) bytes[i]);
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read.", ioe);
