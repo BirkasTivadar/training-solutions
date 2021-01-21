@@ -1,4 +1,4 @@
-package week12.d04;
+package week12d04;
 
 import java.io.IOException;
 import java.io.InputStream;
