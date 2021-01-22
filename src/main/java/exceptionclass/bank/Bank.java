@@ -1,11 +1,10 @@
 package exceptionclass.bank;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
 
-    private List<Account> accounts = new ArrayList<>();
+    private List<Account> accounts;
 
     public Bank(List<Account> accounts) {
         if (accounts == null) {
