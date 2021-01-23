@@ -20,7 +20,6 @@ public class Diary {
             }
         } catch (IOException e) {
             throw new IllegalStateException("Can not write this file" + fileName, e);
-
         }
     }
 
