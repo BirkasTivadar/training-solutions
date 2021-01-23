@@ -15,7 +15,6 @@ class StateRegisterTest {
         assertEquals(0, stateRegister.getStates().size());
     }
 
-
     @Test
     public void testWithWrongFileName() {
         Exception ex = assertThrows(IllegalStateException.class, () -> stateRegister.readStatesFromFile("myFile.txt"));
@@ -32,7 +31,6 @@ class StateRegisterTest {
         assertEquals("Wyoming", stateRegister.getStates().get(49).getStateName());
     }
 
-
     @Test
     public void wrongStateNameTest() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> {
@@ -48,7 +46,6 @@ class StateRegisterTest {
 
         assertEquals("Albany", stateRegister.findCapitalByStateName("New York"));
         assertEquals("Juneau", stateRegister.findCapitalByStateName("Alaska"));
-
     }
 
 }
