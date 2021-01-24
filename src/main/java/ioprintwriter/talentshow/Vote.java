@@ -17,7 +17,7 @@ public class Vote {
         return number;
     }
 
-    public void incNum(){
+    public void incNum() {
         number++;
     }
 }

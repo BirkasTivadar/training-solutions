@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,7 +42,7 @@ class ResultCalculatorTest {
         assertEquals("Magician", rc.getProductions().get(5).getName());
     }
 
-/*
+
     @Test
     public void calculateVotesTest() {
         rc.readTalents(talentsFile);
@@ -53,7 +54,6 @@ class ResultCalculatorTest {
                 testNum = v.getNumber();
             }
         }
-
         assertEquals(4, testNum);
     }
 
@@ -70,6 +70,6 @@ class ResultCalculatorTest {
         assertTrue(results.contains("9 Singer 6"));
 
         assertEquals("Winner: Actors_From_Shadow", results.get(results.size() - 1));
-    }*/
+    }
 
 }
