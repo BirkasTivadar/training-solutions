@@ -1,8 +1,6 @@
 package iodatastream.bank;
 
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -16,6 +14,17 @@ public class BankAccountManager {
             os.writeDouble(account.getBalance());
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not write.", ioe);
+        }
+    }
+
+    public BankAccount loadAccount(InputStream is) {
+        try (DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(is))) {
+            String accountNumber = dataInputStream.readUTF();
+            String owner = dataInputStream.readUTF();
+            double balance = dataInputStream.readDouble();
+            return new BankAccount(accountNumber, owner, balance);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read.", ioe);
         }
     }
 }

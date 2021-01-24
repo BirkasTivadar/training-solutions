@@ -5,6 +5,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -31,7 +32,7 @@ class BankAccountManagerTest {
         assertArrayEquals(originalAccount, savedAccount);
 
     }
-/*
+
     public void testLoadAccount() throws IOException {
         BankAccountManager manager = new BankAccountManager();
 
@@ -42,6 +43,6 @@ class BankAccountManagerTest {
             assertEquals("John Doe", account.getOwner());
             assertEquals(11234.6, account.getBalance(), 0.0001);
         }
-    }*/
+    }
 
 }
