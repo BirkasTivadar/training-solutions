@@ -18,7 +18,7 @@ public class SalaryWriter {
     private int salary(String name) {
         if (name.contains("Dr.")) {
             return 500_000;
-        } else if (name.contains("Mrs.")) {
+        } else if (name.contains("Mrs.") || name.contains("Mr.")) {
             return 200_000;
         } else {
             return 100_000;
