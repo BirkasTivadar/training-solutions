@@ -8,7 +8,8 @@ import java.nio.file.Path;
 
 public class ImageAssembler {
 
-    public void makeImageFile(byte[][] byteArrays, Path path) {
+    public void makeImageFile(byte[][] byteArrays, Path folder) {
+        Path path = folder.resolve("image.png");
         try (OutputStream os = new BufferedOutputStream(Files.newOutputStream(path))) {
             for (byte[] bytaArray : byteArrays) {
                 os.write(bytaArray);
