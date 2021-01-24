@@ -17,7 +17,7 @@ public class TransactionFileManager {
                 outputStream.write((transaction.getTime().toString() + "\n").getBytes());
                 outputStream.write((transaction.getAccount() + "\n").getBytes());
                 outputStream.write(String.valueOf(transaction.getAmount()).getBytes());
-                //  outputStream.closeEntry();  // Ez muszáj, konzin rákérdezni
+                //  outputStream.closeEntry();  // Ez muszáj? konzin rákérdezni
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not write.", ioe);
