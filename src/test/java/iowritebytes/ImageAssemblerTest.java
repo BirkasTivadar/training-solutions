@@ -42,7 +42,7 @@ class ImageAssemblerTest {
             }
             return parts.toArray(new byte[0][]);
         } catch (IOException e) {
-            throw new IllegalStateException("Cannot find source file., e");
+            throw new IllegalStateException("Cannot find source file.", e);
         }
     }
 
