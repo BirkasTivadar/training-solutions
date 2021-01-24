@@ -18,7 +18,7 @@ class ImageAssemblerTest {
     public File folder;
 
     @Test
-    public void testMakeImageFile() throws IOException {
+    void testMakeImageFile() throws IOException {
         ImageAssembler imageAssembler = new ImageAssembler();
 
         byte[][] source = readImage();

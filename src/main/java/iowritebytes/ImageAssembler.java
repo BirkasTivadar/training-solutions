@@ -10,7 +10,7 @@ public class ImageAssembler {
 
     public void makeImageFile(byte[][] byteArrays, Path path) {
         try (OutputStream os = new BufferedOutputStream(Files.newOutputStream(path))) {
-            for(byte[] bytaArray:byteArrays){
+            for (byte[] bytaArray : byteArrays) {
                 os.write(bytaArray);
             }
         } catch (IOException ioe) {
