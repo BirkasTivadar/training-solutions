@@ -33,7 +33,7 @@ class ImageAssemblerTest {
     }
 
     private byte[][] readImage() {
-        try (BufferedInputStream is = new BufferedInputStream(this.getClass().getResourceAsStream("face_smile.png"))) {
+        try (BufferedInputStream is = new BufferedInputStream(this.getClass().getResourceAsStream("/face_smile.png"))) {
             ArrayList<byte[]> parts = new ArrayList<>();
             byte[] buffer = new byte[1024];
             int length;
