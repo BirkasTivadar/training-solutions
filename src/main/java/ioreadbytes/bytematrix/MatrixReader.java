@@ -29,4 +29,27 @@ public class MatrixReader {
         }
     }
 
+    public int numberOfColumnsWhereMoreZeros() {
+        int result = 0;
+        for (int column = 0; column < 1000; column++) {
+            if (isMoreZero(column)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    private boolean isMoreZero(int column) {
+        int moreThanHalf = myMatrix.size() / 2;
+        int counter = 0;
+        for (int i = 0; i < myMatrix.size(); i++) {
+            if (myMatrix.get(i)[column] == 48) {
+                counter++;
+                if (counter > moreThanHalf) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

@@ -16,11 +16,11 @@ class MatrixReaderTest {
         assertEquals(1000, matrixReader.getMyMatrix().get(5).length);
     }
 
-/*
+
     @Test
     public void numberOfColumnsWhereMoreZeros() {
         matrixReader.readBytesAndCreateMatrix("matrix.dat");
         assertEquals(493, matrixReader.numberOfColumnsWhereMoreZeros());
-    }*/
+    }
 
 }
