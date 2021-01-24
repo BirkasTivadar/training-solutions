@@ -12,11 +12,12 @@ public class TransactionFileManager {
 
     public void saveTransactions(Path zip, List<Transaction> transactionList) {
         try (ZipOutputStream outputStream = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream(zip)))) {
-            for (Transaction transaction : transactionList){
-                outputStream.putNextEntry(new ZipEntry(transaction.getId()+".dat"));
-                outputStream.write((transaction.getTime().toString()+"\n").getBytes());
-                outputStream.write((transaction.getAccount()+"\n").getBytes());
+            for (Transaction transaction : transactionList) {
+                outputStream.putNextEntry(new ZipEntry(Long.toString(transaction.getId())));
+                outputStream.write((transaction.getTime().toString() + "\n").getBytes());
+                outputStream.write((transaction.getAccount() + "\n").getBytes());
                 outputStream.write(String.valueOf(transaction.getAmount()).getBytes());
+                //  outputStream.closeEntry();  // Ez muszáj, konzin rákérdezni
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not write.", ioe);
