@@ -22,7 +22,7 @@ class BankAccountManagerTest {
         BankAccountManager manager = new BankAccountManager();
 
         File file = new File(folder, "test.txt");
-        Path path=folder.toPath();
+        Path path = folder.toPath();
         manager.saveAccount(account, path);
 
         Path targetPath = path.resolve("10092395-77541845-00000000.dat");
