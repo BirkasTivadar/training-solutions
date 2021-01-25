@@ -2,12 +2,13 @@ package timesheet;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 public class TimeSheetItem {
-    private final Employee employee;
-    private final Project project;
-    private final LocalDateTime beginDate;
-    private final LocalDateTime endDate;
+    private Employee employee;
+    private Project project;
+    private LocalDateTime beginDate;
+    private LocalDateTime endDate;
 
     public TimeSheetItem(Employee employee, Project project, LocalDateTime beginDate, LocalDateTime endDate) {
         if (!beginDate.toLocalDate().equals(endDate.toLocalDate()) || beginDate.isAfter(endDate)) {
@@ -38,4 +39,5 @@ public class TimeSheetItem {
     public long hoursBetweenDates() {
         return Duration.between(beginDate, endDate).toHours();
     }
+
 }

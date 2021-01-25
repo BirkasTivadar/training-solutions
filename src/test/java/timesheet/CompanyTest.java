@@ -69,7 +69,7 @@ public class CompanyTest {
                 LocalDateTime.of(2013, Month.FEBRUARY, 25, 12, 10, 0)
         );
 
-/*
+
         assertEquals(10L, company.calculateProjectByNameYearMonth("John Connor", 2013, 1).get(0).getTime());
         assertEquals(0L, company.calculateProjectByNameYearMonth("John Connor", 2013, 1).get(1).getTime());
         assertEquals(4L, company.calculateProjectByNameYearMonth("John Connor", 2013, 1).get(3).getTime());
@@ -120,5 +120,5 @@ public class CompanyTest {
         //Then
         String content = Files.readString(report);
         assertEquals(expected, content);
-    }*/
-}}
+    }
+    }
