@@ -12,7 +12,7 @@ public class CitySearch {
         String longestName = "";
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(CitySearch.class.getResourceAsStream("/iranyitoszamok-varosok-2021.csv")))) {
             String line;
-            line = reader.readLine();
+            reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] cn = line.split(";");
                 String name = cn[1].trim();
