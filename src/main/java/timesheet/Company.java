@@ -55,7 +55,6 @@ public class Company {
         str.append(name).append("\t").append(year).append("-").append(String.format("%02d", month));
     }
 
-
     public List<ReportLine> calculateProjectByNameYearMonth(String name, int year, int month) {
         if (isInvalidName(name)) {
             throw new IllegalArgumentException();
