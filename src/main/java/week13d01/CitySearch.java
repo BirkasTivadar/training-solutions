@@ -10,7 +10,7 @@ public class CitySearch {
     public String search() {
         int max = 0;
         String longestName = "";
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(CitySearch.class.getResourceAsStream("iranyitoszamok-varosok-2021.csv")))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(CitySearch.class.getResourceAsStream("/iranyitoszamok-varosok-2021.csv")))) {
             String line;
             line = reader.readLine();
             while ((line = reader.readLine()) != null) {
@@ -25,5 +25,11 @@ public class CitySearch {
             throw new IllegalStateException("Can not read", ioe);
         }
         return longestName;
+    }
+
+    public static void main(String[] args) {
+        CitySearch citySearch = new CitySearch();
+
+        System.out.println(citySearch.search());
     }
 }
