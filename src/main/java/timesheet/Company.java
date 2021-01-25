@@ -10,10 +10,23 @@ import java.util.List;
 public class Company {
     private final List<Employee> employees;
     private List<Project> projects;
+    private List<TimeSheetItem> timeSheetItems = new ArrayList<>();
 
     public Company(InputStream employeesFile, InputStream projectsFile) {
         employees = loadEmployees(employeesFile);
         projects = loadProjects(projectsFile);
+    }
+
+    public List<Employee> getEmployees() {
+        return new ArrayList<>(employees);
+    }
+
+    public List<Project> getProjects() {
+        return new ArrayList<>(projects);
+    }
+
+    public void addTimeSheetItem(TimeSheetItem timeSheetItem){
+        timeSheetItems.add(timeSheetItem);
     }
 
     private List<Employee> loadEmployees(InputStream employeesFile) {

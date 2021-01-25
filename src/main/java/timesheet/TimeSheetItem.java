@@ -1,5 +1,6 @@
 package timesheet;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class TimeSheetItem {
@@ -9,6 +10,9 @@ public class TimeSheetItem {
     private final LocalDateTime endDate;
 
     public TimeSheetItem(Employee employee, Project project, LocalDateTime beginDate, LocalDateTime endDate) {
+        if (!beginDate.toLocalDate().equals(endDate.toLocalDate()) || beginDate.isAfter(endDate)) {
+            throw new IllegalArgumentException("Wrong begin or end date.");
+        }
         this.employee = employee;
         this.project = project;
         this.beginDate = beginDate;
@@ -29,5 +33,9 @@ public class TimeSheetItem {
 
     public LocalDateTime getEndDate() {
         return endDate;
+    }
+
+    public long hoursBetweenDates() {
+        return Duration.between(beginDate, endDate).toHours();
     }
 }
