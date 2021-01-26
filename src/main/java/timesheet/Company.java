@@ -1,9 +1,7 @@
 package timesheet;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -47,12 +45,33 @@ public class Company {
         return true;
     }
 
-
-
-    public void printToFile(String name, int year, int month, Path path) {
-        List<ReportLine> reportLines = calculateProjectByNameYearMonth(name, year, month);
+    private String sumProject(String name, int year, int month) {
+        int sumResult = 0;
         StringBuilder str = new StringBuilder();
-        str.append(name).append("\t").append(year).append("-").append(String.format("%02d", month));
+        List<ReportLine> reportLines = calculateProjectByNameYearMonth(name, year, month);
+        for (ReportLine reportLine : reportLines) {
+            if (reportLine.getTime() > 0) {
+                str.append(reportLine.getProject().getName()).append("\t").append(reportLine.getTime()).append("\n");
+            }
+            sumResult += reportLine.getTime();
+        }
+        return sumResult + "\n" + str.toString();
+    }
+
+    public String createStringTofile(String name, int year, int month) {
+        String sumProject = sumProject(name, year, month);
+        StringBuilder str = new StringBuilder();
+        str.append(name).append("\t").append(year).append("-").append(String.format("%02d", month)).append("\t").append(sumProject);
+        return str.toString();
+    }
+
+    public void printToFile(String name, int year, int month, Path fileName) {
+        String fileContent = createStringTofile(name, year, month);
+        try (BufferedWriter writer = Files.newBufferedWriter(fileName)) {
+            writer.write(fileContent);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not write", ioe);
+        }
     }
 
     public List<ReportLine> calculateProjectByNameYearMonth(String name, int year, int month) {
@@ -104,7 +123,6 @@ public class Company {
         }
         return projectList;
     }
-
 
 
 }

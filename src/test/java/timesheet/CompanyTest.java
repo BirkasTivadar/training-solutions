@@ -121,4 +121,4 @@ public class CompanyTest {
         String content = Files.readString(report);
         assertEquals(expected, content);
     }
-    }
+}
