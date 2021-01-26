@@ -35,6 +35,9 @@ public class Company {
                 result.add(timeSheetItem);
             }
         }
+        if (result.size() < 1) {
+            throw new IllegalArgumentException("Wrong name or date.");
+        }
         return result;
     }
 
