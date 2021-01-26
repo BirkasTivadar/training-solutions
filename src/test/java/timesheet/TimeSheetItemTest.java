@@ -15,7 +15,6 @@ class TimeSheetItemTest {
             LocalDateTime.of(2013, Month.JANUARY, 27, 16, 10, 0)
     );
 
-
     @Test
     public void createTimeSheetItem() {
 
@@ -24,7 +23,7 @@ class TimeSheetItemTest {
         assertEquals(LocalDateTime.of(2013, Month.JANUARY, 27, 8, 0, 0), timeSheetItem.getBeginDate());
         assertEquals(LocalDateTime.of(2013, Month.JANUARY, 27, 16, 10, 0), timeSheetItem.getEndDate());
     }
-/*
+
     @Test
     public void notSameDateTest() {
         assertThrows(IllegalArgumentException.class, () -> new TimeSheetItem(
@@ -33,8 +32,6 @@ class TimeSheetItemTest {
                 LocalDateTime.of(2013, Month.JANUARY, 26, 8, 0, 0),
                 LocalDateTime.of(2013, Month.JANUARY, 27, 16, 10, 0)
         ));
-
-
     }
 
     @Test
@@ -47,10 +44,8 @@ class TimeSheetItemTest {
         ));
     }
 
-
     @Test
     public void countDifferenceBetweenDatesTest() {
         assertEquals(8L, timeSheetItem.hoursBetweenDates());
-    }*/
-
+    }
 }

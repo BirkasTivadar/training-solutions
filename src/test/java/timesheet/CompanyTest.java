@@ -47,7 +47,6 @@ public class CompanyTest {
                 LocalDateTime.of(2013, Month.JANUARY, 27, 16, 10, 0)
         );
 
-
         company.addTimeSheetItem(
                 new Employee("John", "Connor"),
                 new Project("Java"),
@@ -55,13 +54,13 @@ public class CompanyTest {
                 LocalDateTime.of(2013, Month.JANUARY, 26, 10, 10, 0)
         );
 
-
         company.addTimeSheetItem(
                 new Employee("John", "Connor"),
                 new Project("C++"),
                 LocalDateTime.of(2013, Month.JANUARY, 25, 8, 0, 0),
                 LocalDateTime.of(2013, Month.JANUARY, 25, 12, 10, 0)
         );
+
         company.addTimeSheetItem(
                 new Employee("John", "Connor"),
                 new Project("C++"),

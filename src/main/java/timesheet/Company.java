@@ -123,6 +123,4 @@ public class Company {
         }
         return projectList;
     }
-
-
 }

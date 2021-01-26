@@ -10,7 +10,7 @@ public class ReportLine {
         this.time = time;
     }
 
-    public void addTime(long hours){
+    public void addTime(long hours) {
         time += hours;
     }
 
