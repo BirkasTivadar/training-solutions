@@ -25,4 +25,9 @@ public class Beosztas {
         }
         return result;
     }
+
+    public static void main(String[] args) {
+        Beosztas beosztas = new Beosztas();
+        System.out.println(beosztas.hoursCounter("Albatrosz Aladin"));
+    }
 }
