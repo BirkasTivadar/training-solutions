@@ -19,7 +19,6 @@ public class Beosztas {
                     result += Integer.parseInt(br.readLine().trim());
                 }
             }
-
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read.", ioe);
         }
