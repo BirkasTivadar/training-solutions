@@ -8,7 +8,7 @@ import java.nio.file.Path;
 public class Beosztas {
 
     public int hoursCounter(String name) {
-        Path path = Path.of("beosztas.txt")
+        Path path = Path.of("beosztas.txt");
         int result = 0;
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
