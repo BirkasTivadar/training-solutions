@@ -3,7 +3,18 @@ package colletionsset.collectionshashset;
 import java.util.*;
 
 public class StringsHandler {
+    public Set<String> filterUniqueStrings(Collection<String> strings) {
+        Set<String> uniqueStrings = new HashSet<>(strings);
+        return uniqueStrings;
+    }
 
+    public Set<String> selectIdenticalStrings(Set<String> strings, Set<String> anotherStrings) {
+        strings.retainAll(anotherStrings);
+        return strings;
+    }
+
+
+ /*
     public Set<String> filterUniqueStrings(Collection<String> stringCollection) {
         if (stringCollection == null || stringCollection.isEmpty()) {
             throw new IllegalArgumentException("Invalid collection");
@@ -44,5 +55,5 @@ public class StringsHandler {
             }
         }
         return result;
-    }
+    }*/
 }
