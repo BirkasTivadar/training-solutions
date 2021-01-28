@@ -30,7 +30,7 @@ class BookCatalogTest {
 
         assertEquals(null, foundBook);
     }
-/*
+
     @Test
     public void findSelectedBookInSearchableBookList() {
         //Given
@@ -40,7 +40,7 @@ class BookCatalogTest {
         //Then
         assertTrue(searchingFor.equals(foundBook));
     }
-
+/*
     @Test
     public void selectedBookIsNotInBookList() {
         Book searchingFor = new Book("2121", "Vuk", "István");
