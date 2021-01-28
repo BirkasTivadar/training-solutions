@@ -28,10 +28,9 @@ class EqualsTest {
     void testHashCode(){
         Trainer trainer = new Trainer("John Doe", 2000);
         Trainer trainer2 = new Trainer("John Doe", 2000);
-        System.out.println(trainer == trainer2);
-        System.out.println(trainer.equals(trainer2));
-        System.out.println(trainer);
-        System.out.println(trainer2);
+        assertFalse(trainer == trainer2);
+        assertTrue(trainer.equals(trainer2));
+        assertTrue(trainer.hashCode() == trainer2.hashCode());
 
     }
 
