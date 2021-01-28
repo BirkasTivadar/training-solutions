@@ -9,13 +9,13 @@ import java.util.List;
 public class TemplateMerger {
 
     public String merge(Path file, List<Employee> employees) {
-
         String sablon;
         try (BufferedReader reader = Files.newBufferedReader(file)) {
             sablon = reader.readLine();
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read.", ioe);
         }
+
         return createString(sablon, employees);
     }
 
