@@ -3,17 +3,13 @@ package x;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class ListTest {
 
     @Test
     void testList(){
-        List<String> l = new ArrayList<>();
+        List<String> l = new LinkedList<>();
         l.add("Joe");
         l.add("Jack");
         l.add("John");
