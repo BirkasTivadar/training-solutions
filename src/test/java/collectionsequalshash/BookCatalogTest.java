@@ -3,6 +3,7 @@ package collectionsequalshash;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,7 +60,7 @@ class BookCatalogTest {
         //Then
         assertTrue(searchingFor.equals(foundBook));
     }
-/*
+
     @Test
     public void addSameBooksToSet() {
         //Given
@@ -72,6 +73,6 @@ class BookCatalogTest {
         Set<Book> bookSet = new BookCatalog().addBooksToSet(sameBooks);
         //Then
         assertEquals(1, bookSet.size());
-    }*/
+    }
 
 }
