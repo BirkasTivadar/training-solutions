@@ -11,7 +11,7 @@ public class BookCatalog {
     }
 
     public Book findBookByTitleAuthor(List<Book> books, String title, String author){
-        Book searchBook = new Book("1", title, author);
+        Book searchBook = new Book(title, author);
         for(Book book :books){
             if(book.equals(searchBook)){
                 return book;

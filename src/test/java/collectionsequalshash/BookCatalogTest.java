@@ -40,7 +40,7 @@ class BookCatalogTest {
         //Then
         assertTrue(searchingFor.equals(foundBook));
     }
-/*
+
     @Test
     public void selectedBookIsNotInBookList() {
         Book searchingFor = new Book("2121", "Vuk", "István");
@@ -59,7 +59,7 @@ class BookCatalogTest {
         //Then
         assertTrue(searchingFor.equals(foundBook));
     }
-
+/*
     @Test
     public void addSameBooksToSet() {
         //Given
