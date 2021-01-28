@@ -24,7 +24,13 @@ public class ListTest {
         assertEquals(3, l.size());
         assertTrue(c.contains("John"));
         assertFalse(c.contains("Jack"));
-        c.clear();
-        assertTrue(l.isEmpty());
+
+        l.add(0,"Bibi");
+        l.add(3,"Bibi");
+        System.out.println(l.toString());
+        System.out.println(l.indexOf("Bibi"));
+        System.out.println(l.lastIndexOf("Bibi"));
+        l.set(1,"Felix");
+        System.out.println(l.toString());
     }
 }
