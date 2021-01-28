@@ -5,10 +5,6 @@ import java.util.*;
 public class BookCatalog {
     private List<Book> books = new ArrayList<>();
 
-    public List<Book> getBooks() {
-        return new ArrayList<>(books);
-    }
-
     public Book findBookByTitleAuthor(List<Book> books, String title, String author) {
         Book searchBook = new Book(title, author);
         for (Book book : books) {
