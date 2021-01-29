@@ -1,36 +1,21 @@
 package x;
 
-import java.util.Objects;
 
 public class Trainer {
 
+    private long id;
     private String name;
 
-    public Trainer(String name) {
+    public Trainer(Long id, String name) {
+        this.id = id;
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
-    }
-
-    @Override
-    public String toString() {
-        return "Trainer{" +
-                "name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Trainer trainer = (Trainer) o;
-        return Objects.equals(name, trainer.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
     }
 }
