@@ -3,8 +3,7 @@ package collectionsqueue.collectionspriorityqueue;
 import collectionsqueue.job.Job;
 import collectionsqueue.job.NoJobException;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class JobDispatcher {
 
