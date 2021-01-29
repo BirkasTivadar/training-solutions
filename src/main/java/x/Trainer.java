@@ -23,4 +23,5 @@ public class Trainer {
     public String getName() {
         return name;
     }
+
 }
