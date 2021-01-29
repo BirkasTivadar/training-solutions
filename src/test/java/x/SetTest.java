@@ -27,8 +27,8 @@ public class SetTest {
     void testSetOrder() {
         Set<Trainer> s = new LinkedHashSet<>();
         Collection<Trainer> c = s;
-        c.add(new Trainer("Jane"));
         c.add(new Trainer("Jack"));
+        c.add(new Trainer("Jane"));
         c.add(new Trainer("Jack"));
 
         System.out.println(s.toString());
