@@ -29,7 +29,6 @@ class BookArraySearchTest {
         }
     }
 
-
     @Test
     public void emptyParametersShouldThrowException() throws IllegalArgumentException {
 
@@ -37,7 +36,6 @@ class BookArraySearchTest {
 
         Exception ex = assertThrows(IllegalArgumentException.class, () -> new BookArraySearch(bookList.toArray(bookArray)).findBookByAuthorTitle("", ""));
         assertEquals("Author or title must not be empty!", ex.getMessage());
-
     }
 
     @Test
@@ -49,9 +47,8 @@ class BookArraySearchTest {
             new BookArraySearch(bookList.toArray(bookArray)).findBookByAuthorTitle(null, null);
         });
         assertEquals("Author or title must not be empty!", ex.getMessage());
-
     }
-/*
+
     @Test
     public void notFoundBookShouldThrowException() throws IllegalArgumentException {
 
@@ -63,7 +60,6 @@ class BookArraySearchTest {
             new BookArraySearch(bookList.toArray(bookArray)).findBookByAuthorTitle(author, title);
         });
         assertEquals("No book found by " + author + " with title " + title, ex.getMessage());
-
     }
 
     @Test
@@ -78,6 +74,6 @@ class BookArraySearchTest {
         assertEquals("Fazekas Anna", book.getAuthor());
         assertEquals("Mackó, mókus, malacka", book.getTitle());
         assertEquals("1010 Fazekas Anna Mackó, mókus, malacka", book.toString());
-    }*/
+    }
 
 }
