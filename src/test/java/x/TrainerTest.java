@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.text.Collator;
 import java.util.*;
 
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrainerTest {
