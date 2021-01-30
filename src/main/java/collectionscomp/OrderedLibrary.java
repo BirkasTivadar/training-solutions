@@ -2,7 +2,6 @@ package collectionscomp;
 
 import java.text.Collator;
 import java.util.*;
-import java.util.concurrent.Callable;
 
 public class OrderedLibrary {
 
@@ -13,12 +12,7 @@ public class OrderedLibrary {
     }
 
     public List<Book> orderedByTitle() {
-        Collections.sort(libraryBooks, new Comparator<Book>() {
-            @Override
-            public int compare(Book o1, Book o2) {
-                return o1.getTitle().compareTo(o2.getTitle());
-            }
-        });
+        Collections.sort(libraryBooks);
         return libraryBooks;
     }
 
