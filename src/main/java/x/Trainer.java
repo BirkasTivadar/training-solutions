@@ -1,6 +1,6 @@
 package x;
 
-public class Trainer implements Comparable<Trainer> {
+public class Trainer  {
 
     private String name;
 
@@ -19,11 +19,11 @@ public class Trainer implements Comparable<Trainer> {
         return salary;
     }
 
-    @Override
+   /* @Override
     public int compareTo(Trainer o) {
         return this.name.compareTo(o.name);
         //return this.salary - o.salary;
-    }
+    }*/
 
     @Override
     public String toString() {
