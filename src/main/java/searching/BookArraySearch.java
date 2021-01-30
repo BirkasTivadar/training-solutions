@@ -16,7 +16,7 @@ public class BookArraySearch {
         }
         Book book = new Book(author, title);
         Arrays.sort(bookArray);
-        int index = Arrays.binarySearch(bookArray, book);
+        int index = Arrays.binarySearch(bookArray, book);  // Itt hogy találja meg, ha nincs Override-olva az Equals?
         if (index < 0) {
             throw new IllegalArgumentException("No book found by " + author + " with title " + title);
         } else {
