@@ -1,6 +1,6 @@
 package x;
 
-public class Trainer implements Comparable<Trainer>{
+public class Trainer implements Comparable<Trainer> {
 
     private String name;
 
