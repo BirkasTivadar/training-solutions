@@ -1,27 +1,35 @@
 package x;
 
+public class Trainer implements Comparable<Trainer>{
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-public class Trainer {
-
-    private long id;
     private String name;
 
-    public Trainer(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private int salary;
 
-    public Long getId() {
-        return id;
+    public Trainer(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
     }
 
     public String getName() {
         return name;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
+    @Override
+    public int compareTo(Trainer o) {
+        return this.name.compareTo(o.name);
+        //return this.salary - o.salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Trainer{" +
+                "name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
