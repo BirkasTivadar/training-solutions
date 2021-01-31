@@ -1,6 +1,5 @@
 package clone.issuetracker;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Comment {

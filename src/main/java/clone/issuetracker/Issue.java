@@ -1,10 +1,7 @@
 package clone.issuetracker;
 
-import com.sun.source.tree.BreakTree;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Issue {
