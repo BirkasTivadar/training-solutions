@@ -2,10 +2,7 @@ package week14d01;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,15 +10,11 @@ class IndexerTest {
 
     @Test
     void testIndexer(){
-        List<String> names = new ArrayList<>(Arrays.asList(
-                "Joe", "John", "Carlos", "Jaime", "Anna", "Maria"
-        ));
+        List<String> names = new ArrayList<>(Arrays.asList("Joe", "John", "Carlos", "Jaime", "Anna", "Maria"));
 
         Indexer indexer = new Indexer();
 
-
-        Map<Character, List<String>> mapNames = indexer.index(names);
-        System.out.println(mapNames);
+       assertEquals("{A=[Anna], C=[Carlos], J=[Joe, John, Jaime], M=[Maria]}", indexer.index(names).toString());
     }
 
 }
