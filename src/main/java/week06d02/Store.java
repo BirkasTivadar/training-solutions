@@ -3,6 +3,7 @@ package week06d02;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Store {
     private List<Product> products = new ArrayList<>();
 
