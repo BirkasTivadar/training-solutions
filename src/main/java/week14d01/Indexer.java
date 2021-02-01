@@ -15,6 +15,5 @@ public class Indexer {
             }
          }
         return result;
-
     }
 }
