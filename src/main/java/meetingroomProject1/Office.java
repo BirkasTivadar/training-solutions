@@ -1,4 +1,4 @@
-package MeetingroomProject1;
+package meetingroomProject1;
 
 import java.util.ArrayList;
 import java.util.List;

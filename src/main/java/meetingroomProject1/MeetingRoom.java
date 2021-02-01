@@ -1,4 +1,4 @@
-package MeetingroomProject1;
+package meetingroomProject1;
 
 public class MeetingRoom {
     private String name;
