@@ -1,5 +1,9 @@
 package week06d03;
 
+import com.sun.jdi.PathSearchingVirtualMachine;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Series {
@@ -29,4 +33,19 @@ public class Series {
         }
         return SeriesType.CRISSCROSS;
     }
+
+    public static void main(String[] args) {
+        Series series = new Series();
+        List<Integer> inc = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+        System.out.println(series.calculateSeriesType(inc));
+
+        List<Integer> dec = new ArrayList<>(Arrays.asList(9, 7, 5, 3, 1));
+        System.out.println(series.calculateSeriesType(dec));
+
+        List<Integer> crisscross = new ArrayList<>(Arrays.asList(9, 7, 8, 5, 3, 1));
+        System.out.println(series.calculateSeriesType(crisscross));
+
+
+    }
+
 }
