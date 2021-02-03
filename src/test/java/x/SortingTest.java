@@ -12,7 +12,8 @@ public class SortingTest {
     void testSortArray() {
         int[] i = {3, 1, 6, 9, 5, 3};
         Arrays.sort(i);
-        assertEquals("[1, 3, 3, 5, 6, 9]", Arrays.toString(i));
+        int[] j = {1, 3, 3, 5, 6, 9};
+        assertArrayEquals(j, i);
     }
 
     @Test
@@ -28,6 +29,7 @@ public class SortingTest {
             }
         });
     }
+
     @Test
     void testSortListWithComparator() {
         List<Integer> i = Arrays.asList(3, 1, 6, 9, 5, 3);
@@ -42,11 +44,11 @@ public class SortingTest {
     }
 
     @Test
-    void testSet(){
+    void testSet() {
         Set<Trainer> s = new TreeSet<>(new Comparator<Trainer>() {
             @Override
             public int compare(Trainer o1, Trainer o2) {
-                return o1.getSalary()-o2.getSalary();
+                return o1.getSalary() - o2.getSalary();
             }
         });
         s.add(new Trainer("Jack", 3));
