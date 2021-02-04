@@ -22,5 +22,6 @@ public class ContractCreator {
 
         contractTest.getMonthlyPrices().set(2, 76);
         System.out.println(contractCreator.contract.getMonthlyPrices().get(2));
+        System.out.println(contractTest.getMonthlyPrices().get(2));
     }
 }
