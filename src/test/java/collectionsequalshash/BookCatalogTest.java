@@ -1,7 +1,5 @@
 package collectionsequalshash;
 
-import collectionsequalshash.Book;
-import collectionsequalshash.BookCatalog;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
