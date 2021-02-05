@@ -38,5 +38,11 @@ public class Hachiko {
         return result;
     }
 
+    public static void main(String[] args) {
+        Hachiko hachiko = new Hachiko();
+        System.out.println(hachiko.countWords("hachiko.srt", "Hachiko", "haza",
+                "pályaudvar", "jó"));
+    }
+
 
 }
