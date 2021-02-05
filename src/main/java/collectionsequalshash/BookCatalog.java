@@ -1,14 +1,15 @@
 package collectionsequalshash;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BookCatalog {
-    private List<Book> books = new ArrayList<>();
 
     public Book findBookByTitleAuthor(List<Book> books, String title, String author) {
-        Book searchBook = new Book(title, author);
+        Book searchedBook = new Book(title, author);
         for (Book book : books) {
-            if (book.equals(searchBook)) {
+            if (book.equals(searchedBook)) {
                 return book;
             }
         }
@@ -16,19 +17,19 @@ public class BookCatalog {
     }
 
     public Book findBook(List<Book> books, Book book) {
-        for (Book findB : books) {
-            if (findB.equals(book)) {
-                return findB;
+        for (Book searchedBook : books) {
+            if (searchedBook.equals(book)) {
+                return book;
             }
         }
         return null;
     }
 
     public Set<Book> addBooksToSet(Book[] books) {
-        Set<Book> setBooks = new HashSet<>();
+        Set<Book> result = new HashSet<>();
         for (Book book : books) {
-            setBooks.add(book);
+            result.add(book);
         }
-        return setBooks;
+        return result;
     }
 }
