@@ -16,7 +16,7 @@ public class Hachiko {
         try {
             lines = Files.readAllLines(file);
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not read");
+            throw new IllegalStateException("Can not read", ioe);
         }
         return lines;
     }
