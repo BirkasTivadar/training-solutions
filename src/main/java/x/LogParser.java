@@ -14,7 +14,7 @@ public class LogParser {
                 Entry entry = entryCreate(line);
 
                 if (!result.containsKey(entry.getIpAddress())) {
-                    result.put(entry.getIpAddress(), new ArrayList<Entry>());
+                    result.put(entry.getIpAddress(), new ArrayList<>());
                 }
                 result.get(entry.getIpAddress()).add(entry);
             }
@@ -22,7 +22,7 @@ public class LogParser {
         return result;
     }
 
-    private Entry entryCreate(String line){
+    private Entry entryCreate(String line) {
         String[] lineArr = line.split(":");
 
         if (lineArr.length != 3) {
