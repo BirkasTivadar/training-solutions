@@ -1,7 +1,6 @@
 package searching;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 public class BookArraySearch {
     private Book[] bookArray;
@@ -14,13 +13,12 @@ public class BookArraySearch {
         if (author == null || title == null || author.isBlank() || title.isBlank()) {
             throw new IllegalArgumentException("Author or title must not be empty!");
         }
-        Book book = new Book(author, title);
         Arrays.sort(bookArray);
-        int index = Arrays.binarySearch(bookArray, book);  // Itt hogy találja meg, ha nincs Override-olva az Equals?
+        Book searchedBook = new Book(author, title);
+        int index = Arrays.binarySearch(bookArray, searchedBook);
         if (index < 0) {
             throw new IllegalArgumentException("No book found by " + author + " with title " + title);
-        } else {
-            return bookArray[index];
         }
+        return bookArray[index];
     }
 }
