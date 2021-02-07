@@ -78,9 +78,9 @@ class CollectionManagerTest {
         Book book1 = new Book(1172, "Anna Morgan", "Az elfeledett mackó");
         Book book2 = new Book(1172, "A. Morgan", "");
 
-
         assertTrue(book1.equals(book2));
         assertEquals(1172, book1.hashCode());
 
     }
+
 }

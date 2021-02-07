@@ -17,20 +17,18 @@ public class CollectionManager {
     }
 
     public List<Book> reverseLibrary() {
-        List<Book> libraryCopy = new ArrayList<>(library);
-        Collections.reverse(libraryCopy);
-        return libraryCopy;
+        List<Book> result = new ArrayList<>(library);
+        Collections.reverse(result);
+        return result;
     }
 
     public Book getFirstBook() {
         Collections.sort(library);
-        return library.get(0);
+        return Collections.min(library);
     }
 
     public Book getLastBook() {
         Collections.sort(library);
-        return library.get(library.size() - 1);
+        return Collections.max(library);
     }
-
-
 }
