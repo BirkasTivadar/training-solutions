@@ -1,11 +1,11 @@
 package sorting;
 
-import java.util.Objects;
-
 public class Book implements Comparable<Book> {
+
     private int id;
     private String author;
     private String title;
+
 
     public Book(int id, String author, String title) {
         this.id = id;
@@ -26,19 +26,13 @@ public class Book implements Comparable<Book> {
     }
 
     @Override
-    public String toString() {
-        return id + " " + author + " " + title;
-    }
-
-
-    @Override
     public int compareTo(Book o) {
-        if (this.id - o.id != 0) {
-            return this.id - o.id;
-        } else if (this.author.compareTo(o.author) != 0) {
-            return this.author.compareTo(o.author);
+        if (id != o.getId()) {
+            return id - o.getId();
+        } else if (author.compareTo(o.author) != 0) {
+            return author.compareTo(o.author);
         } else {
-            return this.title.compareTo(o.title);
+            return title.compareTo(o.getTitle());
         }
     }
 
@@ -53,5 +47,10 @@ public class Book implements Comparable<Book> {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + author + " " + title;
     }
 }
