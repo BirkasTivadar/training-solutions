@@ -25,12 +25,9 @@ public class Issue {
         time = issue.time;
         status = issue.status;
         if (copyMode == CopyMode.WITH_COMMENTS) {
-            comments = new ArrayList<>();
             for (Comment comment : issue.comments) {
                 comments.add(new Comment(comment));
             }
-        } else {
-            comments = new ArrayList<>();
         }
     }
 
