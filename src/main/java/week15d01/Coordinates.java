@@ -1,21 +1,16 @@
 package week15d01;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Coordinates {
 
-    public Map<Double, Double> searchMax(Map<Double, Double> coordinates) {
-        Map result = new HashMap();
-        double max = Double.MIN_VALUE;
-        double xMax = 0;
-        for (Double x : coordinates.keySet()) {
-            if (coordinates.get(x) > max) {
-                max = coordinates.get(x);
-                xMax = x;
+    public Map.Entry<Double, Double> searchMax(Map<Double, Double> coordinates) {
+        Map.Entry<Double, Double> result = null;
+        for (Map.Entry<Double, Double> entry : coordinates.entrySet()) {
+            if (result == null || entry.getValue() > result.getValue()) {
+                result = entry;
             }
         }
-        result.put(xMax, max);
         return result;
     }
 }
