@@ -11,7 +11,7 @@ public class DatabaseConfiguration {
 
     public DatabaseConfiguration() {
         Properties properties = new Properties();
-        try (InputStream is = Properties.class.getResourceAsStream("/db.properties")) {
+        try (InputStream is = DatabaseConfiguration.class.getResourceAsStream("/db.properties")) {
             properties.load(is);
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot load file", ioe);
