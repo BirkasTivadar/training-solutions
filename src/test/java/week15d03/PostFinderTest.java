@@ -9,9 +9,29 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PostFinderTest {
+    @Test
+    void testPostFinderWithEmptyTitle() {
+        Post post1 = new Post("", LocalDate.of(2019, 12, 20), "hello tivadar", "Tivadar");
+
+        List<Post> posts = new ArrayList<>();
+        posts.add(post1);
+        PostFinder postFinder = new PostFinder(posts);
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> postFinder.findPostsFor("Tivadar"));
+        assertEquals("Title must not be empty", iae.getMessage());
+    }
 
     @Test
-    void testPostFinder(){
+    void testPostFinderWithoutContent() {
+        Post post1 = new Post("", LocalDate.of(2019, 12, 20), null, "Tivadar");
+        List<Post> posts = new ArrayList<>();
+        posts.add(post1);
+        PostFinder postFinder = new PostFinder(posts);
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> postFinder.findPostsFor("Tivadar"));
+        assertEquals("Content must not be empty", iae.getMessage());
+    }
+
+    @Test
+    void testPostFinder() {
         Post post1 = new Post("Győr", LocalDate.of(2019, 12, 20), "hello tivadar", "Tivadar");
         Post post2 = new Post("Málaga", LocalDate.of(2020, 12, 20), "hello josé", "José");
         Post post3 = new Post("Madrid", LocalDate.of(2021, 12, 20), "hello", "José");
@@ -21,17 +41,6 @@ class PostFinderTest {
         posts.add(post3);
         PostFinder postFinder = new PostFinder(posts);
         assertEquals(1, postFinder.findPostsFor("José").size());
-    }
-
-    @Test
-    void testPostFinderWithEmptyTitle(){
-        Post post1 = new Post("", LocalDate.of(2019, 12, 20), "hello tivadar", "Tivadar");
-
-        List<Post> posts = new ArrayList<>();
-        posts.add(post1);
-        PostFinder postFinder = new PostFinder(posts);
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, ()-> postFinder.findPostsFor("Tivadar"));
-        assertEquals("Title must not be empty", iae.getMessage());
     }
 
 
