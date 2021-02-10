@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PostFinderTest {
 
     @Test
-    void testPostFinderWithoutContent() {
+    void testPostFinderWithNullContent() {
         Post post1 = new Post("", LocalDate.of(2019, 12, 20), null, "Tivadar");
         List<Post> posts = new ArrayList<>();
         posts.add(post1);
