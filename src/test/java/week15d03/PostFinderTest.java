@@ -9,16 +9,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PostFinderTest {
-    @Test
-    void testPostFinderWithEmptyTitle() {
-        Post post1 = new Post("", LocalDate.of(2019, 12, 20), "hello tivadar", "Tivadar");
-
-        List<Post> posts = new ArrayList<>();
-        posts.add(post1);
-        PostFinder postFinder = new PostFinder(posts);
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> postFinder.findPostsFor("Tivadar"));
-        assertEquals("Title must not be empty", iae.getMessage());
-    }
 
     @Test
     void testPostFinderWithoutContent() {
@@ -27,7 +17,7 @@ class PostFinderTest {
         posts.add(post1);
         PostFinder postFinder = new PostFinder(posts);
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> postFinder.findPostsFor("Tivadar"));
-        assertEquals("Content must not be empty", iae.getMessage());
+        assertEquals("Invalid post", iae.getMessage());
     }
 
     @Test

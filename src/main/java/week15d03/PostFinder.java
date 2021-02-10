@@ -12,11 +12,11 @@ public class PostFinder {
     }
 
     public boolean isvalid(Post post) {
-        if (post.getContent() == null || post.getContent().isBlank()) {
-            throw new IllegalArgumentException("Content must not be empty");
-        }
-        if (post.getTitle() == null || post.getTitle().isBlank()) {
-            throw new IllegalArgumentException("Title must not be empty");
+        if (post.getTitle() == null ||
+                post.getPublishedAt() == null ||
+                post.getContent() == null ||
+                post.getOwner() == null) {
+            throw new IllegalArgumentException("Invalid post");
         }
         return post.isEarlier();
     }
@@ -24,7 +24,7 @@ public class PostFinder {
     public List<Post> findPostsFor(String user) {
         List<Post> result = new ArrayList<>();
         for (Post post : posts) {
-            if (isvalid(post) && post.getOwner().equals(user)) {
+            if (isvalid(post) && !post.getContent().isBlank() && !post.getTitle().isBlank() && post.getOwner().equals(user)) {
                 result.add(post);
             }
         }
