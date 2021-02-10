@@ -21,7 +21,7 @@ class DatabaseConfigurationTest {
         assertEquals(1021, databaseConfiguration.getPort());
         assertEquals("árvíztűrő", databaseConfiguration.getSchema());
     }
-/*
+
     @Test
     public void testInvalid() {
 
@@ -46,6 +46,6 @@ class DatabaseConfigurationTest {
         assertEquals("192.168.10.20", databaseConfiguration.getHost());
         assertEquals(1111, databaseConfiguration.getPort());
         assertEquals("ütvefúrógép", databaseConfiguration.getSchema());
-    }*/
+    }
 
 }
