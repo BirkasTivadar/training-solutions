@@ -1,4 +1,4 @@
-package consctructoroverloading.bus;
+package consctructoroverloading;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package consctructoroverloading.bus;
+package consctructoroverloading;
 
 public class SimpleTime {
     public static final int MINUTES_IN_HOURS = 60;
