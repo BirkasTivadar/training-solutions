@@ -1,4 +1,4 @@
-package iotest;
+package iofilestest;
 
 import org.junit.jupiter.api.Test;
 
