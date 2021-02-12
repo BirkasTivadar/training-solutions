@@ -1,4 +1,4 @@
-package iofilestest;
+package iofilestest.library;
 
 public class Book {
     private String author;

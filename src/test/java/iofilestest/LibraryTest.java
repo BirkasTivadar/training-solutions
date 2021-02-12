@@ -1,5 +1,7 @@
 package iofilestest;
 
+import iofilestest.library.Book;
+import iofilestest.library.Library;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 

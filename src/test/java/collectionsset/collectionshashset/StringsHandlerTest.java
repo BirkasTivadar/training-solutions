@@ -1,4 +1,4 @@
-package colletionsset.collectionshashset;
+package collectionsset.collectionshashset;
 
 import org.junit.jupiter.api.Test;
 

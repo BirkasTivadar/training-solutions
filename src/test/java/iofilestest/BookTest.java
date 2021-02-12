@@ -1,5 +1,6 @@
 package iofilestest;
 
+import iofilestest.library.Book;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

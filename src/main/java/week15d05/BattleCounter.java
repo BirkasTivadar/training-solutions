@@ -81,7 +81,6 @@ public class BattleCounter {
         }
     }
 
-
     public static void main(String[] args) {
         BattleCounter battleCounter = new BattleCounter("battles.csv");
 

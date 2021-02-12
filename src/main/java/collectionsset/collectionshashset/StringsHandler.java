@@ -1,4 +1,4 @@
-package colletionsset.collectionshashset;
+package collectionsset.collectionshashset;
 
 import java.util.*;
 

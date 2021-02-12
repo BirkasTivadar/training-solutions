@@ -1,4 +1,4 @@
-package colletionsset.collectionstreeset;
+package collectionsset.collectionstreeset;
 
 import org.junit.jupiter.api.Test;
 
