@@ -123,8 +123,8 @@ public class Track {
             throw new IllegalStateException("Hello", ioe);
         }
 
-        System.out.println(track.getTrackPoints().size());
         System.out.println(track.getTrackPoints());
+        System.out.println(track.getTrackPoints().size());
 
     }
 }
