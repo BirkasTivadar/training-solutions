@@ -2,6 +2,7 @@ package activity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -19,8 +20,8 @@ public class Track {
     }
 
     private Coordinate loadCoordinate(String line) {
-        Double lat = Double.parseDouble(line.substring(line.indexOf("lat=") + 4, line.indexOf("lon") - 2));
-        Double lon = Double.parseDouble(line.substring(line.indexOf("lon=") + 4, line.indexOf(">") - 1));
+        Double lat = Double.parseDouble(line.substring(line.indexOf("lat=") + 5, line.indexOf("lon") - 2));
+        Double lon = Double.parseDouble(line.substring(line.indexOf("lon=") + 5, line.indexOf(">") - 1));
         return new Coordinate(lat, lon);
     }
 
@@ -28,7 +29,7 @@ public class Track {
         return Double.parseDouble(line.substring(line.indexOf(">") + 1, line.indexOf("</")));
     }
 
-    public void loadFromGpx(String fileName) {
+    public void loadFromGpx(InputStream is) {
         Path path = Path.of("track.gpx");
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
@@ -118,7 +119,12 @@ public class Track {
 
     public static void main(String[] args) {
         Track track = new Track();
-        track.loadFromGpx("track.gpx");
+        try(InputStream is = Track.class.getResourceAsStream("/track.gpx")){
+            track.loadFromGpx(is);
+        }catch (IOException ioe){
+            throw new IllegalStateException("Hello", ioe);
+        }
+
         System.out.println(track.getTrackPoints().size());
         System.out.println(track.getTrackPoints());
 
