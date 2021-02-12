@@ -15,6 +15,18 @@ public class BattleCounter {
         loadFile(fileName);
     }
 
+    public List<String> getLines() {
+        return lines;
+    }
+
+    public List<House> getHouses() {
+        return houses;
+    }
+
+    public Set<String> getHouseSet() {
+        return houseSet;
+    }
+
     private void loadHousesSet() {
         for (String line : lines) {
             if (line.contains(", ")) {
@@ -59,13 +71,18 @@ public class BattleCounter {
     }
 
     public House mostBattle() {
+        loadHousesSet();
+        loadHousesList();
+        loadHousesBattle();
         List<House> temp = new ArrayList<>(houses);
         Collections.sort(temp);
         return temp.get(0);
     }
 
     public static void main(String[] args) {
+        BattleCounter battleCounter = new BattleCounter("battles.csv");
 
+        System.out.println(battleCounter.mostBattle());
     }
 }
 

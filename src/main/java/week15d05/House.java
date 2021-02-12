@@ -1,6 +1,6 @@
 package week15d05;
 
-public class House implements Comparable<House>{
+public class House implements Comparable<House> {
 
     private String name;
     private int battle;
@@ -18,10 +18,17 @@ public class House implements Comparable<House>{
         return battle;
     }
 
-    public void incrementBattle(){
+    public void incrementBattle() {
         battle++;
     }
 
+    @Override
+    public String toString() {
+        return "House{" +
+                "name='" + name + '\'' +
+                ", battle=" + battle +
+                '}';
+    }
 
     @Override
     public int compareTo(House o) {
