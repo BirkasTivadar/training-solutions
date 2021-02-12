@@ -32,14 +32,14 @@ public class BattleCounter {
 
     private void loadHousesList() {
         for (String house : houseSet) {
-            houses.add(new House(house, 0);
+            houses.add(new House(house, 0));
         }
     }
 
     private void loadHousesBattle() {
         for (String line : lines) {
             for (House house : houses) {
-                if (line.contains(house.getName()) {
+                if (line.contains(house.getName())) {
                     house.incrementBattle();
                 }
             }
@@ -63,4 +63,9 @@ public class BattleCounter {
         Collections.sort(temp);
         return temp.get(0);
     }
+
+    public static void main(String[] args) {
+
+    }
 }
+
