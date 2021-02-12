@@ -34,10 +34,12 @@ public class BattleCounter {
             }
             String[] lineArr = line.split(",");
             for (int i = 3; i <= 12; i++)
-                if (lineArr[i].contains(" ")) {
-                    houseSet.add(lineArr[i].split(" ")[1]);
-                } else {
-                    houseSet.add(lineArr[i]);
+                if (!lineArr[i].isBlank()) {
+                    if (lineArr[i].contains(" ")) {
+                        houseSet.add(lineArr[i].split(" ")[1]);
+                    } else {
+                        houseSet.add(lineArr[i]);
+                    }
                 }
         }
     }
