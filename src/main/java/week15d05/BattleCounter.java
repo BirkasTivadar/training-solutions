@@ -52,8 +52,11 @@ public class BattleCounter {
 
     private void loadHousesBattle() {
         for (String line : lines) {
+            String[] lineArr = line.split(",");
+            lineArr = Arrays.copyOfRange(lineArr, 5, 13);
+            List<String> temp = Arrays.asList(lineArr);
             for (House house : houses) {
-                if (line.contains(house.getName())) {
+                if (temp.contains(house.getName())) {
                     house.incrementBattle();
                 }
             }
