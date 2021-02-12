@@ -48,4 +48,11 @@ public class TrackPoint {
         return difference < 0 ? -difference : 0;
     }
 
+    @Override
+    public String toString() {
+        return "TrackPoint{" +
+                "coordinate=" + coordinate +
+                ", elevation=" + elevation +
+                '}';
+    }
 }
