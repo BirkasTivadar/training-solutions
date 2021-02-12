@@ -1,8 +1,6 @@
 package activity;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -30,8 +28,7 @@ public class Track {
     }
 
     public void loadFromGpx(InputStream is) {
-        Path path = Path.of("track.gpx");
-        try (BufferedReader br = Files.newBufferedReader(path)) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.contains("<trkpt")) {
@@ -48,6 +45,7 @@ public class Track {
             throw new IllegalStateException("Can not read file", ioe);
         }
     }
+
 
     public double getFullElevation() {
         if (trackPoints == null || trackPoints.size() < 2) {
@@ -119,9 +117,9 @@ public class Track {
 
     public static void main(String[] args) {
         Track track = new Track();
-        try(InputStream is = Track.class.getResourceAsStream("/track.gpx")){
+        try (InputStream is = Track.class.getResourceAsStream("/track.gpx")) {
             track.loadFromGpx(is);
-        }catch (IOException ioe){
+        } catch (IOException ioe) {
             throw new IllegalStateException("Hello", ioe);
         }
 
