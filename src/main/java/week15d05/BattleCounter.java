@@ -27,6 +27,28 @@ public class BattleCounter {
         return houseSet;
     }
 
+    private void loadFile(String fileName) {
+        Path path = Path.of(fileName);
+        try (BufferedReader br = Files.newBufferedReader(path)) {
+            String line;
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read", ioe);
+        }
+    }
+
+    public House searcHouseOfMostBattle() {
+        loadHousesSet();
+        loadHousesList();
+        loadHousesBattle();
+        List<House> temp = new ArrayList<>(houses);
+        Collections.sort(temp);
+        return temp.get(0);
+    }
+
     private void loadHousesSet() {
         for (String line : lines) {
             if (line.contains(", ")) {
@@ -39,7 +61,6 @@ public class BattleCounter {
                 }
         }
     }
-
 
     private void loadHousesList() {
         for (String house : houseSet) {
@@ -60,31 +81,11 @@ public class BattleCounter {
         }
     }
 
-    public void loadFile(String fileName) {
-        Path path = Path.of(fileName);
-        try (BufferedReader br = Files.newBufferedReader(path)) {
-            String line = br.readLine();
-            while ((line = br.readLine()) != null) {
-                lines.add(line);
-            }
-        } catch (IOException ioe) {
-            throw new IllegalStateException("Can not read", ioe);
-        }
-    }
-
-    public House mostBattle() {
-        loadHousesSet();
-        loadHousesList();
-        loadHousesBattle();
-        List<House> temp = new ArrayList<>(houses);
-        Collections.sort(temp);
-        return temp.get(0);
-    }
 
     public static void main(String[] args) {
         BattleCounter battleCounter = new BattleCounter("battles.csv");
 
-        System.out.println(battleCounter.mostBattle());
+        System.out.println(battleCounter.searcHouseOfMostBattle());
     }
 }
 
