@@ -1,8 +1,14 @@
 package exam03;
 
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class CruiseTest {/*
+class CruiseTest {
     private Boat boat = new Boat("WetDreams", 5);
 
     private Cruise cruise = new Cruise(boat, LocalDate.of(2021, 1, 1), 100_000);
@@ -80,7 +86,5 @@ class CruiseTest {/*
 
         Map<CruiseClass, Integer> result = cruise.countPassengerByClass();
         assertEquals(Map.of(CruiseClass.LUXURY, 2 , CruiseClass.FIRST, 1), result);
-    }*/
-
-
+    }
 }
