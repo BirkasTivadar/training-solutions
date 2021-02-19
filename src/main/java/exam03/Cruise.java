@@ -36,7 +36,7 @@ public class Cruise {
         if (passengers.size() < boat.getMaxPassengers()) {
             passengers.add(passenger);
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("The boat is full");
         }
     }
 
@@ -50,7 +50,7 @@ public class Cruise {
                 return passenger;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Wrong name");
     }
 
     public List<String> getPassengerNamesOrdered() {
