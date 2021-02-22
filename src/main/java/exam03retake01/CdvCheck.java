@@ -1,7 +1,5 @@
 package exam03retake01;
 
-import java.util.Locale;
-
 public class CdvCheck {
 
     public boolean check(String taxNumber) {
