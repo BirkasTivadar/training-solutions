@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MailBoxTest {
-/*
+
     MailBox mailBox = new MailBox();
 
     @BeforeEach
@@ -56,7 +56,6 @@ class MailBoxTest {
     void findTo() {
         List<Mail> mails =  mailBox.findByCriteria("to:Jack Doe");
         assertEquals(2, mails.size());
-
     }
 
     @Test
@@ -72,5 +71,5 @@ class MailBoxTest {
         assertEquals(1, mails.size());
 
     }
-*/
+
 }

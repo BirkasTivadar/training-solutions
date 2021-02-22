@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MailTest {
-    /*
+
     @Test
     void create() {
         Mail mail = new Mail(new Contact("John Doe", "johndoe@example.com"),
@@ -21,5 +21,5 @@ class MailTest {
         assertEquals("Doe Family", mail.getSubject());
         assertEquals("Hi All!", mail.getMessage());
     }
-*/
+
 }
