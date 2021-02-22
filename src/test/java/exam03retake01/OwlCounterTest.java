@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OwlCounterTest {
-    /*
+
     @Test
     void load() throws IOException
     {
@@ -21,5 +21,5 @@ class OwlCounterTest {
         assertEquals(893, owlCounter.getNumberOfOwls("Somogy"));
         assertEquals(135, owlCounter.getNumberOfOwls("Zala"));
     }
-*/
+
 }

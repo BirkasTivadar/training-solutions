@@ -14,7 +14,7 @@ public class CdvCheck {
                 int temp = Integer.parseInt(str);
                 sum += temp * (i + 1);
             } catch (NumberFormatException nfe) {
-                throw new IllegalArgumentException("This character is not digit" + taxNumber.substring(i, i + 1));
+                throw new IllegalArgumentException("This character is not digit" + taxNumber.substring(i, i + 1), nfe);
             }
         }
         System.out.println(sum % 11);
