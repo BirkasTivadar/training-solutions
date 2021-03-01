@@ -14,7 +14,6 @@ public class BalatonStorm {
         List<String> result = new ArrayList<>();
         try (BufferedReader br = reader) {
             String line;
-            int level = 0;
             String station = null;
             while ((line = br.readLine()) != null) {
                 station = getStationIfStorm(result, line, station);
