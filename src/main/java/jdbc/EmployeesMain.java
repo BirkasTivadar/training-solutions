@@ -2,10 +2,6 @@ package jdbc;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class EmployeesMain {
 
 
@@ -15,34 +11,16 @@ public class EmployeesMain {
         dataSource.setUser("employees");
         dataSource.setPassword("employees");
 
-        try (
-                Connection conn = dataSource.getConnection();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT emp_name FROM employees");
-                ){
-            List<String> names = new ArrayList<>();
-            while(rs.next()){
-                String name = rs.getString("emp_name");
-                names.add(name);
-            }
-            System.out.println(names);
+        EmployeesDao employeesDao = new EmployeesDao(dataSource);
+     //   employeesDao.createEmployee("Bibó");
+        System.out.println(employeesDao.listEmployeesNames());
+        System.out.println(employeesDao.findEmployeeNameById(3));
 
-        } catch (SQLException sqlException) {
-            throw new IllegalStateException("Cannot select employees", sqlException);
-        }
 
-/*
-        try(
-                Connection conn = dataSource.getConnection();
-                PreparedStatement stmt = conn.prepareStatement("SELECT emp_name FROM employees WHERE id = ?")
-                ) {
 
-        } catch (SQLException sqlException) {
-           throw new IllegalStateException("Cannot select", sqlException);
-        }
-*/
 
-        /* Egyszerű JDBC adatmódosítás(beszúrás)
+
+/* Sima create szimpla Statementtel
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO employees(emp_name) VALUES (?)"))
@@ -51,6 +29,9 @@ public class EmployeesMain {
             stmt.executeUpdate();
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot insert", se);
-        }*/
+        }
+    }
+
+ */
     }
 }
