@@ -1,6 +1,6 @@
 package exam03retake02;
 
-public class Todo {
+public class Todo implements Comparable<Todo> {
 
     private String text;
     private State state;
@@ -29,5 +29,11 @@ public class Todo {
 
     public void complete() {
         this.state = State.COMPLETED;
+    }
+
+
+    @Override
+    public int compareTo(Todo o) {
+        return priority - o.priority;
     }
 }
