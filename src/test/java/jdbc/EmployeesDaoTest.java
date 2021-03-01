@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import javax.sql.DataSource;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,12 +37,34 @@ class EmployeesDaoTest {
 
     @Test
     public void listEmployeesNamesTest() {
-        assertEquals(Arrays.asList("Lili","Bá","Marci","Lóri"), employeesDao.listEmployeesNames());
+        assertEquals(Arrays.asList("Lili", "Bá", "Marci", "Lóri"), employeesDao.listEmployeesNames());
     }
 
     @Test
-    public void findEmployeeNameByIdTest(){
+    public void findEmployeeNameByIdTest() {
         assertEquals("Bá", employeesDao.findEmployeeNameById(2));
+    }
+
+    @Test
+    public void createEmployeeGetId() {
+        long id = employeesDao.createEmployee("Bibi");
+        String name = employeesDao.findEmployeeNameById(id);
+        assertEquals("Bibi", name);
+    }
+
+    @Test
+    void createEmployeesGood() {
+        List<String> names = List.of("Bibi", "Sziszi");
+        employeesDao.createEmployees(names);
+        assertEquals(6, employeesDao.listEmployeesNames().size());
+    }
+
+    //rollbackkel
+    @Test
+    void createEmployeesBad() {
+        List<String> names = List.of("Bibi", "Sziszi", "Xavér");
+        employeesDao.createEmployees(names);
+        assertEquals(4, employeesDao.listEmployeesNames().size());
     }
 
 
