@@ -1,6 +1,8 @@
 package covid;
 
 
+import com.mysql.cj.jdbc.MysqlDataSource;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,10 +10,9 @@ import java.util.*;
 
 public class RegistrationFromConsole {
 
-
     public Map<String, List<String>> loadMap() {
         Map<String, List<String>> cities = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(RegistrationFromConsole.class.getResourceAsStream("iranyitoszamok-varosok-2021.csv")))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(RegistrationFromConsole.class.getResourceAsStream("zip2021.csv")))) {
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 String zip = line.split(";")[0];
@@ -114,10 +115,34 @@ public class RegistrationFromConsole {
         throw new IllegalArgumentException("Rossz TAJ szám");
     }
 
+    public List<City> loadCityList() {
+        List<City> result = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(RegistrationFromConsole.class.getResourceAsStream("zip2021.csv")))) {
+            String line = br.readLine();
+            while ((line = br.readLine()) != null) {
+                String zip = line.split(";")[0];
+                String city = line.split(";")[1].trim();
+                result.add(new City(zip, city));
+            }
+        } catch (IOException ioException) {
+            throw new IllegalStateException("Cannot load", ioException);
+        }
+        return result;
+
+    }
 
     public static void main(String[] args) {
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setUrl("jdbc:mysql://localhost:3306/covid?useUnicode=true");
+        dataSource.setUser("covid");
+        dataSource.setPassword("covid");
+
         RegistrationFromConsole registrationFromConsole = new RegistrationFromConsole();
-        System.out.println(registrationFromConsole.getValidCitizenFromConsole());
+        List<City> cities = registrationFromConsole.loadCityList();
+        System.out.println(cities.size());
+
+        CovidDao covidDao = new CovidDao(dataSource);
+        covidDao.createCities(cities);
 
     }
 }
