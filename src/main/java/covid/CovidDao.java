@@ -13,19 +13,27 @@ public class CovidDao {
         this.dataSource = dataSource;
     }
 
+
+
+
+    /*
     public void createCities(List<City> cities) {
-        try (
-                Connection conn = dataSource.getConnection();
-                PreparedStatement ps = conn.prepareStatement("INSERT INTO cities(zip, city) VALUES (?,?)")
-        ) {
-            for (City city : cities) {
-                ps.setString(1, city.getZip());
-                ps.setString(2, city.getCity_name());
-                ps.executeUpdate();
+        try (Connection conn = dataSource.getConnection();) {
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement ps = conn.prepareStatement("INSERT INTO cities(zip, city) VALUES (?,?)")) {
+                for (City city : cities) {
+                    ps.setString(1, city.getZip());
+                    ps.setString(2, city.getCity_name());
+                    ps.executeUpdate();
+                }
+                conn.commit();
+            } catch (IllegalArgumentException iae) {
+                conn.rollback();
             }
         } catch (SQLException sqlException) {
             throw new IllegalStateException("Cannot insert", sqlException);
         }
     }
-
+*/
 }

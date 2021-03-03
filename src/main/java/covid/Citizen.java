@@ -53,6 +53,11 @@ public class Citizen {
         return last_vaccination;
     }
 
+    public void giveVaccination() {
+        numberOfVaccination++;
+    }
+
+
     @Override
     public String toString() {
         return "Citizen{" +

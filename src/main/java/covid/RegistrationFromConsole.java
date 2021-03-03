@@ -114,36 +114,44 @@ public class RegistrationFromConsole {
         }
         throw new IllegalArgumentException("Rossz TAJ szám");
     }
-
+/*
     public List<City> loadCityList() {
         List<City> result = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(RegistrationFromConsole.class.getResourceAsStream("zip2021.csv")))) {
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
-                String zip = line.split(";")[0];
-                String city = line.split(";")[1].trim();
+                String[] lineArr = line.split(";");
+                String zip = lineArr[0];
+                String city = lineArr[1].trim();
+                if (lineArr.length == 3) {
+                    city = city.concat("-").concat(lineArr[2]);
+                }
                 result.add(new City(zip, city));
             }
         } catch (IOException ioException) {
             throw new IllegalStateException("Cannot load", ioException);
         }
         return result;
-
     }
+ */
 
     public static void main(String[] args) {
+
+        RegistrationFromConsole registrationFromConsole = new RegistrationFromConsole();
+
+
+
+        /*
+        List<City> cities = registrationFromConsole.loadCityList();
+
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/covid?useUnicode=true");
         dataSource.setUser("covid");
         dataSource.setPassword("covid");
 
-        RegistrationFromConsole registrationFromConsole = new RegistrationFromConsole();
-        List<City> cities = registrationFromConsole.loadCityList();
-        System.out.println(cities.size());
-
         CovidDao covidDao = new CovidDao(dataSource);
         covidDao.createCities(cities);
-
+         */
     }
 }
 
