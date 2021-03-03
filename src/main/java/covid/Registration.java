@@ -25,6 +25,8 @@ public class Registration {
         return result;
     }
 
+
+
     public Citizen getValidCitizenFromConsole(DataSource dataSource) {
         Map<String, List<String>> cities = new CovidDao(dataSource).loadCities();
         Scanner scanner = new Scanner(System.in);
