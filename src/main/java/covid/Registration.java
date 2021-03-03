@@ -13,19 +13,28 @@ public class Registration {
     public List<Citizen> getValidCitizensFromFile(String fileName) {
         Path file = Path.of(fileName);
         List<Citizen> result = new ArrayList<>();
+        List<Citizen> wrong = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(file)) {
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] lineArr = line.split(";");
-                result.add(new Citizen(lineArr[0], lineArr[1], Integer.parseInt(lineArr[2]), lineArr[3], lineArr[4]));
+                if (isvalidCitizen(lineArr)) {
+                    result.add(new Citizen(lineArr[0], lineArr[1], Integer.parseInt(lineArr[2]), lineArr[3], lineArr[4]));
+                } else {
+                    wrong.add(new Citizen(lineArr[0], lineArr[1], Integer.parseInt(lineArr[2]), lineArr[3], lineArr[4]));
+                }
             }
         } catch (IOException ioException) {
             throw new IllegalStateException("Cannot load", ioException);
         }
+        System.out.println("Az alábbi személyek regisztrációja rossz adat miatt meghiúsult:");
+        System.out.println(wrong);
         return result;
     }
 
-
+    public boolean isvalidCitizen(String[] lineArr) {
+        return (isValidName(lineArr[0]) && isValidZip(lineArr[1]) && isValidAge(lineArr[2]) && isValidEmail(lineArr[3]) && isvalidTAJ(lineArr[4]));
+    }
 
     public Citizen getValidCitizenFromConsole(DataSource dataSource) {
         Map<String, List<String>> cities = new CovidDao(dataSource).loadCities();
