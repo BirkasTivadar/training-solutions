@@ -11,7 +11,7 @@ public class CovidMain {
 
     public void registrationACitizenFromConsole(DataSource dataSource) {
         Registration registration = new Registration();
-        new CovidDao(dataSource).registrationOneCitizen(registration.getValidCitizenFromConsole());
+        new CovidDao(dataSource).registrationOneCitizen(registration.getValidCitizenFromConsole(dataSource));
     }
 
     public void registrationCitizensFromFile(DataSource dataSource, String filename) {
@@ -32,6 +32,7 @@ public class CovidMain {
         dataSource.setUrl("jdbc:mysql://localhost:3306/covid?useUnicode=true");
         dataSource.setUser("covid");
         dataSource.setPassword("covid");
+        new CovidMain().registrationACitizenFromConsole(dataSource);
 /*
         new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "1779");
         new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "1017");
@@ -39,7 +40,6 @@ public class CovidMain {
 
 /*
         new CovidMain().registrationCitizensFromFile(dataSource, "RegistrationTest.csv");
-        new CovidMain().registrationACitizenFromConsole(dataSource);
 */
 
     }

@@ -1,9 +1,9 @@
 package covid;
 
 
+import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -19,98 +19,134 @@ public class Registration {
                 String[] lineArr = line.split(";");
                 result.add(new Citizen(lineArr[0], lineArr[1], Integer.parseInt(lineArr[2]), lineArr[3], lineArr[4]));
             }
-
         } catch (IOException ioException) {
             throw new IllegalStateException("Cannot load", ioException);
         }
         return result;
     }
 
-
-    public Map<String, List<String>> loadMap() {
-        Map<String, List<String>> cities = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(Registration.class.getResourceAsStream("zip2021.csv")))) {
-            String line = br.readLine();
-            while ((line = br.readLine()) != null) {
-                String zip = line.split(";")[0];
-                String city = line.split(";")[1].trim();
-                if (!cities.containsKey(zip)) {
-                    cities.put(zip, new ArrayList<>());
-                }
-                cities.get(zip).add(city);
-            }
-        } catch (IOException ioException) {
-            throw new IllegalStateException("Cannot load", ioException);
-        }
-        return cities;
-    }
-
-    public Citizen getValidCitizenFromConsole() {
-        Map<String, List<String>> cities = loadMap();
+    public Citizen getValidCitizenFromConsole(DataSource dataSource) {
+        Map<String, List<String>> cities = new CovidDao(dataSource).loadCities();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Kérem a nevét:");
-        String name = getValidName(scanner.nextLine());
+        String name = readName(scanner);
 
-        System.out.println("Kérem az irányítószámát:");
-        String zip = getValidZip(scanner.nextLine());
+        String zip = readZip(scanner);
         System.out.println(cities.get(zip));
 
-        System.out.println("Kérem az életkorát:");
-        int age = getValidAge(scanner.nextInt());
-        scanner.nextLine();
+        int age = readAge(scanner);
 
-        System.out.println("Kérem az email címét:");
-        String email1 = getValidEmail(scanner.nextLine());
-        System.out.println("Kérem az email címét ismét:");
-        String email2 = getValidEmail(scanner.nextLine());
-        if (!email1.equals(email2)) {
-            throw new IllegalArgumentException("A két email nem egyezik");
-        }
+        String email = readEmail(scanner);
 
-        System.out.println("Kérem a TAJ számát:");
-        String taj = scanner.nextLine();
+        String taj = readTAJ(scanner);
 
-        return new Citizen(name, zip, age, email1, taj);
+        return new Citizen(name, zip, age, email, taj);
     }
 
-    private String getValidEmail(String email) {
-        if (email.length() < 3 || !email.contains("@")) {
-            throw new IllegalArgumentException("Nem email");
+
+    private String readName(Scanner scanner) {
+        System.out.println("Kérem a nevét:");
+        String name = scanner.nextLine();
+        while (!isValidName(name)) {
+            System.out.println("A név nem lehet üres!");
+            System.out.println("Kérem a nevét:");
+            name = scanner.nextLine();
         }
-        return email;
+        return name;
+    }
+
+    private boolean isValidName(String name) {
+        return isNotEmpty(name);
     }
 
     private boolean isNotEmpty(String str) {
         return (str != null && !str.isBlank());
     }
 
-    private String getValidName(String name) {
-        if (isNotEmpty(name)) {
-            return name;
+
+    private String readZip(Scanner scanner) {
+        System.out.println("Kérem az irányítószámát:");
+        String zip = scanner.nextLine();
+        while (!isValidZip(zip)) {
+            System.out.println("Nem irányítószám!");
+            System.out.println("Kérem az irányítószámát:");
+            zip = scanner.nextLine();
         }
-        throw new IllegalArgumentException("A név nem lehet üres");
+        return zip;
     }
 
-    private String getValidZip(String zip) {
+    private boolean isValidZip(String zip) {
         try {
             Integer.parseInt(zip);
-            return zip;
+            return true;
         } catch (NumberFormatException nfe) {
-            throw new IllegalArgumentException("Nem irányítószám");
+            return false;
         }
     }
 
-    private int getValidAge(int age) {
-        if (age > 10 && age < 150) {
-            return age;
+
+    private int readAge(Scanner scanner) {
+        System.out.println("Kérem az életkorát:");
+        String age = scanner.nextLine();
+        while (!isValidAge(age)) {
+            System.out.println("Az életkor 10 és 150 év között kell legyen!");
+            System.out.println("Kérem az életkorát:");
+            age = scanner.nextLine();
         }
-        throw new IllegalArgumentException("Az életkor 10 és 150 év között kell legyen");
+        return Integer.parseInt(age);
     }
 
-    private String getvalidTAJ(String taj) {
+    private boolean isValidAge(String age) {
+        try {
+            int temp = Integer.parseInt(age);
+            if (temp > 10 && temp < 150) {
+                return true;
+            }
+            return false;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+
+    private String readEmail(Scanner scanner) {
+        System.out.println("Kérem az email címét:");
+        String email1 = scanner.nextLine();
+        while (!isValidEmail(email1)) {
+            System.out.println("Nem email cím!");
+            System.out.println("Kérem az email címét:");
+            email1 = scanner.nextLine();
+        }
+
+        System.out.println("Kérem az email címét ismét:");
+        String email2 = scanner.nextLine();
+        while (!email2.equals(email1)) {
+            System.out.println("A két email cím nem egyezik!");
+            System.out.println("Kérem az email címét ismét:");
+            email2 = scanner.nextLine();
+        }
+        return email1;
+    }
+
+    private boolean isValidEmail(String email) {
+        return (email.length() >= 3 && email.contains("@"));
+    }
+
+
+    private String readTAJ(Scanner scanner) {
+        System.out.println("Kérem a TAJ számát:");
+        String taj = scanner.nextLine();
+        while (!isvalidTAJ(taj)) {
+            System.out.println("Nem TAJ szám!");
+            System.out.println("Kérem a TAJ számát:");
+            taj = scanner.nextLine();
+        }
+        return taj;
+    }
+
+    private boolean isvalidTAJ(String taj) {
         if (taj.length() != 9) {
-            throw new IllegalArgumentException("Nem TAJ szám");
+            return false;
         }
         int sum = 0;
         for (int i = 0; i < 8; i++) {
@@ -123,17 +159,36 @@ public class Registration {
                     sum += digit * 7;
                 }
             } catch (NumberFormatException nfe) {
-                throw new IllegalArgumentException("Ez nem karakter nem számjegy" + taj.substring(i, i + 1), nfe);
+                return false;
             }
         }
         if (Integer.parseInt(taj.substring(8)) == sum % 10) {
-            return taj;
+            return true;
         }
-        throw new IllegalArgumentException("Rossz TAJ szám");
+        return false;
     }
 
+    /* Először fájlból töltöttem fel a Map-et, de alkalmazás közben adatbázisból dolgozunk nem fájlból.
+        public Map<String, List<String>> loadMap() {
+            Map<String, List<String>> cities = new HashMap<>();
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(Registration.class.getResourceAsStream("zip2021.csv")))) {
+                String line = br.readLine();
+                while ((line = br.readLine()) != null) {
+                    String zip = line.split(";")[0];
+                    String city = line.split(";")[1].trim();
+                    if (!cities.containsKey(zip)) {
+                        cities.put(zip, new ArrayList<>());
+                    }
+                    cities.get(zip).add(city);
+                }
+            } catch (IOException ioException) {
+                throw new IllegalStateException("Cannot load", ioException);
+            }
+            return cities;
+        }
+
+
     // Be kellett töltenem a cities táblát Java-n keresztül, mert nem importálja ez a gép valamiért.
-/*
     public List<City> loadCityList() {
         List<City> result = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(RegistrationFromConsole.class.getResourceAsStream("zip2021.csv")))) {
@@ -165,7 +220,6 @@ public class Registration {
 
         CovidDao covidDao = new CovidDao(dataSource);
         covidDao.createCities(cities);
-
     }
  */
 }

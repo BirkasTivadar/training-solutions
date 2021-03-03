@@ -1,18 +1,39 @@
 package covid;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CovidDao {
     private DataSource dataSource;
 
     public CovidDao(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public Map<String, List<String>> loadCities() {
+        Map<String, List<String>> cities = new HashMap<>();
+        try (
+                Connection conn = dataSource.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT zip, city FROM cities;")
+        ) {
+            while (rs.next()) {
+                String zip = rs.getString("zip");
+                String city = rs.getString("city");
+                if (!cities.containsKey(zip)) {
+                    cities.put(zip, new ArrayList<>());
+                }
+                cities.get(zip).add(city);
+            }
+            return cities;
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+
     }
 
     public List<Citizen> getCitizensForVaccinationByZip(String zip) {
@@ -85,10 +106,7 @@ public class CovidDao {
         }
     }
 
-
-
-
-    /*
+    /* A cities tábla jdbc-n keresztül történt feltöltéséhez kellett, utána az sql parancssor ki lett exportálva flyway migration-ba
     public void createCities(List<City> cities) {
         try (Connection conn = dataSource.getConnection()) {
             conn.setAutoCommit(false);
