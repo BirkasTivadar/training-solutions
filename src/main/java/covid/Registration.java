@@ -131,6 +131,8 @@ public class Registration {
         }
         throw new IllegalArgumentException("Rossz TAJ szám");
     }
+
+    // Be kellett töltenem a cities táblát Java-n keresztül, mert nem importálja ez a gép valamiért.
 /*
     public List<City> loadCityList() {
         List<City> result = new ArrayList<>();
