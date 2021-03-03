@@ -1,18 +1,35 @@
 package covid;
 
 
-import com.mysql.cj.jdbc.MysqlDataSource;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
-public class RegistrationFromConsole {
+public class Registration {
+
+    public List<Citizen> getValidCitizensFromFile(String fileName) {
+        Path file = Path.of(fileName);
+        List<Citizen> result = new ArrayList<>();
+        try (BufferedReader br = Files.newBufferedReader(file)) {
+            String line = br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] lineArr = line.split(";");
+                result.add(new Citizen(lineArr[0], lineArr[1], Integer.parseInt(lineArr[2]), lineArr[3], lineArr[4]));
+            }
+
+        } catch (IOException ioException) {
+            throw new IllegalStateException("Cannot load", ioException);
+        }
+        return result;
+    }
+
 
     public Map<String, List<String>> loadMap() {
         Map<String, List<String>> cities = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(RegistrationFromConsole.class.getResourceAsStream("zip2021.csv")))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Registration.class.getResourceAsStream("zip2021.csv")))) {
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 String zip = line.split(";")[0];
@@ -133,15 +150,10 @@ public class RegistrationFromConsole {
         }
         return result;
     }
- */
 
     public static void main(String[] args) {
 
         RegistrationFromConsole registrationFromConsole = new RegistrationFromConsole();
-
-
-
-        /*
         List<City> cities = registrationFromConsole.loadCityList();
 
         MysqlDataSource dataSource = new MysqlDataSource();
@@ -151,8 +163,9 @@ public class RegistrationFromConsole {
 
         CovidDao covidDao = new CovidDao(dataSource);
         covidDao.createCities(cities);
-         */
+
     }
+ */
 }
 
 

@@ -9,7 +9,7 @@ public class Citizen {
     private int age;
     private String email;
     private String taj;
-    private int numberOfVaccination;
+    private int numberOfVaccination = 0;
     private LocalDateTime last_vaccination;
 
     public Citizen() {
