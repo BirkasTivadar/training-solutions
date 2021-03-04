@@ -75,7 +75,7 @@ public class Registration {
     }
 
 
-    private String readZip(Scanner scanner) {
+    protected String readZip(Scanner scanner) {
         System.out.println("Kérem az irányítószámát:");
         String zip = scanner.nextLine();
         while (!isValidZip(zip)) {

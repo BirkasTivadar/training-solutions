@@ -4,27 +4,108 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 
 import javax.sql.DataSource;
 import java.util.List;
-
+import java.util.Scanner;
 
 
 public class CovidMain {
+
+    private DataSource dataSource;
+
+    public CovidMain(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     public void registrationACitizenFromConsole(DataSource dataSource) {
         Registration registration = new Registration();
         new CovidDao(dataSource).registrationOneCitizen(registration.getValidCitizenFromConsole(dataSource));
     }
 
-    public void registrationCitizensFromFile(DataSource dataSource, String filename) {
+    public void registrationCitizensFromFile(DataSource dataSource) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Kérem írja be a fájlnevet:");
+        String filename = scanner.nextLine();
+
         Registration registration = new Registration();
         List<Citizen> citizenList = registration.getValidCitizensFromFile(filename);
         new CovidDao(dataSource).registrationCitizens(citizenList);
     }
 
-    public void writeCitizensForVaccinationToFileByZip(DataSource dataSource, String zip) {
+    public void writeCitizensForVaccinationToFileByZip(DataSource dataSource) {
+        Scanner scanner = new Scanner(System.in);
+        String zip = new Registration().readZip(scanner);
+        System.out.println("Kérem írja be a fájlnevet:");
+        String filename = scanner.nextLine();
+
         CovidDao covidDao = new CovidDao(dataSource);
         List<Citizen> citizens = covidDao.getCitizensForVaccinationByZip(zip);
-        new CovidFileManager().writeCitizensToFile(citizens, "citizens_for_vaccinations.csv");
+        new CovidFileManager().writeCitizensToFile(citizens, filename);
     }
+
+    public void menuToConsole() {
+        System.out.println("1. Regisztráció\n" +
+                "2. Tömeges regisztráció\n" +
+                "3. Generálás\n" +
+                "4. Oltás\n" +
+                "5. Oltás meghiúsulás\n" +
+                "6. Riport\n" + "\n" +
+                "7. Kilépés");
+    }
+
+    public void runMenu() {
+        Scanner scanner = new Scanner(System.in);
+        int menuNumber = 0;
+        while (menuNumber != 7) {
+            menuToConsole();
+            System.out.println("Kérem adja meg a menü számát:");
+            try {
+                menuNumber = Integer.parseInt(scanner.nextLine());
+                executeMenu(menuNumber);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Nyomatékosan kérem egy egész számot adjon meg 1 és 7 között!");
+            } catch (IllegalArgumentException | ArithmeticException ex) {
+                System.out.println(ex.getMessage());
+            }
+
+        }
+    }
+
+    private void executeMenu(int menuNumber) {
+        switch (menuNumber) {
+            case 1: {
+                registrationACitizenFromConsole(dataSource);
+                return;
+            }
+            case 2: {
+                registrationCitizensFromFile(dataSource);
+                return;
+            }
+            case 3: {
+                writeCitizensForVaccinationToFileByZip(dataSource);
+                return;
+            }
+            case 4: {
+                System.out.println("Kidolgozás alatt");;
+                return;
+            }
+             case 5: {
+                System.out.println("Kidolgozás alatt");;
+                return;
+            }
+             case 46: {
+                System.out.println("Kidolgozás alatt");;
+                return;
+            }
+            case 7: {
+                System.out.println("A viszon'lágytojás!");;
+                return;
+            }
+
+            default: {
+                System.out.println("Nem létezik ilyen menüpont!");
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
 
@@ -32,10 +113,13 @@ public class CovidMain {
         dataSource.setUrl("jdbc:mysql://localhost:3306/covid?useUnicode=true");
         dataSource.setUser("covid");
         dataSource.setPassword("covid");
-        new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "3400");
+
+        CovidMain covidMain = new CovidMain(dataSource);
+        covidMain.runMenu();
 
 
 /*
+        new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "3400");
 
 */
 
