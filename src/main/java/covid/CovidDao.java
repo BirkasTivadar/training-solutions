@@ -2,6 +2,8 @@ package covid;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,31 +36,6 @@ public class CovidDao {
             throw new IllegalStateException("Connection failed", sqlException);
         }
 
-    }
-
-    public List<Citizen> getCitizensForVaccinationByZip(String zip) {
-        List<Citizen> result = new ArrayList<>();
-
-        try (
-                Connection conn = dataSource.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT citizen_name, age, email, taj FROM citizens WHERE zip = ? AND number_of_vaccination = 0 ORDER BY age DESC, citizen_name;")
-        ) {
-            ps.setString(1, zip);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next() && result.size() < 16) {
-                    String name = rs.getString("citizen_name");
-                    int age = rs.getInt("age");
-                    String email = rs.getString("email");
-                    String taj = rs.getString("taj");
-                    result.add(new Citizen(name, zip, age, email, taj));
-                }
-            } catch (SQLException sqlException) {
-                throw new IllegalStateException("Cannot query", sqlException);
-            }
-            return result;
-        } catch (SQLException sqlException) {
-            throw new IllegalStateException("Cannot connection", sqlException);
-        }
     }
 
     public void registrationOneCitizen(Citizen citizen) {
@@ -105,6 +82,34 @@ public class CovidDao {
             throw new IllegalStateException("Cannot insert", sqlException);
         }
     }
+
+    public List<Citizen> getCitizensForVaccinationByZip(String zip) {
+        List<Citizen> result = new ArrayList<>();
+
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT citizen_name, age, email, taj FROM citizens WHERE zip = ? AND number_of_vaccination = 0 OR last_vaccination < ? ORDER BY age DESC, citizen_name;")
+        ) {
+            LocalDateTime lastCheck = LocalDateTime.now().minusDays(15);
+            ps.setString(1, zip);
+            ps.setTimestamp(2, Timestamp.valueOf(lastCheck));
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next() && result.size() < 16) {
+                    String name = rs.getString("citizen_name");
+                    int age = rs.getInt("age");
+                    String email = rs.getString("email");
+                    String taj = rs.getString("taj");
+                    result.add(new Citizen(name, zip, age, email, taj));
+                }
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
+            }
+            return result;
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Cannot connection", sqlException);
+        }
+    }
+
 
     /* A cities tábla jdbc-n keresztül történt feltöltéséhez kellett, utána az sql parancssor ki lett exportálva flyway migration-ba
     public void createCities(List<City> cities) {

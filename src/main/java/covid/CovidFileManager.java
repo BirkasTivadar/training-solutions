@@ -8,8 +8,8 @@ import java.util.List;
 
 public class CovidFileManager {
 
-    public void writeCitizensToFile(List<Citizen> citizens) {
-        try (BufferedWriter writer = Files.newBufferedWriter(Path.of("citizens_for_vaccination.csv"))) {
+    public void writeCitizensToFile(List<Citizen> citizens, String filename) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename))) {
             writer.write("Időpont;Név;Irányítószám;Életkor;E-mail cím; TAJ szám\n");
             for (int i = 0; i < citizens.size(); i++) {
                 Citizen citizen = citizens.get(i);

@@ -23,7 +23,7 @@ public class CovidMain {
     public void writeCitizensForVaccinationToFileByZip(DataSource dataSource, String zip) {
         CovidDao covidDao = new CovidDao(dataSource);
         List<Citizen> citizens = covidDao.getCitizensForVaccinationByZip(zip);
-        new CovidFileManager().writeCitizensToFile(citizens);
+        new CovidFileManager().writeCitizensToFile(citizens, "citizens_for_vaccinations.csv");
     }
 
     public static void main(String[] args) {
@@ -32,14 +32,16 @@ public class CovidMain {
         dataSource.setUrl("jdbc:mysql://localhost:3306/covid?useUnicode=true");
         dataSource.setUser("covid");
         dataSource.setPassword("covid");
-        new CovidMain().registrationACitizenFromConsole(dataSource);
+        new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "3400");
+
+
 /*
-        new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "1779");
-        new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "1017");
+
 */
 
 /*
-        new CovidMain().registrationCitizensFromFile(dataSource, "RegistrationTest.csv");
+        new CovidMain().registrationCitizensFromFile(dataSource, "registrations.csv");
+        new CovidMain().registrationACitizenFromConsole(dataSource);
 */
 
     }
