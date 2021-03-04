@@ -110,6 +110,48 @@ public class CovidDao {
         }
     }
 
+    public int infoBeforeVaccination(String taj) {
+        int result = 0;
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT number_of_vaccination FROM citizens WHERE taj = ?;")
+        ) {
+            ps.setString(1, taj);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    result = rs.getInt("number_of_vaccination");
+                }
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
+            }
+            return result;
+
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+    }
+
+    public Vaccine_Type ifHasVaccination(String taj) {
+        Vaccine_Type type = null;
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT vaccination_type FROM vaccinations WHERE taj = ?;")
+        ) {
+            ps.setString(1, taj);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    type = Vaccine_Type.valueOf(rs.getString("vaccination_type"));
+                }
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
+            }
+            return type;
+
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+    }
+
 
     /* A cities tábla jdbc-n keresztül történt feltöltéséhez kellett, utána az sql parancssor ki lett exportálva flyway migration-ba
     public void createCities(List<City> cities) {

@@ -3,9 +3,11 @@ package covid;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Registration {
@@ -144,7 +146,7 @@ public class Registration {
     }
 
 
-    private String readTAJ(Scanner scanner) {
+    public String readTAJ(Scanner scanner) {
         System.out.println("Kérem a TAJ számát:");
         String taj = scanner.nextLine();
         while (!isvalidTAJ(taj)) {
@@ -177,6 +179,134 @@ public class Registration {
             return true;
         }
         return false;
+    }
+
+    public void writeCitizensToFile(List<Citizen> citizens, String filename) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename))) {
+            writer.write("Időpont;Név;Irányítószám;Életkor;E-mail cím; TAJ szám\n");
+            for (int i = 0; i < citizens.size(); i++) {
+                Citizen citizen = citizens.get(i);
+                String time = i % 2 == 0 ? 8 + i / 2 + ":00" : 8 + i / 2 + ":30";
+                writer.write(time + ";" + citizen.getName() + ";" + citizen.getZip() + ";" + citizen.getAge() + ";" + citizen.getEmail() + ";" + citizen.getTaj() + "\n");
+            }
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read file", ioe);
+        }
+    }
+
+    public Vaccine administrationVaccine(DataSource dataSource) {
+        List<String> registratedTajNumbers = validRegistration();
+        Scanner scanner = new Scanner(System.in);
+        String taj = readRegistTAJ(registratedTajNumbers, scanner);
+        int number_of_vaccination = new CovidDao(dataSource).infoBeforeVaccination(taj);
+        checkBeforeVaccination(dataSource, number_of_vaccination, taj);
+
+        LocalDateTime dateTime = LocalDateTime.now();
+        VaccinationStatus status = readStatus(scanner);
+        String note = checkStatus(scanner, status);
+        Vaccine_Type type = (number_of_vaccination == 0 ? readType(scanner) : new CovidDao(dataSource).ifHasVaccination(taj));
+
+        // itt vagyok most
+
+        return new Vaccine(taj, dateTime, status, type, note);
+    }
+
+    private void checkBeforeVaccination(DataSource dataSource, int number, String taj) {
+        if (number > 0) {
+            System.out.println("Az első oltásnál kapott vakcina típusa:");
+            System.out.println(new CovidDao(dataSource).ifHasVaccination(taj));
+        }
+        return;
+    }
+
+    private Vaccine_Type readType(Scanner scanner) {
+        System.out.println("Milyen típusú vakcinával történt az oltás?");
+        System.out.println("1. Sinopharm\n" +
+                "2. Pfizer-Biontech\n" +
+                "3. AstraZeneca\n" +
+                "4. Sputnyik V\n" +
+                "5. Moderna V\n");
+        int vac = 0;
+        Vaccine_Type type = null;
+        while (!(vac > 0 && vac < 5)) {
+            try {
+                vac = Integer.parseInt(scanner.nextLine());
+                if (vac > 0 && vac < 5) {
+                    type = selecType(vac);
+                } else {
+                    System.out.println("Kérem 1 és 5 közötti számot adjon meg!");
+                    readType(scanner);
+                }
+            } catch (NumberFormatException nfe) {
+                System.out.println("Nyomatékosan kérem egy egész számot adjon meg 1 és 5 között!");
+            } catch (IllegalArgumentException | ArithmeticException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return type;
+    }
+
+    private Vaccine_Type selecType(int number) {
+        switch (number) {
+            case 1: {
+                return Vaccine_Type.SINOPHARM;
+            }
+            case 2: {
+                return Vaccine_Type.PFIZER_BIONTECH;
+            }
+            case 3: {
+                return Vaccine_Type.ASTRAZENECA;
+            }
+            case 4: {
+                return Vaccine_Type.SPUTNIK_V;
+            }
+            case 5: {
+                return Vaccine_Type.MODERNA;
+            }
+            default: {
+                return null;
+            }
+        }
+    }
+
+
+    private String checkStatus(Scanner scanner, VaccinationStatus status) {
+        String note = "";
+        if (status == VaccinationStatus.FAILED) {
+            System.out.println("Kérem írja le röviden, miért hiúsult meg az oltás:");
+            note = scanner.nextLine();
+        }
+        return note;
+    }
+
+    private VaccinationStatus readStatus(Scanner scanner) {
+        System.out.println("Sikeres volt az oltás? (I/N)");
+        String temp = scanner.nextLine();
+        VaccinationStatus status = temp.toLowerCase().equals("i") ? VaccinationStatus.SUCCESSFUL : VaccinationStatus.FAILED;
+        return status;
+    }
+
+    private String readRegistTAJ(List<String> registratedTajNumbers, Scanner scanner) {
+        String taj = readTAJ(scanner);
+        while (!registratedTajNumbers.contains(taj)) {
+            System.out.println("Nem regisztrált TAJ szám!");
+            taj = readTAJ(scanner);
+        }
+        return taj;
+    }
+
+    public List<String> validRegistration() {
+        List<String> result = new ArrayList<>();
+        try (BufferedReader br = Files.newBufferedReader(Path.of("citizens_for_vaccinations.csv"))) {
+            String line = br.readLine();
+            while ((line = br.readLine()) != null) {
+                String taj = line.split(";")[5];
+                result.add(taj);
+            }
+        } catch (IOException ioException) {
+            throw new IllegalStateException("Cannot read", ioException);
+        }
+        return result;
     }
 
     /* Először fájlból töltöttem fel a Map-et, de alkalmazás közben adatbázisból dolgozunk nem fájlból.

@@ -38,7 +38,7 @@ public class CovidMain {
 
         CovidDao covidDao = new CovidDao(dataSource);
         List<Citizen> citizens = covidDao.getCitizensForVaccinationByZip(zip);
-        new CovidFileManager().writeCitizensToFile(citizens, filename);
+        new Registration().writeCitizensToFile(citizens, filename);
     }
 
     public void menuToConsole() {
@@ -84,7 +84,8 @@ public class CovidMain {
                 return;
             }
             case 4: {
-                System.out.println("Kidolgozás alatt");;
+                System.out.println("Kidolgozás alatt");
+                System.out.println(new Registration().administrationVaccine(dataSource));
                 return;
             }
              case 5: {
@@ -115,7 +116,10 @@ public class CovidMain {
         dataSource.setPassword("covid");
 
         CovidMain covidMain = new CovidMain(dataSource);
-        covidMain.runMenu();
+
+    //   System.out.println(new CovidDao(dataSource).infoBeforeVaccination("123458304"));
+
+       covidMain.runMenu();
 
 
 /*
