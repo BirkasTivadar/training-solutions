@@ -198,6 +198,7 @@ public class Registration {
         List<String> registratedTajNumbers = validRegistration();
         Scanner scanner = new Scanner(System.in);
         String taj = readRegistTAJ(registratedTajNumbers, scanner);
+
         int number_of_vaccination = new CovidDao(dataSource).infoBeforeVaccination(taj);
         checkBeforeVaccination(dataSource, number_of_vaccination, taj);
 
@@ -205,8 +206,6 @@ public class Registration {
         VaccinationStatus status = readStatus(scanner);
         String note = checkStatus(scanner, status);
         Vaccine_Type type = (number_of_vaccination == 0 ? readType(scanner) : new CovidDao(dataSource).ifHasVaccination(taj));
-
-        // itt vagyok most
 
         return new Vaccine(taj, dateTime, status, note, type);
     }

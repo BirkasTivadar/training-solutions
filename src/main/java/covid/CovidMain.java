@@ -92,12 +92,14 @@ public class CovidMain {
                 vaccination();
                 return;
             }
-             case 6: {
-                System.out.println("Kidolgozás alatt");;
+            case 6: {
+                System.out.println("Kidolgozás alatt");
+                ;
                 return;
             }
             case 7: {
-                System.out.println("A viszon'lágytojás!");;
+                System.out.println("A viszon'lágytojás!");
+                ;
                 return;
             }
 
@@ -106,7 +108,6 @@ public class CovidMain {
             }
         }
     }
-
 
 
     public static void main(String[] args) {
@@ -118,9 +119,9 @@ public class CovidMain {
 
         CovidMain covidMain = new CovidMain(dataSource);
 
-    //   System.out.println(new CovidDao(dataSource).infoBeforeVaccination("123458304"));
+        //   System.out.println(new CovidDao(dataSource).infoBeforeVaccination("123458304"));
 
-       covidMain.runMenu();
+        covidMain.runMenu();
 
 
 /*
