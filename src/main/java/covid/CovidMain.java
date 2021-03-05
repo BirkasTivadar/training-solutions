@@ -3,6 +3,7 @@ package covid;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -46,6 +47,14 @@ public class CovidMain {
         new CovidDao(dataSource).adminVaccination(vaccine);
     }
 
+    private void riport() {
+        HashMap<String, Riport> riport = new CovidDao(dataSource).processRiport();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Melyik irányitószám adataira kíváncsi?");
+        String zip = scanner.nextLine();
+        System.out.println(riport.get(zip));
+    }
+
     public void menuToConsole() {
         System.out.println("1. Regisztráció\n" +
                 "2. Tömeges regisztráció\n" +
@@ -58,14 +67,14 @@ public class CovidMain {
     public void runMenu() {
         Scanner scanner = new Scanner(System.in);
         int menuNumber = 0;
-        while (menuNumber != 7) {
+        while (menuNumber != 6) {
             menuToConsole();
             System.out.println("Kérem adja meg a menü számát:");
             try {
                 menuNumber = Integer.parseInt(scanner.nextLine());
                 executeMenu(menuNumber);
             } catch (NumberFormatException nfe) {
-                System.out.println("Nyomatékosan kérem egy egész számot adjon meg 1 és 7 között!");
+                System.out.println("Nyomatékosan kérem egy egész számot adjon meg 1 és 6 között!");
             } catch (IllegalArgumentException | ArithmeticException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -92,16 +101,12 @@ public class CovidMain {
                 return;
             }
             case 5: {
-                System.out.println("Kidolgozás alatt");
-                ;
-                return;
+                riport();
             }
             case 6: {
                 System.out.println("A viszon'lágytojás!");
-                ;
                 return;
             }
-
             default: {
                 System.out.println("Nem létezik ilyen menüpont!");
             }

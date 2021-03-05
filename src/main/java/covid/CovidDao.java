@@ -205,6 +205,57 @@ public class CovidDao {
         }
     }
 
+    public HashMap<String, Riport> processRiport() {
+        HashMap<String, Riport> result = new HashMap<>();
+        try (
+                Connection conn = dataSource.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT zip, number_of_vaccination FROM citizens;")
+        ) {
+            while (rs.next()) {
+                String zip = rs.getString("zip");
+                int numberVac = rs.getInt("number_of_vaccination");
+                if (!result.containsKey(zip)) {
+                    result.put(zip, new Riport());
+                }
+                if (numberVac == 0) {
+                    result.get(zip).NullVaccinationIncrement();
+                }
+                if (numberVac == 1) {
+                    result.get(zip).OneVaccinationIncrement();
+                }
+                if (numberVac == 2) {
+                    result.get(zip).TwoVaccinationIncrement();
+                }
+            }
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+        return result;
+    }
+
+//    Map<String, List<String>> cities = new HashMap<>();
+//        try (
+//    Connection conn = dataSource.getConnection();
+//    Statement stmt = conn.createStatement();
+//    ResultSet rs = stmt.executeQuery("SELECT zip, city FROM cities;")
+//        ) {
+//        while (rs.next()) {
+//            String zip = rs.getString("zip");
+//            String city = rs.getString("city");
+//            if (!cities.containsKey(zip)) {
+//                cities.put(zip, new ArrayList<>());
+//            }
+//            cities.get(zip).add(city);
+//        }
+//        return cities;
+//    } catch (SQLException sqlException) {
+//        throw new IllegalStateException("Connection failed", sqlException);
+//    }
+
+
+
+
 
     /* A cities tábla jdbc-n keresztül történt feltöltéséhez kellett, utána az sql parancssor ki lett exportálva flyway migration-ba
     public void createCities(List<City> cities) {
