@@ -41,6 +41,11 @@ public class CovidMain {
         new Registration().writeCitizensToFile(citizens, filename);
     }
 
+    private void vaccination() {
+        Vaccine vaccine = new Registration().administrationVaccine(dataSource);
+        new CovidDao(dataSource).adminVaccination(vaccine);
+    }
+
     public void menuToConsole() {
         System.out.println("1. Regisztráció\n" +
                 "2. Tömeges regisztráció\n" +
@@ -84,15 +89,10 @@ public class CovidMain {
                 return;
             }
             case 4: {
-                System.out.println("Kidolgozás alatt");
-                System.out.println(new Registration().administrationVaccine(dataSource));
+                vaccination();
                 return;
             }
-             case 5: {
-                System.out.println("Kidolgozás alatt");;
-                return;
-            }
-             case 46: {
+             case 6: {
                 System.out.println("Kidolgozás alatt");;
                 return;
             }
@@ -106,6 +106,7 @@ public class CovidMain {
             }
         }
     }
+
 
 
     public static void main(String[] args) {

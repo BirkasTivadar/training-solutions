@@ -152,6 +152,59 @@ public class CovidDao {
         }
     }
 
+    public void adminVaccination(Vaccine vaccine) {
+        try (Connection conn = dataSource.getConnection()) {
+            processAdminVaccination(vaccine, conn);
+
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+    }
+
+    private void processAdminVaccination(Vaccine vaccine, Connection conn) throws SQLException {
+        conn.setAutoCommit(false);
+        try (
+                PreparedStatement ps1 = conn.prepareStatement("INSERT INTO  vaccinations(taj, vaccination_date, vaccination_status, note, vaccination_type) VALUES (?,?,?,?,?);");
+                PreparedStatement ps2 = conn.prepareStatement("UPDATE citizens SET last_vaccination = ?, number_of_vaccination = ? WHERE taj = ?;")
+        ) {
+            ps1.setString(1, vaccine.getTaj());
+            ps1.setTimestamp(2, Timestamp.valueOf(vaccine.getDate()));
+            ps1.setString(3, vaccine.getStatus().name());
+            ps1.setString(4, vaccine.getNote());
+            ps1.setString(5, vaccine.getType().name());
+            ps1.executeUpdate();
+
+            int numberOfVaccination = selectNumberOfVaccination(vaccine);
+            ps2.setTimestamp(1, Timestamp.valueOf(vaccine.getDate()));
+            ps2.setInt(2, numberOfVaccination);
+            ps2.setString(3, vaccine.getTaj());
+            ps2.executeUpdate();
+            conn.commit();
+        } catch (IllegalArgumentException iae) {
+            conn.rollback();
+        }
+    }
+
+    public int selectNumberOfVaccination(Vaccine vaccine) {
+        int result = 0;
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT number_of_vaccination FROM citizens WHERE taj = ?;")
+        ) {
+            ps.setString(1, vaccine.getTaj());
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    result = rs.getInt("number_of_vaccination");
+                }
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
+            }
+            return (vaccine.getStatus() == VaccinationStatus.SUCCESSFUL ? ++result : result);
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+    }
+
 
     /* A cities tábla jdbc-n keresztül történt feltöltéséhez kellett, utána az sql parancssor ki lett exportálva flyway migration-ba
     public void createCities(List<City> cities) {

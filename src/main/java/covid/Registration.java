@@ -208,7 +208,7 @@ public class Registration {
 
         // itt vagyok most
 
-        return new Vaccine(taj, dateTime, status, type, note);
+        return new Vaccine(taj, dateTime, status, note, type);
     }
 
     private void checkBeforeVaccination(DataSource dataSource, int number, String taj) {
@@ -225,7 +225,7 @@ public class Registration {
                 "2. Pfizer-Biontech\n" +
                 "3. AstraZeneca\n" +
                 "4. Sputnyik V\n" +
-                "5. Moderna V\n");
+                "5. Moderna\n");
         int vac = 0;
         Vaccine_Type type = null;
         while (!(vac > 0 && vac < 5)) {

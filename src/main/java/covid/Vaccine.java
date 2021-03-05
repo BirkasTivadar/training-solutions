@@ -8,9 +8,9 @@ public class Vaccine {
     private LocalDateTime date;
     private VaccinationStatus status;
     private Vaccine_Type type;
-    private String note;
+    private String  note;
 
-    public Vaccine(String taj, LocalDateTime date, VaccinationStatus status, Vaccine_Type type, String note) {
+    public Vaccine(String taj, LocalDateTime date, VaccinationStatus status, String note, Vaccine_Type type) {
         this.taj = taj;
         this.date = date;
         this.status = status;
