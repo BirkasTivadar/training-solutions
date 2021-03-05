@@ -50,10 +50,9 @@ public class CovidMain {
         System.out.println("1. Regisztráció\n" +
                 "2. Tömeges regisztráció\n" +
                 "3. Generálás\n" +
-                "4. Oltás\n" +
-                "5. Oltás meghiúsulás\n" +
-                "6. Riport\n" + "\n" +
-                "7. Kilépés");
+                "4. Oltás / Oltás meghiúsulás\n" +
+                "5. Riport\n" + "\n" +
+                "6. Kilépés");
     }
 
     public void runMenu() {
@@ -92,12 +91,12 @@ public class CovidMain {
                 vaccination();
                 return;
             }
-            case 6: {
+            case 5: {
                 System.out.println("Kidolgozás alatt");
                 ;
                 return;
             }
-            case 7: {
+            case 6: {
                 System.out.println("A viszon'lágytojás!");
                 ;
                 return;
@@ -119,11 +118,11 @@ public class CovidMain {
 
         CovidMain covidMain = new CovidMain(dataSource);
 
-        //   System.out.println(new CovidDao(dataSource).infoBeforeVaccination("123458304"));
 
         covidMain.runMenu();
 
 
+        //   System.out.println(new CovidDao(dataSource).infoBeforeVaccination("123458304"));
 /*
         new CovidMain().writeCitizensForVaccinationToFileByZip(dataSource, "3400");
 
