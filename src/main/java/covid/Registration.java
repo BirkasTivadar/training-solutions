@@ -195,7 +195,7 @@ public class Registration {
     }
 
     public Vaccine administrationVaccine(DataSource dataSource) {
-        List<String> registratedTajNumbers = validRegistration();
+        List<String> registratedTajNumbers = new CovidDao(dataSource).registratedTajNumbers();
         Scanner scanner = new Scanner(System.in);
         String taj = readRegistTAJ(registratedTajNumbers, scanner);
 
@@ -227,10 +227,10 @@ public class Registration {
                 "5. Moderna\n");
         int vac = 0;
         Vaccine_Type type = null;
-        while (!(vac > 0 && vac < 5)) {
+        while (!(vac > 0 && vac < 6)) {
             try {
                 vac = Integer.parseInt(scanner.nextLine());
-                if (vac > 0 && vac < 5) {
+                if (vac > 0 && vac < 6) {
                     type = selecType(vac);
                 } else {
                     System.out.println("Kérem 1 és 5 közötti számot adjon meg!");
@@ -294,6 +294,7 @@ public class Registration {
         return taj;
     }
 
+    /* Amikor még azt hittem, csak a regisztrációs fájlban lévőket lehet oltani, de a komplett adatbázisra kell ellenőrizni a TAJ-t
     public List<String> validRegistration() {
         List<String> result = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Path.of("citizens_for_vaccinations.csv"))) {
@@ -306,7 +307,7 @@ public class Registration {
             throw new IllegalStateException("Cannot read", ioException);
         }
         return result;
-    }
+    }*/
 
     /* Először fájlból töltöttem fel a Map-et, de alkalmazás közben adatbázisból dolgozunk nem fájlból.
         public Map<String, List<String>> loadMap() {
