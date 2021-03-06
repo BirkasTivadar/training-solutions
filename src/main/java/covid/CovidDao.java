@@ -139,7 +139,7 @@ public class CovidDao {
             ps.setTimestamp(2, Timestamp.valueOf(lastCheck));
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    result = rs.getInt("COUNT(zip)");
+                    result = rs.getInt(1);
                 }
             } catch (SQLException sqlException) {
                 throw new IllegalStateException("Cannot query", sqlException);
