@@ -211,9 +211,14 @@ public class Registration {
     }
 
     private void checkBeforeVaccination(DataSource dataSource, int number, String taj) {
-        if (number > 0) {
+        if (number == 1) {
             System.out.println("Az első oltásnál kapott vakcina típusa:");
             System.out.println(new CovidDao(dataSource).ifHasVaccination(taj));
+            System.out.println(new CovidDao(dataSource).inFifteenDays(taj) == 1 ? "Rendben eltelt 15 nap" : "Figyelem! Még nem telt el tizenöt nap az eslő oltás óta!" );
+
+        }
+        if (number > 1) {
+            System.out.println("Már megkapta mindkét oltást!");
         }
         return;
     }

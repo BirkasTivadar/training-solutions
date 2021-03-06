@@ -12,6 +12,12 @@ public class Citizen {
     private int numberOfVaccination = 0;
     private LocalDateTime last_vaccination;
 
+    public Citizen(String taj, int numberOfVaccination, LocalDateTime last_vaccination) {
+        this.taj = taj;
+        this.numberOfVaccination = numberOfVaccination;
+        this.last_vaccination = last_vaccination;
+    }
+
     public Citizen() {
     }
 
@@ -24,6 +30,8 @@ public class Citizen {
         numberOfVaccination = 0;
         last_vaccination = null;
     }
+
+
 
     public String getName() {
         return name;

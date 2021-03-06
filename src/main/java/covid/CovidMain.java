@@ -1,6 +1,7 @@
 package covid;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import org.flywaydb.core.Flyway;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -120,6 +121,10 @@ public class CovidMain {
         dataSource.setUrl("jdbc:mysql://localhost:3306/covid?useUnicode=true");
         dataSource.setUser("covid");
         dataSource.setPassword("covid");
+
+        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+        flyway.clean();
+        flyway.migrate();
 
         CovidMain covidMain = new CovidMain(dataSource);
 

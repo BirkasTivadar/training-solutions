@@ -128,6 +128,31 @@ public class CovidDao {
         }
     }
 
+    public int inFifteenDays(String taj){
+        int result = 0;
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT COUNT(zip) FROM citizens WHERE taj = ? AND last_vaccination < ?;")
+        ) {
+            LocalDateTime lastCheck = LocalDateTime.now().minusDays(15);
+            ps.setString(1, taj);
+            ps.setTimestamp(2, Timestamp.valueOf(lastCheck));
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    result = rs.getInt("COUNT(zip)");
+                }
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
+            }
+            return result;
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Cannot connection", sqlException);
+        }
+    }
+
+
+
+
     public Vaccine_Type ifHasVaccination(String taj) {
         Vaccine_Type type = null;
         try (

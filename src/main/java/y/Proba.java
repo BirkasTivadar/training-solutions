@@ -1,42 +1,45 @@
 package y;
 
-import covid.Vaccine_Type;
 
-import java.util.Scanner;
+import com.mysql.cj.jdbc.MysqlDataSource;
+
+import javax.sql.DataSource;
+import java.sql.*;
+import java.time.LocalDateTime;
 
 public class Proba {
 
-    public void vakcinaProba(Scanner scanner) {
-        System.out.println("Milyen típusú vakcinával történt az oltás?");
-        System.out.println("1. Sinopharm\n" +
-                "2. Pfizer-Biontech\n" +
-                "3. AstraZeneca\n" +
-                "4. Sputnyik V\n" +
-                "5. Moderna V\n");
-        int vac = 0;
-        Vaccine_Type type = null;
-        while (!(vac > 0 && vac < 5)) {
-            try {
-                vac = Integer.parseInt(scanner.nextLine());
-                if (vac > 0 && vac < 5) {
-                    System.out.println(vac);
-                    return;
-                } else {
-                    System.out.println("Nyomatékosan kérem egy egész számot adjon meg 1 és 5 között!");
-                    vakcinaProba(scanner);
+    public int inFifteenDays(DataSource dataSource, String taj){
+        int result = 5;
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT COUNT(zip) FROM citizens WHERE taj = ? AND last_vaccination < ?;")
+        ) {
+            LocalDateTime lastCheck = LocalDateTime.now().minusDays(15);
+            ps.setString(1, taj);
+            ps.setTimestamp(2, Timestamp.valueOf(lastCheck));
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    result = rs.getInt(1);
                 }
-            } catch (NumberFormatException nfe) {
-                System.out.println("Nyomatékosan kérem egy egész számot adjon meg 1 és 5 között!");
-            } catch (IllegalArgumentException | ArithmeticException ex) {
-                System.out.println("Nyomatékosan kérem egy egész számot adjon meg 1 és 5 között!");
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
             }
+            return result;
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Cannot connection", sqlException);
         }
-
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        new Proba().vakcinaProba(scanner);
-    }
 
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setUrl("jdbc:mysql://localhost:3306/covid?useUnicode=true");
+        dataSource.setUser("covid");
+        dataSource.setPassword("covid");
+
+        Proba proba = new Proba();
+        System.out.println(proba.inFifteenDays(dataSource, "123456922"));
+
+    }
 }
