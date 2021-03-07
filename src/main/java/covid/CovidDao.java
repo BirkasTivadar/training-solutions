@@ -261,8 +261,8 @@ public class CovidDao {
                 ResultSet rs = stmt.executeQuery("SELECT taj FROM citizens;")
         ) {
             while (rs.next()) {
-                String zip = rs.getString("taj");
-                result.add(zip);
+                String taj = rs.getString("taj");
+                result.add(taj);
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();

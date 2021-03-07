@@ -5,9 +5,11 @@ import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.*;
 import java.time.LocalDateTime;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,6 +29,12 @@ class CovidDaoTest {
         flyway.migrate();
 
         covidDao = new CovidDao(dataSource);
+    }
+
+    @Test
+    void loadCitiesTest() {
+        Map<String, List<String>> cites = covidDao.loadCities();
+        assertEquals(2801, cites.size());
     }
 
     @Test
@@ -67,11 +75,12 @@ class CovidDaoTest {
 
     @Test
     void getCitizensForVaccinationByZipAndNumberOfVaccinationTest() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
         List<Citizen> citizens = List.of(
                 new Citizen("John Doe", "9200", 43, "hello@hello.hu", "123457572"),
                 new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620"),
                 new Citizen("Josif Várszegi", "3400", 45, "hello@hello.ro", "123458476"),
-                new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, LocalDateTime.of(2021, 3, 4, 10, 0, 0)),
+                new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, yesterday),
                 new Citizen("Tidyr Vasil", "1345", 25, "hello@hello.ua", "123457778")
         );
         covidDao.registrationCitizens(citizens);
@@ -80,16 +89,19 @@ class CovidDaoTest {
         assertEquals(1, covidDao.getCitizensForVaccinationByZip("9200").size());
         assertEquals(0, covidDao.getCitizensForVaccinationByZip("6600").size());
         assertTrue(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620")));
-        assertFalse(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, LocalDateTime.of(2021, 3, 4, 10, 0, 0))));
+        assertFalse(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, yesterday)));
     }
 
     @Test
     void getCitizensForVaccinationByZipAndNumberOfVaccinationAndLastVaccinationDateTest() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        LocalDateTime beforeAMonth = LocalDateTime.now().minusMonths(1);
+
         List<Citizen> citizens = List.of(
                 new Citizen("John Doe", "9200", 43, "hello@hello.hu", "123457572"),
                 new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620"),
-                new Citizen("Josif Várszegi", "3400", 45, "hello@hello.ro", "123458476", 1, LocalDateTime.of(2021,2,4,10,0,0)),
-                new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, LocalDateTime.of(2021, 3, 4, 10, 0, 0)),
+                new Citizen("Josif Várszegi", "3400", 45, "hello@hello.ro", "123458476", 1, beforeAMonth),
+                new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, yesterday),
                 new Citizen("Tidyr Vasil", "1345", 25, "hello@hello.ua", "123457778")
         );
         covidDao.registrationCitizens(citizens);
@@ -98,35 +110,44 @@ class CovidDaoTest {
         assertEquals(1, covidDao.getCitizensForVaccinationByZip("9200").size());
         assertEquals(0, covidDao.getCitizensForVaccinationByZip("6600").size());
         assertTrue(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620")));
-        assertFalse(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, LocalDateTime.of(2021, 3, 4, 10, 0, 0))));
+        assertFalse(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, yesterday)));
+    }
+
+    @Test
+    void infoBeforeVaccinationTest() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        LocalDateTime beforeAMonth = LocalDateTime.now().minusMonths(1);
+        List<Citizen> citizens = List.of(
+                new Citizen("John Doe", "9200", 43, "hello@hello.hu", "123457572"),
+                new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620"),
+                new Citizen("Josif Várszegi", "3400", 45, "hello@hello.ro", "123458476", 1, beforeAMonth),
+                new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 2, yesterday),
+                new Citizen("Tidyr Vasil", "1345", 25, "hello@hello.ua", "123457778")
+        );
+        covidDao.registrationCitizens(citizens);
+        assertEquals(0, covidDao.infoBeforeVaccination("123457572"));
+        assertEquals(2, covidDao.infoBeforeVaccination("123458311"));
+        assertEquals(0, covidDao.infoBeforeVaccination("123457778"));
+        assertEquals(1, covidDao.infoBeforeVaccination("123458476"));
+    }
+
+    @Test
+    void inFifteenDaysTest() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        LocalDateTime beforeAMonth = LocalDateTime.now().minusMonths(1);
+        List<Citizen> citizens = List.of(
+                new Citizen("John Doe", "9200", 43, "hello@hello.hu", "123457572"),
+                new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620"),
+                new Citizen("Josif Várszegi", "3400", 45, "hello@hello.ro", "123458476", 1, beforeAMonth),
+                new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 2, yesterday),
+                new Citizen("Tidyr Vasil", "1345", 25, "hello@hello.ua", "123457778")
+        );
+        covidDao.registrationCitizens(citizens);
+        assertEquals(1, covidDao.inFifteenDays("123457572"));
+        assertEquals(1, covidDao.inFifteenDays("123458476"));
+        assertEquals(0, covidDao.inFifteenDays("123458311"));
     }
 
 
-//    public List<Citizen> getCitizensForVaccinationByZip(String zip) {
-//        List<Citizen> result = new ArrayList<>();
-//
-//        try (
-//                Connection conn = dataSource.getConnection();
-//                PreparedStatement ps = conn.prepareStatement("SELECT citizen_name, age, email, taj FROM citizens WHERE zip = ? AND number_of_vaccination = 0 OR last_vaccination < ? ORDER BY age DESC, citizen_name;")
-//        ) {
-//            LocalDateTime lastCheck = LocalDateTime.now().minusDays(15);
-//            ps.setString(1, zip);
-//            ps.setTimestamp(2, Timestamp.valueOf(lastCheck));
-//            try (ResultSet rs = ps.executeQuery()) {
-//                while (rs.next() && result.size() < 16) {
-//                    String name = rs.getString("citizen_name");
-//                    int age = rs.getInt("age");
-//                    String email = rs.getString("email");
-//                    String taj = rs.getString("taj");
-//                    result.add(new Citizen(name, zip, age, email, taj));
-//                }
-//            } catch (SQLException sqlException) {
-//                throw new IllegalStateException("Cannot query", sqlException);
-//            }
-//            return result;
-//        } catch (SQLException sqlException) {
-//            throw new IllegalStateException("Cannot connection", sqlException);
-//        }
-//    }
 
 }
