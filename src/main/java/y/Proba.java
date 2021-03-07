@@ -1,14 +1,19 @@
 package y;
 
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Proba {
 
 
+
+
     public static void main(String[] args) {
-        LocalDate tomorrow = LocalDate.now().plusDays(1);
-        System.out.println(tomorrow+"_hello");
+
+        String date = "2017-03-08T12:30:54";
+        LocalDateTime localdatetime = LocalDateTime.parse(date);
     }
+
+
 
 }

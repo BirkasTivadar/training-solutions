@@ -2,6 +2,7 @@ package covid;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -129,7 +130,7 @@ public class CovidDao {
         }
     }
 
-    public int inFifteenDays(String taj){
+    public int inFifteenDays(String taj) {
         int result = 0;
         try (
                 Connection conn = dataSource.getConnection();
@@ -151,29 +152,6 @@ public class CovidDao {
         }
     }
 
-
-
-
-    public Vaccine_Type ifHasVaccination(String taj) {
-        Vaccine_Type type = null;
-        try (
-                Connection conn = dataSource.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT vaccination_type FROM vaccinations WHERE taj = ?;")
-        ) {
-            ps.setString(1, taj);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    type = Vaccine_Type.valueOf(rs.getString("vaccination_type"));
-                }
-            } catch (SQLException sqlException) {
-                throw new IllegalStateException("Cannot query", sqlException);
-            }
-            return type;
-
-        } catch (SQLException sqlException) {
-            throw new IllegalStateException("Connection failed", sqlException);
-        }
-    }
 
     public void adminVaccination(Vaccine vaccine) {
         try (Connection conn = dataSource.getConnection()) {
@@ -208,7 +186,7 @@ public class CovidDao {
         }
     }
 
-    public int selectNumberOfVaccination(Vaccine vaccine) {
+    private int selectNumberOfVaccination(Vaccine vaccine) {
         int result = 0;
         try (
                 Connection conn = dataSource.getConnection();
@@ -227,6 +205,28 @@ public class CovidDao {
             throw new IllegalStateException("Connection failed", sqlException);
         }
     }
+
+    public Vaccine_Type ifHasVaccination(String taj) {
+        Vaccine_Type type = null;
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT vaccination_type FROM vaccinations WHERE taj = ?;")
+        ) {
+            ps.setString(1, taj);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    type = Vaccine_Type.valueOf(rs.getString("vaccination_type"));
+                }
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
+            }
+            return type;
+
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+    }
+
 
     public HashMap<String, Riport> processRiport() {
         HashMap<String, Riport> result = new HashMap<>();
@@ -269,6 +269,36 @@ public class CovidDao {
         }
         return result;
     }
+
+    public Citizen getCitizenByTaj(String taj) {
+        Citizen citizen = null;
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT citizen_name, zip, age, email, number_of_vaccination, last_vaccination FROM citizens WHERE taj = ?;")
+        ) {
+            ps.setString(1, taj);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String name = rs.getString("citizen_name");
+                    String zip = rs.getString("zip");
+                    int age = rs.getInt("age");
+                    String email = rs.getString("email");
+                    int numberOfVaccination = rs.getInt("number_of_vaccination");
+                    String lastVaccination = rs.getString("last_vaccination");
+                    LocalDateTime localdatetime = LocalDateTime.parse(lastVaccination.replace(' ', 'T'));
+
+                    citizen = new Citizen(name, zip, age, email, taj, numberOfVaccination, localdatetime);
+                }
+            } catch (SQLException sqlException) {
+                throw new IllegalStateException("Cannot query", sqlException);
+            }
+            return citizen;
+
+        } catch (SQLException sqlException) {
+            throw new IllegalStateException("Connection failed", sqlException);
+        }
+    }
+
 }
 
     /* A cities tábla jdbc-n keresztül történt feltöltéséhez kellett, utána az sql parancssor ki lett exportálva flyway migration-ba

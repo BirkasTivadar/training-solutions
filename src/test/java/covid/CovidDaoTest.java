@@ -149,5 +149,32 @@ class CovidDaoTest {
     }
 
 
+    @Test
+    void adminVaccinationAndIfHasVaccinationTest() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        LocalDateTime beforeAMonth = LocalDateTime.now().minusMonths(1);
+        List<Citizen> citizens = List.of(
+                new Citizen("John Doe", "9200", 43, "hello@hello.hu", "123457572"),
+                new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620"),
+                new Citizen("Tidyr Vasil", "1345", 25, "hello@hello.ua", "123457778")
+        );
+        covidDao.registrationCitizens(citizens);
+
+        Vaccine vaccineJohn = new Vaccine("123457572", beforeAMonth, VaccinationStatus.SUCCESSFUL, Vaccine_Type.SINOPHARM);
+        covidDao.adminVaccination(vaccineJohn);
+
+        assertEquals(Vaccine_Type.SINOPHARM, covidDao.ifHasVaccination("123457572"));
+        assertEquals(1, covidDao.getCitizenByTaj("123457572").getNumberOfVaccination());
+        assertEquals(0, covidDao.getCitizenByTaj("123457778").getNumberOfVaccination());
+
+        Vaccine vaccineJohn2 = new Vaccine("123457572", yesterday, VaccinationStatus.SUCCESSFUL, Vaccine_Type.SINOPHARM);
+        Vaccine vaccineTidyr = new Vaccine("123457778", yesterday, VaccinationStatus.SUCCESSFUL, Vaccine_Type.MODERNA);
+        covidDao.adminVaccination(vaccineJohn2);
+        covidDao.adminVaccination(vaccineTidyr);
+        assertEquals(Vaccine_Type.MODERNA, covidDao.ifHasVaccination("123457778"));
+        assertEquals(2, covidDao.getCitizenByTaj("123457572").getNumberOfVaccination());
+        assertEquals(1, covidDao.getCitizenByTaj("123457778").getNumberOfVaccination());
+    }
+
 
 }
