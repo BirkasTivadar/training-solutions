@@ -11,7 +11,7 @@ public class Citizen {
     private String email;
     private String taj;
     private int numberOfVaccination = 0;
-    private LocalDateTime last_vaccination = LocalDateTime.of(2000,1,1,0,0,0);
+    private LocalDateTime last_vaccination = LocalDateTime.of(1,1,1,0,0,0);
 
     public Citizen(String name, String zip, int age, String email, String taj, int numberOfVaccination, LocalDateTime last_vaccination) {
         this.name = name;
