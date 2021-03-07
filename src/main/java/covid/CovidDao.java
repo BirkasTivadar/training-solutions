@@ -38,13 +38,14 @@ public class CovidDao {
         try (Connection conn = dataSource.getConnection()) {
             conn.setAutoCommit(false);
 
-            try (PreparedStatement ps = conn.prepareStatement("INSERT INTO citizens(citizen_name, zip, age, email, taj, number_of_vaccination) VALUES (?,?,?,?,?,?)")) {
+            try (PreparedStatement ps = conn.prepareStatement("INSERT INTO citizens(citizen_name, zip, age, email, taj, number_of_vaccination) VALUES (?,?,?,?,?,?,?)")) {
                 ps.setString(1, citizen.getName());
                 ps.setString(2, citizen.getZip());
                 ps.setInt(3, citizen.getAge());
                 ps.setString(4, citizen.getEmail());
                 ps.setString(5, citizen.getTaj());
                 ps.setInt(6, citizen.getNumberOfVaccination());
+                ps.setTimestamp(7, Timestamp.valueOf(citizen.getLast_vaccination()));
                 ps.executeUpdate();
 
                 conn.commit();
@@ -60,7 +61,7 @@ public class CovidDao {
         try (Connection conn = dataSource.getConnection()) {
             conn.setAutoCommit(false);
 
-            try (PreparedStatement ps = conn.prepareStatement("INSERT INTO citizens(citizen_name, zip, age, email, taj, number_of_vaccination) VALUES (?,?,?,?,?,?)")) {
+            try (PreparedStatement ps = conn.prepareStatement("INSERT INTO citizens(citizen_name, zip, age, email, taj, number_of_vaccination, last_vaccination) VALUES (?,?,?,?,?,?,?)")) {
                 for (Citizen citizen : citizens) {
                     ps.setString(1, citizen.getName());
                     ps.setString(2, citizen.getZip());
@@ -68,6 +69,7 @@ public class CovidDao {
                     ps.setString(4, citizen.getEmail());
                     ps.setString(5, citizen.getTaj());
                     ps.setInt(6, citizen.getNumberOfVaccination());
+                    ps.setTimestamp(7, Timestamp.valueOf(citizen.getLast_vaccination()));
                     ps.executeUpdate();
                 }
                 conn.commit();
@@ -84,7 +86,7 @@ public class CovidDao {
 
         try (
                 Connection conn = dataSource.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT citizen_name, age, email, taj FROM citizens WHERE zip = ? AND number_of_vaccination = 0 OR last_vaccination < ? ORDER BY age DESC, citizen_name;")
+                PreparedStatement ps = conn.prepareStatement("SELECT citizen_name, age, email, taj FROM citizens WHERE zip = ? AND (number_of_vaccination = 0 OR last_vaccination < ?) ORDER BY age DESC, citizen_name;")
         ) {
             LocalDateTime lastCheck = LocalDateTime.now().minusDays(15);
             ps.setString(1, zip);
