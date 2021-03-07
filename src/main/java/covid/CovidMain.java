@@ -4,7 +4,6 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import org.flywaydb.core.Flyway;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;

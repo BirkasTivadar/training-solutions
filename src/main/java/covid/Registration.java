@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -16,7 +17,8 @@ public class Registration {
         Path file = Path.of(fileName);
         List<Citizen> result = new ArrayList<>();
         List<Citizen> wrong = new ArrayList<>();
-        try (BufferedReader br = Files.newBufferedReader(file)) {
+        // try (BufferedReader br = Files.newBufferedReader(file))
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Registration.class.getResourceAsStream("registrations.csv")))) {
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] lineArr = line.split(";");
@@ -214,7 +216,7 @@ public class Registration {
         if (number == 1) {
             System.out.println("Az első oltásnál kapott vakcina típusa:");
             System.out.println(new CovidDao(dataSource).ifHasVaccination(taj));
-            System.out.println(new CovidDao(dataSource).inFifteenDays(taj) == 1 ? "Rendben eltelt 15 nap" : "Figyelem! Még nem telt el tizenöt nap az eslő oltás óta!" );
+            System.out.println(new CovidDao(dataSource).inFifteenDays(taj) == 1 ? "Rendben eltelt 15 nap" : "Figyelem! Még nem telt el tizenöt nap az eslő oltás óta!");
 
         }
         if (number > 1) {
