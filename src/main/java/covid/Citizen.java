@@ -76,7 +76,7 @@ public class Citizen {
                 ", taj='" + taj + '\'' +
                 ", numberOfVaccination=" + numberOfVaccination +
                 ", last_vaccination=" + last_vaccination +
-                '}';
+                "}\n";
     }
 
 }

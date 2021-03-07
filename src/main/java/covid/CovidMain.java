@@ -4,6 +4,8 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import org.flywaydb.core.Flyway;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -24,20 +26,24 @@ public class CovidMain {
 
     public void registrationCitizensFromFile(DataSource dataSource) {
         Scanner scanner = new Scanner(System.in);
+        /*
         System.out.println("Kérem írja be a fájlnevet:");
         String filename = scanner.nextLine();
-
+*/
         Registration registration = new Registration();
-        List<Citizen> citizenList = registration.getValidCitizensFromFile(filename);
+        List<Citizen> citizenList = registration.getValidCitizensFromFile("registrations.csv");
         new CovidDao(dataSource).registrationCitizens(citizenList);
     }
 
     public void writeCitizensForVaccinationToFileByZip(DataSource dataSource) {
         Scanner scanner = new Scanner(System.in);
         String zip = new Registration().readZip(scanner);
+        /*
         System.out.println("Kérem írja be a fájlnevet:");
         String filename = scanner.nextLine();
-
+*/
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        String filename = zip + "_" + tomorrow + "_" + ".csv";
         CovidDao covidDao = new CovidDao(dataSource);
         List<Citizen> citizens = covidDao.getCitizensForVaccinationByZip(zip);
         new Registration().writeCitizensToFile(citizens, filename);
