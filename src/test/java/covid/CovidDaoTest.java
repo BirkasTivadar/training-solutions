@@ -5,10 +5,8 @@ import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -84,7 +82,6 @@ class CovidDaoTest {
         assertTrue(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620")));
         assertFalse(covidDao.getCitizensForVaccinationByZip("3400").contains(new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 1, LocalDateTime.of(2021, 3, 4, 10, 0, 0))));
     }
-
 
     @Test
     void getCitizensForVaccinationByZipAndNumberOfVaccinationAndLastVaccinationDateTest() {

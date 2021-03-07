@@ -38,7 +38,7 @@ public class CovidDao {
         try (Connection conn = dataSource.getConnection()) {
             conn.setAutoCommit(false);
 
-            try (PreparedStatement ps = conn.prepareStatement("INSERT INTO citizens(citizen_name, zip, age, email, taj, number_of_vaccination) VALUES (?,?,?,?,?,?,?)")) {
+            try (PreparedStatement ps = conn.prepareStatement("INSERT INTO citizens(citizen_name, zip, age, email, taj, number_of_vaccination, last_vaccination) VALUES (?,?,?,?,?,?,?)")) {
                 ps.setString(1, citizen.getName());
                 ps.setString(2, citizen.getZip());
                 ps.setInt(3, citizen.getAge());
