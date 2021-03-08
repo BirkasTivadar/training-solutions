@@ -30,7 +30,7 @@ public class CovidMain {
         String filename = scanner.nextLine();
 */
         Registration registration = new Registration();
-        List<Citizen> citizenList = registration.getValidCitizensFromFile("registrations.csv");
+        List<Citizen> citizenList = registration.getValidCitizensFromFile("registrations.csv", dataSource);
         new CovidDao(dataSource).registrationCitizens(citizenList);
     }
 

@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Registration {
 
-    public List<Citizen> getValidCitizensFromFile(String fileName) {
+    public List<Citizen> getValidCitizensFromFile(String fileName, DataSource dataSource) {
         Path file = Path.of(fileName);
         List<Citizen> result = new ArrayList<>();
         List<Citizen> wrong = new ArrayList<>();
@@ -22,7 +22,7 @@ public class Registration {
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] lineArr = line.split(";");
-                if (isvalidCitizen(lineArr)) {
+                if (isvalidCitizen(lineArr, dataSource)) {
                     result.add(new Citizen(lineArr[0], lineArr[1], Integer.parseInt(lineArr[2]), lineArr[3], lineArr[4]));
                 } else {
                     wrong.add(new Citizen(lineArr[0], lineArr[1], Integer.parseInt(lineArr[2]), lineArr[3], lineArr[4]));
@@ -36,8 +36,8 @@ public class Registration {
         return result;
     }
 
-    public boolean isvalidCitizen(String[] lineArr) {
-        return (isValidName(lineArr[0]) && isValidZip(lineArr[1]) && isValidAge(lineArr[2]) && isValidEmail(lineArr[3]) && isvalidTAJ(lineArr[4]));
+    public boolean isvalidCitizen(String[] lineArr, DataSource dataSource) {
+        return (isValidName(lineArr[0]) && isValidZip(lineArr[1]) && isValidAge(lineArr[2]) && isValidEmail(lineArr[3]) && isvalidTAJ(lineArr[4], dataSource));
     }
 
     public Citizen getValidCitizenFromConsole(DataSource dataSource) {
@@ -53,7 +53,7 @@ public class Registration {
 
         String email = readEmail(scanner);
 
-        String taj = readTAJ(scanner);
+        String taj = readTAJ(scanner, dataSource);
 
         return new Citizen(name, zip, age, email, taj);
     }
@@ -148,10 +148,10 @@ public class Registration {
     }
 
 
-    public String readTAJ(Scanner scanner) {
+    public String readTAJ(Scanner scanner, DataSource dataSource) {
         System.out.println("Kérem a TAJ számát:");
         String taj = scanner.nextLine();
-        while (!isvalidTAJ(taj)) {
+        while (!isvalidTAJ(taj, dataSource)) {
             System.out.println("Nem TAJ szám!");
             System.out.println("Kérem a TAJ számát:");
             taj = scanner.nextLine();
@@ -159,10 +159,20 @@ public class Registration {
         return taj;
     }
 
-    private boolean isvalidTAJ(String taj) {
-        if (taj.length() != 9) {
+    private boolean isvalidTAJ(String taj, DataSource dataSource) {
+        List<String> registratedTaj = new CovidDao(dataSource).registratedTajNumbers();
+        if (registratedTaj.contains(taj)) {
+            System.out.println("Már van regisztrálva személy ezen a TAJ számon.");
             return false;
         }
+        if (taj.length() != 9) {
+            System.out.println("Nem TAJ szám!");
+            return false;
+        }
+        return checkCDV(taj);
+    }
+
+    private boolean checkCDV(String taj) {
         int sum = 0;
         for (int i = 0; i < 8; i++) {
             try {
@@ -174,12 +184,14 @@ public class Registration {
                     sum += digit * 7;
                 }
             } catch (NumberFormatException nfe) {
+                System.out.println("Nem TAJ szám!");
                 return false;
             }
         }
         if (Integer.parseInt(taj.substring(8)) == sum % 10) {
             return true;
         }
+        System.out.println("Nem TAJ szám!");
         return false;
     }
 
@@ -293,13 +305,14 @@ public class Registration {
     }
 
     private String readRegistTAJ(List<String> registratedTajNumbers, Scanner scanner) {
-        String taj = readTAJ(scanner);
+        String taj = scanner.nextLine();
         while (!registratedTajNumbers.contains(taj)) {
             System.out.println("Nem regisztrált TAJ szám!");
-            taj = readTAJ(scanner);
+            taj = scanner.nextLine();
         }
         return taj;
     }
+
 
     /* Amikor még azt hittem, csak a regisztrációs fájlban lévőket lehet oltani, de a komplett adatbázisra kell ellenőrizni a TAJ-t
     public List<String> validRegistration() {
