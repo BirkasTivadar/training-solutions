@@ -5,9 +5,9 @@ import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.*;
 import java.time.LocalDateTime;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -176,5 +176,23 @@ class CovidDaoTest {
         assertEquals(1, covidDao.getCitizenByTaj("123457778").getNumberOfVaccination());
     }
 
+    @Test
+    void processRiportTest() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        LocalDateTime beforeAMonth = LocalDateTime.now().minusMonths(1);
+        List<Citizen> citizens = List.of(
+                new Citizen("John Doe", "3400", 43, "hello@hello.hu", "123457572", 2, beforeAMonth),
+                new Citizen("Román Navarro", "3400", 34, "hello@hello.es", "123457620"),
+                new Citizen("Josif Várszegi", "3400", 45, "hello@hello.ro", "123458476", 1, beforeAMonth),
+                new Citizen("Birkás Tivadar", "3400", 47, "hello@hello.me", "123458311", 2, yesterday),
+                new Citizen("Tidyr Vasil", "1345", 25, "hello@hello.ua", "123457778")
+        );
+        covidDao.registrationCitizens(citizens);
+        HashMap<String, Riport> riport = covidDao.processRiport();
+        Riport riport3400 = riport.get("3400");
+        assertEquals(1, riport3400.getNullVaccination());
+        assertEquals(1, riport3400.getOneVaccination());
+        assertEquals(2, riport3400.getTwoVaccination());
+    }
 
 }
