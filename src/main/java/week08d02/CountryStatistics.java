@@ -19,20 +19,24 @@ public class CountryStatistics {
     public Country maxPopulaton() {
         Path path = Path.of("countries.txt");
         try (BufferedReader br = Files.newBufferedReader(path)) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] lineArr = line.split(" ");
-                String name = lineArr[0];
-                int population = Integer.parseInt(lineArr[1]);
-                int coloursOfFlag = Integer.parseInt(lineArr[2]);
-                int neighbours = Integer.parseInt(lineArr[3]);
-                countries.add(new Country(name,population,coloursOfFlag,neighbours));
-            }
+            loadCountries(br);
         } catch (IOException ioException) {
             throw new IllegalStateException("Cannot read", ioException);
         }
         Collections.sort(countries);
         return countries.get(0);
+    }
+
+    private void loadCountries(BufferedReader br) throws IOException {
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] lineArr = line.split(" ");
+            String name = lineArr[0];
+            int population = Integer.parseInt(lineArr[1]);
+            int coloursOfFlag = Integer.parseInt(lineArr[2]);
+            int neighbours = Integer.parseInt(lineArr[3]);
+            countries.add(new Country(name,population,coloursOfFlag,neighbours));
+        }
     }
 
     public static void main(String[] args) {

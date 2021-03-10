@@ -27,7 +27,7 @@ public class Sultan {
         private boolean change(boolean boole){
             return !boole;
         }
-    */
+
     public List<String> openDoors() {
         List<String> openedDoors = new ArrayList<>();
         int[] stateOfDoors = new int[100];
@@ -46,7 +46,7 @@ public class Sultan {
         }
         return openedDoors;
     }
-
+*/
   /*  Szarka Endre megoldása
     for (int i = 1; i <=100 ; i++) {
         for (int j = i; j <= 100; j = j + i) {
@@ -54,6 +54,32 @@ public class Sultan {
         }
     }
      */
+
+    private int[] stateOfDoors = new int[100];
+
+    public List<String> openDoors() {
+        for (int day = 1; day <= 100; day++) {
+            changeStateOfLocksByDay(day);
+        }
+        return getOpenedDoors(stateOfDoors);
+    }
+
+    private void changeStateOfLocksByDay(int day) {
+        for (int lock = day; lock <= 100; lock += day) {
+            stateOfDoors[lock - 1]++;
+        }
+    }
+
+    private List<String> getOpenedDoors(int... doors) {
+        List<String> openedDoors = new ArrayList<>();
+        for (int i = 0; i < doors.length; i++) {
+            if (doors[i] % 2 != 0) {
+                String door = (i + 1) + ". ajtó";
+                openedDoors.add(door);
+            }
+        }
+        return openedDoors;
+    }
 
     public static void main(String[] args) {
         Sultan sultan = new Sultan();
