@@ -47,6 +47,14 @@ public class Sultan {
         return openedDoors;
     }
 
+  /*  Szarka Endre megoldása
+    for (int i = 1; i <=100 ; i++) {
+        for (int j = i; j <= 100; j = j + i) {
+            door[j] = !door[j];
+        }
+    }
+     */
+
     public static void main(String[] args) {
         Sultan sultan = new Sultan();
         System.out.println(sultan.openDoors());
