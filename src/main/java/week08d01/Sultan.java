@@ -1,4 +1,4 @@
-package week08d01.week08d01;
+package week08d01;
 
 import java.util.ArrayList;
 import java.util.List;
