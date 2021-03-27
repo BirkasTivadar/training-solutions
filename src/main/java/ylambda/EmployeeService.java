@@ -1,4 +1,4 @@
-package y;
+package ylambda;
 
 import java.util.List;
 import java.util.function.Predicate;

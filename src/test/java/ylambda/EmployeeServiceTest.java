@@ -1,4 +1,4 @@
-package y;
+package ylambda;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package y;
+package ylambda;
 
 @FunctionalInterface
 public interface PrintHello {
