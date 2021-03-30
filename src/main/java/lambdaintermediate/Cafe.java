@@ -29,7 +29,7 @@ public class Cafe {
         return getOrders().stream()
                 .flatMap(c -> c.getCoffeeList().stream())
                 .map(p -> p.getPrice())
-                .reduce(BigDecimal.ZERO, (i, p) -> i.add(p), (tp1, tp2) -> tp1.add(tp2)).setScale(2, RoundingMode.HALF_UP);
+                .reduce(BigDecimal.ZERO, BigDecimal::add, (tp1, tp2) -> tp1.add(tp2)).setScale(2, RoundingMode.HALF_UP);
 //        BigDecimal sum = new BigDecimal("0");
 //        for (CoffeeOrder order : orders) {
 //            for (Coffee coffee : order.getCoffees()) {
@@ -53,7 +53,7 @@ public class Cafe {
         return getOrders().stream().filter(o -> o.getDateTime().toLocalDate().equals(date))
                 .flatMap(c -> c.getCoffeeList().stream())
                 .map(p -> p.getPrice())
-                .reduce(BigDecimal.ZERO, (i, p) -> i.add(p), (tp1, tp2) -> tp1.add(tp2)).setScale(2, RoundingMode.HALF_UP);
+                .reduce(BigDecimal.ZERO, BigDecimal::add, (tp1, tp2) -> tp1.add(tp2)).setScale(2, RoundingMode.HALF_UP);
 
     }
 
