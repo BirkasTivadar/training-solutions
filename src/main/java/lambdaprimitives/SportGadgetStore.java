@@ -9,7 +9,7 @@ public class SportGadgetStore {
     private List<Product> products;
 
     public SportGadgetStore(List<Product> products) {
-        this.products = products;
+        this.products = new ArrayList<>(products);
     }
 
     public List<Product> getProducts() {
