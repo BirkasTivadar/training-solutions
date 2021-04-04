@@ -1,6 +1,7 @@
-package week08d03;
+package week08d03.mid;
 
 import org.junit.jupiter.api.Test;
+import week08d03.mid.StringLists;
 
 import java.util.List;
 

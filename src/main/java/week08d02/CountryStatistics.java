@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CountryStatistics {
@@ -35,7 +36,7 @@ public class CountryStatistics {
             int population = Integer.parseInt(lineArr[1]);
             int coloursOfFlag = Integer.parseInt(lineArr[2]);
             int neighbours = Integer.parseInt(lineArr[3]);
-            countries.add(new Country(name,population,coloursOfFlag,neighbours));
+            countries.add(new Country(name, population, coloursOfFlag, neighbours));
         }
     }
 
