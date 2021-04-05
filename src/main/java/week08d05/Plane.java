@@ -14,19 +14,10 @@ public class Plane {
         Path path = Path.of("map.txt");
         int max = 0;
         int temp = 0;
-        boolean ocean = false;
         try (InputStream inputStream = Files.newInputStream(path)) {
             byte[] bytes = new byte[1];
-            int size;
-            while ((size = inputStream.read(bytes)) > 0) {
-                if (bytes[0] == '0') {
-                    ocean = true;
-                    temp++;
-                }
-                if (bytes[0] == '1') {
-                    ocean = false;
-                    temp = 0;
-                }
+            while ((inputStream.read(bytes)) > 0) {
+                temp = bytes[0] == '0' ? temp + 1 : 0;
                 if (temp > max) {
                     max = temp;
                 }
