@@ -1,4 +1,4 @@
-package week10d01.mid;
+package week10d01;
 
 import org.junit.jupiter.api.Test;
 import week10d01.Gps;
