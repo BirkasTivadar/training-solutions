@@ -7,6 +7,9 @@ import java.util.Map;
 public class PairFinder {
 
     public int findPairs(int[] arr) {
+        if (arr == null) {
+            throw new IllegalArgumentException("Arr must not be null.");
+        }
         int countpairs = 0;
         Map<Integer, Integer> pairs = new HashMap<>();
         for (int i : arr) {
