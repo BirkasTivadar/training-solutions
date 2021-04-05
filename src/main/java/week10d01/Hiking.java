@@ -1,6 +1,5 @@
 package week10d01;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Hiking {

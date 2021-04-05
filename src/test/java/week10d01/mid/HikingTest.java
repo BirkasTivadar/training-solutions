@@ -1,6 +1,8 @@
-package week10d01;
+package week10d01.mid;
 
 import org.junit.jupiter.api.Test;
+import week10d01.Gps;
+import week10d01.Hiking;
 
 import java.util.List;
 
