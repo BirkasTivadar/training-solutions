@@ -21,13 +21,11 @@ public class Plane {
             while ((size = inputStream.read(bytes)) > 0) {
                 if (bytes[0] == '0') {
                     ocean = true;
+                    temp++;
                 }
                 if (bytes[0] == '1') {
                     ocean = false;
                     temp = 0;
-                }
-                if (ocean) {
-                    temp++;
                 }
                 if (temp > max) {
                     max = temp;
