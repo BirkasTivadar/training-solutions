@@ -1,4 +1,4 @@
-package week11d02;
+package week11d02.mid;
 
 public class Ride {
     private int day;

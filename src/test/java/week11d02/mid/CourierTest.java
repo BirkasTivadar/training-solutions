@@ -1,6 +1,8 @@
-package week11d02;
+package week11d02.mid;
 
 import org.junit.jupiter.api.Test;
+import week11d02.mid.Courier;
+import week11d02.mid.Ride;
 
 import static org.junit.jupiter.api.Assertions.*;
 
