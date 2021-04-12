@@ -22,5 +22,13 @@ class AgeSorterTest {
         assertArrayEquals(result, new AgeSorter().sortAges(ages));
     }
 
+    @Test
+    void testSortedAges() {
+        int[] ages = {2, 24, 33, 45, 56, 72};
+        int[] result = {2, 24, 33, 45, 56, 72};
+
+        assertArrayEquals(result, new AgeSorter().sortAges(ages));
+    }
+
 
 }
