@@ -49,9 +49,8 @@ public class StreetSenior {
         return lastSite.getSide() == 0 ? result * 2 : result * 2 - 1;
     }
 
-    public void writeOddSite() {
-        Path file = Path.of("soldParcelsInOddSide.txt");
-        try (BufferedWriter writer = Files.newBufferedWriter(file)) {
+    public void writeOddSite(Path path) {
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             selectAndWrite(writer);
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not write file", ioe);

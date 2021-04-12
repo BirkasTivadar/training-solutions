@@ -1,12 +1,19 @@
 package week12d02;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class StreetSeniorTest {
+    @TempDir
+    public File temporaryFolder;
 
     @Test
     void testLoadParcels() {
@@ -30,13 +37,17 @@ class StreetSeniorTest {
         StreetSenior streetSenior = new StreetSenior();
         streetSenior.loadParcels();
         assertEquals(8, streetSenior.getLastSoldSite());
-
     }
 
     @Test
-    void writeOddSite() {
+    void writeOddSite() throws IOException {
         StreetSenior streetSenior = new StreetSenior();
         streetSenior.loadParcels();
-        streetSenior.writeOddSite();
+
+        Path path = new File(temporaryFolder, "soldParcelsInOddSide.txt").toPath();
+        streetSenior.writeOddSite(path);
+
+        String streetOddSide = Files.readString(path);
+        assertEquals("(1)KKKKKKKK(3)::::::::::(5)SSSSSSSSS", streetOddSide);
     }
 }
