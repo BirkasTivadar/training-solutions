@@ -29,10 +29,10 @@ public class CitySearchSenior {
                     }
                 }
             }
-            return String.format("%s: %s", abcFirst, zipFirst);
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read", ioe);
         }
+        return String.format("%s: %s", abcFirst, zipFirst);
     }
 
 
