@@ -17,12 +17,7 @@ public class OrderedLibrary {
     }
 
     public List<Book> orderedByAuthor() {
-        Collections.sort(libraryBooks, new Comparator<Book>() {
-            @Override
-            public int compare(Book o1, Book o2) {
-                return o1.getAuthor().compareTo(o2.getAuthor());
-            }
-        });
+        Collections.sort(libraryBooks, Comparator.comparing(Book::getAuthor));
         return libraryBooks;
     }
 
