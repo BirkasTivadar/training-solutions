@@ -33,10 +33,4 @@ public class CitySearchSenior {
         }
         return String.format("%s: %s", abcFirst, zipFirst);
     }
-
-
-    public static void main(String[] args) {
-        System.out.println(new CitySearchSenior().search());
-    }
-
 }
