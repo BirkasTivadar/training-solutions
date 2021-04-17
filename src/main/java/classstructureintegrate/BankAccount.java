@@ -1,8 +1,11 @@
 package classstructureintegrate;
 
 public class BankAccount {
+
     private String accountNumber;
+
     private String owner;
+
     private int balance;
 
     public BankAccount(String accountNumber, String owner, int balance) {
@@ -11,8 +14,12 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    public String getInfo() {
-        return owner + " (" + accountNumber +"): " + balance + " Ft";
+    public void deposit(int amount) {
+        balance += amount;
+    }
+
+    public void withdraw(int amount) {
+        balance -= amount;
     }
 
     public void transfer(BankAccount account, int amount) {
@@ -20,15 +27,7 @@ public class BankAccount {
         account.balance += amount;
     }
 
-    public void deposit(int amount) {
-        balance += amount;
+    public String getInfo() {
+        return owner + " (" + accountNumber + "): " + balance + " Ft";
     }
-    public void withdraw(int amount) {
-        balance -= amount;
-    }
-
-
-
-
-
 }

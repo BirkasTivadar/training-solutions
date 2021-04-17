@@ -3,75 +3,54 @@ package introcontrol;
 public class IntroControl {
 
     public int substractTenIfGreaterThanTen(int number) {
-        if (number <= 10) {
-            return number;
-        } else {
-            return number - 10;
-        }
+        return number <= 10 ? number : number - 10;
     }
 
     public String describeNumber(int number) {
-        if (number == 0) {
-            return "zero";
-        } else {
-            return "not zero";
-        }
+        return number == 0 ? "zero" : "not zero";
     }
 
     public String greetinToJoe(String name) {
-        if (name.equals(("Joe"))) {
-            return "Hello " + name;
-        } else {
-            return "";
-        }
+        return name.equals(("Joe")) ? "Hello " + name : "";
     }
 
     public int calculateBonus(int sale) {
-        if (sale >= 1000_000) {
-            return sale / 10;
-        } else {
-            return 0;
-        }
+        return sale >= 1000_000 ? sale / 10 : 0;
     }
 
     public int calculateConsumption(int prev, int next) {
-        if (next >= prev) {
-            return next - prev;
-        } else {
-            return (9999 - prev) + next;
-        }
+        return next >= prev ? next - prev : (9999 - prev) + next;
     }
 
     public void printNumbers(int max) {
         for (int i = 0; i <= max; i++) {
-            System.out.println(i);
+            System.out.print(i + " ");
         }
     }
 
     public void printNumbersBetween(int min, int max) {
         for (int i = min; i <= max; i++) {
-            System.out.println(i);
+            System.out.print(i + " ");
         }
     }
 
     public void printNumbersBetweenAnyDirection(int a, int b) {
         if (a <= b) {
             for (int i = a; i <= b; i++) {
-                System.out.println(i);
+                System.out.print(i + " ");
             }
         } else {
             for (int i = a; i >= b; i--) {
-                System.out.println(i);
+                System.out.print(i + " ");
             }
         }
     }
 
     public void printOddNumbers(int max) {
-        for(int i = 1; i <= max; i++) {
-            if(i % 2 != 0) {
-                System.out.println(i);
+        for (int i = 1; i <= max; i++) {
+            if (i % 2 != 0) {
+                System.out.print(i + " ");
             }
         }
     }
-
 }

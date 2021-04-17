@@ -3,6 +3,7 @@ package localvariables;
 public class Distance {
 
     private double distanceInKm;
+
     private boolean exact;
 
     public Distance(double distanceInKm, boolean exact) {

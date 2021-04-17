@@ -7,24 +7,27 @@ public class ArrayMain {
         String[] hetNapjai = {"hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat", "vasárnap"};
 
         System.out.println(hetNapjai[1]);
-        System.out.println(hetNapjai.length);
 
+        System.out.println(hetNapjai.length + "\n");
 
         int[] kettoHatvanyai = new int[5];
 
         for (int i = 0; i < kettoHatvanyai.length; i++) {
-            kettoHatvanyai[i] = (int)Math.pow(2.0, (double)i);
-            System.out.println(kettoHatvanyai[i]);
+            kettoHatvanyai[i] = (int) Math.pow(2, i);
+            System.out.print(kettoHatvanyai[i] + " ");
         }
 
-        boolean[] falsesTrues = {false, true, false, true, false, true};
+        System.out.println("\n");
 
-        for(boolean bool: falsesTrues) {
-            System.out.println(bool);
+        boolean[] falseAndTrue = new boolean[6];
+
+        for (int i = 1; i < 6; i++) {
+            falseAndTrue[i] = (i % 2 == 0 ? false : true);
         }
 
-
-
+        for (boolean b : falseAndTrue) {
+            System.out.print(b + " ");
+        }
     }
 }
 

@@ -26,8 +26,5 @@ public class StoreMain {
         System.out.println(store2.getStock());
         store2.store(15);
         System.out.println(store2.getStock());
-
-
-
     }
 }

@@ -7,9 +7,9 @@ public class BookMain {
         Book book = new Book("Solohov", "Csendes Don");
         book.register("1926");
 
-        System.out.println("Author: " +book.getAuthor());
-        System.out.println("Title: " +book.getTitle());
-        System.out.println("Registry number: " +book.getRegNumber());
+        System.out.println("Author: " + book.getAuthor());
+        System.out.println("Title: " + book.getTitle());
+        System.out.println("Registry number: " + book.getRegNumber());
 
     }
 }

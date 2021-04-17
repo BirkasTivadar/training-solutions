@@ -23,7 +23,9 @@ public class EmployeeTest {
         Employee employee = new Employee(newEmployeeYear, newEmployeeMonth, newEmployeeDay, newEmployeeName);
 
         System.out.println("Az új kolléga neve: " + employee.getName());
+
         System.out.println("Az új kolléga születési dátuma: " + employee.getDateOfBirth());
+
         System.out.println("Az új kolléga munkába állásának időpontja: " + employee.getBeginEmployment());
 
     }

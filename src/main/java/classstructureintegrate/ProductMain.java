@@ -24,10 +24,5 @@ public class ProductMain {
 
         product.decreasePrice(productPrice);
         System.out.println(product.getPrice());
-
-
-
-
-
     }
 }

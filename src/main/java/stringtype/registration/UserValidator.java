@@ -1,32 +1,24 @@
 package stringtype.registration;
 
 public class UserValidator {
-    private String username;
-    private String password1;
-    private String password2;
-    private String email;
 
-    public UserValidator(String username, String password1, String password2, String email) {
-        this.username = username;
-        this.password1 = password1;
-        this.password2 = password2;
-        this.email = email;
+    public boolean isValidUsername(String username) {
+        return !isEmpty(username);
     }
 
-    public boolean isValidUsername() {
-        return (username != "" && username != null);
+    private boolean isEmpty(String str) {
+        return str == null || str.isBlank();
     }
 
-    public boolean isValidPassword() {
-        boolean password1True = password1.length() > 7;
-        boolean password2True = password2.length() > 7;
-        return (password1True && password2True && password1.equals(password2));
+    public boolean isValidPassword(String password1, String password2) {
+        boolean passwordTrue = password1.length() > 7;
+        return (passwordTrue && password1.equals(password2));
     }
 
-    public boolean isValidEmail() {
-        int kukacIndex = email.indexOf("@");
-        int pontIndex = email.indexOf(".");
-        return (kukacIndex > 0) && (pontIndex < email.length() - 1) && ((pontIndex - kukacIndex) > 1);
+    public boolean isValidEmail(String email) {
+        int atIndex = email.indexOf("@");
+        int dotIndex = email.indexOf(".", atIndex);
+        return (atIndex > 0) && (dotIndex < email.length() - 1) && ((dotIndex - atIndex) > 1);
     }
 
 }

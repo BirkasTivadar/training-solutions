@@ -24,7 +24,7 @@ public class Music {
 
         System.out.println("Az ön kedvenc zeneszámának adatai:");
         System.out.println();
-        System.out.println(favoriteSong.band + " - " + favoriteSong.title + " (" + favoriteSong.length + " perc)" );
+        System.out.println(favoriteSong.band + " - " + favoriteSong.title + " (" + favoriteSong.length + " perc)");
 
     }
 }

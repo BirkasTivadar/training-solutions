@@ -6,7 +6,10 @@ public class Registration {
 
     public static void main(String[] args) {
 
+        UserValidator userValidator = new UserValidator();
+
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Kérem a felhasználónevet.");
         String username = scanner.nextLine();
 
@@ -19,16 +22,13 @@ public class Registration {
         System.out.println("Kérem az email címet.");
         String email = scanner.nextLine();
 
-        UserValidator userValidator = new UserValidator(username, password1, password2, email);
-
         System.out.print("A felhasználónév ");
-        System.out.println(userValidator.isValidUsername() ? "jó." : "nem jó.");
+        System.out.println(userValidator.isValidUsername(username) ? "jó." : "nem jó.");
 
         System.out.print("A jelszó ");
-        System.out.println(userValidator.isValidPassword() ? "jó." : "nem jó.");
+        System.out.println(userValidator.isValidPassword(password1, password2) ? "jó." : "nem jó.");
 
         System.out.print("Az email cím ");
-        System.out.println(userValidator.isValidEmail() ? "jó." : "nem jó.");
-
+        System.out.println(userValidator.isValidEmail(email) ? "jó." : "nem jó.");
     }
 }

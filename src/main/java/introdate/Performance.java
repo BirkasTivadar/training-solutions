@@ -4,14 +4,18 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Performance {
-    private String artist;
+
     private LocalDate date;
+
+    private String artist;
+
     private LocalTime startTime;
+
     private LocalTime endTime;
 
-    public Performance(String artist, LocalDate date, LocalTime startTime, LocalTime endTime) {
-        this.artist = artist;
+    public Performance(LocalDate date, String artist, LocalTime startTime, LocalTime endTime) {
         this.date = date;
+        this.artist = artist;
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -33,6 +37,6 @@ public class Performance {
     }
 
     public String getInfo() {
-        return artist + ": " + date + " " + startTime +" - " + endTime;
+        return artist + ": " + date + " " + startTime + " - " + endTime;
     }
 }

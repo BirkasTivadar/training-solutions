@@ -27,6 +27,5 @@ public class ClientMain {
         System.out.println("Neve: " + client.name);
         System.out.println("Születési éve: " + client.year);
         System.out.println("Címe: " + client.address);
-
     }
 }

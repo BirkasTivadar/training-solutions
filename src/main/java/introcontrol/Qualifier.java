@@ -3,6 +3,7 @@ package introcontrol;
 import java.util.Scanner;
 
 public class Qualifier {
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -11,11 +12,6 @@ public class Qualifier {
 
         int number = scanner.nextInt();
 
-        if(number > 100){
-            System.out.println("Nagyobb, mint száz");
-        } else {
-            System.out.println("Száz, vagy kisebb");
-        }
-
+        System.out.println(number > 100 ? "nNagyobb, mint száz" : "száz, vagy kisebb");
     }
 }
