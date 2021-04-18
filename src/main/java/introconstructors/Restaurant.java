@@ -4,21 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
+
     private List<String> menu = new ArrayList<>();
+
     private String name;
+
     private int capacity;
 
     public Restaurant(String name, int numberOfTables) {
         this.name = name;
         this.capacity = numberOfTables * 4;
-        this.menu = generateMenu();
+        generateMenu();
     }
 
-    private List<String> generateMenu() {
+    private void generateMenu() {
         menu.add("Hamburger");
         menu.add("Cheeseburger");
         menu.add("Big Mac");
-        return menu;
     }
 
     public List<String> getMenu() {

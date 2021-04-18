@@ -1,7 +1,9 @@
 package intromethods.todo;
 
 public class Todo {
+
     private String caption;
+    
     private boolean finished;
 
     public Todo(String caption) {

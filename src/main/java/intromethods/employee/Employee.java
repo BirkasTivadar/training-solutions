@@ -1,8 +1,11 @@
 package intromethods.employee;
 
 public class Employee {
+
     private String name;
+
     private int hiringYear;
+
     private int salary;
 
     public Employee(String name, int hiringYear, int salary) {
@@ -27,9 +30,8 @@ public class Employee {
         this.name = name;
     }
 
-    public void raiseSalary(int plus){
+    public void raiseSalary(int plus) {
         salary += plus;
-        //this.salary += plus;
     }
 
     @Override

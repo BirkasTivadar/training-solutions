@@ -10,8 +10,15 @@ public class WorkdayCalculator {
         Day day = firstDay;
         for (int i = 0; i < numbersOfDays; i++) {
             dayTypes.add(day.getDayType());
-            day = day.nextDay(day);
+            day = Day.nextDay(day);
         }
         return dayTypes;
     }
+
+//    private Day nextDay(Day day) {
+//        if (day.ordinal() == 6) {
+//            return Day.values()[0];
+//        }
+//        return Day.values()[day.ordinal() + 1];
+//    }
 }

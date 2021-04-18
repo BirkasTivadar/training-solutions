@@ -1,13 +1,20 @@
 package enumtype.week;
 
 public enum Day {
-    SUNDAY(DayType.HOLYDAY),
+
+    SUNDAY(DayType.HOLIDAY),
+
     MONDAY(DayType.WORKDAY),
+
     TUESDAY(DayType.WORKDAY),
+
     WEDNESDAY(DayType.WORKDAY),
+
     THURSDAY(DayType.WORKDAY),
+
     FRIDAY(DayType.WORKDAY),
-    SATURDAY(DayType.HOLYDAY);
+
+    SATURDAY(DayType.HOLIDAY);
 
     private final DayType dayType;
 
@@ -19,11 +26,7 @@ public enum Day {
         return dayType;
     }
 
-    public Day nextDay(Day day) {
-        if (day.ordinal() == 6) {
-            return Day.values()[0];
-        } else {
-            return Day.values()[day.ordinal() + 1];
-        }
+    public static Day nextDay(Day day) {
+        return day.ordinal() == 6 ? Day.values()[0] : Day.values()[day.ordinal() + 1];
     }
 }

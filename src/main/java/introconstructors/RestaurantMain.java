@@ -3,10 +3,12 @@ package introconstructors;
 public class RestaurantMain {
 
     public static void main(String[] args) {
+
         Restaurant restaurant = new Restaurant("Két Fenyő", 13);
 
-        System.out.println("Az étterem neve: " + restaurant.getName() + ", kapacitása: " + restaurant.getCapacity() + ", és a menü: \n"
-                + restaurant.getMenu().get(0) + "\n" + restaurant.getMenu().get(1) + "\n"+ restaurant.getMenu().get(2));
+        System.out.println(String.format("Az étterem neve: %s\nkapacitása: %d fő\nmenü: %s",
+                restaurant.getName(),
+                restaurant.getCapacity(),
+                restaurant.getMenu()));
     }
-
 }

@@ -1,5 +1,5 @@
 package enumtype.week;
 
 public enum DayType {
-    WORKDAY, HOLYDAY;
+    WORKDAY, HOLIDAY;
 }

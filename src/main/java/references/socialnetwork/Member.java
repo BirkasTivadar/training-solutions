@@ -2,10 +2,11 @@ package references.socialnetwork;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Member {
-    private String name;
 
+    private String name;
     private List<Member> connections = new ArrayList<>();
 
     public Member(String name) {
@@ -17,23 +18,24 @@ public class Member {
     }
 
     public List<Member> getConnections() {
-        return connections;
+        return new ArrayList<>(connections);
     }
 
     public void connectMember(Member member) {
         connections.add(member);
     }
 
-    private List<String> connectedNames(){
-        List<String> connectedNames = new ArrayList<>();
-        for(Member member : connections){
-            connectedNames.add(member.getName());
-        }
-        return connectedNames;
+    private List<String> connectedNames() {
+         return connections.stream().map(Member::getName).collect(Collectors.toList());
+//        List<String> connectedNames = new ArrayList<>();
+//        for (Member member : connections) {
+//            connectedNames.add(member.getName());
+//        }
+//        return connectedNames;
     }
 
     @Override
     public String toString() {
-        return  name + " " + connectedNames();
+        return name + " " + connectedNames();
     }
 }
