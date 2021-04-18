@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bill {
+
     private List<Item> items = new ArrayList<>();
 
     public List<Item> getItems() {
-        return items;
+        return new ArrayList<>(items);
     }
 
     public void addItem(Item item) {
@@ -15,11 +16,12 @@ public class Bill {
     }
 
     public double calculateTotalPrice() {
-        double sum = 0.0;
-        for (Item item : items) {
-            double itemTotal = item.getPrice() * item.getQuantity();
-            sum += itemTotal;
-        }
-        return sum;
+        return items.stream().mapToDouble(e -> e.getPrice() * e.getQuantity()).sum();
+//        double sum = 0;
+//        for (Item item : items) {
+//            double itemTotal = item.getPrice() * item.getQuantity();
+//            sum += itemTotal;
+//        }
+//        return sum;
     }
 }

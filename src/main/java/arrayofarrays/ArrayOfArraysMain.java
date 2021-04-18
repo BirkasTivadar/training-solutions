@@ -7,11 +7,10 @@ public class ArrayOfArraysMain {
             for (int szam : sor) {
                 if (szam < 10) {
                     System.out.print("  ");
-                } else if (szam < 100){
+                } else if (szam < 100) {
                     System.out.print(" ");
                 }
-                System.out.print(szam);
-                System.out.print(" ");
+                System.out.print(szam + " ");
             }
             System.out.println();
         }
@@ -51,15 +50,19 @@ public class ArrayOfArraysMain {
         ArrayOfArraysMain arrayOfArraysMain = new ArrayOfArraysMain();
 
         int[][] arrayOfArray = arrayOfArraysMain.multiplicationTable(23);
+
         arrayOfArraysMain.tombElemekKiirasa(arrayOfArray);
+
         System.out.println();
 
         arrayOfArray = arrayOfArraysMain.triangularMatrix(5);
+
         arrayOfArraysMain.tombElemekKiirasa(arrayOfArray);
+
         System.out.println();
 
         arrayOfArray = arrayOfArraysMain.getValues();
-        arrayOfArraysMain.tombElemekKiirasa(arrayOfArray);
 
+        arrayOfArraysMain.tombElemekKiirasa(arrayOfArray);
     }
 }

@@ -3,14 +3,16 @@ package math.game;
 public class GameMain {
 
     public static void main(String[] args) {
-        Point point1 = new Point(10,20);
-        Point point2 = new Point(13,14);
+        Point point1 = new Point(10, 20);
+        Point point2 = new Point(13, 14);
 
         Warrior keve = new Warrior("Keve", point1);
+
         Warrior bulcsu = new Warrior("Búlcsú", point2);
 
         System.out.println(keve.toString());
-        System.out.println(bulcsu.toString());
+
+        System.out.println(bulcsu.toString() + "\n");
 
         int round = 1;
 
@@ -23,7 +25,7 @@ public class GameMain {
             round++;
         }
 
-        while(keve.isAlive() && bulcsu.isAlive()){
+        while (keve.isAlive() && bulcsu.isAlive()) {
             keve.attack(bulcsu);
             bulcsu.attack(keve);
             System.out.println(round + ". round");
@@ -32,16 +34,6 @@ public class GameMain {
             round++;
         }
 
-        System.out.println("Winner: "+ (keve.isAlive() ? keve.toString() : bulcsu.toString()));
-
-
-
-
-
-
-
-
-
+        System.out.println("\nWinner: " + (keve.isAlive() ? keve.toString() : bulcsu.toString()));
     }
-
 }

@@ -2,11 +2,12 @@ package finalmodifier;
 
 public class CylinderCalculatorBasedOnCircle {
 
-    public static double calculateVolume(double r, double h) {
-        return CircleCalculator.calculateArea(r) * h;
+    public double calculateVolume(double r, double h) {
+        return new CircleCalculator().calculateArea(r) * h;
     }
 
-    public static double calculateSurfaceArea(double r, double h) {
-        return (CircleCalculator.calculateArea(r) * 2) + (CircleCalculator.calculatePerimeter(r) * h);
+    public double calculateSurfaceArea(double r, double h) {
+        CircleCalculator circleCalculator = new CircleCalculator();
+        return (circleCalculator.calculateArea(r) * 2) + (circleCalculator.calculatePerimeter(r) * h);
     }
 }

@@ -37,14 +37,6 @@ public class ArraysMain {
         return Arrays.equals(megtett, kihuzott);
     }
 
-    public static int Min(int a, int b) {
-        if (a < b) {
-            return a;
-        } else {
-            return b;
-        }
-    }
-
     public boolean sameTempValuesDaylight(double[] day, double[] anotherDay) {
         int dayNumber = Min(day.length, anotherDay.length);
         double[] dayMin = Arrays.copyOfRange(day, 0, dayNumber);
@@ -52,23 +44,41 @@ public class ArraysMain {
         return Arrays.equals(dayMin, anotherdayMin);
     }
 
+    private static int Min(int a, int b) {
+        if (a < b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
 
     public static void main(String[] args) {
 
         ArraysMain arraysMain = new ArraysMain();
+
+        System.out.println(arraysMain.numberOfDaysAsString() + "\n");
+
+        System.out.println(arraysMain.daysOfWeek() + "\n");
+
+        System.out.println(arraysMain.multiplicationTableAsString(5) + "\n");
+
+        double[] day = {13.2, 14.5, 8.6, 4.3, 21, 15.6, 24.5, 23.8, 18.4, 20.1, 22.6, 31.5, 17.4, 24.5, 10.2, 11.7, 23.4, 25.1, 19.6, 16.5, 23.7, 21.8, 23.4, 10.6};
+        double[] anotherdayTrue = {13.2, 14.5, 8.6, 4.3, 21, 15.6, 24.5, 23.8, 18.4, 20.1, 22.6, 31.5, 17.4, 24.5, 10.2, 11.7, 23.4, 25.1, 19.6, 16.5, 23.7, 21.8, 23.4, 10.6};
+        double[] anotherDayFalse = {13.2, 14.5, 8.6, 4.3, 21, 15.6, 24.5, 23.8, 18.4, 20.1, 22.6, 31.5, 17.4, 24.5, 10.2, 11.7, 23.4, 25.1, 19.6, 16.5, 23.7, 21.8, 23.4};
+
+        System.out.println(arraysMain.sameTempValues(day, anotherdayTrue));
+        System.out.println(arraysMain.sameTempValues(day, anotherDayFalse) + "\n");
 
         int[] megtett = {34, 56, 78, 54, 23};
         int[] kihuzott = {54, 23, 34, 78, 56};
 
         System.out.println(arraysMain.wonLottery(megtett, kihuzott));
         System.out.println(Arrays.toString(megtett));
-        System.out.println(Arrays.toString(kihuzott));
+        System.out.println(Arrays.toString(kihuzott) + "\n");
 
-        double[] day = {34, 56, 78, 54, 23};
-        double[] anotherDay = {54, 23, 34, 78, 56};
-
-        System.out.println(arraysMain.sameTempValuesDaylight(day, anotherDay));
-
+        System.out.println(arraysMain.sameTempValuesDaylight(day, anotherdayTrue));
+        System.out.println(arraysMain.sameTempValuesDaylight(day, anotherDayFalse));
     }
 
 }

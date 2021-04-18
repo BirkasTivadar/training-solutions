@@ -1,15 +1,24 @@
 package x;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProbaMain {
 
     public static void main(String[] args) {
-        double num = -12.45;
-        int i = (int) num;
-        System.out.println(i);
+        List<Integer> numbers = new ArrayList<>();
 
-        boolean igaz = true;
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(0,3);
+        System.out.println(numbers.toString());
 
-        String s = "Összefűzhető a String és a boolean : " + igaz;
-        System.out.println(s);
+        numbers.add(4);
+
+        numbers.remove(0);
+        System.out.println(numbers);
+        numbers.remove(numbers.size()-1);
+        System.out.println(numbers);
+
      }
 }

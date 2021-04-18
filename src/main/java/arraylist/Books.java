@@ -2,6 +2,7 @@ package arraylist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Books {
 
@@ -12,29 +13,23 @@ public class Books {
     }
 
     public List<String> getTitles() {
-        return titles;
+        return new ArrayList<>(titles);
     }
 
-    public List<String> findAllByPrefix(String prefix){
-        List<String> prefixes = new ArrayList<>();
-        for(String title : titles){
-            if(title.startsWith(prefix)){
-                prefixes.add(title);
-            }
-        }
-        return prefixes;
+    public List<String> findAllByPrefix(String prefix) {
+        return titles.stream().filter(e -> e.startsWith(prefix)).collect(Collectors.toList());
+//        for (String title : titles) {
+//            if (title.startsWith(prefix)) {
+//                prefixes.add(title);
+//            }
+//        }
+//        return prefixes;
     }
 
     public void removeByPrefix(String prefix) {
-        List<String> deleteByPrefix = new ArrayList<>();
-        for (String title : titles) {
-            if (title.startsWith(prefix)) {
-                deleteByPrefix.add(title);
-            }
-        }
+        List<String> deleteByPrefix = findAllByPrefix(prefix);
         titles.removeAll(deleteByPrefix);
     }
-
 
     public static void main(String[] args) {
         Books books = new Books();
@@ -49,39 +44,11 @@ public class Books {
         books.add("Spanyol nyelvkönv");
         books.add("Róma első embere");
 
+        System.out.println(books.getTitles() + "\n");
+
+        System.out.println(books.findAllByPrefix("Róma") + "\n");
+
+        books.removeByPrefix("Spa");
         System.out.println(books.getTitles());
-        System.out.println(books.findAllByPrefix("Róma"));
-        System.out.println();
-
-
-        // Ezután már csak próbálkozás
-
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
-        numbers.add(5);
-
-        List<Integer> deleteNumbers = new ArrayList<>();
-        deleteNumbers.add(1);
-        deleteNumbers.add(3);
-
-        numbers.removeAll(deleteNumbers);
-
-        System.out.println(numbers);
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
 }

@@ -1,7 +1,9 @@
 package math.game;
 
 public class Point {
+
     private int x;
+
     private int y;
 
     public Point(int x, int y) {
@@ -17,10 +19,9 @@ public class Point {
         return y;
     }
 
-    public double distance(Point point){
-        double dx = Math.abs(this.getX()- point.getX());
-        double dy = Math.abs(this.getY()- point.getY());
-
+    public double distance(Point other) {
+        double dx = Math.abs(this.getX() - other.getX());
+        double dy = Math.abs(this.getY() - other.getY());
         return Math.sqrt(Math.pow(dx, 2.0) + Math.pow(dy, 2.0));
     }
 }

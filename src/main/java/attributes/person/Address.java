@@ -1,9 +1,13 @@
 package attributes.person;
 
 public class Address {
+
     private String country;
+
     private String city;
+
     private String streetAndNumber;
+
     private String zipCode;
 
     public Address(String country, String city, String streetAndNumber, String zipCode) {

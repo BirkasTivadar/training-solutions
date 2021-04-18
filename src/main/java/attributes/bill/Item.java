@@ -1,8 +1,11 @@
 package attributes.bill;
 
 public class Item {
+
     private String product;
+
     private int quantity;
+
     private double price;
 
     public Item(String product, int quantity, double price) {
@@ -22,6 +25,4 @@ public class Item {
     public double getPrice() {
         return price;
     }
-
-
 }

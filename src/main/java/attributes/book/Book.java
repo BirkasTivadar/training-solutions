@@ -1,6 +1,7 @@
 package attributes.book;
 
 public class Book {
+
     private String title;
 
     public Book(String title) {

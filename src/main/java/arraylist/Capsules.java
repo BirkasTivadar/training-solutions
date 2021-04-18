@@ -22,39 +22,41 @@ public class Capsules {
     }
 
     public void removeLast() {
-        colors.remove(colors.size()-1);
+        colors.remove(colors.size() - 1);
     }
 
     public List<String> getColors() {
-        return colors;
+        return new ArrayList<>(colors);
     }
 
     public static void main(String[] args) {
         Capsules capsules = new Capsules();
 
         capsules.addFirst("red");
-        System.out.println(capsules.getColors());
+        System.out.println(capsules.getColors() + "\n");
+
         capsules.addLast("blue");
-        System.out.println(capsules.getColors());
+        System.out.println(capsules.getColors() + "\n");
+
         capsules.addFirst("green");
-        System.out.println(capsules.getColors());
+        System.out.println(capsules.getColors() + "\n");
+
         capsules.addLast("yellow");
-        System.out.println(capsules.getColors());
+        System.out.println(capsules.getColors() + "\n");
 
         capsules.removeFirst();
-        System.out.println(capsules.getColors());
+        System.out.println(capsules.getColors() + "\n");
+
         capsules.removeLast();
-        System.out.println(capsules.getColors());
-        System.out.println();
+        System.out.println(capsules.getColors() + "\n");
 
         List<String> colors = capsules.getColors();
 
-        System.out.println(colors);
+        System.out.println(colors + "\n");
         colors.clear();
+        System.out.println(colors);
 
         colors = capsules.getColors();
         System.out.println(colors);
-
-
     }
 }

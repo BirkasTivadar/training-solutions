@@ -6,35 +6,30 @@ public class PiMain {
 
     public static void main(String[] args) {
 
-        System.out.println(CircleCalculator.calculatePerimeter(10));
+        CircleCalculator circleCalculator = new CircleCalculator();
+
+        CylinderCalculator cylinderCalculator = new CylinderCalculator();
+
+        CylinderCalculatorBasedOnCircle cylinderCalculatorBasedOnCircle = new CylinderCalculatorBasedOnCircle();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Mennyi legyen a kör sugara?");
+
+        System.out.println(String.format("A pí értéke: %.2f", CircleCalculator.PI));
+
+        System.out.println("\nMennyi legyen a kör sugara?");
+
         double r = scanner.nextDouble();
         scanner.nextLine();
 
+        System.out.println("\nA kör kerülete: " + circleCalculator.calculatePerimeter(r));
 
-        double circlePerimeter = CircleCalculator.calculatePerimeter(r);
-        double circleArea = CircleCalculator.calculateArea(r);
+        System.out.println("\nA kör területe: " + circleCalculator.calculateArea(r));
 
-        System.out.print("A kör kerülete: "+ circlePerimeter);
-        System.out.println();
-        System.out.print("A kör területe: " + circleArea);
-        System.out.println();
-        System.out.println();
-
-        System.out.println("Mennyi legyen a cilinder magassága?");
+        System.out.println("\nMennyi legyen a cilinder magassága?");
         double h = scanner.nextDouble();
 
-        double cylinderVolume = CylinderCalculator.calculateVolume(r, h);
-        double cylinderSurfaceArea = CylinderCalculator.calculateSurfaceArea(r, h);
+        System.out.println("\nA cilinder térfogata: " + cylinderCalculator.calculateVolume(r, h));
 
-        System.out.print("A cilinder térfogata: "+ cylinderVolume);
-        System.out.println();
-        System.out.print("A cilinder felszínének mérete: " + cylinderSurfaceArea);
-
-
-
-
+        System.out.println("\nA cilinder felszínének mérete: " + cylinderCalculatorBasedOnCircle.calculateSurfaceArea(r, h));
     }
 }

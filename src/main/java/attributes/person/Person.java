@@ -1,8 +1,11 @@
 package attributes.person;
 
 public class Person {
+
     private String name;
+
     private String identificationCard;
+
     private Address address;
 
     public Person(String name, String identificationCard) {
