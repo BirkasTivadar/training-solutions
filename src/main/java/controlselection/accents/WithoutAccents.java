@@ -1,62 +1,64 @@
 package controlselection.accents;
 
+import java.util.Arrays;
+
 public class WithoutAccents {
-    private final char[] ekezetes = {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű', 'Á', 'É', 'Í', 'Ó', 'Ö', 'Ő', 'Ú', 'Ü', 'Ű'};
+    private final Character[] ekezetes = {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű', 'Á', 'É', 'Í', 'Ó', 'Ö', 'Ő', 'Ú', 'Ü', 'Ű'};
 
 
     public boolean withAccent(char letter) {
-        for (char character : ekezetes) {
-            if (letter == character) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(ekezetes).anyMatch(e -> e == letter);
+//        for (char character : ekezetes) {
+//            if (letter == character) {
+//                return true;
+//            }
+//        }
+//        return false;
     }
 
     public char convertToCharWithoutAccents(char letter) {
-        Character result = letter;
+
         if (withAccent(letter)) {
             switch (letter) {
                 case 'á':
-                    result = 'a';
-                    break;
+                    return 'a';
+
                 case 'é':
-                    result = 'e';
-                    break;
+                    return 'e';
+
                 case 'í':
-                    result = 'i';
-                    break;
+                    return 'i';
+
                 case 'ó':
                 case 'ö':
                 case 'ő':
-                    result = 'o';
-                    break;
+                    return 'o';
+
                 case 'ú':
                 case 'ü':
                 case 'ű':
-                    result = 'u';
-                    break;
+                    return 'u';
+
                 case 'Á':
-                    result = 'A';
-                    break;
+                    return 'A';
+
                 case 'É':
-                    result = 'E';
-                    break;
+                    return 'E';
+
                 case 'Í':
-                    result = 'I';
-                    break;
+                    return 'I';
+
                 case 'Ó':
                 case 'Ö':
                 case 'Ő':
-                    result = 'O';
-                    break;
+                    return 'O';
+
                 case 'Ú':
                 case 'Ü':
                 case 'Ű':
-                    result = 'U';
-                    break;
+                    return 'U';
             }
         }
-        return result;
+        return letter;
     }
 }

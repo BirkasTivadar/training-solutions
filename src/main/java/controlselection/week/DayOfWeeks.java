@@ -3,21 +3,20 @@ package controlselection.week;
 public class DayOfWeeks {
 
     public String weekMessage(String day) {
+
         String nap = day.toLowerCase();
-        switch (nap) {
-            case "hétfő":
-                return "hét eleje";
-            case "kedd":
-            case "szerda":
-            case "csütörtök":
-                return "hét közepe";
-            case "péntek":
-                return "majdnem hétvége";
-            case "szombat":
-            case "vasárnap":
-                return "hét vége";
-            default:
-                throw new IllegalArgumentException("Invalid day: " + day);
-        }
+
+        return switch (nap) {
+
+            case "hétfő" -> "hét eleje";
+
+            case "kedd", "szerda", "csütörtök" -> "hét közepe";
+
+            case "péntek" -> "majdnem hétvége";
+
+            case "szombat", "vasárnap" -> "hét vége";
+
+            default -> throw new IllegalArgumentException("Invalid day: " + day);
+        };
     }
 }

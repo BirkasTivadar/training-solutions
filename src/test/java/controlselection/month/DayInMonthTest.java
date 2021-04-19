@@ -1,7 +1,6 @@
 package controlselection.month;
 
 
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +17,5 @@ class DayInMonthTest {
         assertEquals(28, dayInMonth.dayNumber(1983, "február"));
         assertEquals(31, dayInMonth.dayNumber(1980, "Május"));
         assertEquals(30, dayInMonth.dayNumber(1960, "SZEPTEMBER"));
-
     }
 }
