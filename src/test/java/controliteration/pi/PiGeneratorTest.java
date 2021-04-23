@@ -9,6 +9,6 @@ class PiGeneratorTest {
     @Test
     void getPi() {
         PiGenerator piGenerator = new PiGenerator();
-        assertEquals("3.141592653589793238462643383279", piGenerator.getPi() );
+        assertEquals("3.141592653589793238462643383279", piGenerator.getPi());
     }
 }

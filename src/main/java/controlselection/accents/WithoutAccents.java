@@ -1,24 +1,15 @@
 package controlselection.accents;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class WithoutAccents {
-    private final Character[] ekezetes = {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű', 'Á', 'É', 'Í', 'Ó', 'Ö', 'Ő', 'Ú', 'Ü', 'Ű'};
 
-
-    public boolean withAccent(char letter) {
-        return Arrays.stream(ekezetes).anyMatch(e -> e == letter);
-//        for (char character : ekezetes) {
-//            if (letter == character) {
-//                return true;
-//            }
-//        }
-//        return false;
-    }
+    private final List<Character> ekezetes = Arrays.asList('á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű', 'Á', 'É', 'Í', 'Ó', 'Ö', 'Ő', 'Ú', 'Ü', 'Ű');
 
     public char convertToCharWithoutAccents(char letter) {
 
-        if (withAccent(letter)) {
+        if (ekezetes.contains(letter)) {
             switch (letter) {
                 case 'á':
                     return 'a';

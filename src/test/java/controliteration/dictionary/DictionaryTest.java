@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DictionaryTest {
 
-
     @Test
     public void shouldFind() {
         Dictionary dictionary = new Dictionary();

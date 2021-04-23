@@ -21,7 +21,7 @@ public class PiGenerator {
                     piStr += ".";
                 }
             }
-            if(Character.isAlphabetic(piPoet.charAt(i))){
+            if (Character.isAlphabetic(piPoet.charAt(i))) {
                 counter++;
             }
         }
