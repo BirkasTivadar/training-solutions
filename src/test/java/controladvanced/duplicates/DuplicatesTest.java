@@ -1,6 +1,5 @@
 package controladvanced.duplicates;
 
-import controladvanced.duplicates.Duplicates;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

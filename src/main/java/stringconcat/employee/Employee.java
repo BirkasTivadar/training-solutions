@@ -3,20 +3,21 @@ package stringconcat.employee;
 public class Employee {
 
     private String name;
+
     private String job;
+
     private int salary;
 
     public Employee(String name, String job, int salary) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Name must not be blank.");
+            throw new IllegalArgumentException("Name must not be empty.");
         }
         if (job == null || job.isBlank()) {
-            throw new IllegalArgumentException("Job must not be blank.");
+            throw new IllegalArgumentException("Job must not be empty.");
         }
         if (salary < 1000 || salary % 1000 != 0) {
-            throw new IllegalArgumentException("Invalid salary: " + salary);
+            throw new IllegalArgumentException("Salary must be positive.");
         }
-
         this.name = name;
         this.job = job;
         this.salary = salary;
@@ -35,6 +36,6 @@ public class Employee {
     }
 
     public String toString() {
-        return name + " - " + job + " - " + salary + " Ft";
+        return String.format("%s - %s - %d Ft", name, job, salary);
     }
 }

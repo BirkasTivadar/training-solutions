@@ -9,16 +9,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class VetTest {
 
     @Test
-    void addTest() {
+    void testAddDifferent() {
         Vet vet = new Vet();
-        vet.add(new Pet("Morzsi", LocalDate.of(2010, 11, 11), Gender.UNKNOWN, "123456"));
-        vet.add(new Pet("Párizs", LocalDate.of(2012, 1, 18), Gender.MALE, "123400"));
-        vet.add(new Pet("Zsömle", LocalDate.of(2015, 6, 7), Gender.MALE, "120056"));
-        vet.add(new Pet("Zsömle", LocalDate.of(2015, 6, 7), Gender.MALE, "121256"));
-        vet.add(new Pet("Flótás", LocalDate.of(2005, 2, 17), Gender.FEMALE, "121256"));
 
-        assertEquals(4, vet.getPets().size());
+        vet.add(new Pet("Blöki", LocalDate.of(2017, 10, 23), Gender.MALE, "000145"));
+        vet.add(new Pet("Szerénke", LocalDate.of(2012, 4, 9), Gender.FEMALE, "000129"));
+
+        assertEquals(2, vet.getPets().size());
     }
 
+    @Test
+    void testAddSame() {
+        Vet vet = new Vet();
 
+        vet.add(new Pet("Blöki", LocalDate.of(2017, 10, 23), Gender.MALE, "000145"));
+        vet.add(new Pet("Szerénke", LocalDate.of(2012, 4, 9), Gender.FEMALE, "000145"));
+
+        assertEquals(1, vet.getPets().size());
+    }
 }

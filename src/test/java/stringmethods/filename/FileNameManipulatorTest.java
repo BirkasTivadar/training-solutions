@@ -7,191 +7,190 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileNameManipulatorTest {
 
     @Test
-    void invalidParametersShouldThrowExceptionIfEmptyString() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findLastCharachter(""));
-        assertEquals("Empty string!", iae.getMessage());
+    void invalidParametersShouldThrowExceptionIfEmptyString() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().findLastCharacter(""));
+        assertEquals("Empty string!", ex.getMessage());
     }
 
     @Test
-    void invalidParametersShouldThrowExceptionIfWhiteSpaceOnly() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.changeExtensionToLowerCase("\t\n\r "));
-        assertEquals("Empty string!", iae.getMessage());
+    void invalidParametersShouldThrowExceptionIfWhiteSpaceOnly() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new FileNameManipulator().changeExtensionToLowerCase("\t\n\r ");
+        });
+        assertEquals("Empty string!", ex.getMessage());
     }
 
     @Test
-    void invalidParametersShouldThrowExceptionJustPoint() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.changeExtensionToLowerCase("."));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidParametersShouldThrowExceptionJustPoint() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new FileNameManipulator().changeExtensionToLowerCase(".");
+        });
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidParametersShouldThrowExceptionJustExtension() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.changeExtensionToLowerCase(".java"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidParametersShouldThrowExceptionJustExtension() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new FileNameManipulator().changeExtensionToLowerCase(".java");
+        });
+        assertEquals("Invalid argument!", ex.getMessage());
+    }
+
+
+    @Test
+    void invalidParametersShouldThrowExceptionIfNullString() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().findLastCharacter(null));
+        assertEquals("Empty string!", ex.getMessage());
     }
 
     @Test
-    void invalidParametersShouldThrowExceptionIfNullString() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findLastCharachter(null));
-        assertEquals("Empty string!", iae.getMessage());
+    void invalidParametersShouldThrowExceptionIfWrongFileName() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().findFileExtension("."));
+        assertEquals("Invalid file name!", ex.getMessage());
     }
 
     @Test
-    void invalidParametersShouldThrowExceptionIfWrongFileName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findFileExtension("."));
-        assertEquals("Invalid file name!", iae.getMessage());
+    void invalidParametersShouldThrowExceptionIfWrongExtension() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().findFileExtension(".d"));
+        assertEquals("Invalid file name!", ex.getMessage());
     }
 
     @Test
-    void invalidParametersShouldThrowExceptionIfWrongExtension() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findFileExtension(".d"));
-        assertEquals("Invalid file name!", iae.getMessage());
+    void invalidFileNameEmptyString() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().findFileExtension("\t\n\r"));
+        assertEquals("Invalid file name!", ex.getMessage());
     }
 
     @Test
-    void invalidFileNameEmptyString() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findFileExtension("\t\n\r"));
-        assertEquals("Invalid file name!", iae.getMessage());
+    void invalidFileNameNull() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().findFileExtension(null));
+        assertEquals("Invalid file name!", ex.getMessage());
     }
 
     @Test
-    void invalidFileNameNull() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.findFileExtension(null));
-        assertEquals("Invalid file name!", iae.getMessage());
+    void invalidParametersShouldThrowException() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().identifyFilesByExtension("d", ".d"));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidParametersShouldThrowException() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", ".d"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileNameShouldThrowException() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().identifyFilesByExtension("d", "."));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidFileNameShouldThrowException() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", "."));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileNameEmptyStringGoodExtension() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().identifyFilesByExtension("d", "\t\n\r"));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidFileNameEmptyStringGoodExtension() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", "\t\n\r"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileNameNullGoodExtension() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().identifyFilesByExtension("d", null));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidFileNameNullGoodExtension() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("d", null));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidExtensionEmptyStringGoodFileName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().identifyFilesByExtension("\t\n\r", "record.dat"));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidExtensionEmptyStringGoodFileName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension("\t\n\r", "record.dat"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidExtensionNullGoodFileTwoName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().identifyFilesByExtension(null, "record.dat"));
+        assertEquals("Invalid argument!", ex.getMessage());
+    }
+
+
+    @Test
+    void invalidFileOneNullGoodFileTwoName() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().compareFilesByName(null, "record.dat"));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidExtensionNullGoodFileTwoName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.identifyFilesByExtension(null, "record.dat"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileTwoNullGoodFileOneName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().compareFilesByName("record.dat", null));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidFileOneNullGoodFileTwoName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName(null, "record.dat"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileTwoEmptyStringGoodFileOneName() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().compareFilesByName("record.dat", "\n\t\r"));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidFileTwoNullGoodFileOneName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName("record.dat", null));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileOneEmptyStringGoodFileName() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().compareFilesByName("\n\t\r", "record.dat"));
+        assertEquals("Invalid argument!", ex.getMessage());
     }
 
     @Test
-    void invalidFileTwoEmptyStringGoodFileOneName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName("record.dat", "\n\t\r"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileNameToReplaceEmptyString() throws IllegalArgumentException {
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().replaceStringPart("\n\t\r", "jpeg", "jpg"));
+        assertEquals("Empty string!", ex.getMessage());
     }
 
     @Test
-    void invalidFileOneEmptyStringGoodFileName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.compareFilesByName("\n\t\r", "record.dat"));
-        assertEquals("Invalid argument!", iae.getMessage());
+    void invalidFileNameToReplaceNull() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new FileNameManipulator().replaceStringPart(null, "jpeg", "jpg"));
+        assertEquals("Empty string!", ex.getMessage());
     }
 
-    @Test
-    void invalidFileNameToReplaceEmptyString() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.replaceExtension("\n\t\r", "jpeg", "jpg"));
-        assertEquals("Empty string!", iae.getMessage());
-    }
 
     @Test
-    void invalidFileNameToReplaceNull() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> fileNameManipulator.replaceExtension(null, "jpeg", "jpg"));
-        assertEquals("Empty string!", iae.getMessage());
-    }
+    void findLastCharacter() {
 
-    @Test
-    void findLastCharachter() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        assertEquals('f', fileNameManipulator.findLastCharachter("abcdef"));
-        assertEquals('f', fileNameManipulator.findLastCharachter("abcdef \t  \n "));
+        assertEquals('f', new FileNameManipulator().findLastCharacter("abcdef"));
+        assertEquals('f', new FileNameManipulator().findLastCharacter("abcdef \t  \n "));
     }
 
     @Test
     void findFileExtension() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        assertEquals(".dat", fileNameManipulator.findFileExtension("record.dat"));
+
+        assertEquals(".dat", new FileNameManipulator().findFileExtension("record.dat"));
     }
 
     @Test
     void identifyFilesByExtension() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        assertEquals(true, fileNameManipulator.identifyFilesByExtension("mm", "tematika.mm"));
-        assertEquals(false, fileNameManipulator.identifyFilesByExtension("md", "tematika.mm"));
+
+        assertTrue(new FileNameManipulator().identifyFilesByExtension("mm", "tematika.mm"));
+        assertFalse(new FileNameManipulator().identifyFilesByExtension("md", "tematika.mm"));
     }
 
     @Test
     void compareFilesByName() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        assertEquals(true, fileNameManipulator.compareFilesByName("String.JAVA", "String.java"));
-        assertEquals(false, fileNameManipulator.compareFilesByName("String.java", "Sting.java"));
+
+        assertTrue(new FileNameManipulator().compareFilesByName("String.java", "String.JAVA"));
+        assertFalse(new FileNameManipulator().compareFilesByName("String.java", "Sting.java"));
     }
 
     @Test
     void changeExtensionToLowerCase() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        assertEquals("String.java", fileNameManipulator.changeExtensionToLowerCase("String.JAVA"));
+        assertEquals("String.java", new FileNameManipulator().changeExtensionToLowerCase("String.JAVA"));
     }
 
     @Test
     void replaceExtension() {
-        FileNameManipulator fileNameManipulator = new FileNameManipulator();
-        assertEquals("picture.png", fileNameManipulator.replaceExtension("picture.png", "jpeg", "jpg"));
-        assertEquals("picture.jpg", fileNameManipulator.replaceExtension("picture.jpeg", "jpeg", "jpg"));
-        assertEquals("long_descriptive_name.txt", fileNameManipulator.replaceExtension("long descriptive name.txt", " ", "_"));
+
+        assertEquals("picture.png", new FileNameManipulator().replaceStringPart("picture.png", "jpeg", "jpg"));
+        assertEquals("picture.jpg", new FileNameManipulator().replaceStringPart("picture.jpeg", "jpeg", "jpg"));
+        assertEquals("long_descriptive_name.txt", new FileNameManipulator().replaceStringPart("long descriptive name.txt", " ", "_"));
     }
 
 }

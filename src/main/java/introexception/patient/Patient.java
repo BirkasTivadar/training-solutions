@@ -3,7 +3,9 @@ package introexception.patient;
 public class Patient {
 
     private String name;
+
     private String socialSecurityNumber;
+
     private int yearOfBirth;
 
     public Patient(String name, String socialSecurityNumber, int yearOfBirth) {

@@ -2,9 +2,15 @@ package stringconcat.stringconcat;
 
 
 public class Name {
+
+    private static final String WHITESPACE = " ";
+
     private String familyName;
-    private String middleName = "";
+
+    private String middleName;
+
     private String givenName;
+
     private Title title;
 
     public Name(String familyName, String middleName, String givenName) {
@@ -21,35 +27,49 @@ public class Name {
         this.title = title;
     }
 
+
+    public String concatNameWesternStyle() {
+
+        StringBuilder result = new StringBuilder();
+
+        if (title != null) {
+            result.append(title.getTitle()).append(WHITESPACE);
+        }
+
+        result.append(givenName).append(WHITESPACE);
+
+        if (!isEmpty(middleName)) {
+            result.append(middleName).append(WHITESPACE);
+        }
+
+        result.append(familyName);
+
+        return result.toString();
+    }
+
+
+    public String concatNameHungarianStyle() {
+
+        StringBuilder result = new StringBuilder();
+
+        if (title != null) {
+            result.append(title.getTitle()).append(WHITESPACE);
+        }
+
+        result.append(familyName).append(WHITESPACE);
+
+        if (!isEmpty(middleName)) {
+            result.append(middleName).append(WHITESPACE);
+        }
+
+        result.append(givenName);
+
+        return result.toString();
+    }
+
+
     private boolean isEmpty(String str) {
         return str == null || str.isBlank();
     }
-
-    public String concatNameWesternStyle() {
-        String result = "";
-        if (title != null) {
-            result += title.getTitle() + " ";
-        }
-        result += givenName + " ";
-        if (!isEmpty(middleName)) {
-            result += middleName + " ";
-        }
-        result += familyName;
-        return result;
-    }
-
-    public String concatNameHungarianStyle() {
-        String result = "";
-        if (title != null) {
-            result = result.concat(title.getTitle()).concat(" ");
-        }
-        result = result.concat(familyName).concat(" ");
-        if (!isEmpty(middleName)) {
-            result = result.concat(middleName).concat(" ");
-        }
-        result = result.concat(givenName);
-        return result;
-    }
-
 
 }

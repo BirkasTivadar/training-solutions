@@ -5,23 +5,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SsnValidatorTest {
+
     @Test
-    public void testSsnLength() {
+    void testSsnLength() {
         assertFalse(new SsnValidator().isValidSsn("1234"));
     }
 
     @Test
-    public void testSsnLetters() {
+    void testSsnLetters() {
         assertFalse(new SsnValidator().isValidSsn("abc"));
     }
 
     @Test
-    public void testSsnInvalidCrc() {
+    void testSsnInvalidCrc() {
         assertFalse(new SsnValidator().isValidSsn("123456789"));
     }
 
     @Test
-    public void testSsnValidCrc() {
+    void testSsnValidCrc() {
         assertTrue(new SsnValidator().isValidSsn("123456788"));
     }
 

@@ -7,19 +7,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class UrlManagerTest {
 
     @Test
-    public void testCreate() {
+    void testCreate() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
 
         UrlManager urlManager = new UrlManager(url);
 
         assertEquals("https", urlManager.getProtocol());
-      assertEquals("earthquake.usgs.gov", urlManager.getHost());
-      assertEquals("/fdsnws/event/1/query", urlManager.getPath());
-       assertNull(urlManager.getPort());
+        assertEquals("earthquake.usgs.gov", urlManager.getHost());
+        assertEquals("/fdsnws/event/1/query", urlManager.getPath());
+        assertNull(urlManager.getPort());
     }
 
     @Test
-    public void testCreateWithPortAtEnd() {
+    void testCreateWithPortAtEnd() {
 
         String url = "HTTPS://EarthQuake.USgs.gov:80";
 
@@ -32,7 +32,7 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testCreateWithPort() {
+    void testCreateWithPort() {
 
         String url = "HTTPS://EarthQuake.USgs.gov:80/query?a=4";
 
@@ -45,19 +45,19 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testCreateMissingHost() {
+    void testCreateMissingHost() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> new UrlManager("http://"));
         assertEquals("Invalid url", ex.getMessage());
     }
 
     @Test
-    public void testCreateMissingProtocol() {
+    void testCreateMissingProtocol() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> new UrlManager("www.google.com"));
         assertEquals("Invalid url", ex.getMessage());
     }
 
     @Test
-    public void testHasProperty() {
+    void testHasProperty() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
 
         UrlManager urlManager = new UrlManager(url);
@@ -66,7 +66,7 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testHasPropertyMissing() {
+    void testHasPropertyMissing() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
 
         UrlManager urlManager = new UrlManager(url);
@@ -75,7 +75,7 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testHasPropertyForKeypart() {
+    void testHasPropertyForKeypart() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
 
         UrlManager urlManager = new UrlManager(url);
@@ -84,7 +84,7 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testHasPropertyWithNull() {
+    void testHasPropertyWithNull() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
         UrlManager urlManager = new UrlManager(url);
 
@@ -93,7 +93,7 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testGetProperty() {
+    void testGetProperty() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
 
         UrlManager urlManager = new UrlManager(url);
@@ -102,7 +102,7 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testGetPropertyMissing() {
+    void testGetPropertyMissing() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
 
         UrlManager urlManager = new UrlManager(url);
@@ -111,7 +111,7 @@ class UrlManagerTest {
     }
 
     @Test
-    public void testGetPropertyForKeyPart() {
+    void testGetPropertyForKeyPart() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
 
         UrlManager urlManager = new UrlManager(url);
@@ -121,7 +121,7 @@ class UrlManagerTest {
 
 
     @Test
-    public void testHasPropertyWithBlankParameter() {
+    void testHasPropertyWithBlankParameter() {
         String url = "HTTPS://EarthQuake.USgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02";
         UrlManager urlManager = new UrlManager(url);
 

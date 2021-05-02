@@ -1,13 +1,15 @@
 package stringbasic.pets;
 
-import stringbasic.pets.Gender;
-
 import java.time.LocalDate;
 
 public class Pet {
+
     private String name;
+
     private LocalDate dateOfBirth;
+
     private Gender gender;
+
     private String registrationNumber;
 
     public Pet(String name, LocalDate dateOfBirth, Gender gender, String registrationNumber) {

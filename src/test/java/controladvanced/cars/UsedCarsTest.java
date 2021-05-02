@@ -19,6 +19,7 @@ class UsedCarsTest {
                 "1MYO87;2017;Mitsubishi;blue",
                 "FKJ-187;2011;Kia;black"
         );
+
         List<String> filtered = new UsedCars().filterLines(lines);
 
         assertEquals(3, filtered.size());

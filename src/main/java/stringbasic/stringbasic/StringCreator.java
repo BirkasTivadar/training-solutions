@@ -6,9 +6,8 @@ public class StringCreator {
         return new String("Bibi");
     }
 
-    public String createStringForLoop() {
+    public String createStringForPool() {
         return "Bibi";
     }
-
 
 }

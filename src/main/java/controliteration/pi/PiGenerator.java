@@ -10,21 +10,25 @@ public class PiGenerator {
             "    De rendre kijő még tíz pontosan,\n" +
             "    Azt is bízvást ígérhetem.";
 
+
     public String getPi() {
-        String piStr = "";
+
+        StringBuilder piStr = new StringBuilder();
         int counter = 0;
+
         for (int i = 0; i < piPoet.length(); i++) {
             if (counter != 0 && !Character.isAlphabetic(piPoet.charAt(i))) {
-                piStr += counter;
+                piStr.append(counter);
                 counter = 0;
                 if (piStr.length() == 1) {
-                    piStr += ".";
+                    piStr.append(".");
                 }
             }
             if (Character.isAlphabetic(piPoet.charAt(i))) {
                 counter++;
             }
         }
-        return piStr;
+
+        return piStr.toString();
     }
 }

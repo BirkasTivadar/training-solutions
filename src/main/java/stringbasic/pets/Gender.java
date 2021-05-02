@@ -1,7 +1,5 @@
 package stringbasic.pets;
 
 public enum Gender {
-    MALE,
-    FEMALE,
-    UNKNOWN
+    MALE, FEMALE, UNKNOWN
 }

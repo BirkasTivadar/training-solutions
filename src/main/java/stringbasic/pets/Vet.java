@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vet {
+
     private List<Pet> pets = new ArrayList<>();
 
     public List<Pet> getPets() {
-        return pets;
+        return new ArrayList<>(pets);
     }
 
     private boolean areEquals(Pet animalOne, Pet animalTwo) {
@@ -15,11 +16,8 @@ public class Vet {
     }
 
     public void add(Pet animal) {
-        for (Pet pet : pets) {
-            if (animal.getRegistrationNumber().equals(pet.getRegistrationNumber())) {
-                return;
-            }
+        if (pets.stream().noneMatch(pet -> areEquals(pet, animal))) {
+            pets.add(animal);
         }
-        pets.add(animal);
     }
 }

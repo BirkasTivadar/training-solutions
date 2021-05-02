@@ -6,7 +6,9 @@ import java.util.List;
 public class UsedCars {
 
     public List<String> filterLines(List<String> lines) {
+
         List<String> validLines = new ArrayList<>();
+
         for (String line : lines) {
             String[] parts = line.split(";");
             if (parts.length != 4) {
@@ -20,6 +22,7 @@ public class UsedCars {
             }
             validLines.add(line);
         }
+
         return validLines;
     }
 
