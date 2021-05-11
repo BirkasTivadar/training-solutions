@@ -11,6 +11,7 @@ class EmployeeFilterTest {
 
     @Test
     void testCountSeniorDevs() {
+
         EmployeeFilter employeeFilter = new EmployeeFilter();
 
         List<Employee> employees = Arrays.asList(
@@ -19,6 +20,7 @@ class EmployeeFilterTest {
                 new Employee(35, 3, "Jane", Arrays.asList("c++", "programming")),
                 new Employee(25, 4, "Joe", Arrays.asList("java", "python"))
         );
+
         assertEquals(2, employeeFilter.countSeniorDevs(employees).size());
         assertEquals("John", employeeFilter.countSeniorDevs(employees).get(0).getName());
     }
