@@ -1,17 +1,22 @@
 package week13d02;
 
-public class Catalog { private String flyNumber;
-    private String direction;
-    private String city;
-    private int hours;
-    private int minutes;
+import java.time.LocalTime;
 
-    public Catalog(String flyNumber, String direction, String city, int hours, int minutes) {
+public class Catalog {
+
+    private String flyNumber;
+
+    private String direction;
+
+    private String city;
+
+    LocalTime time;
+
+    public Catalog(String flyNumber, String direction, String city, LocalTime time) {
         this.flyNumber = flyNumber;
         this.direction = direction;
         this.city = city;
-        this.hours = hours;
-        this.minutes = minutes;
+        this.time = time;
     }
 
     public String getFlyNumber() {
@@ -26,12 +31,8 @@ public class Catalog { private String flyNumber;
         return city;
     }
 
-    public int getHours() {
-        return hours;
-    }
-
-    public int getMinutes() {
-        return minutes;
+    public LocalTime getTime() {
+        return time;
     }
 
     @Override
@@ -40,8 +41,7 @@ public class Catalog { private String flyNumber;
                 "flyNumber='" + flyNumber + '\'' +
                 ", direction='" + direction + '\'' +
                 ", city='" + city + '\'' +
-                ", hours=" + hours +
-                ", minutes=" + minutes +
+                ", time=" + time +
                 '}';
     }
 }
