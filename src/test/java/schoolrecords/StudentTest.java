@@ -12,21 +12,21 @@ class StudentTest {
     public static final Tutor TUTOR = new Tutor("Nagy Lilla", Arrays.asList(MATH, new Subject("történelem")));
 
     @Test
-    public void emptyNameShouldThrowException() throws IllegalArgumentException {
+    void emptyNameShouldThrowException() throws IllegalArgumentException {
 
         Exception ex = assertThrows(IllegalArgumentException.class, () -> new Student(""));
         assertEquals("Student name must not be empty!", ex.getMessage());
     }
 
     @Test
-    public void nullMarkInGradingShouldThrowException() throws NullPointerException {
+    void nullMarkInGradingShouldThrowException() throws NullPointerException {
 
         Exception ex = assertThrows(NullPointerException.class, () -> new Student("Kovács").grading(null));
         assertEquals("Mark must not be null!", ex.getMessage());
     }
 
     @Test
-    public void testGrading() {
+    void testGrading() {
         //Given
         Student student = new Student("Kovács");
         //When
@@ -36,7 +36,7 @@ class StudentTest {
     }
 
     @Test
-    public void testCalculateAverage() {
+    void testCalculateAverage() {
         //Given
         Student student = new Student("Kovács");
         //When
@@ -48,7 +48,7 @@ class StudentTest {
     }
 
     @Test
-    public void testCalculateAverageIfMarksEmpty() {
+    void testCalculateAverageIfMarksEmpty() {
         //Given
         Student student = new Student("Kovács");
         //Then
@@ -56,7 +56,7 @@ class StudentTest {
     }
 
     @Test
-    public void testCalculateSubjectAverage() {
+    void testCalculateSubjectAverage() {
         //Given
         Student student = new Student("Kovács");
         //When
@@ -68,7 +68,7 @@ class StudentTest {
     }
 
     @Test
-    public void testCalculateSubjectAverageIfMarksEmpty() {
+    void testCalculateSubjectAverageIfMarksEmpty() {
         //Given
         Student student = new Student("Kovács");
         //Then
@@ -76,7 +76,7 @@ class StudentTest {
     }
 
     @Test
-    public void testCalculateSubjectAverageIfNoMarkFromSubject() {
+    void testCalculateSubjectAverageIfNoMarkFromSubject() {
         //Given
         Student student = new Student("Kovács");
         //When

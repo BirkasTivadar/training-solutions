@@ -4,28 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tutor {
+
     private String name;
-    private List<Subject> taughtSubjects = new ArrayList<>();
+
+    private List<Subject> taughtSubjects;
 
     public Tutor(String name, List<Subject> taughtSubjects) {
         if (isBlank(name)) {
             throw new IllegalArgumentException("Name must not be empty!");
         }
         this.name = name;
-        this.taughtSubjects = taughtSubjects;
+        this.taughtSubjects = new ArrayList<>(taughtSubjects);
     }
 
     public String getName() {
         return name;
     }
 
+    public List<Subject> getTaughtSubjects() {
+        return new ArrayList<>(taughtSubjects);
+    }
+
     public boolean tutorTeachingSubject(Subject subject) {
-        for (Subject taughtSubject : taughtSubjects) {
-            if (taughtSubject.getSubjectName().equals(subject.getSubjectName())) {
-                return true;
-            }
-        }
-        return false;
+        return taughtSubjects.stream().anyMatch(e -> e.equals(subject));
     }
 
     private boolean isBlank(String string) {

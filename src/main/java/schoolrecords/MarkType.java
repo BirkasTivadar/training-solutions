@@ -8,8 +8,8 @@ public enum MarkType {
     F(1, "fail");
 
     private final int value;
-    private final String description;
 
+    private final String description;
 
     MarkType(int value, String description) {
         this.value = value;

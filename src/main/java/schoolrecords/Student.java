@@ -2,9 +2,12 @@ package schoolrecords;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
+
     private List<Mark> marks = new ArrayList<>();
+
     private String name;
 
     public Student(String name) {
@@ -22,42 +25,71 @@ public class Student {
         return string == null || string.isBlank();
     }
 
-    public void grading(Mark mark) {
-        if (mark == null) {
-            throw new NullPointerException("Mark must not be null!");
-        }
-        marks.add(mark);
-    }
-
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name + " marks: ");
-        for (int i = 0; i < marks.size(); i++) {
-            stringBuilder.append(marks.get(i).getSubject().getSubjectName());
-            stringBuilder.append(": ");
-            stringBuilder.append(marks.get(i).toString());
-        }
-        return stringBuilder.toString();
-    }
 
     public double calculateAverage() {
+
         double sum = 0.0;
+
         for (Mark mark : marks) {
             sum += mark.getMarkType().getValue();
         }
-        return Math.round(sum / marks.size() * 100) / 100.0;
+
+        return marks.isEmpty() ? 0 : Math.round(sum / marks.size() * 100) / 100.0;
     }
 
+
     public double calculateSubjectAverage(Subject subject) {
-        double sum = 0.0;
+
+        double sum = 0;
+
         int counter = 0;
+
         for (Mark mark : marks) {
+
             if (subject.getSubjectName().equals(mark.getSubject().getSubjectName())) {
+
                 sum += mark.getMarkType().getValue();
+
                 counter++;
             }
         }
-        return Math.round(sum / counter * 100) / 100.0;
+
+        return counter == 0 ? 0 : Math.round(sum / counter * 100) / 100.0;
     }
 
+
+    public void grading(Mark mark) {
+
+        if (mark == null) {
+            throw new NullPointerException("Mark must not be null!");
+        }
+
+        marks.add(mark);
+    }
+
+
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(name).append(" marks: ");
+
+        marks.forEach(e -> sb.append(e.getSubject().getSubjectName()).append(": ").append(e.toString()));
+
+        return sb.toString();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TutorTest {
 
     @Test
-    public void testTutorTeachingSubject() {
+    void testTutorTeachingSubject() {
         //Given
         Tutor tutor = new Tutor("Nagy Csilla", Arrays.asList(new Subject("matematika"), new Subject("fizika")));
         //Then
@@ -19,7 +19,7 @@ class TutorTest {
     }
 
     @Test
-    public void testTutorDoesNotTeachingSubject() {
+    void testTutorDoesNotTeachingSubject() {
         //Given
         Tutor tutor = new Tutor("Nagy Csilla", Arrays.asList(new Subject("matematika"), new Subject("fizika")));
         //Then

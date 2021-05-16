@@ -3,7 +3,9 @@ package schoolrecords;
 public class Mark {
 
     private MarkType markType;
+
     private Subject subject;
+
     private Tutor tutor;
 
     public Mark(MarkType markType, Subject subject, Tutor tutor) {
@@ -11,15 +13,6 @@ public class Mark {
             throw new NullPointerException("Both subject and tutor must be provided!");
         }
         this.markType = markType;
-        this.subject = subject;
-        this.tutor = tutor;
-    }
-
-    public Mark(String markType, Subject subject, Tutor tutor) {
-        if (subject == null || tutor == null) {
-            throw new NullPointerException("Both subject and tutor must be provided!");
-        }
-        this.markType = MarkType.valueOf(markType);
         this.subject = subject;
         this.tutor = tutor;
     }
@@ -37,6 +30,9 @@ public class Mark {
     }
 
     public String toString() {
-        return markType.getDescription() + "(" + markType.getValue() + ")";
+        return markType.getDescription() + "(" + markType.getValue() + ") ";
     }
+
+//
+
 }
